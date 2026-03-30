@@ -43,17 +43,6 @@ var AD_SELECTORS = [
   'iframe[src*="doubleclick"]','iframe[src*="googlesyndication"]'
 ];
 
-// ========== WITTY COPY ==========
-var wideCopy = [
-  "Tired of ads? Read without distractions.",
-  "Plot twist: this ad vanishes when you subscribe.",
-  "Imagine this space \u2014 completely yours.",
-  "Fun fact: subscribers never see this.",
-  "Support the blog. Lose the ads.",
-  "Less noise. More Shark Tank."
-];
-var narrowCopy = ["No more ads?","Go clean","Lose the ads","Distraction-free"];
-var copyIdx = 0;
 
 // ========== STATE ==========
 var S = {screen:1, freq:"quarterly", preset:POPULAR, custom:0, isCustom:false, method:"", name:"", email:""};
@@ -63,16 +52,6 @@ var styleEl = document.createElement('style');
 styleEl.textContent = `
 @keyframes gaf-fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
 @keyframes gaf-popIn{from{opacity:0;transform:scale(.94) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
-.gaf-bar{display:flex;align-items:center;justify-content:space-between;height:30px;padding:0 12px;background:linear-gradient(135deg,#1a1a1a,#2d2d2d);border-radius:6px 6px 0 0;cursor:pointer;animation:gaf-fadeIn .35s ease-out;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
-.gaf-bar.narrow{justify-content:center;height:28px}
-.gaf-bar-left{display:flex;align-items:center;gap:8px}
-.gaf-sparkle{width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,${P},${PD});flex-shrink:0;border:1.5px solid rgba(255,255,255,.15)}
-.gaf-bar-text{font-size:11.5px;color:rgba(255,255,255,.7);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.gaf-cta{display:inline-flex;align-items:center;gap:4px;padding:4px 14px;background:linear-gradient(135deg,${P},${PD});color:#111;font-size:11px;font-weight:700;border-radius:20px;white-space:nowrap;box-shadow:0 2px 8px ${PT};transition:transform .15s,box-shadow .15s}
-.gaf-cta:hover{transform:scale(1.06);box-shadow:0 4px 14px ${PT}}
-.gaf-cta:active{transform:scale(.96)}
-.gaf-cta-arrow{transition:transform .15s;display:inline-block}
-.gaf-cta:hover .gaf-cta-arrow{transform:translateX(2px)}
 .gaf-overlay{position:fixed;inset:0;z-index:9999999;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;animation:gaf-fadeIn .25s ease-out}
 .gaf-popup{width:440px;max-width:calc(100% - 32px);max-height:90vh;overflow-y:auto;border-radius:20px;background:#fff;box-shadow:0 24px 80px rgba(0,0,0,.2);animation:gaf-popIn .3s ease-out;position:relative;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;box-sizing:border-box}
 .gaf-popup *{box-sizing:border-box}
@@ -165,27 +144,7 @@ function scanAds(){
     var rect = ad.getBoundingClientRect();
     if(rect.width<40||rect.height<20)return;
     ad.setAttribute(MARKER,'1');
-    injectBar(ad, rect.width);
   });
-}
-
-function injectBar(ad, width){
-  var isWide = width >= 200;
-  var bar = document.createElement('div');
-  bar.className = 'gaf-bar' + (isWide?'':' narrow');
-  bar.style.width = width + 'px';
-  bar.style.maxWidth = '100%';
-
-  if(isWide){
-    var copy = wideCopy[copyIdx % wideCopy.length];
-    copyIdx++;
-    bar.innerHTML = '<div class="gaf-bar-left"><div class="gaf-sparkle"></div><span class="gaf-bar-text">'+copy+'</span></div><span class="gaf-cta">Go Ads-Free <span class="gaf-cta-arrow">\u2192</span></span>';
-  } else {
-    bar.innerHTML = '<span class="gaf-cta">Go Ads-Free <span class="gaf-cta-arrow">\u2192</span></span>';
-  }
-
-  bar.addEventListener('click', function(e){e.stopPropagation();openPopup()});
-  ad.parentNode.insertBefore(bar, ad);
 }
 
 // ========== POPUP ==========
