@@ -273,7 +273,6 @@ function screen1(){
 function screen2(){
   var a=getTotal();
   var h='<div class="gaf-summary"><div class="gaf-summary-label">You\'re supporting</div><div class="gaf-summary-amount">$'+a.toFixed(2)+' / year</div><div class="gaf-summary-cause">Helping '+SITE_CAUSE+' every day</div></div>';
-  h+='<div class="gaf-field"><label>Email</label><input type="email" id="gaf-email" placeholder="you@example.com" value="'+S.email+'"></div>';
   h+='<div class="gaf-method-heading">Select payment method</div>';
   h+='<div class="gaf-method-card'+(S.method==='bank'?' active':'')+'" data-method="bank"><div class="gaf-method-top"><span class="gaf-method-icon">\ud83c\udfe6</span><div class="gaf-method-info"><div class="gaf-method-name">Direct Bank Transfer (ACH)</div><div class="gaf-method-sub">Best for long-term support</div></div></div></div>';
   h+='<div class="gaf-method-heading">Express checkout</div>';
@@ -382,15 +381,11 @@ function bindEvents(){
     });
   });
 
-  var emailInput=document.getElementById('gaf-email');
-  if(emailInput)emailInput.addEventListener('input',function(){S.email=this.value});
-
   var cardname=document.getElementById('gaf-cardname');
   if(cardname)cardname.addEventListener('input',function(){S.name=this.value});
 
   var cta2=document.getElementById('gaf-cta2');
   if(cta2)cta2.addEventListener('click',function(){
-    if(!S.email){var ei=document.getElementById('gaf-email');if(ei){ei.style.borderColor='#e74c3c';ei.focus()}return}
     this.textContent='Processing...';
     this.classList.add('processing');
     var self=this;
