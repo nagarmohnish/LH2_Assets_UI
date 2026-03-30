@@ -55,7 +55,7 @@ var styleEl = document.createElement('style');
 styleEl.textContent = `
 @keyframes gaf-fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
 @keyframes gaf-popIn{from{opacity:0;transform:scale(.94) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
-.gaf-bar{display:flex;align-items:center;justify-content:flex-end;height:30px;padding:0 10px;background:#1e1e1e;border-radius:4px 4px 0 0;cursor:pointer;animation:gaf-fadeIn .3s ease-out;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;margin:0}
+.gaf-bar{display:flex;align-items:center;justify-content:flex-end;height:28px;padding:0;background:none;cursor:pointer;animation:gaf-fadeIn .3s ease-out;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;margin:0 0 4px}
 .gaf-bar-cta{display:inline-flex;align-items:center;gap:4px;padding:4px 14px;background:#f5d442;color:#1e1e1e;font-size:10.5px;font-weight:800;border-radius:14px;white-space:nowrap;letter-spacing:.4px;text-transform:uppercase;transition:transform .15s,box-shadow .15s}
 .gaf-bar:hover .gaf-bar-cta{transform:scale(1.03);box-shadow:0 2px 8px rgba(245,212,66,.3)}
 .gaf-bar-cta svg{width:10px;height:10px;transition:transform .15s}
