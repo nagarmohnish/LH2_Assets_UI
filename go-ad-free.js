@@ -416,4 +416,38 @@ setTimeout(function(){
   }
 }, CFG.delay);
 
+// Expose for external callers (footer buttons)
+window.gafOpenPopup = openPopup;
+window.gafOpenDonate = function(amount) {
+  S.tip = 0; S.customTip = 0; S.isCustomTip = false;
+  // Override BASE_PRICE temporarily for donate mode
+  S._donateMode = true;
+  S._donateAmount = amount;
+  S.screen = 2; S.method = ''; S.name = ''; S.email = '';
+  document.body.style.overflow = 'hidden';
+  var overlay = document.createElement('div');
+  overlay.className = 'gaf-overlay';
+  overlay.id = 'gaf-overlay';
+  overlay.innerHTML = '<div class="gaf-popup" id="gaf-popup"><button class="gaf-close" id="gaf-close">\u00d7</button><div class="gaf-body" id="gaf-body"></div></div>';
+  document.body.appendChild(overlay);
+  overlay.addEventListener('click', function(e){ if(e.target===overlay) closePopup() });
+  document.getElementById('gaf-close').addEventListener('click', closePopup);
+  document.addEventListener('keydown', escHandler);
+  // Render screen 2 directly with donate amount
+  var body = document.getElementById('gaf-body');
+  if(body){
+    var a = amount;
+    var h = '<div class="gaf-summary"><div class="gaf-summary-label">Your donation</div><div class="gaf-summary-amount">$'+a.toFixed(2)+'</div><div class="gaf-summary-cause">Supporting '+SITE_CAUSE+' \u2764\ufe0f</div></div>';
+    h += '<div class="gaf-method-heading">Select payment method</div>';
+    h += '<div class="gaf-method-card" data-method="bank"><div class="gaf-method-top"><span class="gaf-method-icon">\ud83c\udfe6</span><div class="gaf-method-info"><div class="gaf-method-name">Direct Bank Transfer (ACH)</div><div class="gaf-method-sub">Best for long-term support</div></div></div></div>';
+    h += '<div class="gaf-method-heading">Express checkout</div>';
+    h += '<div class="gaf-express-grid"><div class="gaf-express-btn">\uf8ff Pay</div><div class="gaf-express-btn">G Pay</div><div class="gaf-express-btn">PayPal</div><div class="gaf-express-btn">Venmo</div></div>';
+    h += '<div class="gaf-method-card" data-method="card"><div class="gaf-method-top"><span class="gaf-method-icon">\ud83d\udcb3</span><div class="gaf-method-info"><div class="gaf-method-name">Card Payment</div><div class="gaf-method-sub">Visa, Mastercard, AmEx</div></div></div><div class="gaf-method-form"><div class="gaf-field"><label>Name on card</label><input type="text" id="gaf-cardname" placeholder="John Doe"></div><div class="gaf-field"><label>Card number</label><input type="text" placeholder="1234 5678 9012 3456" maxlength="19"></div><div class="gaf-row"><div class="gaf-field"><label>Expiry</label><input type="text" placeholder="MM/YY" maxlength="5"></div><div class="gaf-field"><label>CVC</label><input type="text" placeholder="123" maxlength="4"></div></div></div></div>';
+    h += '<div class="gaf-trust">\ud83d\udd12 Secure payment \u2022 Powered by Stripe</div>';
+    h += '<button class="gaf-main-cta" id="gaf-cta2">Donate $'+a.toFixed(2)+'</button>';
+    body.innerHTML = h;
+    bindEvents();
+  }
+};
+
 })();

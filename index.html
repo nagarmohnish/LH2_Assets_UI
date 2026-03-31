@@ -517,6 +517,21 @@
                         <input type="email" placeholder="Enter your email">
                         <button type="submit">Subscribe</button>
                     </div>
+
+                    <div class="footer-support-box">
+                        <h4>Support Our Coverage</h4>
+                        <div class="support-form">
+                            <span class="support-currency">$</span>
+                            <input type="text" id="footerDonateAmt" placeholder="10" class="support-input">
+                            <button type="button" class="support-btn" id="footerDonateBtn">Donate</button>
+                        </div>
+                        <p class="support-note">Every dollar helps us cover more pitches, deals, and updates.</p>
+                    </div>
+
+                    <button type="button" class="footer-adfree-btn" id="footerAdFreeBtn">
+                        <span class="adfree-icon">&#10005;</span>
+                        Go Ads-Free &mdash; $14.99/year
+                    </button>
                 </div>
             </div>
         </div>
@@ -551,5 +566,30 @@
     <script src="script.js"></script>
     <script src="auth.js"></script>
     <script src="go-ad-free.js" data-delay="1000" data-poll="3000" data-selectors=".demo-ad"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function(){
+        var donateBtn = document.getElementById('footerDonateBtn');
+        var donateInput = document.getElementById('footerDonateAmt');
+        var adFreeBtn = document.getElementById('footerAdFreeBtn');
+
+        if(donateBtn && donateInput){
+            donateBtn.addEventListener('click', function(){
+                var val = parseFloat(donateInput.value.replace(/[^0-9.]/g,''));
+                if(!val || val < 1){ donateInput.style.borderColor='#e53935'; donateInput.focus(); return; }
+                donateInput.style.borderColor='';
+                if(window.gafOpenDonate) window.gafOpenDonate(val);
+            });
+            donateInput.addEventListener('keydown', function(e){
+                if(e.key==='Enter') donateBtn.click();
+            });
+        }
+
+        if(adFreeBtn){
+            adFreeBtn.addEventListener('click', function(){
+                if(window.gafOpenPopup) window.gafOpenPopup();
+            });
+        }
+    });
+    </script>
 </body>
 </html>
