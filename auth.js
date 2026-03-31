@@ -310,7 +310,11 @@ function showOneTap() {
             };
             setUser(user);
             dismissOneTap();
-            window.location.reload();
+            // Show support popup after login instead of reload
+            setTimeout(function(){
+                if(window.gafOpenPopup) window.gafOpenPopup();
+                else window.location.reload();
+            }, 400);
         }, 1500);
     });
 
@@ -363,9 +367,15 @@ function demoLogin(method) {
     setUser(user);
     closeLoginModal();
 
-    var params = new URLSearchParams(window.location.search);
-    var redirect = params.get('redirect');
-    window.location.href = redirect || window.location.href;
+    // Show support popup after login
+    setTimeout(function(){
+        if(window.gafOpenPopup) window.gafOpenPopup();
+        else {
+            var params = new URLSearchParams(window.location.search);
+            var redirect = params.get('redirect');
+            window.location.href = redirect || window.location.href;
+        }
+    }, 400);
 }
 
 function subscribeToPlan(planName, price) {
