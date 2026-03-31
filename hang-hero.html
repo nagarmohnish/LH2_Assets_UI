@@ -109,6 +109,188 @@
         .ad-sticky-bottom .sticky-close:hover { color: #fff; }
         .ad-sticky-bottom.hidden { display: none; }
         .scroll-top { bottom: 65px; }
+
+        /* ---- Article Support Appeal ---- */
+        .article-support-appeal {
+            margin-top: 40px;
+            padding: 36px 0 0;
+            border-top: 1px solid #e8e8e8;
+        }
+        .appeal-headline {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 18px;
+            line-height: 1.3;
+        }
+        .article-support-appeal > p {
+            font-size: 15.5px !important;
+            color: #444 !important;
+            line-height: 1.8 !important;
+            margin-bottom: 16px !important;
+        }
+        .appeal-reasons {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        .appeal-reasons li {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.75;
+            margin-bottom: 8px;
+        }
+        .appeal-highlight {
+            background: #fffbeb;
+            border-left: 3px solid #f5c518;
+            padding: 18px 22px;
+            border-radius: 0 8px 8px 0;
+            margin: 24px 0 28px;
+        }
+        .appeal-highlight p {
+            font-size: 15px !important;
+            color: #333 !important;
+            line-height: 1.7 !important;
+            margin: 0 !important;
+        }
+        /* Plan selector */
+        .appeal-plans {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+        .appeal-plan {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px 18px;
+            border: 1.5px solid #e4e4e4;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: border-color 0.15s, background 0.15s;
+            position: relative;
+        }
+        .appeal-plan:hover {
+            border-color: #ccc;
+        }
+        .appeal-plan input[type="radio"] {
+            display: none;
+        }
+        .plan-radio {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 1px;
+            position: relative;
+            transition: border-color 0.15s;
+        }
+        .appeal-plan input:checked ~ .plan-radio {
+            border-color: #1a1a1a;
+        }
+        .appeal-plan input:checked ~ .plan-radio::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #1a1a1a;
+        }
+        .plan-text {
+            font-size: 15px;
+            font-weight: 600;
+            color: #333;
+        }
+        .appeal-plan.recommended {
+            border-color: var(--cyan);
+            background: rgba(0,188,212,0.02);
+        }
+        .appeal-plan.recommended input:checked ~ .plan-radio {
+            border-color: var(--cyan);
+        }
+        .appeal-plan.recommended input:checked ~ .plan-radio::after {
+            background: var(--cyan);
+        }
+        .plan-content {
+            flex: 1;
+        }
+        .plan-top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .plan-rec-badge {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--cyan);
+            background: rgba(0,188,212,0.08);
+            padding: 3px 10px;
+            border-radius: 6px;
+        }
+        .plan-benefits {
+            font-size: 13px;
+            color: #777;
+            line-height: 1.5;
+        }
+        .plan-benefits strong {
+            color: #333;
+        }
+        .plan-benefits ul {
+            list-style: none;
+            padding: 6px 0 0;
+            margin: 0;
+        }
+        .plan-benefits li {
+            padding: 3px 0;
+            font-size: 13px;
+            color: #777;
+        }
+        .plan-benefits li::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--cyan);
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        /* Actions */
+        .appeal-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .appeal-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: var(--cyan);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: background 0.15s, transform 0.1s;
+        }
+        .appeal-cta:hover {
+            background: var(--cyan-hover);
+            transform: translateY(-1px);
+        }
+        .appeal-payment-icons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
     </style>
 </head>
 <body>
@@ -414,6 +596,74 @@
                             <span class="author-follow">Follow: <a href="#"><i class="fab fa-linkedin-in"></i></a></span>
                         </div>
                         <p>Liya Shanawas is a writer, editor, and brand strategist whose work has appeared in major publications, including The New York Times, HuffPost, Vogue, InStyle, Khaleej Times, and HelloGiggles. She previously served as a features editor at Dua Lipa's editorial platform Service95 and has written widely on culture, fashion, business, and lifestyle. With a background in journalism, storytelling, and brand strategy, Liya writes about business, culture, and innovation, bringing clarity and perspective to modern ideas and emerging trends.</p>
+                    </div>
+                </div>
+
+                <!-- Support Appeal -->
+                <div class="article-support-appeal">
+                    <h3 class="appeal-headline">Covering every pitch takes real resources</h3>
+
+                    <p>Shark Tank Blog covers every episode, every founder, every deal &mdash; across 17 seasons and counting. We do it independently, without corporate backing or VC money.</p>
+
+                    <p>With reporters watching every episode live, researching every company, and writing stories that millions of readers rely on &mdash; we're well-placed to provide comprehensive coverage. <strong>But we can't do it without your support.</strong></p>
+
+                    <p>We rely on readers like you, whose backing helps keep our coverage independent and free from commercial influence.</p>
+
+                    <p>We appreciate that not everyone can afford to pay for journalism, but if you can, here are three good reasons to back us today:</p>
+
+                    <ol class="appeal-reasons">
+                        <li><strong>Our coverage is thorough.</strong> Every pitch gets the same care &mdash; whether it landed a $1M deal or walked away empty-handed.</li>
+                        <li><strong>We are independent.</strong> No billionaire owner, no network pressure. Your support directly powers our reporting.</li>
+                        <li><strong>It doesn't cost much</strong>, and takes less time than it took to read this article.</li>
+                    </ol>
+
+                    <div class="appeal-highlight">
+                        <p><strong>Choosing to back us on a monthly basis makes the most impact</strong>, meaning we can continue to cover every pitch, every founder story, and what it all means for entrepreneurship &mdash; and the world.</p>
+                    </div>
+
+                    <!-- Inline plan selector -->
+                    <div class="appeal-plans">
+                        <label class="appeal-plan" id="appealPlan5">
+                            <input type="radio" name="appealPlan" value="5">
+                            <span class="plan-radio"></span>
+                            <span class="plan-text">Support $5/monthly</span>
+                        </label>
+
+                        <label class="appeal-plan recommended" id="appealPlan15">
+                            <input type="radio" name="appealPlan" value="15" checked>
+                            <span class="plan-radio"></span>
+                            <div class="plan-content">
+                                <div class="plan-top-row">
+                                    <span class="plan-text">Support $15/monthly</span>
+                                    <span class="plan-rec-badge">Recommended</span>
+                                </div>
+                                <div class="plan-benefits">
+                                    <span>Unlock <strong>All-access digital</strong> benefits:</span>
+                                    <ul>
+                                        <li>Far fewer asks for support</li>
+                                        <li>Ad-free reading</li>
+                                        <li>Full access to the episode archive</li>
+                                        <li>Exclusive member newsletter</li>
+                                        <li>Early access to new recaps</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="appeal-plan" id="appealPlanCustom">
+                            <input type="radio" name="appealPlan" value="custom">
+                            <span class="plan-radio"></span>
+                            <span class="plan-text">Support with another amount</span>
+                        </label>
+                    </div>
+
+                    <div class="appeal-actions">
+                        <button class="appeal-cta" id="appealCta">Continue <i class="fas fa-arrow-right"></i></button>
+                        <div class="appeal-payment-icons">
+                            <span style="font-weight:700;font-size:12px;color:#1a3c6e">VISA</span>
+                            <span style="font-weight:700;font-size:12px;color:#eb001b">MC</span>
+                            <span style="font-weight:700;font-size:12px;color:#003087">PayPal</span>
+                        </div>
                     </div>
                 </div>
 
@@ -736,5 +986,24 @@
     <script src="script.js"></script>
     <script src="auth.js"></script>
     <script src="go-ad-free.js" data-delay="1000" data-poll="3000" data-selectors=".demo-ad"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function(){
+        var appealCta = document.getElementById('appealCta');
+        if(appealCta){
+            appealCta.addEventListener('click', function(){
+                var checked = document.querySelector('input[name="appealPlan"]:checked');
+                if(!checked) return;
+                var val = checked.value;
+                if(val === 'custom'){
+                    window.location.href = 'support.html';
+                } else {
+                    var amt = parseInt(val);
+                    if(window.gafOpenWithPlan) window.gafOpenWithPlan(amt);
+                    else if(window.gafOpenPopup) window.gafOpenPopup();
+                }
+            });
+        }
+    });
+    </script>
 </body>
 </html>
