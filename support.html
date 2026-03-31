@@ -572,6 +572,399 @@
         }
 
         /* =============================================
+           EMBEDDED PAYMENT WIDGET
+           ============================================= */
+        .emb-widget {
+            max-width: 520px;
+            margin: 0 auto;
+            background: #fff;
+            border: 1px solid #e8e8e8;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+            overflow: hidden;
+            min-height: 200px;
+        }
+        .emb-body {
+            padding: 40px 36px 32px;
+        }
+        /* Steps indicator */
+        .emb-steps {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 28px;
+        }
+        .emb-step-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            transition: background 0.2s;
+        }
+        .emb-step-dot.active { background: var(--mem-accent); }
+        .emb-step-dot.done { background: var(--mem-accent); opacity: 0.4; }
+        .emb-step-line {
+            width: 24px;
+            height: 2px;
+            background: #e8e8e8;
+        }
+        /* Screen 1: Plan selection */
+        .emb-s1-title {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-align: center;
+            margin-bottom: 6px;
+        }
+        .emb-s1-sub {
+            font-size: 14px;
+            color: #999;
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        .emb-toggle-wrap {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+        .emb-toggle {
+            display: inline-flex;
+            background: #f3f3f3;
+            border-radius: 8px;
+            padding: 3px;
+        }
+        .emb-toggle-btn {
+            padding: 8px 20px;
+            border: none;
+            background: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #999;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: all 0.15s;
+        }
+        .emb-toggle-btn.active {
+            background: #fff;
+            color: #1a1a1a;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+        .emb-toggle-save {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--mem-accent);
+            margin-left: 3px;
+        }
+        .emb-plans {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .emb-plan {
+            border: 1.5px solid #e8e8e8;
+            border-radius: 12px;
+            padding: 24px 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.15s;
+            position: relative;
+        }
+        .emb-plan:hover { border-color: #ccc; }
+        .emb-plan.active { border-color: var(--mem-accent); background: rgba(0,212,170,0.03); }
+        .emb-plan-badge {
+            position: absolute;
+            top: -9px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 9px;
+            font-weight: 700;
+            color: #fff;
+            background: var(--mem-accent);
+            padding: 2px 12px;
+            border-radius: 8px;
+            white-space: nowrap;
+        }
+        .emb-plan-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .emb-plan-price {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            font-weight: 700;
+            color: #1a1a1a;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .emb-plan.active .emb-plan-price { color: #0a0f1e; }
+        .emb-plan-period {
+            font-size: 13px;
+            color: #bbb;
+        }
+        .emb-plan-note {
+            font-size: 11px;
+            color: #ccc;
+            margin-top: 4px;
+            min-height: 16px;
+        }
+        .emb-cta {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            background: var(--mem-accent);
+            color: #0a0f1e;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+            box-shadow: 0 0 20px var(--mem-accent-glow);
+            margin-bottom: 14px;
+        }
+        .emb-cta:hover { transform: translateY(-1px); box-shadow: 0 0 30px var(--mem-accent-glow); }
+        .emb-cta:active { transform: translateY(0); }
+        .emb-cta.processing { opacity: 0.7; cursor: not-allowed; }
+        .emb-trust {
+            text-align: center;
+            font-size: 12px;
+            color: #ccc;
+        }
+        .emb-trust i { margin-right: 3px; }
+        /* Screen 2: Google Sign In */
+        .emb-glogo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+        .emb-glogo svg {
+            width: 36px;
+            height: 36px;
+            padding: 6px;
+            background: #f5f5f5;
+            border-radius: 50%;
+        }
+        .emb-s2-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-align: center;
+            margin-bottom: 4px;
+        }
+        .emb-s2-sub {
+            font-size: 13px;
+            color: #bbb;
+            text-align: center;
+            margin-bottom: 22px;
+        }
+        .emb-account {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            border: 1.5px solid #eee;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: border-color 0.15s, background 0.15s;
+        }
+        .emb-account:hover { border-color: #ddd; background: #fafafa; }
+        .emb-account-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .emb-account-info { flex: 1; }
+        .emb-account-name { font-size: 14px; font-weight: 600; color: #333; }
+        .emb-account-email { font-size: 12px; color: #999; }
+        .emb-account-arrow { color: #ccc; font-size: 13px; }
+        .emb-divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 18px 0;
+        }
+        .emb-divider::before, .emb-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #eee;
+        }
+        .emb-divider span { font-size: 12px; color: #ccc; }
+        .emb-email-btn {
+            display: block;
+            width: 100%;
+            padding: 11px;
+            border: none;
+            background: none;
+            color: #aaa;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: var(--font-body);
+            text-align: center;
+            transition: color 0.15s;
+        }
+        .emb-email-btn:hover { color: var(--mem-accent); }
+        /* Screen 3: Payment */
+        .emb-s3-label { font-size: 13px; color: #999; margin-bottom: 4px; }
+        .emb-s3-amount { font-size: 28px; font-weight: 900; color: #1a1a1a; margin-bottom: 24px; line-height: 1; }
+        .emb-s3-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+        .emb-s3-heading-text { font-size: 14px; font-weight: 700; color: #333; }
+        .emb-s3-heading-right { font-size: 12px; color: #aaa; }
+        .emb-method {
+            border: 1.5px solid #eee;
+            border-radius: 12px;
+            padding: 16px 18px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: border-color 0.15s;
+        }
+        .emb-method:hover { border-color: #ddd; }
+        .emb-method.active { border-color: var(--mem-accent); }
+        .emb-method-top { display: flex; align-items: center; justify-content: space-between; }
+        .emb-method-left { display: flex; align-items: center; gap: 10px; }
+        .emb-method-icon { font-size: 16px; color: #888; }
+        .emb-method-name { font-size: 14px; font-weight: 600; color: #333; }
+        .emb-method-sub { font-size: 11px; color: var(--mem-accent); font-weight: 600; }
+        .emb-method-chevron { color: #ccc; font-size: 11px; transition: transform 0.2s; }
+        .emb-method.active .emb-method-chevron { transform: rotate(180deg); }
+        .emb-method-form { margin-top: 12px; display: none; }
+        .emb-method.active .emb-method-form { display: block; }
+        .emb-field { margin-bottom: 10px; }
+        .emb-field label { display: block; font-size: 11px; font-weight: 600; color: #888; margin-bottom: 4px; }
+        .emb-field input { width: 100%; padding: 10px 12px; border: 1.5px solid #e4e4e4; border-radius: 8px; font-size: 14px; outline: none; font-family: inherit; transition: border-color 0.15s; }
+        .emb-field input:focus { border-color: var(--mem-accent); }
+        .emb-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .emb-express-label { font-size: 11px; font-weight: 600; color: #aaa; text-align: center; margin: 16px 0 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .emb-express-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px; }
+        .emb-express-btn { padding: 10px 6px; border: 1.5px solid #eee; border-radius: 8px; text-align: center; cursor: pointer; font-size: 11px; font-weight: 600; color: #555; background: #fff; transition: border-color 0.15s; font-family: inherit; }
+        .emb-express-btn:hover { border-color: var(--mem-accent); }
+        .emb-s3-trust { text-align: center; font-size: 11px; color: #ccc; margin-bottom: 16px; }
+        /* Screen 4: Success */
+        .emb-s4-check {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--mem-accent);
+            color: #0a0f1e;
+            font-size: 22px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+        .emb-s4-text {
+            text-align: center;
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .emb-s4-text strong { color: #1a1a1a; }
+        .emb-s4-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 18px;
+            border: 1.5px solid var(--mem-accent);
+            border-radius: 20px;
+            color: var(--mem-accent);
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+        .emb-cert {
+            border: 1px solid #e8e8e8;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .emb-cert-bar { height: 3px; background: linear-gradient(90deg, var(--mem-accent), #6366f1); border-radius: 12px 12px 0 0; position: absolute; top: 0; left: 0; right: 0; }
+        .emb-cert-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #bbb; margin-bottom: 10px; }
+        .emb-cert-small { font-size: 12px; color: #bbb; }
+        .emb-cert-name { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 4px 0; }
+        .emb-cert-cause { font-style: italic; color: #aaa; font-size: 12px; margin: 8px 0; }
+        .emb-cert-amount { font-weight: 800; font-size: 15px; color: #1a1a1a; }
+        .emb-cert-date { font-size: 11px; color: #bbb; margin-top: 2px; }
+        .emb-share-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 16px;
+        }
+        .emb-share-btn {
+            padding: 10px;
+            border: 1.5px solid #eee;
+            border-radius: 8px;
+            color: #555;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            background: #fff;
+            transition: border-color 0.15s;
+            font-family: inherit;
+        }
+        .emb-share-btn:hover { border-color: var(--mem-accent); }
+        /* Back button */
+        .emb-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: #bbb;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: inherit;
+            margin-bottom: 16px;
+            transition: color 0.15s;
+        }
+        .emb-back:hover { color: #888; }
+        /* Spinner */
+        .emb-spinner {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 2.5px solid rgba(10,15,30,.15);
+            border-top-color: #0a0f1e;
+            border-radius: 50%;
+            animation: emb-spin 0.6s linear infinite;
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+        @keyframes emb-spin { to { transform: rotate(360deg); } }
+
+        /* =============================================
            RESPONSIVE
            ============================================= */
         @media (max-width: 768px) {
@@ -579,7 +972,9 @@
             .mem-hero h1 { font-size: 32px; }
             .mem-hero-stats { flex-direction: column; gap: 20px; }
             .mem-benefits-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
-            .mem-price-cards { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto 24px; }
+            .emb-plans { grid-template-columns: 1fr; }
+            .emb-body { padding: 32px 24px 24px; }
+            .emb-express-grid { grid-template-columns: repeat(2, 1fr); }
             .mem-test-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
             .mem-numbers-row { flex-wrap: wrap; gap: 20px; }
             .mem-num-item:not(:last-child)::after { display: none; }
@@ -670,49 +1065,13 @@
         </div>
     </section>
 
-    <!-- 3. PRICING -->
+    <!-- 3. PRICING — Embedded widget -->
     <section class="mem-light mem-pricing">
         <div class="mem-section-label">Pricing</div>
         <div class="mem-section-title">Simple, Transparent Pricing</div>
-
-        <div class="mem-toggle-wrap">
-            <div class="mem-toggle">
-                <button class="mem-toggle-btn active" data-plan="monthly">Monthly</button>
-                <button class="mem-toggle-btn" data-plan="annual">Annual <span class="mem-toggle-save">Save 33%</span></button>
-            </div>
+        <div class="emb-widget" id="embWidget">
+            <!-- Screens rendered by JS -->
         </div>
-
-        <div class="mem-price-cards">
-            <div class="mem-price-card" id="cardMonthly">
-                <div class="mem-price-plan">Monthly</div>
-                <div class="mem-price-amount">$5</div>
-                <div class="mem-price-period">per month</div>
-                <div class="mem-price-note">Billed monthly</div>
-                <button class="mem-price-cta outline" id="ctaMonthly">Get Started</button>
-                <ul class="mem-price-features">
-                    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Ad-free experience</li>
-                    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Full archive access</li>
-                    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Member newsletter</li>
-                    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Cancel anytime</li>
-                </ul>
-            </div>
-            <div class="mem-price-card featured" id="cardAnnual">
-                <div class="mem-price-badge">Best Value</div>
-                <div class="mem-price-plan">Annual</div>
-                <div class="mem-price-amount">$40</div>
-                <div class="mem-price-period">per year</div>
-                <div class="mem-price-note">$3.33/mo &mdash; save 33%</div>
-                <button class="mem-price-cta primary" id="ctaAnnual">Get Started</button>
-                <ul class="mem-price-features">
-                    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Everything in Monthly</li>
-                    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Early access to recaps</li>
-                    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Exclusive founder deep-dives</li>
-                    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Priority support</li>
-                    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Where Are They Now updates</li>
-                </ul>
-            </div>
-        </div>
-        <div class="mem-trust"><i class="fas fa-lock"></i> Secure payment &bull; Cancel anytime &bull; No questions asked</div>
     </section>
 
     <!-- 4. TESTIMONIALS -->
@@ -815,28 +1174,223 @@
         var heroStats = document.querySelector('.mem-hero-stats');
         if(heroStats) heroObserver.observe(heroStats);
 
-        // === Toggle ===
-        var toggleBtns = document.querySelectorAll('.mem-toggle-btn');
-        toggleBtns.forEach(function(btn){
-            btn.addEventListener('click', function(){
-                toggleBtns.forEach(function(b){ b.classList.remove('active'); });
-                this.classList.add('active');
-            });
-        });
-
-        // === CTAs ===
+        // === Hero / Final CTAs scroll to widget ===
         document.getElementById('heroCtaBtn').addEventListener('click', function(){
             document.querySelector('.mem-pricing').scrollIntoView({behavior:'smooth'});
-        });
-        document.getElementById('ctaMonthly').addEventListener('click', function(){
-            if(window.gafOpenWithPlan) window.gafOpenWithPlan(5);
-        });
-        document.getElementById('ctaAnnual').addEventListener('click', function(){
-            if(window.gafOpenWithPlan) window.gafOpenWithPlan(4);
         });
         document.getElementById('finalCtaBtn').addEventListener('click', function(){
             document.querySelector('.mem-pricing').scrollIntoView({behavior:'smooth'});
         });
+
+        // ==========================================
+        // EMBEDDED PAYMENT WIDGET
+        // ==========================================
+        var EW = {
+            screen: 1,
+            billing: 'annual',
+            plan: 'annual', // 'monthly' or 'annual'
+            method: '',
+            name: 'John Doe',
+            email: '',
+            selectedAccount: null
+        };
+        var ACCOUNTS = [
+            {name:'Mohnish Nagar', email:'mohnish.nagar@gmail.com', color:'#4285F4', initial:'M'},
+            {name:'Mohnish', email:'mohnish@getmega.com', color:'#EA4335', initial:'M'}
+        ];
+
+        function ewAmount(){ return EW.plan === 'annual' ? 40 : 5; }
+        function ewPeriod(){ return EW.plan === 'annual' ? 'year' : 'month'; }
+        function ewBillingNote(){ return EW.plan === 'annual' ? '$3.33/mo — save 33%' : 'Billed monthly'; }
+
+        var widget = document.getElementById('embWidget');
+
+        function ewRender(){
+            var h = '<div class="emb-body">';
+            // Step dots
+            h += '<div class="emb-steps">';
+            for(var i=1;i<=4;i++){
+                var cls = i===EW.screen?'active':(i<EW.screen?'done':'');
+                h += '<div class="emb-step-dot '+cls+'"></div>';
+                if(i<4) h += '<div class="emb-step-line"></div>';
+            }
+            h += '</div>';
+
+            if(EW.screen===1) h += ewScreen1();
+            else if(EW.screen===2) h += ewScreen2();
+            else if(EW.screen===3) h += ewScreen3();
+            else h += ewScreen4();
+
+            h += '</div>';
+            widget.innerHTML = h;
+            ewBind();
+        }
+
+        // Screen 1: Plan selection
+        function ewScreen1(){
+            var h = '';
+            h += '<div class="emb-s1-title">Choose Your Plan</div>';
+            h += '<div class="emb-s1-sub">One membership. Everything included.</div>';
+            h += '<div class="emb-toggle-wrap"><div class="emb-toggle">';
+            h += '<button class="emb-toggle-btn'+(EW.billing==='monthly'?' active':'')+'" data-b="monthly">Monthly</button>';
+            h += '<button class="emb-toggle-btn'+(EW.billing==='annual'?' active':'')+'" data-b="annual">Annual <span class="emb-toggle-save">Save 33%</span></button>';
+            h += '</div></div>';
+            h += '<div class="emb-plans">';
+            h += '<div class="emb-plan'+(EW.plan==='monthly'?' active':'')+'" data-plan="monthly">';
+            h += '<div class="emb-plan-label">Monthly</div>';
+            h += '<div class="emb-plan-price">$5</div>';
+            h += '<div class="emb-plan-period">per month</div>';
+            h += '<div class="emb-plan-note">Billed monthly</div>';
+            h += '</div>';
+            h += '<div class="emb-plan'+(EW.plan==='annual'?' active':'')+'" data-plan="annual">';
+            h += '<div class="emb-plan-badge">Best Value</div>';
+            h += '<div class="emb-plan-label">Annual</div>';
+            h += '<div class="emb-plan-price">$40</div>';
+            h += '<div class="emb-plan-period">per year</div>';
+            h += '<div class="emb-plan-note">$3.33/mo — save 33%</div>';
+            h += '</div>';
+            h += '</div>';
+            h += '<button class="emb-cta" id="ewCta1">Get Started — $'+ewAmount()+'/'+ewPeriod()+'</button>';
+            h += '<div class="emb-trust"><i class="fas fa-lock"></i> Secure payment · Cancel anytime · Includes ad-free</div>';
+            return h;
+        }
+
+        // Screen 2: Google Sign In
+        function ewScreen2(){
+            var h = '';
+            h += '<button class="emb-back" id="ewBack2"><i class="fas fa-arrow-left"></i> Back</button>';
+            h += '<div class="emb-glogo"><svg viewBox="0 0 48 48" width="24" height="24"><path fill="#4285F4" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#34A853" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#EA4335" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></div>';
+            h += '<div class="emb-s2-title">Sign in to continue</div>';
+            h += '<div class="emb-s2-sub">Choose your Google account</div>';
+            ACCOUNTS.forEach(function(acc,i){
+                h += '<div class="emb-account" data-idx="'+i+'">';
+                h += '<div class="emb-account-avatar" style="background:'+acc.color+'">'+acc.initial+'</div>';
+                h += '<div class="emb-account-info"><div class="emb-account-name">'+acc.name+'</div><div class="emb-account-email">'+acc.email+'</div></div>';
+                h += '<span class="emb-account-arrow"><i class="fas fa-chevron-right"></i></span>';
+                h += '</div>';
+            });
+            h += '<div class="emb-divider"><span>Use email instead</span></div>';
+            h += '<button class="emb-email-btn" id="ewUseEmail">Continue with email</button>';
+            return h;
+        }
+
+        // Screen 3: Payment
+        function ewScreen3(){
+            var amt = ewAmount();
+            var per = ewPeriod();
+            var h = '';
+            h += '<button class="emb-back" id="ewBack3"><i class="fas fa-arrow-left"></i> Back</button>';
+            h += '<div class="emb-s3-label">You\'re supporting</div>';
+            h += '<div class="emb-s3-amount">$'+amt+' / '+per+'</div>';
+            h += '<div class="emb-s3-heading"><span class="emb-s3-heading-text">Select payment method</span><span class="emb-s3-heading-right"><small>us</small> United States <i class="fas fa-chevron-down" style="font-size:9px"></i></span></div>';
+            h += '<div class="emb-method'+(EW.method==='bank'?' active':'')+'" data-method="bank"><div class="emb-method-top"><div class="emb-method-left"><span class="emb-method-icon"><i class="fas fa-building-columns"></i></span><div><div class="emb-method-name">Direct Bank Transfer (ACH)</div><div class="emb-method-sub">Best for long-term support</div></div></div><span class="emb-method-chevron"><i class="fas fa-chevron-down"></i></span></div></div>';
+            h += '<div class="emb-express-label">Express checkout</div>';
+            h += '<div class="emb-express-grid"><div class="emb-express-btn">Apple Pay</div><div class="emb-express-btn" style="border-color:var(--mem-accent)">Google Pay</div><div class="emb-express-btn">PayPal</div><div class="emb-express-btn">Venmo</div></div>';
+            h += '<div class="emb-method'+(EW.method==='card'?' active':'')+'" data-method="card"><div class="emb-method-top"><div class="emb-method-left"><span class="emb-method-icon"><i class="fas fa-credit-card"></i></span><div><div class="emb-method-name">Card payment</div></div></div><span class="emb-method-chevron"><i class="fas fa-chevron-down"></i></span></div>';
+            h += '<div class="emb-method-form"><div class="emb-field"><label>Name on card</label><input type="text" id="ewCardName" placeholder="John Doe" value="'+EW.name+'"></div><div class="emb-field"><label>Card number</label><input type="text" placeholder="1234 5678 9012 3456" maxlength="19"></div><div class="emb-field-row"><div class="emb-field"><label>Expiry</label><input type="text" placeholder="MM/YY" maxlength="5"></div><div class="emb-field"><label>CVC</label><input type="text" placeholder="123" maxlength="4"></div></div></div>';
+            h += '</div>';
+            h += '<div class="emb-s3-trust"><i class="fas fa-lock"></i> Secure payment · Powered by Stripe</div>';
+            h += '<button class="emb-cta" id="ewCta3">Complete Payment — $'+amt+' / '+per+'</button>';
+            return h;
+        }
+
+        // Screen 4: Success
+        function ewScreen4(){
+            var amt = ewAmount();
+            var per = ewPeriod();
+            var name = EW.name || (EW.selectedAccount !== null ? ACCOUNTS[EW.selectedAccount].name : 'Member');
+            var date = new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+            var h = '';
+            h += '<div style="text-align:center">';
+            h += '<div class="emb-s4-check">&#10003;</div>';
+            h += '<div class="emb-s4-text">Your <strong>$'+amt+'/'+per+'</strong> membership is confirmed.<br>You\'re now one of us — helping keep Shark Tank coverage free for millions.</div>';
+            h += '<div class="emb-s4-badge"><i class="far fa-heart"></i> Official Member of Shark Tank Blog</div>';
+            h += '</div>';
+            h += '<div class="emb-cert"><div class="emb-cert-bar"></div>';
+            h += '<div class="emb-cert-label">Certificate of Membership</div>';
+            h += '<hr style="border:none;border-top:1px solid #f0f0f0;margin:8px 0">';
+            h += '<div class="emb-cert-small">This certifies that</div>';
+            h += '<div class="emb-cert-name">'+name+'</div>';
+            h += '<div class="emb-cert-small">is a proud member of</div>';
+            h += '<div style="font-weight:700;font-size:15px;margin:8px 0">Shark Tank Blog</div>';
+            h += '<hr style="border:none;border-top:1px solid #f0f0f0;margin:8px 0">';
+            h += '<div class="emb-cert-cause">For keeping Shark Tank coverage free & accessible</div>';
+            h += '<div class="emb-cert-amount">$'+amt+' / '+per+'</div>';
+            h += '<div class="emb-cert-date">'+date+'</div>';
+            h += '</div>';
+            var shareText = encodeURIComponent('I just became a member of Shark Tank Blog! Supporting free Shark Tank coverage for everyone.');
+            h += '<div class="emb-share-grid">';
+            h += '<a class="emb-share-btn" href="https://twitter.com/intent/tweet?text='+shareText+'" target="_blank"><i class="fab fa-x-twitter"></i> X</a>';
+            h += '<a class="emb-share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent('https://nagarmohnish.github.io/STB_UI/')+'" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>';
+            h += '<a class="emb-share-btn" href="https://wa.me/?text='+shareText+'" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>';
+            h += '</div>';
+            return h;
+        }
+
+        function ewBind(){
+            // Screen 1
+            var toggles = widget.querySelectorAll('.emb-toggle-btn');
+            toggles.forEach(function(b){
+                b.addEventListener('click', function(){
+                    EW.billing = this.getAttribute('data-b');
+                    EW.plan = EW.billing;
+                    toggles.forEach(function(x){ x.classList.remove('active'); });
+                    this.classList.add('active');
+                    ewRender();
+                });
+            });
+            var plans = widget.querySelectorAll('.emb-plan');
+            plans.forEach(function(p){
+                p.addEventListener('click', function(){
+                    EW.plan = this.getAttribute('data-plan');
+                    EW.billing = EW.plan;
+                    ewRender();
+                });
+            });
+            var cta1 = widget.querySelector('#ewCta1');
+            if(cta1) cta1.addEventListener('click', function(){ EW.screen = 2; ewRender(); });
+
+            // Screen 2
+            var back2 = widget.querySelector('#ewBack2');
+            if(back2) back2.addEventListener('click', function(){ EW.screen = 1; ewRender(); });
+            var accs = widget.querySelectorAll('.emb-account');
+            accs.forEach(function(a){
+                a.addEventListener('click', function(){
+                    EW.selectedAccount = parseInt(this.getAttribute('data-idx'));
+                    EW.name = ACCOUNTS[EW.selectedAccount].name;
+                    EW.email = ACCOUNTS[EW.selectedAccount].email;
+                    EW.screen = 3;
+                    ewRender();
+                });
+            });
+            var useEmail = widget.querySelector('#ewUseEmail');
+            if(useEmail) useEmail.addEventListener('click', function(){ EW.screen = 3; ewRender(); });
+
+            // Screen 3
+            var back3 = widget.querySelector('#ewBack3');
+            if(back3) back3.addEventListener('click', function(){ EW.screen = 2; ewRender(); });
+            var methods = widget.querySelectorAll('.emb-method');
+            methods.forEach(function(m){
+                m.addEventListener('click', function(){
+                    var mt = this.getAttribute('data-method');
+                    EW.method = (EW.method === mt) ? '' : mt;
+                    methods.forEach(function(x){ x.classList.remove('active'); });
+                    if(EW.method) this.classList.add('active');
+                });
+            });
+            var cardName = widget.querySelector('#ewCardName');
+            if(cardName) cardName.addEventListener('input', function(){ EW.name = this.value; });
+            var cta3 = widget.querySelector('#ewCta3');
+            if(cta3) cta3.addEventListener('click', function(){
+                this.innerHTML = '<span class="emb-spinner"></span> Processing...';
+                this.classList.add('processing');
+                var self = this;
+                setTimeout(function(){ EW.screen = 4; ewRender(); }, 1800);
+            });
+        }
+
+        // Init widget
+        ewRender();
 
         // === FAQ ===
         document.querySelectorAll('.mem-faq-q').forEach(function(q){
