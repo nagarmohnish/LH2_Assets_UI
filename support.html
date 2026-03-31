@@ -825,15 +825,17 @@
         });
 
         // === CTAs ===
-        ['heroCtaBtn','ctaMonthly','ctaAnnual','finalCtaBtn'].forEach(function(id){
-            var el = document.getElementById(id);
-            if(el) el.addEventListener('click', function(){
-                if(id === 'heroCtaBtn'){
-                    document.querySelector('.mem-pricing').scrollIntoView({behavior:'smooth'});
-                } else {
-                    if(window.gafOpenPopup) window.gafOpenPopup();
-                }
-            });
+        document.getElementById('heroCtaBtn').addEventListener('click', function(){
+            document.querySelector('.mem-pricing').scrollIntoView({behavior:'smooth'});
+        });
+        document.getElementById('ctaMonthly').addEventListener('click', function(){
+            if(window.gafOpenWithPlan) window.gafOpenWithPlan(5);
+        });
+        document.getElementById('ctaAnnual').addEventListener('click', function(){
+            if(window.gafOpenWithPlan) window.gafOpenWithPlan(4);
+        });
+        document.getElementById('finalCtaBtn').addEventListener('click', function(){
+            document.querySelector('.mem-pricing').scrollIntoView({behavior:'smooth'});
         });
 
         // === FAQ ===

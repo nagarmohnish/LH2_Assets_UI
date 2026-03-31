@@ -508,5 +508,24 @@ window.gafOpenDonate = function(amount){
   S.isCustom = true;
   openPopup();
 };
+// Open directly at Google Sign-In (Screen 2) with plan pre-selected
+window.gafOpenWithPlan = function(monthlyAmount){
+  S.screen = 2;
+  S.amount = monthlyAmount || DEFAULT_AMT;
+  S.isCustom = false;
+  S.method = '';
+  S.selectedAccount = null;
+  document.body.style.overflow = 'hidden';
+  var overlay = document.createElement('div');
+  overlay.className = 'gaf-overlay';
+  overlay.id = 'gaf-overlay';
+  overlay.innerHTML = '<div class="gaf-popup" id="gaf-popup"><button class="gaf-close" id="gaf-close">&times;</button><div class="gaf-body" id="gaf-body"></div></div>';
+  document.body.appendChild(overlay);
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){ overlay.classList.add('active'); }); });
+  overlay.addEventListener('click', function(e){ if(e.target===overlay) closePopup(); });
+  document.getElementById('gaf-close').addEventListener('click', closePopup);
+  document.addEventListener('keydown', escHandler);
+  renderScreen();
+};
 
 })();
