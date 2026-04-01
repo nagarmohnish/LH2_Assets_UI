@@ -890,26 +890,22 @@
 </div>
 
 <!-- ===== STICKY VIDEO AD (bottom-right) ===== -->
-<div class="sticky-video-ad" id="stickyVideoAd">
-    <button class="sticky-video-close" onclick="document.getElementById('stickyVideoAd').style.display='none'" aria-label="Close">&times;</button>
-    <div class="sticky-video-topbar">
-        <button class="sticky-video-gaf-pill" onclick="window.gafOpenPopup && gafOpenPopup()">GO ADS-FREE &rarr;</button>
+<div class="sv-wrap" id="stickyVideoAd">
+    <div class="sv-gaf-row">
+        <button class="sv-close" onclick="document.getElementById('stickyVideoAd').style.display='none'" aria-label="Close">&times;</button>
+        <button class="sv-gaf" onclick="window.gafOpenPopup && gafOpenPopup()">GO ADS-FREE &rarr;</button>
     </div>
-    <div class="sticky-video-player">
-        <div class="sticky-video-screen">
-            <div class="sticky-video-play">
-                <i class="fas fa-play"></i>
-            </div>
+    <div class="sv-box">
+        <div class="sv-screen">
+            <div class="sv-play-btn"><i class="fas fa-play"></i></div>
         </div>
-        <div class="sticky-video-controls">
-            <button class="sv-btn" aria-label="Pause"><i class="fas fa-pause"></i></button>
-            <button class="sv-btn" aria-label="Volume"><i class="fas fa-volume-up"></i></button>
-            <div class="sv-progress">
-                <div class="sv-progress-bar" style="width:25%"></div>
-            </div>
+        <div class="sv-controls">
+            <button class="sv-btn"><i class="fas fa-pause"></i></button>
+            <button class="sv-btn"><i class="fas fa-volume-up"></i></button>
+            <div class="sv-progress"><div class="sv-progress-bar" style="width:25%"></div></div>
             <span class="sv-time">00:34 / 02:25</span>
-            <button class="sv-btn" aria-label="Settings"><i class="fas fa-gear"></i></button>
-            <button class="sv-btn" aria-label="Fullscreen"><i class="fas fa-expand"></i></button>
+            <button class="sv-btn"><i class="fas fa-gear"></i></button>
+            <button class="sv-btn"><i class="fas fa-expand"></i></button>
         </div>
     </div>
 </div>
