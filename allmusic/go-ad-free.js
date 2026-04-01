@@ -61,9 +61,9 @@ styleEl.textContent = `
 @keyframes gaf-pulse{0%,100%{box-shadow:0 4px 16px rgba(26,122,138,.3)}50%{box-shadow:0 4px 24px rgba(26,122,138,.5)}}
 
 /* ---- Go Ads-Free pill (inside ad, top-right) ---- */
-.gaf-bar{position:absolute;top:4px;right:4px;z-index:5;padding:0;background:none;cursor:pointer;animation:gaf-fadeIn .3s ease-out;box-sizing:border-box;font-family:'Source Sans 3',-apple-system,sans-serif}
-.gaf-bar-cta{display:inline-flex;align-items:center;gap:4px;padding:5px 14px;background:#9b3a3a;color:#fff;font-size:10px;font-weight:800;border-radius:3px;white-space:nowrap;letter-spacing:.4px;text-transform:uppercase;transition:transform .15s,box-shadow .15s;box-shadow:0 1px 4px rgba(0,0,0,.15)}
-.gaf-bar:hover .gaf-bar-cta{transform:scale(1.03);box-shadow:0 2px 8px rgba(155,58,58,.35)}
+.gaf-bar{position:absolute;top:6px;right:8px;z-index:5;padding:0;background:none;cursor:pointer;animation:gaf-fadeIn .3s ease-out;box-sizing:border-box;font-family:'Source Sans 3',-apple-system,sans-serif}
+.gaf-bar-cta{display:inline-flex;align-items:center;gap:4px;padding:6px 16px;background:#9b3a3a;color:#fff;font-size:11px;font-weight:800;border-radius:20px;white-space:nowrap;letter-spacing:.4px;text-transform:uppercase;transition:transform .15s,box-shadow .15s;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.gaf-bar:hover .gaf-bar-cta{transform:scale(1.05);box-shadow:0 3px 12px rgba(155,58,58,.4)}
 .gaf-bar-cta svg{width:10px;height:10px;transition:transform .15s}
 .gaf-bar:hover .gaf-bar-cta svg{transform:translateX(2px)}
 
