@@ -993,12 +993,21 @@ ul { list-style: none; }
 /* ==================
    RESPONSIVE
    ================== */
+
 /* ==================
    TABLET (max-width: 992px)
    ================== */
 @media (max-width: 992px) {
+    /* --- Nav: hamburger LEFT, logo CENTER, search RIGHT --- */
     .nav-menu { display: none; }
-    .hamburger { display: flex; }
+    .hamburger { display: flex; order: -1; }
+    .nav-left { width: 100%; justify-content: center; position: relative; }
+    .hamburger { position: absolute; left: 0; }
+    .logo { order: 0; }
+    .nav-right { position: absolute; right: 12px; }
+    .btn-contact { display: none; }
+    .nav-right .social-icons { display: none; }
+
     .nav-menu.active {
         display: flex;
         flex-direction: column;
@@ -1009,23 +1018,40 @@ ul { list-style: none; }
         border-top: 1px solid rgba(255,255,255,0.05);
         z-index: 100;
         padding: 8px 0;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
     }
     .nav-menu.active li a {
-        padding: 14px 20px;
+        padding: 16px 20px;
         font-size: 15px;
         border-bottom: 1px solid rgba(255,255,255,0.04);
     }
 
-    .hero-inner { flex-direction: column; text-align: center; }
-    .hero-text p { margin: 0 auto; }
-    .hero-image { width: 80%; margin: 0 auto; }
+    /* --- Hero: image first, full width --- */
+    .hero-section { padding: 0; }
+    .hero-inner {
+        flex-direction: column-reverse;
+        gap: 0;
+        text-align: left;
+        padding: 0;
+    }
+    .hero-image {
+        width: 100%;
+        max-width: 100%;
+        position: relative;
+    }
+    .hero-image img { border-radius: 0; width: 100%; }
+    .hero-text {
+        position: relative;
+        padding: 24px 20px 32px;
+        background: var(--bg-dark);
+    }
+    .hero-text h1 { font-size: 28px; margin-bottom: 14px; }
+    .hero-text p { margin: 0; max-width: 100%; font-size: 14px; color: #aaa; }
 
+    /* --- Grids --- */
     .episodes-grid { grid-template-columns: 1fr; }
     .videos-grid { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-
-    .social-icons.nav-social { display: none; }
-
     .products-inner { flex-direction: column; }
     .companies-grid { grid-template-columns: 1fr; }
     .blog-grid { grid-template-columns: 1fr; }
@@ -1036,17 +1062,13 @@ ul { list-style: none; }
    ================== */
 @media (max-width: 768px) {
     /* --- Nav --- */
-    .nav-inner { padding: 0 12px; }
-    .btn-contact { display: none; }
-    .nav-right .social-icons { display: none; }
-    .nav-right { gap: 8px; }
+    .nav-inner { padding: 0 12px; height: 54px; }
+    .logo img { height: 36px; }
 
     /* --- Hero --- */
-    .hero-section { padding: 30px 0; }
-    .hero-text h1 { font-size: 26px; line-height: 1.2; }
-    .hero-text p { font-size: 14px; line-height: 1.6; }
-    .hero-image { width: 100%; }
-    .hero-image img { border-radius: 8px; }
+    .hero-text { padding: 20px 16px 28px; }
+    .hero-text h1 { font-size: 24px; line-height: 1.25; }
+    .hero-text p { font-size: 13px; line-height: 1.6; }
 
     /* --- Sections --- */
     .container { padding: 0 16px; }
@@ -1055,15 +1077,16 @@ ul { list-style: none; }
     /* --- Episode Cards --- */
     .episodes-grid { gap: 16px; }
     .episode-main, .episode-side { width: 100%; }
-    .episode-card .card-body { padding: 14px; }
+    .episode-card .card-img img { height: auto; min-height: 180px; }
+    .episode-card .card-body { padding: 14px 16px; }
     .episode-card .card-body h3 { font-size: 17px; }
-    .episode-card .card-body p { font-size: 13px; }
+    .episode-card .card-body p { font-size: 13px; line-height: 1.5; }
 
     /* --- Product Cards --- */
     .product-card { flex-direction: column; }
     .product-img { width: 100%; }
     .product-img img { height: 200px; }
-    .product-body { padding: 14px; }
+    .product-body { padding: 14px 16px; }
 
     /* --- Company Cards --- */
     .company-card { flex-direction: column; }
@@ -1074,10 +1097,10 @@ ul { list-style: none; }
     .blog-card { flex-direction: column; }
     .blog-img { width: 100%; }
     .blog-img img { height: 200px; }
-    .blog-body { padding: 14px; }
+    .blog-body { padding: 14px 16px; }
 
     /* --- Videos --- */
-    .video-card { min-width: 280px; }
+    .video-card { min-width: 260px; }
 
     /* --- Footer --- */
     .footer-grid { grid-template-columns: 1fr; gap: 24px; }
@@ -1091,43 +1114,46 @@ ul { list-style: none; }
     .search-box { padding: 8px 12px; }
     .search-box input { font-size: 14px; }
 
-    /* --- Cards hover --- */
+    /* --- Disable hover transforms on touch --- */
     .episode-card:hover, .product-card:hover, .company-card:hover, .blog-card:hover {
         transform: none;
     }
 
     /* --- Read more --- */
-    .read-more { font-size: 13px; }
+    .read-more { font-size: 13px; padding: 6px 0; }
 
-    /* --- Touch targets --- */
-    a, button { min-height: 44px; }
-    .nav-menu.active li a { min-height: 48px; display: flex; align-items: center; }
+    /* --- Floating helper --- */
+    .ad-helper-btn { bottom: 16px; left: 12px; padding: 8px 14px; font-size: 12px; }
 }
 
 /* ==================
    SMALL MOBILE (max-width: 480px)
    ================== */
 @media (max-width: 480px) {
-    .hero-text h1 { font-size: 22px; }
-    .hero-text p { font-size: 13px; }
+    .nav-inner { height: 48px; }
+    .logo img { height: 32px; }
+    .hamburger span { width: 20px; }
+    .search-toggle { font-size: 15px; }
 
-    .section-title { font-size: 20px; }
-    .episode-card .card-body h3 { font-size: 16px; }
+    .hero-text h1 { font-size: 21px; }
+    .hero-text p { font-size: 12px; }
+
+    .section-title { font-size: 19px; }
+    .episode-card .card-body h3 { font-size: 15px; }
     .episode-card .card-meta { font-size: 11px; }
-    .episode-card .card-body p { font-size: 12px; line-height: 1.5; }
+    .episode-card .card-body p { font-size: 12px; }
 
-    .product-body h3 { font-size: 16px; }
-    .company-card h3 { font-size: 16px; }
-    .blog-body h3 { font-size: 16px; }
+    .product-body h3 { font-size: 15px; }
+    .company-card h3 { font-size: 15px; }
+    .blog-body h3 { font-size: 15px; }
 
     .footer-newsletter input { font-size: 14px; }
     .footer-newsletter button { font-size: 13px; padding: 10px 16px; }
 
-    /* Stack see-more buttons full width */
     .btn-see-more, .see-more-wrap { width: 100%; text-align: center; }
 
-    /* Logo smaller */
-    .logo img { width: 48px; height: 40px; }
+    .ad-helper-btn { padding: 7px 12px; font-size: 11px; }
+    .ad-helper-btn .helper-icon { width: 20px; height: 20px; font-size: 12px; }
 }
 
 /* ==================
@@ -1135,6 +1161,7 @@ ul { list-style: none; }
    ================== */
 @supports (padding: env(safe-area-inset-bottom)) {
     .scroll-top { bottom: calc(16px + env(safe-area-inset-bottom)); }
+    .ad-helper-btn { bottom: calc(16px + env(safe-area-inset-bottom)); }
     body { padding-bottom: env(safe-area-inset-bottom); }
 }
 
