@@ -243,6 +243,28 @@
         /* Adjust scroll-top position */
         .scroll-top { bottom: 20px; }
 
+        /* Sticky Video Ad */
+        .sv-wrap { position: fixed; bottom: 20px; right: 16px; width: 300px; z-index: 997; animation: svSlideIn 0.4s ease-out; }
+        @keyframes svSlideIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+        .sv-gaf-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+        .sv-close { width: 24px; height: 24px; border-radius: 50%; background: #666; color: #fff; border: none; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; line-height: 1; transition: background .15s; box-shadow: 0 1px 4px rgba(0,0,0,.2); }
+        .sv-close:hover { background: #444; }
+        .sv-gaf { display: inline-flex; align-items: center; gap: 4px; padding: 6px 16px; background: #9b3a3a; color: #fff; border: none; border-radius: 20px; font-size: 11px; font-weight: 800; letter-spacing: .4px; text-transform: uppercase; cursor: pointer; font-family: inherit; white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,.25); transition: transform .15s, box-shadow .15s; }
+        .sv-gaf:hover { transform: scale(1.05); box-shadow: 0 3px 12px rgba(155,58,58,.4); }
+        .sv-box { border-radius: 6px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,.3); background: #000; }
+        .sv-screen { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #0a0a1a, #1a1a2e, #0f1a30); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        .sv-play-btn { width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,.15); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 16px; transition: background .15s; }
+        .sv-screen:hover .sv-play-btn { background: rgba(255,255,255,.25); }
+        .sv-controls { display: flex; align-items: center; gap: 6px; padding: 6px 10px; background: #1a1a1a; }
+        .sv-btn { background: none; border: none; color: #ccc; font-size: 12px; cursor: pointer; padding: 2px; display: flex; align-items: center; transition: color .15s; }
+        .sv-btn:hover { color: #fff; }
+        .sv-progress { flex: 1; height: 3px; background: #444; border-radius: 2px; overflow: hidden; cursor: pointer; }
+        .sv-progress-bar { height: 100%; background: var(--cyan); border-radius: 2px; }
+        .sv-time { font-size: 10px; color: #888; white-space: nowrap; }
+
+        @media (max-width: 768px) { .sv-wrap { width: 260px; bottom: 16px; right: 10px; } }
+        @media (max-width: 480px) { .sv-wrap { width: 220px; } }
+
         @media (max-width: 992px) {
             .content-with-sidebar { flex-direction: column; }
             .content-sidebar { width: 100%; }
@@ -541,6 +563,26 @@
     <a href="support.html" class="ad-helper-round" aria-label="Invest in SharkTankBlog">
         <span>🦈</span>
     </a>
+
+    <!-- Sticky Video Ad (bottom-right) -->
+    <div class="sv-wrap" id="stickyVideoAd">
+        <div class="sv-gaf-row">
+            <button class="sv-close" onclick="document.getElementById('stickyVideoAd').style.display='none'" aria-label="Close">&times;</button>
+            <button class="sv-gaf" onclick="window.gafOpenPopup && gafOpenPopup()">GO ADS-FREE &rarr;</button>
+        </div>
+        <div class="sv-box">
+            <div class="sv-screen">
+                <div class="sv-play-btn"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="sv-controls">
+                <button class="sv-btn"><i class="fas fa-pause"></i></button>
+                <button class="sv-btn"><i class="fas fa-volume-up"></i></button>
+                <div class="sv-progress"><div class="sv-progress-bar" style="width:35%"></div></div>
+                <span class="sv-time">00:12 / 00:30</span>
+                <button class="sv-btn"><i class="fas fa-expand"></i></button>
+            </div>
+        </div>
+    </div>
 
     <!-- Scroll to Top -->
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
