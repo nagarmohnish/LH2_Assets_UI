@@ -1002,13 +1002,11 @@ ul { list-style: none; }
    TABLET (max-width: 992px)
    ================== */
 @media (max-width: 992px) {
-    /* --- Nav: hamburger LEFT, logo CENTER, search RIGHT --- */
+    /* --- Nav: hamburger LEFT, logo next to it, actions RIGHT --- */
     .nav-menu { display: none; }
-    .hamburger { display: flex; order: -1; }
-    .nav-left { width: 100%; justify-content: center; position: relative; }
-    .hamburger { position: absolute; left: 0; }
-    .logo { order: 0; }
-    .nav-right { position: absolute; right: 12px; }
+    .hamburger { display: flex; }
+    .nav-left { flex: 1; gap: 12px; }
+    .nav-right { flex-shrink: 0; }
     .btn-contact { display: none; }
     .nav-right .social-icons { display: none; }
 
