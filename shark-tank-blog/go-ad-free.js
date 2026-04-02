@@ -5,9 +5,9 @@
 var SITE_NAME = "Shark Tank Blog";
 var SITE_CAUSE = "Shark Tank coverage";
 var SITE_URL = "https://nagarmohnish.github.io/STB_UI/";
-var PRESETS = [2, 5, 9, 15];
-var POPULAR = 5;
-var DEFAULT_AMT = 3;
+var BASE_PRICE = 14.99;
+var TIP_PRESETS = [1, 2, 5];
+var ANNUAL_DISCOUNT = 0.17;
 var ACCENT = "#6366f1";
 var ACCENT_DARK = "#4f46e5";
 var ACCENT_LIGHT = "#eef2ff";
@@ -43,8 +43,7 @@ var AD_SELECTORS = [
 // ========== STATE ==========
 var S = {
   screen: 1,      // 1=amount, 2=google signin, 3=payment, 4=success
-  amount: DEFAULT_AMT,
-  isCustom: false,
+  tip: 0,
   method: "",
   name: "John Doe",
   email: "",
@@ -98,6 +97,9 @@ styleEl.textContent = `
 .gaf-billing-badge i{font-size:8px}
 .gaf-trust-row{display:flex;align-items:center;justify-content:center;gap:10px;font-size:12px;color:#ccc;margin-top:4px}
 .gaf-trust-row img{height:14px;opacity:.4}
+.gaf-tip-section{margin-bottom:24px}
+.gaf-tip-label{font-size:13px;color:#999;text-align:center;margin-bottom:10px;font-style:italic}
+.gaf-amt-input{font-size:44px;font-weight:900;color:#1a1a1a;line-height:1;font-family:inherit}
 
 /* ---- Screen 2: Google Sign In ---- */
 .gaf-s2-glogo{display:flex;justify-content:center;margin-bottom:20px}
@@ -225,12 +227,14 @@ function injectBar(ad){
 }
 
 // ========== HELPERS ==========
-function getAnnual(){ return S.amount * 12; }
-function getDaily(){ return (S.amount / 30).toFixed(2); }
+function getTotal(){ return +(BASE_PRICE + S.tip).toFixed(2); }
+function getAnnual(){ return +(getTotal() * 12).toFixed(2); }
+function getAnnualSaved(){ return +((getTotal() * 12) - (getTotal() * 12 * (1 - ANNUAL_DISCOUNT))).toFixed(0); }
+function getDaily(){ return (getTotal() / 30).toFixed(2); }
 
 // ========== POPUP ==========
 function openPopup(){
-  S.screen=1; S.amount=DEFAULT_AMT; S.isCustom=false; S.method=''; S.selectedAccount=null;
+  S.screen=1; S.tip=0; S.method=''; S.selectedAccount=null;
   document.body.style.overflow='hidden';
   var overlay = document.createElement('div');
   overlay.className='gaf-overlay';
@@ -266,37 +270,39 @@ function renderScreen(){
 
 // ========== SCREEN 1: Amount Selection ==========
 function screen1(){
+  var total = getTotal();
   var h='';
-  h+='<div class="gaf-s1-title">Support '+SITE_NAME+'</div>';
-  h+='<div class="gaf-s1-sub">Support starts with ad-free. Many choose to give a little more.</div>';
+  h+='<div class="gaf-s1-title">Keep Shark Tank Blog Alive (and Ad-Free)</div>';
+  h+='<div class="gaf-s1-sub">$'+BASE_PRICE+'/month. Less than a bad pitch on the show.</div>';
 
-  // Amount box
+  // Fixed price display
   h+='<div class="gaf-amount-box">';
-  h+='<div class="gaf-amt-left"><span class="gaf-amt-dollar">$</span><input class="gaf-amt-input" id="gaf-amt" type="text" value="'+S.amount+'" inputmode="numeric"><span class="gaf-amt-period">/ month</span></div>';
+  h+='<div class="gaf-amt-left"><span class="gaf-amt-dollar">$</span><span class="gaf-amt-input">'+total+'</span><span class="gaf-amt-period">/ month</span></div>';
   h+='<span class="gaf-amt-daily" id="gaf-daily">$'+getDaily()+'/day</span>';
   h+='</div>';
 
-  // Presets
+  // Tip section
+  h+='<div class="gaf-tip-section">';
+  h+='<div class="gaf-tip-label">Want to give a little extra? Add a tip</div>';
   h+='<div class="gaf-presets" id="gaf-presets">';
-  PRESETS.forEach(function(p){
-    var act=(!S.isCustom && S.amount===p)?'active':'';
-    h+='<div class="gaf-preset '+act+'" data-val="'+p+'">';
-    if(p===POPULAR) h+='<span class="pop-tag">Popular</span>';
-    h+='$'+p+'</div>';
+  h+='<div class="gaf-preset '+(S.tip===0?'active':'')+'" data-tip="0">No tip</div>';
+  TIP_PRESETS.forEach(function(t){
+    h+='<div class="gaf-preset '+(S.tip===t?'active':'')+'" data-tip="'+t+'">+$'+t+'</div>';
   });
+  h+='</div>';
   h+='</div>';
 
   // CTA
-  h+='<button class="gaf-main-cta" id="gaf-cta1">Continue with $'+S.amount+' / month</button>';
+  h+='<button class="gaf-main-cta" id="gaf-cta1">I\'m In. Take My Money. \u2014 $'+total+'/mo</button>';
 
   // Perk + billing
   h+='<div class="gaf-perk-row">';
   h+='<span class="gaf-perk-text"><i class="fas fa-globe"></i> Includes <em>ad-free</em> experience</span>';
-  h+='<span class="gaf-billing-badge"><i class="fas fa-chevron-down"></i> $'+getAnnual()+' Billed Annually</span>';
+  h+='<span class="gaf-billing-badge" id="gaf-billing"><i class="fas fa-chevron-down" style="font-size:8px"></i> $'+getAnnual()+'/yr &mdash; Save ~17%</span>';
   h+='</div>';
 
   // Trust
-  h+='<div class="gaf-trust-row"><span><i class="fas fa-lock" style="margin-right:3px"></i> Secure payment</span><span>&bull;</span><span>Cancel anytime</span></div>';
+  h+='<div class="gaf-trust-row"><span><i class="fas fa-lock" style="margin-right:3px"></i> Cancel anytime</span><span>&bull;</span><span>No sharks. No gimmicks.</span></div>';
   return h;
 }
 
@@ -327,8 +333,8 @@ function screen2(){
 function screen3(){
   var annual = getAnnual();
   var h='';
-  h+='<div class="gaf-s3-label">You\'re supporting</div>';
-  h+='<div class="gaf-s3-amount">$'+annual+' / year</div>';
+  h+='<div class="gaf-s3-label">You\'re supporting '+SITE_NAME+'</div>';
+  h+='<div class="gaf-s3-amount">$'+getTotal()+' / month <span style="font-size:14px;color:#999;font-weight:400">($'+annual+'/yr)</span></div>';
 
   // Heading
   h+='<div class="gaf-s3-heading"><span class="gaf-s3-heading-text">Select payment method</span><span class="gaf-s3-heading-right"><small>us</small> United States <i class="fas fa-chevron-down" style="font-size:9px"></i></span></div>';
@@ -405,26 +411,17 @@ function screen4(){
 
 // ========== EVENT BINDING ==========
 function bindEvents(){
-  // Screen 1
+  // Screen 1 — tip presets
   var presets = document.querySelectorAll('.gaf-preset');
   presets.forEach(function(p){
     p.addEventListener('click', function(){
-      S.amount = parseInt(this.getAttribute('data-val'));
-      S.isCustom = false;
-      updateScreen1();
-    });
-  });
-
-  var amtInput = document.getElementById('gaf-amt');
-  if(amtInput){
-    amtInput.addEventListener('focus', function(){ this.select(); });
-    amtInput.addEventListener('input', function(){
-      var v = parseInt(this.value.replace(/[^0-9]/g,'')) || 0;
-      S.amount = v; S.isCustom = true;
-      presets.forEach(function(p){ p.classList.remove('active'); });
+      var tipVal = parseInt(this.getAttribute('data-tip'));
+      S.tip = isNaN(tipVal) ? 0 : tipVal;
+      presets.forEach(function(x){ x.classList.remove('active'); });
+      this.classList.add('active');
       updateCta1();
     });
-  }
+  });
 
   var cta1 = document.getElementById('gaf-cta1');
   if(cta1) cta1.addEventListener('click', function(){ S.screen=2; renderScreen(); });
@@ -469,22 +466,19 @@ function bindEvents(){
 }
 
 function updateScreen1(){
-  var amtInput = document.getElementById('gaf-amt');
-  if(amtInput) amtInput.value = S.amount;
-  document.querySelectorAll('.gaf-preset').forEach(function(p){
-    p.classList.toggle('active', !S.isCustom && parseInt(p.getAttribute('data-val'))===S.amount);
-  });
   updateCta1();
 }
 
 function updateCta1(){
+  var total = getTotal();
   var cta = document.getElementById('gaf-cta1');
-  if(cta) cta.textContent = 'Continue with $'+S.amount+' / month';
+  if(cta) cta.textContent = "I'm In. Take My Money. \u2014 $"+total+"/mo";
   var daily = document.getElementById('gaf-daily');
   if(daily) daily.textContent = '$'+getDaily()+'/day';
-  // Update billing badge
-  var badges = document.querySelectorAll('.gaf-billing-badge');
-  badges.forEach(function(b){ b.innerHTML = '<i class="fas fa-chevron-down" style="font-size:8px"></i> $'+getAnnual()+' Billed Annually'; });
+  var amtDisplay = document.querySelector('.gaf-amt-input');
+  if(amtDisplay) amtDisplay.textContent = total;
+  var billing = document.getElementById('gaf-billing');
+  if(billing) billing.innerHTML = '<i class="fas fa-chevron-down" style="font-size:8px"></i> $'+getAnnual()+'/yr \u2014 Save ~17%';
 }
 
 // ========== INIT ==========
@@ -503,16 +497,14 @@ setTimeout(function(){
 
 // Expose globally
 window.gafOpenPopup = openPopup;
-window.gafOpenDonate = function(amount){
-  S.amount = Math.round(amount/12) || DEFAULT_AMT;
-  S.isCustom = true;
+window.gafOpenDonate = function(){
+  S.tip = 0;
   openPopup();
 };
 // Open directly at Google Sign-In (Screen 2) with plan pre-selected
-window.gafOpenWithPlan = function(monthlyAmount){
+window.gafOpenWithPlan = function(){
   S.screen = 2;
-  S.amount = monthlyAmount || DEFAULT_AMT;
-  S.isCustom = false;
+  S.tip = 0;
   S.method = '';
   S.selectedAccount = null;
   document.body.style.overflow = 'hidden';
