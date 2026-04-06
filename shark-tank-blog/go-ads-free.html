@@ -6,115 +6,172 @@
     <title>Go Ads-Free | Shark Tank Blog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Roboto+Slab:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600&family=Open+Sans:wght@300;400;600;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="article-styles.css">
-    <link rel="stylesheet" href="auth-styles.css">
     <style>
-        body{background:#0a0b0e;color:#fff}
-
-        /* === HERO === */
-        .af-hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
-        .af-hero-bg{position:absolute;inset:0;background:linear-gradient(180deg,#0a0b0e 0%,#111827 40%,#0f172a 100%)}
-        .af-hero-glow{position:absolute;top:10%;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(0,188,212,.08) 0%,transparent 70%);pointer-events:none}
-        .af-hero-content{position:relative;z-index:1;max-width:680px;padding:40px 24px}
-        .af-hero-chip{display:inline-flex;align-items:center;gap:6px;padding:7px 18px;border:1px solid rgba(0,188,212,.25);border-radius:20px;font-size:11px;font-weight:700;color:#00bcd4;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:28px;background:rgba(0,188,212,.06)}
-        .af-hero h1{font-family:'Playfair Display',Georgia,serif;font-size:58px;font-weight:900;line-height:1.08;margin-bottom:20px;letter-spacing:-1px}
-        .af-hero h1 .line2{display:block;color:#00bcd4;font-style:italic}
-        .af-hero-sub{font-size:17px;color:rgba(255,255,255,.5);line-height:1.7;max-width:460px;margin:0 auto}
-
-        /* === STATS === */
-        .af-stats{padding:72px 20px;background:#0f1117;border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04)}
-        .af-stats-row{display:flex;justify-content:center;max-width:700px;margin:0 auto 28px}
-        .af-stat{flex:1;text-align:center;padding:0 28px;position:relative}
-        .af-stat:not(:last-child)::after{content:'';position:absolute;right:0;top:6px;height:44px;width:1px;background:rgba(255,255,255,.08)}
-        .af-stat-val{font-family:'Playfair Display',Georgia,serif;font-size:38px;font-weight:900;color:#00bcd4;margin-bottom:4px}
-        .af-stat-label{font-size:12.5px;color:rgba(255,255,255,.35);line-height:1.4}
-        .af-stats-tag{text-align:center;font-size:15px;color:rgba(255,255,255,.4);font-style:italic}
-
-        /* === BEFORE/AFTER === */
-        .af-compare{padding:80px 20px;background:#0a0b0e}
-        .af-compare-inner{max-width:820px;margin:0 auto}
-        .af-section-title{font-family:'Playfair Display',Georgia,serif;font-size:32px;font-weight:700;text-align:center;margin-bottom:48px;color:#fff}
-        .af-compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-        .af-compare-col{padding:36px 30px;border-radius:14px;border:1px solid rgba(255,255,255,.06)}
-        .af-compare-col.before{background:#111318}
-        .af-compare-col.after{background:linear-gradient(135deg,#0c2d33,#0f172a);border-color:rgba(0,188,212,.15)}
-        .af-compare-col h3{font-family:var(--font-heading);font-size:16px;font-weight:700;margin-bottom:22px;letter-spacing:.5px;text-transform:uppercase}
-        .af-compare-col.before h3{color:#666}
-        .af-compare-col.after h3{color:#00bcd4}
-        .af-row{display:flex;align-items:flex-start;gap:10px;font-size:14px;padding:9px 0;line-height:1.55}
-        .af-compare-col.before .af-row{color:rgba(255,255,255,.35)}
-        .af-compare-col.after .af-row{color:rgba(255,255,255,.65)}
-        .af-icon-x{color:#ef4444;flex-shrink:0;margin-top:2px;font-size:13px}
-        .af-icon-check{color:#00bcd4;flex-shrink:0;margin-top:2px;font-size:13px}
-
-        /* === COFFEE BREAK === */
-        .af-coffee{position:relative;padding:100px 20px;text-align:center;overflow:hidden}
-        .af-coffee-bg{position:absolute;inset:0;background:linear-gradient(180deg,#0f1117,#111827,#0f1117)}
-        .af-coffee-glow{position:absolute;top:20%;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(0,188,212,.05) 0%,transparent 70%);pointer-events:none}
-        .af-coffee-content{position:relative;z-index:1;max-width:560px;margin:0 auto}
-        .af-coffee h2{font-family:'Playfair Display',Georgia,serif;font-size:44px;font-weight:900;line-height:1.15;margin-bottom:16px}
-        .af-coffee h2 span{color:#00bcd4}
-        .af-coffee-sub{font-size:16px;color:rgba(255,255,255,.4);line-height:1.6}
-
-        /* === PAYMENT CARD === */
-        .af-card-section{padding:80px 20px;background:#0a0b0e;display:flex;justify-content:center}
-        .af-card{width:520px;max-width:100%;background:#fff;border-radius:18px;padding:48px 40px 36px;text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.4)}
-        .af-card h3{font-family:'Playfair Display',Georgia,serif;font-size:26px;font-weight:700;color:#1a1a1a;font-style:italic;margin-bottom:6px}
-        .af-card-sub{font-size:14px;color:#999;margin-bottom:28px}
-        .af-card-amount{border:1.5px solid #e4e4e4;border-radius:14px;padding:22px 24px;display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px}
-        .af-card-left{display:flex;align-items:baseline;gap:2px}
-        .af-card-dollar{font-size:20px;color:#bbb;font-weight:600}
-        .af-card-val{font-size:44px;font-weight:900;color:#1a1a1a;line-height:1}
-        .af-card-period{font-size:16px;color:#999;margin-left:2px}
-        .af-card-daily{font-size:13px;color:#bbb}
-        .af-card-presets{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:28px}
-        .af-card-preset{padding:14px 8px;border:1.5px solid #e8e8e8;border-radius:12px;background:#fff;cursor:pointer;font-size:17px;font-weight:700;color:#444;text-align:center;position:relative;transition:all .15s;font-family:inherit}
-        .af-card-preset:hover{border-color:#6366f1;background:#fafaff}
-        .af-card-preset.active{border-color:#6366f1;background:#eef2ff;color:#4338ca}
-        .af-card-preset .ptag{position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:700;color:#fff;background:#6366f1;padding:2px 10px;border-radius:8px;white-space:nowrap}
-        .af-card-cta{width:100%;padding:17px 20px;border:none;border-radius:14px;background:#6366f1;color:#fff;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .15s,transform .1s;margin-bottom:18px}
-        .af-card-cta:hover{background:#4f46e5;transform:translateY(-1px)}
-        .af-card-perk-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-        .af-card-perk{font-size:13px;color:#6366f1;font-weight:600}
-        .af-card-perk em{font-style:italic}
-        .af-card-badge{display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border:1px solid #e0e0e0;border-radius:16px;font-size:11.5px;color:#999}
-        .af-card-trust{display:flex;align-items:center;justify-content:center;gap:10px;font-size:12px;color:#ccc;margin-top:4px}
-
-        /* === FAQ === */
-        .af-faq{padding:80px 20px;background:#0f1117}
-        .af-faq-list{max-width:620px;margin:0 auto}
-        .af-faq-item{border-bottom:1px solid rgba(255,255,255,.06);padding:22px 0}
-        .af-faq-q{font-family:var(--font-heading);font-size:15px;font-weight:700;color:rgba(255,255,255,.8);cursor:pointer;display:flex;align-items:center;justify-content:space-between}
-        .af-faq-q i{color:rgba(255,255,255,.2);font-size:11px;transition:transform .2s}
-        .af-faq-a{font-size:14px;color:rgba(255,255,255,.4);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding-top:0}
-        .af-faq-item.open .af-faq-a{max-height:200px;padding-top:12px}
-        .af-faq-item.open .af-faq-q i{transform:rotate(180deg)}
-
-        /* === BOTTOM CTA === */
-        .af-bottom{padding:64px 20px;background:#0a0b0e;text-align:center}
-        .af-bottom h2{font-family:'Playfair Display',Georgia,serif;font-size:30px;font-weight:700;margin-bottom:10px}
-        .af-bottom-sub{font-size:15px;color:rgba(255,255,255,.4);margin-bottom:28px}
-        .af-bottom-cta{display:inline-flex;align-items:center;gap:8px;padding:16px 40px;background:#00bcd4;color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;transition:transform .15s,box-shadow .15s}
-        .af-bottom-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,188,212,.25)}
-
-        /* === Responsive === */
-        @media(max-width:768px){
-            .af-hero h1{font-size:36px}
-            .af-stats-row{flex-direction:column;gap:24px}
-            .af-stat:not(:last-child)::after{display:none}
-            .af-compare-grid{grid-template-columns:1fr}
-            .af-coffee h2{font-size:30px}
-            .af-card{padding:36px 24px 28px}
-            .af-card-presets{grid-template-columns:repeat(2,1fr)}
+        /* ===== LOVABLE-UI LANDING PAGE ===== */
+        :root {
+            --lv-warm: #d97706;
+            --lv-warm-glow: #b45309;
+            --lv-fg: #1e293b;
+            --lv-muted: #64748b;
+            --lv-border: #e5e7eb;
+            --lv-bg: #ffffff;
+            --lv-secondary: #f8fafc;
+            --lv-destructive: #ef4444;
+            --lv-emerald: #10b981;
+            --lv-serif: 'Newsreader', Georgia, serif;
+            --lv-sans: 'Inter', -apple-system, sans-serif;
         }
+        .lv-page { background: var(--lv-bg); color: var(--lv-fg); font-family: var(--lv-sans); -webkit-font-smoothing: antialiased; }
+
+        /* CTA Button */
+        .lv-cta {
+            display: inline-flex; align-items: center; justify-content: center;
+            font-family: var(--lv-sans); font-weight: 600; font-size: 15px;
+            background: var(--lv-warm); color: #fff;
+            padding: 16px 40px; border-radius: 10px; border: none; cursor: pointer;
+            letter-spacing: -0.01em;
+            box-shadow: 0 1px 3px rgba(217,119,6,0.2), 0 4px 16px rgba(217,119,6,0.15);
+            transition: all 0.2s;
+        }
+        .lv-cta:hover { background: var(--lv-warm-glow); transform: translateY(-1px); box-shadow: 0 2px 4px rgba(217,119,6,0.25), 0 8px 24px rgba(217,119,6,0.2); }
+        .lv-cta:active { transform: translateY(0); }
+        .lv-cta-sm { padding: 10px 20px; font-size: 14px; border-radius: 8px; }
+
+        /* ─── 1. HERO ─── */
+        .lv-hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
+        .lv-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+        .lv-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.85)); }
+        .lv-hero-content { position: relative; text-align: center; padding: 0 24px; max-width: 520px; margin: 0 auto; }
+        .lv-hero h1 { font-family: var(--lv-serif); font-size: 3.5rem; font-weight: 600; line-height: 1.08; letter-spacing: -0.02em; color: #fff; margin: 0 0 20px; }
+        .lv-hero-sub { font-size: 17px; color: rgba(255,255,255,0.55); line-height: 1.6; margin-bottom: 32px; }
+        .lv-hero-price { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 16px; }
+        .lv-hero-price .strike { text-decoration: line-through; }
+        .lv-hero-price .highlight { color: rgba(255,255,255,0.55); font-weight: 500; }
+        .lv-scroll-hint { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.25); animation: lvBounce 2s infinite; cursor: pointer; background: none; border: none; }
+        @keyframes lvBounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+
+        /* ─── 2. VALUE STRIP ─── */
+        .lv-value-strip { background: var(--lv-secondary); border-top: 1px solid var(--lv-border); border-bottom: 1px solid var(--lv-border); }
+        .lv-value-inner { max-width: 520px; margin: 0 auto; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; text-align: center; }
+        .lv-value-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+        .lv-value-item i { color: var(--lv-warm); font-size: 14px; }
+        .lv-value-item span { font-size: 11px; font-weight: 600; color: var(--lv-fg); line-height: 1.3; }
+        .lv-value-div { width: 1px; height: 32px; background: var(--lv-border); flex-shrink: 0; }
+
+        /* ─── 3. COMPARISON ─── */
+        .lv-compare { background: var(--lv-secondary); border-bottom: 1px solid var(--lv-border); padding: 56px 20px 64px; }
+        .lv-compare-inner { max-width: 520px; margin: 0 auto; }
+        .lv-compare h2 { font-family: var(--lv-serif); font-size: 1.75rem; font-weight: 600; text-align: center; margin-bottom: 8px; color: var(--lv-fg); }
+        .lv-compare-sub { text-align: center; color: var(--lv-muted); font-size: 14px; margin-bottom: 32px; }
+        .lv-mockup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+        .lv-mockup-label { font-size: 10px; font-weight: 600; color: var(--lv-muted); text-transform: uppercase; letter-spacing: 1px; text-align: center; margin-bottom: 8px; }
+        .lv-mockup { border-radius: 8px; border: 1px solid var(--lv-border); background: #fff; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+
+        /* Mockup internals */
+        .lv-mock-nav { display: flex; align-items: center; justify-content: space-between; padding: 4px 6px; border-bottom: 1px solid #f3f4f6; }
+        .lv-mock-nav-left { display: flex; align-items: center; gap: 3px; }
+        .lv-mock-dot { width: 8px; height: 8px; border-radius: 50%; background: #e0f2fe; }
+        .lv-mock-nav-text { font-size: 5px; font-weight: 700; color: #6b7280; }
+        .lv-mock-bars { display: flex; gap: 3px; }
+        .lv-mock-bar { height: 2px; width: 12px; background: #e5e7eb; border-radius: 1px; }
+        .lv-mock-body { padding: 6px; }
+        .lv-mock-title { font-size: 7px; font-weight: 700; color: #1f2937; margin-bottom: 3px; line-height: 1.3; }
+        .lv-mock-author { display: flex; align-items: center; gap: 3px; margin-bottom: 4px; }
+        .lv-mock-avatar { width: 7px; height: 7px; border-radius: 50%; background: #e5e7eb; }
+        .lv-mock-author-text { font-size: 4px; color: #9ca3af; }
+        .lv-mock-img { width: 100%; height: 28px; border-radius: 3px; background: linear-gradient(135deg, #f0f9ff, #e0e7ff); margin-bottom: 4px; }
+        .lv-mock-line { height: 2px; border-radius: 1px; background: #f3f4f6; margin-bottom: 2px; }
+
+        /* Ad mockup elements */
+        .lv-mock-ad-banner { border: 1px solid #bfdbfe; border-radius: 3px; background: linear-gradient(90deg, #eff6ff, #ecfdf5); padding: 4px 5px; display: flex; align-items: center; gap: 4px; margin: 4px 0; }
+        .lv-mock-ad-thumb { width: 14px; height: 14px; border-radius: 2px; background: linear-gradient(135deg, #60a5fa, #06b6d4); flex-shrink: 0; }
+        .lv-mock-ad-btn { height: 8px; width: 28px; background: #3b82f6; border-radius: 2px; display: flex; align-items: center; justify-content: center; }
+        .lv-mock-ad-btn-text { font-size: 4px; color: #fff; font-weight: 700; }
+        .lv-mock-ad-label { font-size: 3px; color: #d1d5db; align-self: flex-start; }
+
+        .lv-mock-ad-video { position: relative; width: 100%; height: 24px; border-radius: 3px; background: linear-gradient(135deg, #fff1f2, #fef3c7); border: 1px solid #e5e7eb; margin: 4px 0; display: flex; align-items: center; justify-content: center; }
+        .lv-mock-play-circle { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.8); display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        .lv-mock-play-tri { width: 0; height: 0; border-left: 4px solid #6b7280; border-top: 2.5px solid transparent; border-bottom: 2.5px solid transparent; margin-left: 1px; }
+        .lv-mock-ad-tag { position: absolute; top: 2px; right: 2px; background: rgba(0,0,0,0.5); color: #fff; font-size: 3px; font-weight: 700; padding: 1px 3px; border-radius: 1px; }
+        .lv-mock-ad-skip { position: absolute; top: 2px; left: 2px; background: #facc15; color: #000; font-size: 3px; font-weight: 700; padding: 1px 3px; border-radius: 1px; }
+
+        .lv-mock-ad-native { background: #fffbeb; border: 1px solid rgba(217,119,6,0.2); border-radius: 3px; padding: 4px; margin: 4px 0; }
+        .lv-mock-ad-native-label { font-size: 3px; color: #d97706; font-weight: 700; text-transform: uppercase; margin-bottom: 2px; }
+        .lv-mock-ad-native-row { display: flex; gap: 3px; }
+        .lv-mock-ad-native-img { width: 14px; height: 10px; border-radius: 2px; background: linear-gradient(135deg, #fde68a, #fdba74); flex-shrink: 0; }
+
+        /* Comparison bullets */
+        .lv-bullets-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .lv-bullets-title { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .lv-bullets-title.red { color: var(--lv-destructive); }
+        .lv-bullets-title.green { color: var(--lv-emerald); }
+        .lv-bullet { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+        .lv-bullet-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+        .lv-bullet-dot.red { background: var(--lv-destructive); }
+        .lv-bullet-dot.green { background: var(--lv-emerald); }
+        .lv-bullet span { font-size: 12px; color: var(--lv-muted); }
+        .lv-bullet.green span { color: var(--lv-fg); }
+
+        /* ─── 4. PRICING ─── */
+        .lv-pricing { background: var(--lv-bg); padding: 56px 24px 72px; }
+        .lv-pricing h2 { font-family: var(--lv-serif); font-size: 1.75rem; font-weight: 600; text-align: center; margin-bottom: 32px; color: var(--lv-fg); }
+        .lv-price-card { max-width: 420px; margin: 0 auto; border-radius: 16px; border: 1px solid var(--lv-border); background: #fff; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.04); text-align: center; }
+        .lv-price-card h3 { font-size: 20px; font-weight: 600; margin-bottom: 20px; }
+        .lv-price-row { display: flex; align-items: baseline; justify-content: center; gap: 8px; margin-bottom: 8px; }
+        .lv-price-old { font-size: 24px; color: var(--lv-muted); text-decoration: line-through; font-weight: 500; }
+        .lv-price-new { font-size: 56px; font-weight: 700; color: var(--lv-fg); letter-spacing: -2px; line-height: 1; }
+        .lv-price-period { font-size: 18px; color: var(--lv-muted); }
+        .lv-price-badge { display: inline-flex; align-items: center; gap: 4px; background: rgba(217,119,6,0.1); color: var(--lv-warm); font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-bottom: 20px; }
+        .lv-benefits { text-align: left; max-width: 280px; margin: 0 auto 24px; }
+        .lv-benefit { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+        .lv-benefit-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(30,41,59,0.3); flex-shrink: 0; margin-top: 6px; }
+        .lv-benefit span { font-size: 14px; color: rgba(30,41,59,0.7); }
+        .lv-price-cta { width: 100%; padding: 16px; border-radius: 12px; font-size: 16px; font-weight: 600; background: var(--lv-fg); color: #fff; border: none; cursor: pointer; transition: background 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .lv-price-cta:hover { background: rgba(30,41,59,0.9); }
+        .lv-price-cancel { font-size: 12px; color: var(--lv-muted); margin-top: 12px; }
+
+        /* ─── 5. CONTEXT ─── */
+        .lv-context { position: relative; padding: 112px 24px; overflow: hidden; }
+        .lv-context-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+        .lv-context-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.65); }
+        .lv-context-content { position: relative; max-width: 520px; margin: 0 auto; text-align: center; }
+        .lv-context h2 { font-family: var(--lv-serif); font-size: 1.75rem; font-weight: 600; color: #fff; margin-bottom: 16px; }
+        .lv-context p { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 440px; margin: 0 auto; }
+
+        /* ─── 6. FINAL CTA ─── */
+        .lv-final { background: var(--lv-secondary); border-top: 1px solid var(--lv-border); padding: 56px 24px 64px; text-align: center; }
+        .lv-final p { font-family: var(--lv-serif); font-size: 1.3rem; font-weight: 600; color: var(--lv-fg); margin-bottom: 24px; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+        /* ─── 7. STICKY CTA BAR ─── */
+        .lv-sticky { position: fixed; bottom: 0; left: 0; right: 0; z-index: 50; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-top: 1px solid var(--lv-border); transform: translateY(100%); transition: transform 0.3s ease; }
+        .lv-sticky.visible { transform: translateY(0); }
+        .lv-sticky-inner { max-width: 520px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+        .lv-sticky-price { display: flex; align-items: baseline; gap: 6px; }
+        .lv-sticky-price .old { font-size: 12px; color: var(--lv-muted); text-decoration: line-through; }
+        .lv-sticky-price .new { font-size: 14px; font-weight: 600; color: var(--lv-fg); }
+        .lv-sticky-price .per { color: var(--lv-muted); font-weight: 400; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 640px) {
+            .lv-hero h1 { font-size: 2.5rem; }
+            .lv-hero-sub { font-size: 15px; }
+            .lv-compare h2, .lv-pricing h2, .lv-context h2 { font-size: 1.5rem; }
+            .lv-price-new { font-size: 44px; }
+            .lv-price-card { padding: 24px 20px; }
+            .lv-final p { font-size: 1.1rem; }
+            .lv-value-item span { font-size: 10px; }
+        }
+
+        /* Spacer for sticky bar */
+        .lv-spacer { height: 64px; }
     </style>
 </head>
 <body>
 
-    <!-- Nav -->
+    <!-- Nav (existing STB nav) -->
     <nav class="main-nav" id="mainNav">
         <div class="container nav-inner">
             <div class="nav-left">
@@ -137,105 +194,207 @@
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="af-hero">
-        <div class="af-hero-bg"></div>
-        <div class="af-hero-glow"></div>
-        <div class="af-hero-content">
-            <div class="af-hero-chip"><i class="fas fa-bolt"></i> Premium Reading Experience</div>
-            <h1>Go ad-free.<span class="line2">Don't stop there.</span></h1>
-            <p class="af-hero-sub">You're here for ad-free. Most people add a little more &mdash; that's what keeps this free for everyone.</p>
-        </div>
-    </section>
+    <!-- ===== LOVABLE-UI LANDING PAGE ===== -->
+    <div class="lv-page">
 
-    <!-- Stats -->
-    <section class="af-stats">
-        <div class="af-stats-row">
-            <div class="af-stat"><div class="af-stat-val">2M+</div><div class="af-stat-label">readers trust it<br>every month</div></div>
-            <div class="af-stat"><div class="af-stat-val">17</div><div class="af-stat-label">seasons of<br>deep coverage</div></div>
-            <div class="af-stat"><div class="af-stat-val">500+</div><div class="af-stat-label">founder stories,<br>written by hand</div></div>
-        </div>
-        <p class="af-stats-tag">Built by Shark Tank fans. Kept going by Shark Tank fans.</p>
-    </section>
+        <!-- 1. HERO -->
+        <section class="lv-hero">
+            <img src="assets/images/hero-stage.jpg" alt="Shark Tank stage" class="lv-hero-img" width="1920" height="1080">
+            <div class="lv-hero-overlay"></div>
+            <div class="lv-hero-content">
+                <h1>You came for the story.<br>Not the ads.</h1>
+                <p class="lv-hero-sub">Finish every pitch, deal, and update — without interruptions.</p>
+                <button class="lv-cta" id="heroCta">Start reading ad-free</button>
+                <p class="lv-hero-price">
+                    <span class="strike">$25/year</span>
+                    <span class="highlight">$20/year — today only</span>
+                    &middot; Cancel anytime
+                </p>
+            </div>
+            <button class="lv-scroll-hint" onclick="document.getElementById('valueStrip').scrollIntoView({behavior:'smooth'})" aria-label="Scroll down">
+                <i class="fas fa-chevron-down" style="font-size:20px"></i>
+            </button>
+        </section>
 
-    <!-- Before / After -->
-    <section class="af-compare">
-        <div class="af-compare-inner">
-            <h2 class="af-section-title">What changes when you go ads-free</h2>
-            <div class="af-compare-grid">
-                <div class="af-compare-col before">
-                    <h3>With Ads</h3>
-                    <div class="af-row"><i class="fas fa-times af-icon-x"></i> Banner ads between every section</div>
-                    <div class="af-row"><i class="fas fa-times af-icon-x"></i> Sidebar ads interrupting content</div>
-                    <div class="af-row"><i class="fas fa-times af-icon-x"></i> Sticky bars covering your reading</div>
-                    <div class="af-row"><i class="fas fa-times af-icon-x"></i> Slower page loads from ad scripts</div>
-                    <div class="af-row"><i class="fas fa-times af-icon-x"></i> Third-party tracking cookies</div>
+        <!-- 2. VALUE STRIP -->
+        <section class="lv-value-strip" id="valueStrip">
+            <div class="lv-value-inner">
+                <div class="lv-value-item">
+                    <i class="fas fa-eye"></i>
+                    <span>No ads.<br>No popups</span>
                 </div>
-                <div class="af-compare-col after">
-                    <h3>Ads-Free</h3>
-                    <div class="af-row"><i class="fas fa-check af-icon-check"></i> Clean, uninterrupted reading</div>
-                    <div class="af-row"><i class="fas fa-check af-icon-check"></i> Pages load noticeably faster</div>
-                    <div class="af-row"><i class="fas fa-check af-icon-check"></i> Zero tracking or third-party scripts</div>
-                    <div class="af-row"><i class="fas fa-check af-icon-check"></i> Support independent journalism</div>
-                    <div class="af-row"><i class="fas fa-check af-icon-check"></i> Feel good funding real content</div>
+                <div class="lv-value-div"></div>
+                <div class="lv-value-item">
+                    <i class="fas fa-bolt"></i>
+                    <span>Faster<br>pages</span>
+                </div>
+                <div class="lv-value-div"></div>
+                <div class="lv-value-item">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Finish without<br>interruptions</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Coffee -->
-    <section class="af-coffee">
-        <div class="af-coffee-bg"></div>
-        <div class="af-coffee-glow"></div>
-        <div class="af-coffee-content">
-            <h2>One coffee a month.<br><span>That's all it takes.</span></h2>
-            <p class="af-coffee-sub">That's the difference between using Shark Tank Blog and keeping it independent for millions.</p>
-        </div>
-    </section>
+        <!-- 3. COMPARISON -->
+        <section class="lv-compare">
+            <div class="lv-compare-inner">
+                <h2>The difference is immediate</h2>
+                <p class="lv-compare-sub">Same article. Same content. One lets you actually read it.</p>
 
-    <!-- Payment Card -->
-    <section class="af-card-section">
-        <div class="af-card">
-            <h3>Support Shark Tank Blog</h3>
-            <p class="af-card-sub">Support starts with ad-free. Many choose to give a little more.</p>
-            <div class="af-card-amount">
-                <div class="af-card-left"><span class="af-card-dollar">$</span><span class="af-card-val" id="cardVal">3</span><span class="af-card-period">/ month</span></div>
-                <span class="af-card-daily" id="cardDaily">$0.10/day</span>
+                <div class="lv-mockup-grid">
+                    <!-- WITH ADS mockup -->
+                    <div>
+                        <p class="lv-mockup-label">With Ads</p>
+                        <div class="lv-mockup">
+                            <div class="lv-mock-nav">
+                                <div class="lv-mock-nav-left"><div class="lv-mock-dot"></div><span class="lv-mock-nav-text">The Shark Tank Blog</span></div>
+                                <div class="lv-mock-bars"><div class="lv-mock-bar"></div><div class="lv-mock-bar"></div></div>
+                            </div>
+                            <div class="lv-mock-body">
+                                <div class="lv-mock-title">Shark Tank Season 17 Episode 13</div>
+                                <div class="lv-mock-author"><div class="lv-mock-avatar"></div><span class="lv-mock-author-text">By Author &middot; Mar 2026</span></div>
+                                <div class="lv-mock-img"></div>
+                                <div class="lv-mock-line" style="width:100%"></div>
+                                <div class="lv-mock-line" style="width:90%"></div>
+                                <!-- Banner Ad -->
+                                <div class="lv-mock-ad-banner">
+                                    <div class="lv-mock-ad-thumb"></div>
+                                    <div style="flex:1">
+                                        <div class="lv-mock-line" style="width:75%;margin-bottom:3px"></div>
+                                        <div class="lv-mock-ad-btn"><span class="lv-mock-ad-btn-text">Shop Now</span></div>
+                                    </div>
+                                    <span class="lv-mock-ad-label">Ad</span>
+                                </div>
+                                <div class="lv-mock-line" style="width:100%"></div>
+                                <div class="lv-mock-line" style="width:80%"></div>
+                                <!-- Video Ad -->
+                                <div class="lv-mock-ad-video">
+                                    <div class="lv-mock-play-circle"><div class="lv-mock-play-tri"></div></div>
+                                    <span class="lv-mock-ad-tag">Ad &middot; 0:30</span>
+                                    <span class="lv-mock-ad-skip">Skip &#9654;</span>
+                                </div>
+                                <div class="lv-mock-line" style="width:100%"></div>
+                                <div class="lv-mock-line" style="width:85%"></div>
+                                <!-- Native Ad -->
+                                <div class="lv-mock-ad-native">
+                                    <div class="lv-mock-ad-native-label">Sponsored</div>
+                                    <div class="lv-mock-ad-native-row">
+                                        <div class="lv-mock-ad-native-img"></div>
+                                        <div style="flex:1"><div class="lv-mock-line" style="width:100%"></div><div class="lv-mock-line" style="width:75%"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AD-FREE mockup -->
+                    <div>
+                        <p class="lv-mockup-label">Ad-Free</p>
+                        <div class="lv-mockup">
+                            <div class="lv-mock-nav">
+                                <div class="lv-mock-nav-left"><div class="lv-mock-dot"></div><span class="lv-mock-nav-text">The Shark Tank Blog</span></div>
+                                <div class="lv-mock-bars"><div class="lv-mock-bar" style="background:#f3f4f6"></div><div class="lv-mock-bar" style="background:#f3f4f6"></div></div>
+                            </div>
+                            <div class="lv-mock-body">
+                                <div class="lv-mock-title">Shark Tank Season 17 Episode 13</div>
+                                <div class="lv-mock-author"><div class="lv-mock-avatar"></div><span class="lv-mock-author-text">By Author &middot; Mar 2026</span></div>
+                                <div class="lv-mock-img"></div>
+                                <div class="lv-mock-line" style="width:97%"></div>
+                                <div class="lv-mock-line" style="width:88%"></div>
+                                <div class="lv-mock-line" style="width:82%"></div>
+                                <div style="height:3px"></div>
+                                <div class="lv-mock-line" style="width:95%"></div>
+                                <div class="lv-mock-line" style="width:78%"></div>
+                                <div class="lv-mock-line" style="width:70%"></div>
+                                <div style="height:3px"></div>
+                                <div class="lv-mock-img" style="height:22px"></div>
+                                <div class="lv-mock-line" style="width:92%"></div>
+                                <div class="lv-mock-line" style="width:80%"></div>
+                                <div class="lv-mock-line" style="width:86%"></div>
+                                <div style="height:3px"></div>
+                                <div class="lv-mock-line" style="width:88%"></div>
+                                <div class="lv-mock-line" style="width:72%"></div>
+                                <div style="height:3px"></div>
+                                <div class="lv-mock-line" style="width:60%;height:3px;background:#e5e7eb"></div>
+                                <div style="height:2px"></div>
+                                <div class="lv-mock-line" style="width:94%"></div>
+                                <div class="lv-mock-line" style="width:76%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comparison bullets -->
+                <div class="lv-bullets-grid">
+                    <div>
+                        <p class="lv-bullets-title red">With Ads</p>
+                        <div class="lv-bullet"><span class="lv-bullet-dot red"></span><span>Broken reading flow</span></div>
+                        <div class="lv-bullet"><span class="lv-bullet-dot red"></span><span>Slower pages</span></div>
+                        <div class="lv-bullet"><span class="lv-bullet-dot red"></span><span>Constant distractions</span></div>
+                    </div>
+                    <div>
+                        <p class="lv-bullets-title green">Ad-Free</p>
+                        <div class="lv-bullet green"><span class="lv-bullet-dot green"></span><span>Uninterrupted reading</span></div>
+                        <div class="lv-bullet green"><span class="lv-bullet-dot green"></span><span>Faster load times</span></div>
+                        <div class="lv-bullet green"><span class="lv-bullet-dot green"></span><span>Full focus on the story</span></div>
+                    </div>
+                </div>
             </div>
-            <div class="af-card-presets" id="cardPresets">
-                <div class="af-card-preset" data-val="2">$2</div>
-                <div class="af-card-preset active" data-val="5"><span class="ptag">Popular</span>$5</div>
-                <div class="af-card-preset" data-val="9">$9</div>
-                <div class="af-card-preset" data-val="15">$15</div>
+        </section>
+
+        <!-- 4. PRICING -->
+        <section class="lv-pricing" id="pricing">
+            <h2>One plan. No surprises.</h2>
+            <div class="lv-price-card">
+                <h3>Ad-Free Access</h3>
+                <div class="lv-price-row">
+                    <span class="lv-price-old">$25</span>
+                    <span class="lv-price-new">$20</span>
+                    <span class="lv-price-period">/ year</span>
+                </div>
+                <div class="lv-price-badge">Today only — save $5</div>
+                <div class="lv-benefits">
+                    <div class="lv-benefit"><span class="lv-benefit-dot"></span><span>Every article, no interruptions</span></div>
+                    <div class="lv-benefit"><span class="lv-benefit-dot"></span><span>No banners, popups, or video ads</span></div>
+                    <div class="lv-benefit"><span class="lv-benefit-dot"></span><span>Faster, lighter pages</span></div>
+                </div>
+                <button class="lv-price-cta" id="pricingCta">Read Without Ads</button>
+                <p class="lv-price-cancel">Cancel anytime. Takes seconds.</p>
             </div>
-            <button class="af-card-cta" id="cardCta">Continue with $3 / month</button>
-            <div class="af-card-perk-row">
-                <span class="af-card-perk"><i class="fas fa-globe" style="margin-right:4px"></i> Includes <em>ad-free</em> experience</span>
-                <span class="af-card-badge"><i class="fas fa-chevron-down" style="font-size:8px"></i> $36 Billed Annually</span>
+        </section>
+
+        <!-- 5. CONTEXT -->
+        <section class="lv-context">
+            <img src="assets/images/founders-stories.jpg" alt="Entrepreneur pitching on stage" class="lv-context-img" loading="lazy" width="1280" height="640">
+            <div class="lv-context-overlay"></div>
+            <div class="lv-context-content">
+                <h2>Built for readers who actually finish the story</h2>
+                <p>Shark Tank stories aren't meant to be skimmed. You're here for the pitch, the deal, the outcome. Ads break that flow. Ad-free keeps you in it.</p>
             </div>
-            <div class="af-card-trust"><span><i class="fas fa-lock" style="margin-right:3px"></i> Secure payment</span><span>&bull;</span><span>Cancel anytime</span></div>
+        </section>
+
+        <!-- 6. FINAL CTA -->
+        <section class="lv-final">
+            <p>You've read this far — now read without interruptions.</p>
+            <button class="lv-cta" id="finalCta">Go ad-free — $0.05/day</button>
+        </section>
+
+        <!-- 7. STICKY CTA BAR -->
+        <div class="lv-sticky" id="stickyBar">
+            <div class="lv-sticky-inner">
+                <div class="lv-sticky-price">
+                    <span class="old">$25</span>
+                    <span class="new">$20<span class="per">/year</span></span>
+                </div>
+                <button class="lv-cta lv-cta-sm" id="stickyCta">Read Without Ads</button>
+            </div>
         </div>
-    </section>
 
-    <!-- FAQ -->
-    <section class="af-faq">
-        <h2 class="af-section-title">Frequently Asked Questions</h2>
-        <div class="af-faq-list">
-            <div class="af-faq-item"><div class="af-faq-q">How does ads-free work? <i class="fas fa-chevron-down"></i></div><div class="af-faq-a">Once you subscribe, ads are instantly removed across all pages. Your account is linked to your email, so it works on any device where you're signed in.</div></div>
-            <div class="af-faq-item"><div class="af-faq-q">Can I cancel anytime? <i class="fas fa-chevron-down"></i></div><div class="af-faq-a">Yes. No contracts, no commitments. Cancel from your account settings anytime and keep access until your period ends.</div></div>
-            <div class="af-faq-item"><div class="af-faq-q">What payment methods do you accept? <i class="fas fa-chevron-down"></i></div><div class="af-faq-a">All major credit cards, PayPal, Google Pay, and Apple Pay through our secure Stripe-powered processor.</div></div>
-            <div class="af-faq-item"><div class="af-faq-q">Is this recurring or one-time? <i class="fas fa-chevron-down"></i></div><div class="af-faq-a">It's billed annually. You can cancel auto-renewal anytime from your account dashboard.</div></div>
-        </div>
-    </section>
+        <div class="lv-spacer"></div>
+    </div>
 
-    <!-- Bottom CTA -->
-    <section class="af-bottom">
-        <h2>Ready for a cleaner read?</h2>
-        <p class="af-bottom-sub">Join thousands who chose content over clutter.</p>
-        <button class="af-bottom-cta" id="bottomCta">Go Ads-Free Now <i class="fas fa-arrow-right"></i></button>
-    </section>
-
-    <!-- Footer -->
+    <!-- Footer (existing STB footer) -->
     <footer class="site-footer">
         <div class="container footer-inner">
             <div class="footer-grid">
@@ -253,13 +412,22 @@
     <script src="go-ad-free.js" data-delay="99999" data-poll="0"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function(){
-        var sel=3, presets=document.querySelectorAll('.af-card-preset'), valEl=document.getElementById('cardVal'), dailyEl=document.getElementById('cardDaily'), ctaEl=document.getElementById('cardCta');
-        function upd(){ valEl.textContent=sel; dailyEl.textContent='$'+(sel/30).toFixed(2)+'/day'; ctaEl.textContent='Continue with $'+sel+' / month'; }
-        presets.forEach(function(p){ p.addEventListener('click',function(){ sel=parseInt(this.getAttribute('data-val')); presets.forEach(function(b){b.classList.remove('active')}); this.classList.add('active'); upd(); }); });
-        ctaEl.addEventListener('click',function(){ if(window.gafOpenPopup) window.gafOpenPopup(); });
-        document.getElementById('bottomCta').addEventListener('click',function(){ if(window.gafOpenPopup) window.gafOpenPopup(); });
-        // FAQ
-        document.querySelectorAll('.af-faq-q').forEach(function(q){ q.addEventListener('click',function(){ this.parentElement.classList.toggle('open'); }); });
+        // CTA buttons -> open payment popup
+        var ctaIds = ['heroCta','pricingCta','finalCta','stickyCta'];
+        ctaIds.forEach(function(id){
+            var el = document.getElementById(id);
+            if(el) el.addEventListener('click', function(){ if(window.gafOpenPopup) window.gafOpenPopup(); });
+        });
+
+        // Sticky bar: show after scrolling past 60% of viewport
+        var sticky = document.getElementById('stickyBar');
+        window.addEventListener('scroll', function(){
+            if(window.scrollY > window.innerHeight * 0.6){
+                sticky.classList.add('visible');
+            } else {
+                sticky.classList.remove('visible');
+            }
+        }, {passive: true});
     });
     </script>
 </body>
