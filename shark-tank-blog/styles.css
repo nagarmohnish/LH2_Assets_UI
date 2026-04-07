@@ -127,6 +127,30 @@ ul { list-style: none; }
 }
 .btn-contact:hover { background: var(--cyan-hover); }
 
+/* Login button (top-left of nav) */
+.btn-login-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 16px;
+    background: transparent;
+    color: var(--text-white) !important;
+    border: 1.5px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+    margin-right: 6px;
+}
+.btn-login-nav:hover {
+    background: var(--cyan);
+    border-color: var(--cyan);
+    color: #fff !important;
+}
+.btn-login-nav i { font-size: 11px; }
+
 .btn-signin {
     background: var(--cyan);
     color: var(--text-white) !important;
@@ -1010,6 +1034,8 @@ ul { list-style: none; }
     .nav-right { flex-shrink: 0; gap: 10px; }
     .nav-right .social-icons { display: none; }
     .btn-contact { font-size: 12px; padding: 6px 14px; }
+    .btn-login-nav { font-size: 12px; padding: 6px 12px; margin-right: 4px; }
+    .btn-login-nav i { display: none; }
 
     .nav-menu.active {
         display: flex;
@@ -1138,6 +1164,7 @@ ul { list-style: none; }
     .hamburger span { width: 20px; }
     .search-toggle { font-size: 14px; padding: 6px; }
     .btn-contact { font-size: 11px; padding: 5px 10px; }
+    .btn-login-nav { font-size: 11px; padding: 5px 10px; }
 
     .hero-text h1 { font-size: 21px; }
     .hero-text p { font-size: 12px; }
