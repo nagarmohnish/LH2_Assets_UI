@@ -431,14 +431,18 @@
             white-space: nowrap;
         }
 
+        /* Wrapper that constrains the rectangle ad + GO ADS-FREE pill above it */
+        .ad-rect-wrap {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
         /* Rectangle 300x250 — Card style with image area */
         .mock-ad.rectangle {
             width: 100%;
-            max-width: 300px;
             background: #fff;
             color: var(--stb-ink);
             border: 1px solid var(--stb-subtle);
-            margin: 0 auto;
         }
         .mock-ad.rectangle .mock-img {
             height: 130px;
@@ -694,21 +698,12 @@
                 <p>Kevin O'Leary went first — and predictably, he wanted a royalty. He offered $200K for 5% equity plus a $1-per-case royalty until $600K was paid back. Mary thanked him and politely passed. Mark Cuban went out, citing the alcohol regulatory environment. Lori went out — "not my space."</p>
                 <p>Then Daymond John leaned in. He didn't love the alcohol category either, but he loved the brand. He saw the same blue-collar marketing playbook he'd run with FUBU two decades earlier. He offered $200,000 for 25% equity. Mary countered at 15%. They settled at 20%.</p>
 
-                <!-- ============================================
-                     CTA #2: Mid-article contextual deal CTA
-                     ============================================ -->
-                <div class="support-cta shark-style deal-context">
-                    <span class="cta-eyebrow"><i class="fas fa-handshake"></i> The Real Deal</span>
-                    <p><strong>Daymond put in $200K for 20%.</strong> You can put in $3/month for unlimited access to our coverage. No pitch deck required.</p>
-                    <a href="support.html" class="cta-btn-primary gold">I'm In for $3/mo</a>
-                </div>
-
                 <h2 id="after">Beer Girl After Shark Tank</h2>
                 <p>After the episode aired, Beer Girl's website did 4.2 million pageviews in 72 hours. Distribution requests poured in from Texas, Florida, and Illinois. By the end of the quarter, the brand had landed in 1,800 additional stores. Daymond's team helped negotiate a national distribution deal with a midwestern wholesaler that took the brand into 11 new states by the end of 2026.</p>
                 <p>Mary now runs a 14-person team out of a small office in Bakersfield. She's added two new SKUs — a light lager and a Mexican-style amber — and the brand's projected to clear $8 million in revenue by year-end. The Daymond deal closed in due diligence with no changes to the original terms.</p>
 
                 <!-- Inline rectangle ad -->
-                <div class="ad-inline" style="display:flex;justify-content:center;">
+                <div class="ad-inline ad-rect-wrap">
                     <div class="ad-slot demo-ad">
                         <div class="mock-ad rectangle">
                             <div class="mock-img">
