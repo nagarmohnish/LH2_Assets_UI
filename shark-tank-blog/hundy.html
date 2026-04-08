@@ -486,6 +486,98 @@
             text-transform: uppercase; letter-spacing: 0.5px;
         }
 
+        /* Independent Coverage CTA card */
+        .independent-cta {
+            position: relative;
+            background: linear-gradient(160deg, #0B1426 0%, #142342 100%);
+            border-radius: 14px;
+            padding: 26px 32px 26px 36px;
+            margin: 32px 0;
+            color: #fff;
+            overflow: hidden;
+            box-shadow: 0 6px 28px rgba(11, 20, 38, 0.18);
+        }
+        .independent-cta::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; bottom: 0;
+            width: 6px;
+            background: linear-gradient(180deg, #00BCD4 0%, #F5A623 100%);
+        }
+        .independent-cta::after {
+            content: '';
+            position: absolute;
+            top: -60px; right: -60px;
+            width: 220px; height: 220px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 188, 212, 0.14), transparent 70%);
+            pointer-events: none;
+        }
+        .independent-cta .ic-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 11px;
+            font-weight: 800;
+            color: #00BCD4;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+        .independent-cta .ic-eyebrow i { font-size: 11px; }
+        .independent-cta p {
+            font-size: 16px;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, 0.78);
+            margin: 0 0 22px;
+            position: relative;
+            z-index: 1;
+        }
+        .independent-cta strong { color: #fff; font-weight: 700; }
+        .independent-cta .ic-actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+        .independent-cta .ic-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #00BCD4 0%, #00a4bb 100%);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 13px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(0, 188, 212, 0.32);
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .independent-cta .ic-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(0, 188, 212, 0.42);
+            text-decoration: none;
+        }
+        .independent-cta .ic-alt {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.55);
+        }
+        .independent-cta .ic-alt a {
+            color: #00BCD4;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(0, 188, 212, 0.4);
+        }
+        .independent-cta .ic-alt a:hover {
+            color: #00E5FF;
+            border-color: #00E5FF;
+        }
+        @media (max-width: 640px) {
+            .independent-cta { padding: 22px 22px 22px 26px; margin: 24px 0; }
+            .independent-cta p { font-size: 14.5px; }
+            .independent-cta .ic-btn { padding: 12px 22px; font-size: 14px; }
+            .independent-cta .ic-actions { gap: 12px; }
+        }
+
         /* Inline support / Go Ad-Free CTAs */
         .inline-cta-block {
             border-left: 4px solid var(--stb-cyan);
@@ -704,12 +796,13 @@
                 <p>Hundy is different from frozen pops that are high in sugar and other unhealthy ingredients. Each pop is made using organic fruits like mango or pineapple. The founders said they ensure that the fruit retains its natural feel.</p>
                 <p>You can buy Hundy for between $8.99 and $9.99. The cost of making one Hundy ranges from $3.22 to $3.92, depending on the flavor. According to the founders, Hundy has a shelf life of up to two years.</p>
 
-                <!-- Inline support CTA -->
-                <div class="inline-cta-block">
-                    <p><strong>This story was written by readers, not by sponsors.</strong> If our coverage helped you discover Hundy, consider keeping the lights on.</p>
-                    <div class="cta-row">
-                        <a href="support.html" class="btn-primary"><i class="fas fa-heart"></i> Support the Blog</a>
-                        <span class="alt-link">or <a href="go-ads-free.html">go ad-free for $20/year</a></span>
+                <!-- Independent Coverage CTA -->
+                <div class="independent-cta">
+                    <span class="ic-eyebrow"><i class="fas fa-shield-alt"></i> Independent Coverage</span>
+                    <p><strong>This article wasn't funded by a Shark.</strong> It was funded by readers like you. No equity taken. No royalty deals. Just independent coverage.</p>
+                    <div class="ic-actions">
+                        <a href="support.html" class="ic-btn">Back This Blog</a>
+                        <span class="ic-alt">or <a href="go-ads-free.html">read ad-free for $20/year</a></span>
                     </div>
                 </div>
 
