@@ -543,19 +543,20 @@
         .independent-cta .ic-btn {
             display: inline-block;
             background: linear-gradient(135deg, #00BCD4 0%, #00a4bb 100%);
-            color: #fff;
+            color: #fff !important;
             font-size: 15px;
             font-weight: 700;
             padding: 13px 28px;
             border-radius: 8px;
-            text-decoration: none;
+            text-decoration: none !important;
             box-shadow: 0 4px 14px rgba(0, 188, 212, 0.32);
             transition: transform 0.15s, box-shadow 0.15s;
         }
         .independent-cta .ic-btn:hover {
             transform: translateY(-1px);
             box-shadow: 0 6px 20px rgba(0, 188, 212, 0.42);
-            text-decoration: none;
+            text-decoration: none !important;
+            color: #fff !important;
         }
         .independent-cta .ic-alt {
             font-size: 14px;
@@ -629,6 +630,56 @@
             .native-sponsored { flex-direction: column; align-items: flex-start; }
             .native-sponsored-img { width: 100%; height: 140px; }
             .article-post h2 { font-size: 20px; }
+        }
+
+        /* Footer Go Ad-Free + Support box */
+        .footer-adfree-box {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+        .footer-adfree-box h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .footer-adfree-box p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        .footer-adfree-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 12px 20px;
+            background: var(--stb-cyan);
+            color: #fff !important;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none !important;
+            transition: background 0.15s;
+        }
+        .footer-adfree-btn:hover { background: var(--stb-cyan-dark); }
+        .footer-adfree-btn i { margin-left: 4px; font-size: 12px; }
+        .footer-adfree-alt {
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255,255,255,0.4);
+            margin-top: 10px;
+        }
+        .footer-adfree-alt a {
+            color: var(--stb-cyan) !important;
+            font-weight: 600;
+            text-decoration: none !important;
+            border-bottom: 1px solid rgba(0,188,212,0.3);
+        }
+        .footer-adfree-alt a:hover {
+            color: #00E5FF !important;
+            border-color: #00E5FF;
         }
 
         /* ====================================================
@@ -735,19 +786,19 @@
         .end-article-cta > p { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 24px; }
         .eac-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
         .eac-primary {
-            background: var(--stb-cyan); color: #fff; padding: 14px 28px;
+            background: var(--stb-cyan); color: #fff !important; padding: 14px 28px;
             border-radius: 8px; font-size: 15px; font-weight: 700;
-            text-decoration: none; box-shadow: 0 4px 14px rgba(0,188,212,0.3);
+            text-decoration: none !important; box-shadow: 0 4px 14px rgba(0,188,212,0.3);
             transition: all 0.15s;
         }
-        .eac-primary:hover { background: var(--stb-cyan-dark); transform: translateY(-1px); text-decoration: none; }
+        .eac-primary:hover { background: var(--stb-cyan-dark); transform: translateY(-1px); text-decoration: none !important; color: #fff !important; }
         .eac-secondary {
-            background: transparent; color: #fff; padding: 14px 28px;
+            background: transparent; color: #fff !important; padding: 14px 28px;
             border-radius: 8px; font-size: 15px; font-weight: 600;
-            border: 1.5px solid rgba(255,255,255,0.25); text-decoration: none;
+            border: 1.5px solid rgba(255,255,255,0.25); text-decoration: none !important;
             transition: all 0.15s;
         }
-        .eac-secondary:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); text-decoration: none; }
+        .eac-secondary:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); text-decoration: none !important; color: #fff !important; }
         .eac-proof {
             font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 18px !important; margin-bottom: 0 !important;
         }
@@ -1451,6 +1502,13 @@
                     <div class="newsletter-form">
                         <input type="email" placeholder="Enter your email">
                         <button type="submit">Subscribe</button>
+                    </div>
+
+                    <div class="footer-adfree-box">
+                        <h4>Go Ad-Free</h4>
+                        <p>Read every article without ads for just $20/year.</p>
+                        <a href="go-ads-free.html" class="footer-adfree-btn">Go Ad-Free <i class="fas fa-arrow-right"></i></a>
+                        <div class="footer-adfree-alt">Or <a href="support.html">support the blog</a> from $3/mo</div>
                     </div>
                 </div>
             </div>
