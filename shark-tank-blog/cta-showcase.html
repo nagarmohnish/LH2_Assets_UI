@@ -260,28 +260,105 @@
         }
         .render-wm .skip { display: block; margin-top: 14px; font-size: 13px; color: rgba(255,255,255,0.4); }
 
-        /* #9 Timed modal */
+        /* #9 & #11 Modals — split header/body design */
         .render-modal-frame {
-            background: rgba(0,0,0,0.5); border-radius: 12px; padding: 40px; display: flex;
-            align-items: center; justify-content: center;
+            background: rgba(5,10,20,0.65); border-radius: 12px; padding: 36px;
+            display: flex; align-items: center; justify-content: center;
+            backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
         }
         .render-modal {
-            background: #fff; border-radius: 14px; padding: 32px 28px 24px; max-width: 380px;
-            width: 100%; position: relative; text-align: center;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            max-width: 420px; width: 100%; position: relative;
+            border-radius: 16px; overflow: hidden;
+            box-shadow: 0 28px 70px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.06);
         }
-        .render-modal .close { position: absolute; top: 12px; right: 14px; font-size: 20px; color: #bbb; }
-        .render-modal h2 { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 8px; }
-        .render-modal p { font-size: 14px; color: var(--muted); line-height: 1.5; margin-bottom: 18px; }
-        .render-modal .btn {
-            display: block; width: 100%; padding: 14px; background: var(--cyan);
-            color: #fff; border-radius: 9px; font-size: 15px; font-weight: 700; text-align: center;
+
+        /* Modal header (dark) */
+        .render-modal .rm-header {
+            background: linear-gradient(160deg, var(--navy), var(--navy-2));
+            padding: 28px 28px 22px; text-align: center; position: relative; overflow: hidden;
         }
-        .render-modal .dismiss { display: block; margin-top: 12px; font-size: 13px; color: #999; }
-        .render-modal .benefits { text-align: left; margin-bottom: 18px; padding: 0; list-style: none; }
-        .render-modal .benefits li { font-size: 13px; color: #444; padding: 4px 0; }
-        .render-modal .benefits li::before { content: '\2713'; color: var(--cyan); font-weight: 700; margin-right: 8px; }
-        .render-modal.exit { border-top: 4px solid var(--gold); }
+        .render-modal .rm-header::before {
+            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 70px; height: 3px; border-radius: 0 0 3px 3px;
+        }
+        .render-modal .rm-header::after {
+            content: ''; position: absolute; top: -40px; right: -40px;
+            width: 150px; height: 150px; border-radius: 50%;
+            pointer-events: none;
+        }
+        .render-modal .rm-icon {
+            width: 50px; height: 50px; margin: 0 auto 12px;
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            font-size: 24px;
+        }
+        .render-modal .rm-header h2 {
+            font-size: 20px; font-weight: 800; color: #fff; margin: 0 0 6px; line-height: 1.25;
+        }
+        .render-modal .rm-header p {
+            font-size: 13px; color: rgba(255,255,255,0.5); margin: 0; line-height: 1.4;
+        }
+        .render-modal .close {
+            position: absolute; top: 12px; right: 14px; z-index: 2;
+            width: 28px; height: 28px; border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.5); font-size: 16px;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        /* Modal body (white) */
+        .render-modal .rm-body {
+            background: #fff; padding: 24px 28px 22px; text-align: center;
+        }
+        .render-modal .rm-price {
+            display: flex; align-items: baseline; justify-content: center; gap: 6px;
+            margin-bottom: 18px;
+        }
+        .render-modal .rm-price .old { font-size: 16px; color: #bbb; text-decoration: line-through; }
+        .render-modal .rm-price .new { font-size: 32px; font-weight: 800; color: var(--ink); letter-spacing: -1px; }
+        .render-modal .rm-price .per { font-size: 14px; color: var(--muted); }
+
+        /* Benefits with icon badges */
+        .render-modal .rm-benefits {
+            list-style: none; padding: 0; margin: 0 0 20px; text-align: left;
+        }
+        .render-modal .rm-benefits li {
+            display: flex; align-items: center; gap: 10px;
+            font-size: 13px; color: #444; padding: 6px 0;
+        }
+        .render-modal .rm-benefits .bi {
+            width: 22px; height: 22px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 9px; flex-shrink: 0;
+        }
+
+        /* CTA */
+        .render-modal .rm-cta {
+            display: block; width: 100%; padding: 14px; border-radius: 9px;
+            font-size: 15px; font-weight: 700; text-align: center;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+        }
+        .render-modal .rm-trust {
+            display: flex; align-items: center; justify-content: center;
+            gap: 12px; margin-top: 12px; font-size: 11px; color: #bbb;
+        }
+        .render-modal .rm-trust i { font-size: 9px; }
+        .render-modal .dismiss {
+            display: block; margin-top: 12px; font-size: 12px; color: #aaa; text-align: center;
+        }
+
+        /* Timed modal — cyan accent */
+        .render-modal.timed .rm-header::before { background: linear-gradient(90deg, var(--cyan), var(--gold)); }
+        .render-modal.timed .rm-header::after { background: radial-gradient(circle, rgba(0,188,212,0.12), transparent 70%); }
+        .render-modal.timed .rm-icon { background: rgba(0,188,212,0.12); border: 1px solid rgba(0,188,212,0.2); }
+        .render-modal.timed .rm-benefits .bi { background: rgba(0,188,212,0.1); color: var(--cyan); }
+        .render-modal.timed .rm-cta { background: linear-gradient(135deg, var(--cyan), #0099b8); color: #fff; }
+
+        /* Exit modal — gold accent */
+        .render-modal.exit .rm-header::before { background: linear-gradient(90deg, var(--gold), #d98e00); }
+        .render-modal.exit .rm-header::after { background: radial-gradient(circle, rgba(245,166,35,0.12), transparent 70%); }
+        .render-modal.exit .rm-icon { background: rgba(245,166,35,0.12); border: 1px solid rgba(245,166,35,0.25); }
+        .render-modal.exit .rm-benefits .bi { background: rgba(245,166,35,0.1); color: #d98e00; }
+        .render-modal.exit .rm-cta { background: linear-gradient(135deg, var(--gold), #d98e00); color: var(--navy); }
 
         /* #10 Sticky bar */
         .render-stickybar {
@@ -589,12 +666,32 @@
             </div>
             <div class="preview-body">
                 <div class="render-modal-frame">
-                    <div class="render-modal">
-                        <span class="close">&times;</span>
-                        <h2>Reading Without Interruptions?</h2>
-                        <p>Go ad-free for just $20/year. That's less than a single Shark Tank deal gone wrong.</p>
-                        <span class="btn">Remove All Ads</span>
-                        <span class="dismiss">Maybe later</span>
+                    <div class="render-modal timed">
+                        <div class="rm-header">
+                            <span class="close">&times;</span>
+                            <div class="rm-icon">🦈</div>
+                            <h2>Reading Without Interruptions?</h2>
+                            <p>That's less than a single Shark Tank deal gone wrong.</p>
+                        </div>
+                        <div class="rm-body">
+                            <div class="rm-price">
+                                <span class="old">$25</span>
+                                <span class="new">$20</span>
+                                <span class="per">/ year</span>
+                            </div>
+                            <ul class="rm-benefits">
+                                <li><span class="bi"><i class="fas fa-eye-slash"></i></span> Zero ads, banners, or popups</li>
+                                <li><span class="bi"><i class="fas fa-bolt"></i></span> Pages load 2x faster</li>
+                                <li><span class="bi"><i class="fas fa-heart"></i></span> Fund independent coverage</li>
+                            </ul>
+                            <span class="rm-cta">Remove All Ads</span>
+                            <div class="rm-trust">
+                                <span><i class="fas fa-lock"></i> Secure payment</span>
+                                <span>&middot;</span>
+                                <span>Cancel anytime</span>
+                            </div>
+                            <span class="dismiss">Maybe later</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -646,16 +743,31 @@
             <div class="preview-body">
                 <div class="render-modal-frame">
                     <div class="render-modal exit">
-                        <span class="close">&times;</span>
-                        <h2>Wait — One Last Offer</h2>
-                        <p>Get unlimited ad-free access to every Shark Tank story for $20/year.</p>
-                        <ul class="benefits">
-                            <li>Zero ads across the entire site</li>
-                            <li>Faster page loading</li>
-                            <li>Support independent coverage</li>
-                        </ul>
-                        <span class="btn">Claim Ad-Free Access</span>
-                        <span class="dismiss">No thanks, I like ads</span>
+                        <div class="rm-header">
+                            <span class="close">&times;</span>
+                            <div class="rm-icon">⏳</div>
+                            <h2>Wait — One Last Offer</h2>
+                            <p>Before you go, here's what you're missing.</p>
+                        </div>
+                        <div class="rm-body">
+                            <div class="rm-price">
+                                <span class="old">$25</span>
+                                <span class="new">$20</span>
+                                <span class="per">/ year</span>
+                            </div>
+                            <ul class="rm-benefits">
+                                <li><span class="bi"><i class="fas fa-eye-slash"></i></span> Zero ads across the entire site</li>
+                                <li><span class="bi"><i class="fas fa-bolt"></i></span> Faster, cleaner page loads</li>
+                                <li><span class="bi"><i class="fas fa-shield-alt"></i></span> Support independent coverage</li>
+                            </ul>
+                            <span class="rm-cta">Claim Ad-Free Access</span>
+                            <div class="rm-trust">
+                                <span><i class="fas fa-lock"></i> Secure payment</span>
+                                <span>&middot;</span>
+                                <span>Cancel anytime</span>
+                            </div>
+                            <span class="dismiss">No thanks, I like ads</span>
+                        </div>
                     </div>
                 </div>
             </div>
