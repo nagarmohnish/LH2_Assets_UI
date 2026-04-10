@@ -1227,6 +1227,65 @@ html { -webkit-overflow-scrolling: touch; }
 a, button { -webkit-tap-highlight-color: rgba(0,188,212,0.15); }
 
 /* ==================
+   GO AD-FREE FLOATING BUTTON (bottom-right, all article pages)
+   ================== */
+.go-adfree-float {
+    position: fixed;
+    bottom: 20px;
+    right: 16px;
+    z-index: 997;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px 10px 14px;
+    background: linear-gradient(135deg, #0B1426, #142342);
+    color: #fff;
+    border: 1.5px solid rgba(0, 188, 212, 0.35);
+    border-radius: 28px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 188, 212, 0.1);
+    transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
+    font-family: var(--font-body);
+}
+.go-adfree-float:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0, 188, 212, 0.3), 0 0 0 1px rgba(0, 188, 212, 0.25);
+    background: linear-gradient(135deg, #142342, #1d3258);
+    text-decoration: none;
+    color: #fff;
+}
+.go-adfree-float .gaf-shark {
+    font-size: 20px;
+    line-height: 1;
+}
+.go-adfree-float .gaf-text {
+    color: var(--cyan);
+    font-weight: 800;
+    letter-spacing: 0.3px;
+}
+
+@media (max-width: 768px) {
+    .go-adfree-float {
+        bottom: 16px;
+        right: 12px;
+        padding: 9px 16px 9px 12px;
+        font-size: 12px;
+        gap: 6px;
+    }
+    .go-adfree-float .gaf-shark { font-size: 18px; }
+}
+@media (max-width: 480px) {
+    .go-adfree-float {
+        padding: 8px 14px 8px 10px;
+        font-size: 11px;
+        border-radius: 24px;
+    }
+}
+
+/* ==================
    PLACEHOLDER IMAGES (shimmer)
    ================== */
 img[src$=".svg"] {
