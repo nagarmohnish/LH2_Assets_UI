@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shark Tank Startup List - Business Listings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="page-styles.css">
+    <link rel="stylesheet" href="auth-styles.css">
+</head>
+<body>
+
+    <!-- Top Social Bar -->
+    <div class="top-social-bar">
+        <div class="container top-social-inner">
+            <div class="social-icons top-social-icons">
+                <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="main-nav" id="mainNav">
+        <div class="container nav-inner">
+            <div class="nav-left">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/shark_logo.jpeg" alt="The Shark Tank Blog" width="60" height="50">
+                </a>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="episodes.html">Shark Tank Episodes</a></li>
+                    <li><a href="products.html">Shark Tank Products</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="startup-list.html" class="active">Shark Tank Startup List</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <button class="search-toggle" id="searchToggle" aria-label="Search">
+                    <i class="fa fa-search"></i>
+                </button>
+                <a href="#" class="btn-contact" onclick="event.preventDefault();window.gafOpenPopup&&gafOpenPopup()">Go Ads-Free</a>
+                <a href="login.html" class="btn-login-nav"><i class="fas fa-user"></i> Login</a>
+            </div>
+            <!-- Search Box -->
+            <div class="search-box" id="searchBox">
+                <input type="text" placeholder="Search...">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Title -->
+    <section class="page-title-section">
+        <div class="container">
+            <h1>Business Listings</h1>
+        </div>
+    </section>
+
+    <!-- Business Listings -->
+    <section class="listings-section">
+        <div class="container">
+            <div class="listings-list">
+
+                <!-- Listing 1 -->
+                <div class="listing-card">
+                    <a href="#" class="listing-img">
+                        <img src="assets/images/listing-nhie.svg" alt="Article Testing">
+                    </a>
+                    <div class="listing-info">
+                        <h3><a href="#">Article new testing</a></h3>
+                        <div class="card-meta">
+                            <span class="author-name">Upneet Grover</span>
+                            <span>&bull;</span>
+                            <span>June 6, 2025</span>
+                        </div>
+                        <p>Testing new article format for the Shark Tank Blog platform with updated layout and design elements...</p>
+                    </div>
+                </div>
+
+                <!-- Listing 2 -->
+                <div class="listing-card">
+                    <a href="#" class="listing-img">
+                        <img src="assets/images/listing-gob.svg" alt="Collars and Co">
+                    </a>
+                    <div class="listing-info">
+                        <h3><a href="#">Collars and Co Shark Tank Update</a></h3>
+                        <div class="card-meta">
+                            <span class="author-name">Rob Merlino</span>
+                            <span>&bull;</span>
+                            <span>June 6, 2025</span>
+                        </div>
+                        <p>Collars and Co achieved $5.4 million in sales with their innovative polo shirts featuring dress collars. The company has continued to grow since their appearance on the show...</p>
+                    </div>
+                </div>
+
+                <!-- Listing 3 -->
+                <div class="listing-card">
+                    <a href="#" class="listing-img">
+                        <img src="assets/images/listing-remplenish.svg" alt="Sock Candy">
+                    </a>
+                    <div class="listing-info">
+                        <h3><a href="#">Sock Candy Shark Tank | Season 16</a></h3>
+                        <div class="card-meta">
+                            <span class="author-name">Hiedi Pratap</span>
+                            <span>&bull;</span>
+                            <span>April 16, 2025</span>
+                        </div>
+                        <p>Founder Mary Gui brought her trendy sock business to the Shark Tank stage, showcasing unique designs that caught the attention of the Sharks with their vibrant colors and creative patterns...</p>
+                    </div>
+                </div>
+
+                <!-- Listing 4 -->
+                <div class="listing-card">
+                    <a href="#" class="listing-img">
+                        <img src="assets/images/listing-beergirl.svg" alt="AirTulip">
+                    </a>
+                    <div class="listing-info">
+                        <h3><a href="#">AirTulip Shark Tank | Season 16</a></h3>
+                        <div class="card-meta">
+                            <span class="author-name">Hiedi Pratap</span>
+                            <span>&bull;</span>
+                            <span>April 16, 2025</span>
+                        </div>
+                        <p>AirTulip addresses air pollution concerns with their innovative air purification technology, bringing a fresh approach to clean air solutions for homes and offices...</p>
+                    </div>
+                </div>
+
+                <!-- Listing 5 -->
+                <div class="listing-card">
+                    <a href="#" class="listing-img">
+                        <img src="assets/images/listing-riptiehair.svg" alt="Jane Foodie">
+                    </a>
+                    <div class="listing-info">
+                        <h3><a href="#">Jane Foodie Shark Tank | Season 16</a></h3>
+                        <div class="card-meta">
+                            <span class="author-name">Hiedi Pratap</span>
+                            <span>&bull;</span>
+                            <span>April 15, 2025</span>
+                        </div>
+                        <p>Jane Foodie focuses on food without preservatives and chemicals, offering clean and healthy alternatives for families who want to eat better without compromising on taste...</p>
+                    </div>
+                </div>
+
+                <!-- Listing 6 -->
+                <div class="listing-card">
+                    <a href="#" class="listing-img">
+                        <img src="assets/images/listing-screenskinz.svg" alt="Business Update">
+                    </a>
+                    <div class="listing-info">
+                        <h3><a href="#">Manscaped Mens Grooming – A Business Breakdown</a></h3>
+                        <div class="card-meta">
+                            <span class="author-name">Hiedi Pratap</span>
+                            <span>&bull;</span>
+                            <span>April 7, 2025</span>
+                        </div>
+                        <p>Steve King and Josh King, a father-and-son team, run the male grooming company that has become one of the most recognizable brands to emerge from Shark Tank...</p>
+                    </div>
+                </div>
+
+                <!-- Listing 7 -->
+                <div class="listing-card">
+                    <a href="#" class="listing-img">
+                        <img src="assets/images/listing-leftfield.svg" alt="Pluto Pillow">
+                    </a>
+                    <div class="listing-info">
+                        <h3><a href="#">Pluto Customizable Pillow – A Business Breakdown</a></h3>
+                        <div class="card-meta">
+                            <span class="author-name">Hiedi Pratap</span>
+                            <span>&bull;</span>
+                            <span>April 3, 2025</span>
+                        </div>
+                        <p>Personalized Sleep Like Never Before with Pluto Pillow. The company has revolutionized the way people think about sleep comfort with their customizable pillow technology...</p>
+                    </div>
+                </div>
+
+                <!-- Listing 8 -->
+                <div class="listing-card">
+                    <a href="#" class="listing-img">
+                        <img src="assets/images/listing-crowdcompass.svg" alt="Shark Tank Statistics">
+                    </a>
+                    <div class="listing-info">
+                        <h3><a href="#">Shark Tank Statistics: The Ultimate Breakdown</a></h3>
+                        <div class="card-meta">
+                            <span class="author-name">Hiedi Pratap</span>
+                            <span>&bull;</span>
+                            <span>March 12, 2025</span>
+                        </div>
+                        <p>According to Shark Tank statistics, Shark Tank has telecasted a total of 15 complete seasons with Season 16 currently airing. Over the years, the show has featured thousands of entrepreneurs...</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <span class="active">1</span>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <span class="dots">...</span>
+                <a href="#">72</a>
+                <a href="#">Next &raquo;</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="assets/images/shark_logo.jpeg" alt="The Shark Tank Blog" width="80" height="70">
+                        <span class="footer-logo-text">The Shark Tank Blog</span>
+                    </div>
+                    <p>Shark Tank Blog is independent of and not affiliated or endorsed by ABC, Sony, the producers or any other company associated with the television show, Shark Tank. Shark Tank Blog is an opinion blog. Views expressed on this blog are solely owned by the author individually and not that of Shark Tank Blog or principles of Shark Tank Blog.</p>
+                    <div class="social-icons footer-social">
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-menu">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="episodes.html">Shark Tank Episodes</a></li>
+                        <li><a href="products.html">Shark Tank Products</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="startup-list.html">Shark Tank Businesses</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Subscribe to our Newsletter</h4>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Footer Bottom / Terms / RAPTIVE -->
+    <div class="footer-bottom">
+        <a href="#">Terms of Use</a>
+        <span class="raptive">A Raptive Partner Site</span>
+    </div>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <i class="fa fa-chevron-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>

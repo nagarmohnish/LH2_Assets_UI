@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hundy Shark Tank Update – Shark Tank Season 17 | Shark Tank Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="page-styles.css">
+    <link rel="stylesheet" href="auth-styles.css">
+    <link rel="stylesheet" href="article-styles.css">
+    <style>
+        /* ===== Article page custom styles ===== */
+        :root {
+            --stb-cyan: #117fb0;
+            --stb-cyan-dark: #0097a7;
+            --stb-ink: #1A1A2E;
+            --stb-muted: #6B7280;
+            --stb-subtle: #E5E7EB;
+        }
+
+        /* Update marker */
+        .article-meta-updated {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--stb-muted);
+            margin: 14px 0 22px;
+        }
+        .article-meta-updated img,
+        .article-meta-updated .author-avatar-sm {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--stb-cyan), var(--stb-cyan-dark));
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 12px;
+        }
+        .article-meta-updated a { color: var(--stb-cyan); font-weight: 600; text-decoration: none; }
+        .article-meta-updated a:hover { text-decoration: underline; }
+        .article-meta-divider { color: #d0d0d0; }
+
+        /* Featured image */
+        .article-featured-img img { width: 100%; border-radius: 6px; }
+        .article-featured-img figcaption {
+            font-size: 12px;
+            color: var(--stb-muted);
+            font-style: italic;
+            margin-top: 6px;
+            border-top: 1px solid var(--stb-subtle);
+            padding-top: 6px;
+        }
+
+        /* Ad slots — clean designed mock ads */
+        .ad-slot { background: none !important; border: none !important; padding: 0 !important; min-height: auto !important; display: block !important; position: relative; }
+        .ad-slot .ad-slot-label,
+        .ad-slot .ad-dim { display: none !important; }
+
+        .mock-ad {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            color: #fff;
+            font-family: inherit;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .mock-ad::after {
+            content: 'Ad';
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(0,0,0,0.55);
+            color: #fff;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            padding: 3px 7px;
+            border-radius: 3px;
+        }
+        .mock-ad.leaderboard {
+            min-height: 90px;
+            background: linear-gradient(120deg, #0B1426 0%, #142342 50%, #0d1f3a 100%);
+            display: flex; align-items: center; padding: 14px 24px; gap: 18px;
+        }
+        .mock-ad.leaderboard .mock-logo {
+            flex-shrink: 0; width: 56px; height: 56px; border-radius: 12px;
+            background: linear-gradient(135deg, var(--stb-cyan), var(--stb-cyan-dark));
+            display: flex; align-items: center; justify-content: center; font-size: 24px;
+            box-shadow: 0 4px 12px rgba(17, 127, 176,0.3);
+        }
+        .mock-ad.leaderboard .mock-content { flex: 1; min-width: 0; }
+        .mock-ad.leaderboard .mock-eyebrow { font-size: 9px; font-weight: 800; color: var(--stb-cyan); text-transform: uppercase; letter-spacing: 1.4px; margin-bottom: 4px; }
+        .mock-ad.leaderboard .mock-headline { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 3px; line-height: 1.25; }
+        .mock-ad.leaderboard .mock-sub { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.3; }
+        .mock-ad.leaderboard .mock-cta {
+            flex-shrink: 0; background: var(--stb-cyan); color: #0B1426;
+            font-size: 12px; font-weight: 800; padding: 9px 16px; border-radius: 6px;
+            text-transform: uppercase; letter-spacing: 0.4px; white-space: nowrap;
+        }
+
+        .mock-ad.rectangle {
+            width: 100%; max-width: 300px; background: #fff; color: var(--stb-ink);
+            border: 1px solid var(--stb-subtle); margin: 0 auto;
+        }
+        .mock-ad.rectangle .mock-img {
+            height: 130px; position: relative;
+            background: linear-gradient(135deg, #0B1426 0%, #142342 50%, #1d3258 100%);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .mock-ad.rectangle .mock-img::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(17, 127, 176,0.25), transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(245,166,35,0.18), transparent 50%);
+        }
+        .mock-ad.rectangle .mock-img-icon {
+            position: relative; font-size: 38px; color: rgba(255,255,255,0.85);
+            background: rgba(255,255,255,0.1); width: 64px; height: 64px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            border: 1px solid rgba(255,255,255,0.18);
+        }
+        .mock-ad.rectangle .mock-body { padding: 16px 18px 18px; }
+        .mock-ad.rectangle .mock-eyebrow { font-size: 9px; font-weight: 800; color: var(--stb-cyan); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 6px; }
+        .mock-ad.rectangle .mock-headline { font-size: 16px; font-weight: 700; color: var(--stb-ink); line-height: 1.3; margin-bottom: 6px; }
+        .mock-ad.rectangle .mock-sub { font-size: 12px; color: var(--stb-muted); line-height: 1.5; margin-bottom: 12px; }
+        .mock-ad.rectangle .mock-cta {
+            display: inline-block; background: var(--stb-ink); color: #fff;
+            font-size: 11px; font-weight: 800; padding: 8px 14px; border-radius: 6px;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+
+        /* Native sponsored content card */
+        .native-sponsored {
+            display: flex; gap: 16px; align-items: center;
+            border-top: 1px solid var(--stb-subtle);
+            border-bottom: 1px solid var(--stb-subtle);
+            padding: 18px 0; margin: 28px 0;
+        }
+        .native-sponsored-img {
+            flex-shrink: 0; width: 140px; height: 92px;
+            border-radius: 6px; overflow: hidden;
+            background: linear-gradient(160deg, #87ceeb 0%, #b8e0a0 50%, #f5deb3 100%);
+            position: relative; display: flex; align-items: center; justify-content: center;
+        }
+        .native-sponsored-img::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(180deg, transparent 60%, rgba(74,124,89,0.4) 100%);
+        }
+        .native-sponsored-img i {
+            position: relative; font-size: 32px; color: rgba(255,255,255,0.9);
+        }
+        .native-sponsored-body { flex: 1; min-width: 0; }
+        .native-sponsored-eyebrow { font-size: 10px; font-weight: 700; color: #999; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+        .native-sponsored-title { font-size: 18px; font-weight: 700; color: var(--stb-ink); margin-bottom: 4px; line-height: 1.3; }
+        .native-sponsored-title i { font-size: 11px; color: #999; margin-left: 4px; }
+        .native-sponsored-by { font-size: 13px; color: var(--stb-muted); }
+        .native-sponsored-by a { color: var(--stb-cyan); font-weight: 600; text-decoration: none; }
+
+        /* Inline ad wrappers */
+        .ad-inline { margin: 28px 0; text-align: center; }
+        .ad-inline.rect-wrap { max-width: 300px; margin: 28px auto; }
+
+        /* Ad label above (subtle "ADVERTISEMENT") */
+        .ad-label-above {
+            font-size: 9px; font-weight: 700; color: #c0c0c0;
+            text-align: center; text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 6px;
+        }
+
+        /* Info table about the company */
+        .info-table {
+            width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 14.5px;
+        }
+        .info-table thead th {
+            background: #1a1d24; color: #fff; text-align: left;
+            padding: 12px 16px; font-weight: 700;
+        }
+        .info-table tbody td {
+            padding: 11px 16px; border-bottom: 1px solid var(--stb-subtle);
+            background: #fafbfc;
+        }
+        .info-table tbody td:first-child { font-weight: 700; color: var(--stb-ink); width: 35%; }
+        .info-table tbody tr:last-child td { border-bottom: none; }
+
+        /* Embedded YouTube/video placeholder */
+        .article-video {
+            position: relative; width: 100%; aspect-ratio: 16/9;
+            background: #000; border-radius: 6px; overflow: hidden;
+            margin: 22px 0; display: flex; align-items: center; justify-content: center;
+        }
+        .article-video.with-image {
+            background: linear-gradient(135deg, #4a6a8a 0%, #2a4a6a 100%);
+        }
+        .article-video .video-play-btn {
+            width: 68px; height: 48px; background: rgba(0,0,0,0.6);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            color: #fff; font-size: 20px; cursor: pointer; transition: background 0.2s;
+        }
+        .article-video .video-play-btn:hover { background: rgba(255,0,0,0.85); }
+        .article-video .video-title-overlay {
+            position: absolute; top: 12px; left: 14px;
+            color: #fff; font-size: 16px; font-weight: 700;
+        }
+        .article-video .video-channel {
+            position: absolute; top: 36px; left: 14px;
+            color: rgba(255,255,255,0.7); font-size: 11px;
+        }
+
+        /* TOC */
+        .article-toc {
+            border: 1px solid var(--stb-subtle); border-radius: 8px;
+            padding: 22px 26px; margin: 28px 0;
+        }
+        .article-toc-header {
+            display: flex; align-items: center; justify-content: space-between;
+            font-size: 17px; font-weight: 700; color: var(--stb-ink);
+            margin-bottom: 14px;
+        }
+        .article-toc-header::before {
+            content: '\f02d'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+            color: var(--stb-cyan); margin-right: 8px;
+        }
+        .article-toc ol { list-style: none; padding: 0; margin: 0; columns: 2; column-gap: 30px; }
+        .article-toc li { margin: 6px 0; padding-left: 28px; position: relative; }
+        .article-toc li::before {
+            counter-increment: toc;
+            content: counter(toc); position: absolute; left: 0; top: 1px;
+            width: 18px; height: 18px; border-radius: 4px;
+            background: #1a1d24; color: #fff; font-size: 11px; font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .article-toc ol { counter-reset: toc; }
+        .article-toc a { color: var(--stb-ink); text-decoration: none; font-size: 14.5px; }
+        .article-toc a:hover { color: var(--stb-cyan); }
+
+        /* Bullet lists */
+        .article-post ul.body-list { padding-left: 22px; margin: 16px 0; }
+        .article-post ul.body-list li { margin-bottom: 8px; line-height: 1.7; }
+
+        /* Author bio at bottom */
+        .article-author-bio {
+            display: flex; gap: 16px; padding: 24px 0;
+            border-top: 1px solid var(--stb-subtle);
+            border-bottom: 1px solid var(--stb-subtle);
+            margin: 32px 0;
+        }
+        .article-author-bio .bio-avatar {
+            flex-shrink: 0; width: 60px; height: 60px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--stb-cyan), var(--stb-cyan-dark));
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-weight: 800; font-size: 22px;
+        }
+        .article-author-bio .bio-content { flex: 1; }
+        .article-author-bio .bio-name {
+            font-size: 14px; color: var(--stb-muted);
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        .article-author-bio .bio-name a { color: var(--stb-cyan); font-weight: 700; text-decoration: none; }
+        .article-author-bio .bio-name .verified-tick {
+            display: inline-block; width: 13px; height: 13px; background: var(--stb-cyan);
+            color: #fff; border-radius: 50%; font-size: 8px;
+            text-align: center; line-height: 13px; margin-left: 4px;
+        }
+        .article-author-bio .bio-follow {
+            color: var(--stb-muted); font-size: 12px;
+        }
+        .article-author-bio .bio-follow i { color: #0a66c2; font-size: 16px; margin-left: 6px; vertical-align: middle; }
+        .article-author-bio p {
+            font-size: 14px; line-height: 1.7; color: #444;
+        }
+
+        /* Outbrain-style content recommendations grid */
+        .outbrain-section { margin: 32px 0; }
+        .outbrain-row {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 22px; margin-bottom: 24px;
+        }
+        .outbrain-row.row-2 { grid-template-columns: repeat(2, 1fr); }
+        .outbrain-card { font-size: 13px; }
+        .outbrain-card-img {
+            width: 100%; aspect-ratio: 4/3; border-radius: 4px; overflow: hidden;
+            background: linear-gradient(135deg, #6a4030, #4a2920);
+            display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.5); font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .outbrain-card-img.green { background: linear-gradient(135deg, #4a6a3a, #2a4a1a); }
+        .outbrain-card-img.warm { background: linear-gradient(135deg, #8a5a3a, #5a3a1a); }
+        .outbrain-card-img.gray { background: linear-gradient(135deg, #4a5a6a, #2a3a4a); }
+        .outbrain-card-img.dark { background: linear-gradient(135deg, #2a3a5a, #0a1a3a); }
+        .outbrain-card-img.purple { background: linear-gradient(135deg, #4a3a6a, #2a1a4a); }
+        .outbrain-card-img.olive { background: linear-gradient(135deg, #5a6a3a, #3a4a1a); }
+        .outbrain-card-img.shark { background: linear-gradient(135deg, #5a4a6a, #3a2a4a); }
+        .outbrain-card-title {
+            font-size: 14px; font-weight: 700; color: var(--stb-ink);
+            line-height: 1.3; margin-bottom: 6px;
+        }
+        .outbrain-card-sub {
+            font-size: 12px; color: #555; line-height: 1.4; margin-bottom: 8px;
+        }
+        .outbrain-card-meta {
+            display: flex; align-items: center; justify-content: space-between;
+            font-size: 11px; color: #999;
+        }
+        .outbrain-card-meta .sponsored { text-transform: uppercase; letter-spacing: 0.5px; }
+        .outbrain-card-meta .ob-cta {
+            background: #fff; border: 1px solid #d0d0d0;
+            padding: 6px 14px; border-radius: 16px;
+            font-weight: 600; color: var(--stb-ink); text-decoration: none;
+        }
+
+        /* Sidebar widgets */
+        .sidebar-widget { margin-bottom: 32px; }
+        .sidebar-widget-title {
+            font-size: 18px; font-weight: 800; color: var(--stb-ink);
+            margin-bottom: 16px; padding-bottom: 0;
+        }
+        .sidebar-widget-title::before {
+            content: '/ '; color: #d63031;
+        }
+        .sidebar-widget-title::after {
+            content: ' /'; color: #d63031;
+        }
+        .sidebar-search {
+            display: flex; border: 1.5px solid var(--stb-subtle);
+            border-radius: 4px; overflow: hidden; margin-bottom: 28px;
+        }
+
+        /* Close the Deal sidebar card */
+        .sidebar-deal-card {
+            position: relative;
+            background: linear-gradient(160deg, #0B1426 0%, #142342 100%);
+            border-radius: 14px;
+            padding: 24px 22px 22px;
+            margin-bottom: 32px;
+            color: #fff;
+            overflow: hidden;
+            box-shadow: 0 6px 24px rgba(11, 20, 38, 0.18);
+        }
+        .sidebar-deal-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #117fb0 0%, #F5A623 100%);
+        }
+        .sidebar-deal-card .deal-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 19px;
+            font-weight: 800;
+            color: #fff;
+            margin: 4px 0 14px;
+        }
+        .sidebar-deal-card .deal-title i {
+            color: #117fb0;
+            font-size: 16px;
+        }
+        .sidebar-deal-card .deal-copy {
+            font-size: 14px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.72);
+            margin-bottom: 18px;
+        }
+        .sidebar-deal-card .deal-copy strong {
+            color: #fff;
+            font-weight: 700;
+        }
+        .sidebar-deal-card .deal-cta {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: linear-gradient(135deg, #117fb0 0%, #00a4bb 100%);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 14px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(17, 127, 176, 0.3);
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .sidebar-deal-card .deal-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(17, 127, 176, 0.4);
+            text-decoration: none;
+        }
+        .sidebar-deal-card .deal-alt {
+            text-align: center;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.55);
+            margin: 14px 0 0;
+        }
+        .sidebar-deal-card .deal-alt a {
+            color: #117fb0;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(17, 127, 176, 0.4);
+        }
+        .sidebar-deal-card .deal-alt a:hover {
+            color: #1592cc;
+            border-color: #1592cc;
+        }
+        .sidebar-search input {
+            flex: 1; padding: 11px 14px; border: none; outline: none;
+            font-family: inherit; font-size: 13px; color: var(--stb-ink);
+        }
+        .sidebar-search button {
+            background: #fff; border: none; border-left: 1.5px solid var(--stb-subtle);
+            padding: 0 16px; cursor: pointer; font-size: 12px; color: #d63031;
+            font-weight: 700; font-family: inherit;
+        }
+        .sidebar-post {
+            display: flex; gap: 12px; padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .sidebar-post:last-child { border-bottom: none; }
+        .sidebar-post-img {
+            flex-shrink: 0; width: 80px; height: 56px; border-radius: 4px; overflow: hidden;
+            background: linear-gradient(135deg, #4a6a8a, #2a4a6a);
+            display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.4); font-size: 18px;
+        }
+        .sidebar-post-img.violet { background: linear-gradient(135deg, #6a4a8a, #4a2a6a); }
+        .sidebar-post-img.green { background: linear-gradient(135deg, #4a8a6a, #2a6a4a); }
+        .sidebar-post-img.amber { background: linear-gradient(135deg, #8a6a4a, #6a4a2a); }
+        .sidebar-post-img.red { background: linear-gradient(135deg, #8a4a4a, #6a2a2a); }
+        .sidebar-post-img.cyan { background: linear-gradient(135deg, #4a8a8a, #2a6a6a); }
+        .sidebar-post-info { flex: 1; min-width: 0; }
+        .sidebar-post-info h4 {
+            font-size: 13px; font-weight: 700; line-height: 1.35;
+            margin: 0 0 4px;
+        }
+        .sidebar-post-info h4 a { color: var(--stb-ink); text-decoration: none; }
+        .sidebar-post-info h4 a:hover { color: var(--stb-cyan); }
+        .sidebar-post-cats { font-size: 10px; color: var(--stb-cyan); }
+        .sidebar-post-cats a { color: var(--stb-cyan); text-decoration: none; }
+        .sidebar-post-date { font-size: 11px; color: var(--stb-muted); margin-top: 3px; }
+
+        /* Sticky video ad in sidebar */
+        .sticky-video-card {
+            position: sticky; top: 90px;
+            background: #000; border-radius: 8px; overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15); margin-top: 28px;
+            position: relative;
+        }
+        .sticky-video-card::after {
+            content: 'Ad'; position: absolute; top: 8px; right: 8px;
+            background: rgba(0,0,0,0.55); color: #fff;
+            font-size: 9px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.6px; padding: 3px 7px; border-radius: 3px; z-index: 2;
+        }
+        .sticky-video-screen {
+            width: 100%; aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #1a1a2e, #0f1a30);
+            display: flex; align-items: center; justify-content: center;
+            position: relative;
+        }
+        .sticky-video-screen .play-icon {
+            width: 50px; height: 50px; border-radius: 50%;
+            background: rgba(255,255,255,0.15); display: flex;
+            align-items: center; justify-content: center;
+            color: #fff; font-size: 16px;
+        }
+        .sticky-video-cta {
+            background: #1a1a1a; padding: 10px 14px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .sticky-video-cta span {
+            font-size: 12px; color: rgba(255,255,255,0.7);
+        }
+        .sticky-video-cta a {
+            background: #fff; color: #1a1a1a;
+            padding: 7px 14px; border-radius: 4px;
+            font-size: 11px; font-weight: 700; text-decoration: none;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+
+        /* Independent Coverage CTA card */
+        .independent-cta {
+            position: relative;
+            background: linear-gradient(160deg, #0B1426 0%, #142342 100%);
+            border-radius: 14px;
+            padding: 26px 32px 26px 36px;
+            margin: 32px 0;
+            color: #fff;
+            overflow: hidden;
+            box-shadow: 0 6px 28px rgba(11, 20, 38, 0.18);
+        }
+        .independent-cta::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; bottom: 0;
+            width: 6px;
+            background: linear-gradient(180deg, #117fb0 0%, #F5A623 100%);
+        }
+        .independent-cta::after {
+            content: '';
+            position: absolute;
+            top: -60px; right: -60px;
+            width: 220px; height: 220px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(17, 127, 176, 0.14), transparent 70%);
+            pointer-events: none;
+        }
+        .independent-cta .ic-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 11px;
+            font-weight: 800;
+            color: #117fb0;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+        .independent-cta .ic-eyebrow i { font-size: 11px; }
+        .independent-cta p {
+            font-size: 16px;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, 0.78);
+            margin: 0 0 22px;
+            position: relative;
+            z-index: 1;
+        }
+        .independent-cta strong { color: #fff; font-weight: 700; }
+        .independent-cta .ic-actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+        .independent-cta .ic-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #117fb0 0%, #00a4bb 100%);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 13px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(17, 127, 176, 0.32);
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .independent-cta .ic-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(17, 127, 176, 0.42);
+            text-decoration: none;
+        }
+        .independent-cta .ic-alt {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.55);
+        }
+        .independent-cta .ic-alt a {
+            color: #117fb0;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(17, 127, 176, 0.4);
+        }
+        .independent-cta .ic-alt a:hover {
+            color: #1592cc;
+            border-color: #1592cc;
+        }
+        @media (max-width: 640px) {
+            .independent-cta { padding: 22px 22px 22px 26px; margin: 24px 0; }
+            .independent-cta p { font-size: 14.5px; }
+            .independent-cta .ic-btn { padding: 12px 22px; font-size: 14px; }
+            .independent-cta .ic-actions { gap: 12px; }
+        }
+
+        /* Inline support / Go Ad-Free CTAs */
+        .inline-cta-block {
+            border-left: 4px solid var(--stb-cyan);
+            background: #f0fbfd;
+            padding: 18px 22px; border-radius: 6px;
+            margin: 28px 0;
+        }
+        .inline-cta-block p {
+            font-size: 14.5px; line-height: 1.6; color: var(--stb-ink);
+            margin: 0 0 12px;
+        }
+        .inline-cta-block strong { color: var(--stb-ink); }
+        .inline-cta-block .cta-row {
+            display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+        }
+        .inline-cta-block .btn-primary {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--stb-cyan); color: #fff;
+            padding: 9px 18px; border-radius: 5px;
+            font-size: 13px; font-weight: 700;
+            text-decoration: none; transition: background 0.15s;
+        }
+        .inline-cta-block .btn-primary:hover { background: var(--stb-cyan-dark); text-decoration: none; }
+        .inline-cta-block .alt-link {
+            font-size: 13px; color: var(--stb-muted);
+        }
+        .inline-cta-block .alt-link a {
+            color: var(--stb-cyan); font-weight: 600;
+            text-decoration: underline;
+        }
+
+        /* Article body link styling */
+        .article-post p a, .article-post li a {
+            color: var(--stb-cyan); font-weight: 600; text-decoration: none;
+        }
+        .article-post p a:hover, .article-post li a:hover { text-decoration: underline; }
+        .article-post h2 {
+            font-size: 24px; font-weight: 800; color: var(--stb-ink);
+            margin: 32px 0 16px;
+        }
+        .article-post p { font-size: 15px; line-height: 1.75; color: #333; margin-bottom: 16px; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .article-toc ol { columns: 1; }
+            .info-table { font-size: 13px; }
+            .info-table tbody td { padding: 9px 12px; }
+            .outbrain-row, .outbrain-row.row-2 { grid-template-columns: 1fr; gap: 16px; }
+            .native-sponsored { flex-direction: column; align-items: flex-start; }
+            .native-sponsored-img { width: 100%; height: 140px; }
+            .article-post h2 { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Social Bar -->
+    <div class="top-social-bar">
+        <div class="container top-social-inner">
+            <div class="social-icons top-social-icons">
+                <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="main-nav" id="mainNav">
+        <div class="container nav-inner">
+            <div class="nav-left">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/shark_logo.jpeg" alt="The Shark Tank Blog" width="60" height="50">
+                </a>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="episodes.html">Shark Tank Episodes</a></li>
+                    <li><a href="products.html">Shark Tank Products</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="startup-list.html">Shark Tank Startup List</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <button class="search-toggle" id="searchToggle" aria-label="Search">
+                    <i class="fa fa-search"></i>
+                </button>
+                <a href="#" class="btn-contact" onclick="event.preventDefault();window.gafOpenPopup&&gafOpenPopup()">Go Ads-Free</a>
+                <a href="login.html" class="btn-login-nav"><i class="fas fa-user"></i> Login</a>
+            </div>
+            <div class="search-box" id="searchBox">
+                <input type="text" placeholder="Search...">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Layout -->
+    <div class="article-layout">
+        <main class="article-content">
+            <article class="article-post">
+                <h1 class="article-title">Hundy Shark Tank Update – Shark Tank Season 17</h1>
+                <p class="article-excerpt">From a single ingredient to a bold mission, can this frozen treat really clean up the entire aisle?</p>
+
+                <div class="article-meta-updated">
+                    <span class="author-avatar-sm">L</span>
+                    <span>By <a href="#">Liya Shanawas</a></span>
+                    <span class="article-meta-divider">|</span>
+                    <span>Last updated: April 7, 2026</span>
+                </div>
+
+                <!-- Featured Image -->
+                <figure class="article-featured-img">
+                    <div class="article-video with-image">
+                        <div class="video-title-overlay">Hundy on Shark Tank</div>
+                    </div>
+                    <figcaption>Hundy on Shark Tank (Image Credit: ABC)</figcaption>
+                </figure>
+
+                <p>Take a walk down the frozen aisle, and you will see a long list of ingredients most people can't even pronounce. For Aviv Schor and Jayna DeCarlo, this was the problem. In Shark Tank Season 17 Episode 16, the founders presented Hundy.</p>
+
+                <!-- AD #1: Leaderboard -->
+                <div class="ad-inline">
+                    <div class="ad-label-above">Advertisement</div>
+                    <div class="ad-slot demo-ad">
+                        <div class="mock-ad leaderboard">
+                            <div class="mock-logo"><i class="fas fa-leaf"></i></div>
+                            <div class="mock-content">
+                                <div class="mock-eyebrow">Clean Ingredients</div>
+                                <div class="mock-headline">Read Every Label You Eat</div>
+                                <div class="mock-sub">The grocery scanner used by 2M+ shoppers.</div>
+                            </div>
+                            <span class="mock-cta">Try Free</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p>Hundy is a fruit pop made from a single ingredient. It has no additives and no preservatives; it's pure fruit.</p>
+
+                <!-- Embedded video placeholder -->
+                <div class="article-video">
+                    <div class="video-play-btn"><i class="fas fa-play"></i></div>
+                </div>
+
+                <p>This sounded easy. Maybe too easy. And that's exactly what made the Sharks pause and think if it was a breakthrough, or something anyone could replicate?</p>
+
+                <!-- AD #2: Leaderboard -->
+                <div class="ad-inline">
+                    <div class="ad-label-above">Advertisement</div>
+                    <div class="ad-slot demo-ad">
+                        <div class="mock-ad leaderboard">
+                            <div class="mock-logo"><i class="fas fa-store"></i></div>
+                            <div class="mock-content">
+                                <div class="mock-eyebrow">D2C Brands</div>
+                                <div class="mock-headline">Launch in 14 Days. Sell on Day 15.</div>
+                                <div class="mock-sub">Storefront, payments, fulfillment — done.</div>
+                            </div>
+                            <span class="mock-cta">Start Free</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TOC -->
+                <div class="article-toc">
+                    <div class="article-toc-header">Contents</div>
+                    <ol>
+                        <li><a href="#about">About Hundy</a></li>
+                        <li><a href="#pitch">Hundy Shark Tank Pitch</a></li>
+                        <li><a href="#unique">What Makes Hundy Unique?</a></li>
+                        <li><a href="#deal">Did Hundy Get a Deal on Shark Tank?</a></li>
+                        <li><a href="#update">Hundy Shark Tank Update</a></li>
+                        <li><a href="#where">Where Can You Buy It?</a></li>
+                        <li><a href="#summary">Quick Summary</a></li>
+                    </ol>
+                </div>
+
+                <h2 id="about">About Hundy</h2>
+                <table class="info-table">
+                    <thead>
+                        <tr><th>Category</th><th>Details</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Business Name</td><td>Hundy</td></tr>
+                        <tr><td>Founders</td><td>Aviv Schor and Jayna DeCarlo</td></tr>
+                        <tr><td>Industry</td><td>Food &amp; Beverage</td></tr>
+                        <tr><td>Product</td><td>Single-ingredient frozen fruit pops</td></tr>
+                        <tr><td>Funding (Pre-Shark Tank)</td><td>Self-funded</td></tr>
+                        <tr><td>Investment Asked</td><td>$300,000 for 10% equity</td></tr>
+                        <tr><td>Deal Status</td><td>No Deal</td></tr>
+                        <tr><td>Valuation</td><td>$3 million</td></tr>
+                    </tbody>
+                </table>
+
+                <!-- AD #3: Leaderboard -->
+                <div class="ad-inline">
+                    <div class="ad-label-above">Advertisement</div>
+                    <div class="ad-slot demo-ad">
+                        <div class="mock-ad leaderboard">
+                            <div class="mock-logo"><i class="fas fa-piggy-bank"></i></div>
+                            <div class="mock-content">
+                                <div class="mock-eyebrow">High-Yield Savings</div>
+                                <div class="mock-headline">4.5% APY. No Fees. No Catch.</div>
+                                <div class="mock-sub">Open in 90 seconds. FDIC-insured.</div>
+                            </div>
+                            <span class="mock-cta">Open Now</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p>Aviv and Jayna built Hundy around a growing movement, clean-label eating, with an idea they had. They wanted to be open with their customers and sell products where people know what they are eating.</p>
+                <p>The name "Hundy" means one hundred percent. Every single product that Hundy makes is made from 100% fruit. It comes in an easy-to-use tube and doesn't make a mess.</p>
+                <p>Hundy is different from frozen pops that are high in sugar and other unhealthy ingredients. Each pop is made using organic fruits like mango or pineapple. The founders said they ensure that the fruit retains its natural feel.</p>
+                <p>You can buy Hundy for between $8.99 and $9.99. The cost of making one Hundy ranges from $3.22 to $3.92, depending on the flavor. According to the founders, Hundy has a shelf life of up to two years.</p>
+
+                <!-- Independent Coverage CTA -->
+                <div class="independent-cta">
+                    <span class="ic-eyebrow"><i class="fas fa-shield-alt"></i> Independent Coverage</span>
+                    <p><strong>This article wasn't funded by a Shark.</strong> It was funded by readers like you. No equity taken. No royalty deals. Just independent coverage.</p>
+                    <div class="ic-actions">
+                        <a href="support.html" class="ic-btn">Back This Blog</a>
+                        <span class="ic-alt">or <a href="go-ads-free.html">read ad-free for $2/month</a></span>
+                    </div>
+                </div>
+
+                <h2 id="pitch">Hundy Shark Tank Pitch</h2>
+                <p>The founders were really excited. They talked about how Hundy is a better choice because it does not have artificial additives like other products in the market.</p>
+                <p>The Sharks loved the taste. <a href="#">Daniel Lubetzky</a> said it is extremely delicious. Kendra Scott and Lori Greiner liked that it is simple and good for health.</p>
+                <p>Then they started talking about the business side, and that changed how everyone felt.</p>
+                <p><a href="#">Kevin O'Leary</a> did not think the business was worth much, as the founders said it was. He thought they needed to be more unique. Rashaun Williams asked who exactly Hundy is for. Is it for kids, people who work out, or families?</p>
+
+                <!-- AD #4: Leaderboard -->
+                <div class="ad-inline">
+                    <div class="ad-label-above">Advertisement</div>
+                    <div class="ad-slot demo-ad">
+                        <div class="mock-ad leaderboard">
+                            <div class="mock-logo"><i class="fas fa-truck-fast"></i></div>
+                            <div class="mock-content">
+                                <div class="mock-eyebrow">Fulfillment for Founders</div>
+                                <div class="mock-headline">2-Day Shipping Without 7-Figure Volume</div>
+                                <div class="mock-sub">Pay only for what you ship.</div>
+                            </div>
+                            <span class="mock-cta">Get Quote</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p>The founders said they had made $300,000 in sales, and it was available in 350 stores. They thought they would bring a sale of $760,000 by the end of the year. The founders were unsure who their main customers were or how to sell Hundy to them, which was a big problem.</p>
+
+                <!-- Embedded YouTube placeholder -->
+                <div class="article-video with-image">
+                    <div class="video-title-overlay">HUNDY! Pitch | Shark Tank</div>
+                    <div class="video-channel">ABC</div>
+                    <div class="video-play-btn"><i class="fas fa-play"></i></div>
+                </div>
+
+                <!-- AD #5: Native sponsored content (looks like an article card) -->
+                <div class="native-sponsored">
+                    <div class="native-sponsored-img">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <div class="native-sponsored-body">
+                        <div class="native-sponsored-eyebrow">Sponsored Content</div>
+                        <div class="native-sponsored-title">Try AutoQuote Explorer® <i class="fas fa-arrow-up-right-from-square"></i></div>
+                        <div class="native-sponsored-by">By <a href="#">Progressive Insurance</a></div>
+                    </div>
+                </div>
+
+                <h2 id="unique">What Makes Hundy Unique?</h2>
+                <p>Hundy is different because it changes the idea of what a frozen treat can be. It stands out in the frozen snack market for its simplicity and clean-label approach.</p>
+                <ul class="body-list">
+                    <li>It has 100% organic fruit in it.</li>
+                    <li>The fruit keeps its texture and is not made into a puree.</li>
+                    <li>Hundy is a clean-label option compared to other freeze pops.</li>
+                </ul>
+
+                <h2 id="deal">Did Hundy Get a Deal on Shark Tank?</h2>
+                <p>While the taste of the product impressed the Sharks, the conversation quickly shifted from product quality to business fundamentals. As they had concerns about the business, they decided not to invest in it individually.</p>
+                <p><a href="#">Lori Greiner</a> was the Shark who said no to the product. While she loved the concept and its simplicity, she felt limited by its narrow appeal and didn't see it as the right investment for her.</p>
+                <p><a href="#">Kendra Scott</a> agreed. She liked the product and even saw herself as a customer, but didn't feel she was the right strategic partner to scale the business.</p>
+                <p>Kevin O'Leary focused on the company's valuation. He thought the company was not worth $3 million at that point. O'Leary believed he would be too tough on the deal's terms. So, instead of trying to make a deal that would be hard to agree on, he decided it was better to walk away from the company.</p>
+                <p>Daniel Lubetzky acknowledged the founders' strengths but highlighted a bigger issue: an unclear target audience and early-stage positioning. Without a clear customer focus, he felt that accelerating growth would be difficult and decided not to invest.</p>
+
+                <!-- AD #6: Native sponsored content (second one) -->
+                <div class="native-sponsored">
+                    <div class="native-sponsored-img">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <div class="native-sponsored-body">
+                        <div class="native-sponsored-eyebrow">Sponsored Content</div>
+                        <div class="native-sponsored-title">Compare 10+ Insurance Quotes <i class="fas fa-arrow-up-right-from-square"></i></div>
+                        <div class="native-sponsored-by">By <a href="#">Progressive Insurance</a></div>
+                    </div>
+                </div>
+
+                <p><a href="#">Rashaun Williams</a> noticed that the product did not fit with what people wanted to buy. He told the founders they should get money from people they know, like friends and family, or from people who really believe in what they are doing. For Rashaun Williams, the business was just not ready yet.</p>
+                <p>In the end, even though the company had a mission and a product the Sharks really liked, Hundy did not get any money from them, and they left without making a deal.</p>
+
+                <h2 id="update">Hundy Shark Tank Update</h2>
+                <p>The product was already in 350 stores when they were filming. They made $300,000 in sales.</p>
+                <p>Hundy is a new brand, so they are trying to figure out who their main customers are and what other products they can make. They might even come out with a berry flavor.</p>
+                <p>People want healthy, natural food. This demand is beneficial for the business. For Hundy to keep doing well, they need to know what makes them special and earn more money from each product they sell.</p>
+
+                <h2 id="where">Where Can You Buy It?</h2>
+                <p>The product can be found in retail stores, mostly in the western United States.</p>
+                <p>They also want to sell through their <a href="#">official website</a>. More stores will carry Hundy as it becomes widely available. Follow them on their <a href="#">Instagram</a> and <a href="#">Facebook</a> for more updates.</p>
+
+                <h2 id="summary">Quick Summary</h2>
+                <ul class="body-list">
+                    <li>Hundy brought a clean-label mission to Shark Tank but faced tough questions on business fundamentals.</li>
+                    <li>Aviv and Jayna pitched their business, hoping for $300K for 10% equity, but didn't secure a deal.</li>
+                    <li>The product is a 100% fruit frozen pop with no additives or preservatives.</li>
+                </ul>
+
+                <!-- AD #7: Rectangle ad -->
+                <div class="ad-inline rect-wrap">
+                    <div class="ad-label-above">Advertisement</div>
+                    <div class="ad-slot demo-ad">
+                        <div class="mock-ad rectangle">
+                            <div class="mock-img">
+                                <div class="mock-img-icon"><i class="fas fa-car"></i></div>
+                            </div>
+                            <div class="mock-body">
+                                <div class="mock-eyebrow">Auto Insurance</div>
+                                <div class="mock-headline">Good Drivers Save Money</div>
+                                <div class="mock-sub">Switch and save up to $750 per year.</div>
+                                <span class="mock-cta">Read More</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p>Read other <a href="#">Shark Tank Season 17 Episodes</a>.</p>
+                <p>Curious about the other businesses featured in Shark Tank Season 17 Episode 16? Explore more updates and see which ideas made a splash in the Tank.</p>
+                <ul class="body-list">
+                    <li><a href="#">Bloom Shark Tank</a></li>
+                    <li><a href="#">9 Strap Shark Tank</a></li>
+                    <li>Glimmer Wash Shark Tank</li>
+                </ul>
+
+                <!-- Author Bio -->
+                <div class="article-author-bio">
+                    <div class="bio-avatar">L</div>
+                    <div class="bio-content">
+                        <div class="bio-name">
+                            <span>By <a href="#">Liya Shanawas</a> <span class="verified-tick">✓</span></span>
+                            <span class="bio-follow">Follow <i class="fab fa-linkedin"></i></span>
+                        </div>
+                        <p>Liya Shanawas is a writer, editor, and brand strategist whose work has appeared in major publications, including The New York Times, HuffPost, Vogue, InStyle, Khaleej Times, and HelloGiggles. She previously served as a features editor at Dua Lipa's editorial platform Service95 and has written widely on culture, fashion, business, and lifestyle. With a background in journalism, storytelling, and brand strategy, Liya writes about business, culture, and innovation, bringing clarity and perspective to modern ideas and emerging trends.</p>
+                    </div>
+                </div>
+
+                <!-- AD #8: Leaderboard before content recs -->
+                <div class="ad-inline">
+                    <div class="ad-label-above">Advertisement</div>
+                    <div class="ad-slot demo-ad">
+                        <div class="mock-ad leaderboard">
+                            <div class="mock-logo"><i class="fas fa-rocket"></i></div>
+                            <div class="mock-content">
+                                <div class="mock-eyebrow">For Founders</div>
+                                <div class="mock-headline">Raise Smarter. Pitch Tighter.</div>
+                                <div class="mock-sub">The toolkit used by 12,000+ founders.</div>
+                            </div>
+                            <span class="mock-cta">Try Free</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Outbrain-style content recommendations -->
+                <div class="outbrain-section">
+                    <div class="outbrain-row">
+                        <div class="outbrain-card">
+                            <div class="outbrain-card-img"><i class="fas fa-coins"></i></div>
+                            <div class="outbrain-card-title">If You're Collecting Under $3950 In SS a Month: You're Eligible for…</div>
+                            <div class="outbrain-card-meta">
+                                <span><strong>SilverPenny</strong> | <span class="sponsored">Sponsored</span></span>
+                                <a href="#" class="ob-cta">Learn more</a>
+                            </div>
+                        </div>
+                        <div class="outbrain-card">
+                            <div class="outbrain-card-img green"><i class="fas fa-tree"></i></div>
+                            <div class="outbrain-card-title">If You Need To Kill Time On Your PC, This Game Is A Must!</div>
+                            <div class="outbrain-card-sub">This game will keep you up at night. Only for 18+</div>
+                            <div class="outbrain-card-meta">
+                                <span><strong>Heroes of Hist…</strong> | <span class="sponsored">Sponsored</span></span>
+                                <a href="#" class="ob-cta">Play Now</a>
+                            </div>
+                        </div>
+                        <div class="outbrain-card">
+                            <div class="outbrain-card-img warm"><i class="fas fa-user"></i></div>
+                            <div class="outbrain-card-title">Many women here want a senior dating — join in.</div>
+                            <div class="outbrain-card-sub">Dating for Senior Singles</div>
+                            <div class="outbrain-card-meta">
+                                <span><strong>Youmetalks</strong> | <span class="sponsored">Sponsored</span></span>
+                                <a href="#" class="ob-cta">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="outbrain-row row-2">
+                        <div class="outbrain-card">
+                            <div class="outbrain-card-img dark"><i class="fas fa-star"></i></div>
+                            <div class="outbrain-card-title">$100K Shark Tank Deal? What Happened Next Shocked Her</div>
+                            <div class="outbrain-card-meta"><span>Shark Tank Blog</span></div>
+                        </div>
+                        <div class="outbrain-card">
+                            <div class="outbrain-card-img purple"><i class="fas fa-tv"></i></div>
+                            <div class="outbrain-card-title">Lori Greiner Goes Full Time on Shark Tank</div>
+                            <div class="outbrain-card-meta"><span>Shark Tank Blog</span></div>
+                        </div>
+                    </div>
+
+                    <div class="outbrain-row">
+                        <div class="outbrain-card">
+                            <div class="outbrain-card-img olive"><i class="fas fa-leaf"></i></div>
+                            <div class="outbrain-card-title">Tired of Pre-Mowing? Master Tall and Thick Grass Easily</div>
+                            <div class="outbrain-card-sub">Introducing the world's first Lymow Pro real rotary blades. The unique grass-…</div>
+                            <div class="outbrain-card-meta">
+                                <span><strong>Lymow</strong> | <span class="sponsored">Sponsored</span></span>
+                                <a href="#" class="ob-cta">Learn More</a>
+                            </div>
+                        </div>
+                        <div class="outbrain-card">
+                            <div class="outbrain-card-img gray"><i class="fas fa-graduation-cap"></i></div>
+                            <div class="outbrain-card-title">Avoid AI flags Grammarly misses. Switch to Paperpal.</div>
+                            <div class="outbrain-card-sub">Get the specialized AI writing assistant built for students. Polish every…</div>
+                            <div class="outbrain-card-meta">
+                                <span><strong>Paperpal</strong> | <span class="sponsored">Sponsored</span></span>
+                                <a href="#" class="ob-cta">Learn More</a>
+                            </div>
+                        </div>
+                        <div class="outbrain-card">
+                            <div class="outbrain-card-img shark"><i class="fas fa-dumbbell"></i></div>
+                            <div class="outbrain-card-title">Why Your Rotator Cuff Isn't Healing (It's Not Just Age)</div>
+                            <div class="outbrain-card-meta">
+                                <span><strong>Shoulder Relief News</strong> | <span class="sponsored">Sponsored</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar">
+            <!-- Search box -->
+            <div class="sidebar-search">
+                <input type="text" placeholder="Search Headlines, News...">
+                <button>| Search</button>
+            </div>
+
+            <!-- Close the Deal CTA card -->
+            <div class="sidebar-deal-card">
+                <h4 class="deal-title"><i class="fas fa-bolt"></i> Close the Deal</h4>
+                <p class="deal-copy"><strong>No equity. No royalties.</strong> Just <strong>$2/month</strong> for zero ads across the entire site.</p>
+                <a href="go-ads-free.html" class="deal-cta">I'm In</a>
+                <p class="deal-alt">Or <a href="support.html">support the coverage</a> from $3/mo</p>
+            </div>
+
+            <!-- Recent Blogs widget -->
+            <div class="sidebar-widget">
+                <h3 class="sidebar-widget-title">Recent Blogs</h3>
+                <div class="sidebar-post">
+                    <div class="sidebar-post-img red"><i class="fas fa-socks"></i></div>
+                    <div class="sidebar-post-info">
+                        <h4><a href="#">Bombas Socks Hit $3.4 Billion With Daymond John Shark Tank Backing</a></h4>
+                        <div class="sidebar-post-cats">
+                            <a href="#">Beyond the Tank</a> / <a href="#">Business</a> / <a href="#">Season 6</a><br>
+                            <a href="#">Shark Tank Moments</a> / <a href="#">Success Stories</a> / <a href="#">The Shark Tank Effect</a>
+                        </div>
+                        <div class="sidebar-post-date">April 7, 2026</div>
+                    </div>
+                </div>
+                <div class="sidebar-post">
+                    <div class="sidebar-post-img amber"><i class="fas fa-trophy"></i></div>
+                    <div class="sidebar-post-info">
+                        <h4><a href="#">Top Shark Tank Products by Lifetime Sales and Revenue</a></h4>
+                        <div class="sidebar-post-cats">
+                            <a href="#">Shark Tank Product Reviews</a> / <a href="#">Success Stories</a> / <a href="#">The Shark Tank Effect</a> / <a href="#">Updates</a>
+                        </div>
+                        <div class="sidebar-post-date">April 7, 2026</div>
+                    </div>
+                </div>
+                <div class="sidebar-post">
+                    <div class="sidebar-post-img violet"><i class="fas fa-question"></i></div>
+                    <div class="sidebar-post-info">
+                        <h4><a href="#">Which Unusual Shark Tank Products Are Actually Worth Buying?</a></h4>
+                        <div class="sidebar-post-cats">
+                            <a href="#">CNBC</a> / <a href="#">Innovation</a> / <a href="#">Season 12</a> / <a href="#">Season 6</a><br>
+                            <a href="#">Season 9</a> / <a href="#">Shark Tank Product Reviews</a> / <a href="#">The Shark Tank Effect</a>
+                        </div>
+                        <div class="sidebar-post-date">April 2, 2026</div>
+                    </div>
+                </div>
+                <div class="sidebar-post">
+                    <div class="sidebar-post-img green"><i class="fas fa-store"></i></div>
+                    <div class="sidebar-post-info">
+                        <h4><a href="#">12 Epic Shark Tank Finds Stocking Costco Shelves Now</a></h4>
+                        <div class="sidebar-post-cats">
+                            <a href="#">CNBC</a> / <a href="#">Updates</a>
+                        </div>
+                        <div class="sidebar-post-date">April 1, 2026</div>
+                    </div>
+                </div>
+                <div class="sidebar-post">
+                    <div class="sidebar-post-img cyan"><i class="fas fa-gem"></i></div>
+                    <div class="sidebar-post-info">
+                        <h4><a href="#">Lori Greiner's $300K Drop Stop Bet Sparks $60M Success Story</a></h4>
+                        <div class="sidebar-post-cats">
+                            <a href="#">Business</a> / <a href="#">CNBC</a> / <a href="#">Season 4</a> / <a href="#">The Shark Tank Effect</a>
+                        </div>
+                        <div class="sidebar-post-date">April 1, 2026</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Pitches widget -->
+            <div class="sidebar-widget">
+                <h3 class="sidebar-widget-title" style="font-size:16px">Recent Shark Tank Pitches</h3>
+                <div class="sidebar-post">
+                    <div class="sidebar-post-img"><i class="fas fa-snowflake"></i></div>
+                    <div class="sidebar-post-info">
+                        <h4><a href="#">Hundy Shark Tank Update – Shark Tank Season 17</a></h4>
+                        <div class="sidebar-post-date">April 7, 2026</div>
+                    </div>
+                </div>
+                <div class="sidebar-post">
+                    <div class="sidebar-post-img amber"><i class="fas fa-shoe-prints"></i></div>
+                    <div class="sidebar-post-info">
+                        <h4><a href="#">9 Strap Technology Shark Tank Update – Shark Tank Season 17</a></h4>
+                        <div class="sidebar-post-date">April 6, 2026</div>
+                    </div>
+                </div>
+                <div class="sidebar-post">
+                    <div class="sidebar-post-img green"><i class="fas fa-seedling"></i></div>
+                    <div class="sidebar-post-info">
+                        <h4><a href="#">Bloom Shark Tank Update – Shark Tank Season 17</a></h4>
+                        <div class="sidebar-post-date">April 2, 2026</div>
+                    </div>
+                </div>
+                <div class="sidebar-post">
+                    <div class="sidebar-post-img red"><i class="fas fa-tv"></i></div>
+                    <div class="sidebar-post-info">
+                        <h4><a href="#">Shark Tank Season 17 Episode 15</a></h4>
+                        <div class="sidebar-post-date">March 31, 2026</div>
+                    </div>
+                </div>
+                <div class="sidebar-post">
+                    <div class="sidebar-post-img cyan"><i class="fas fa-cube"></i></div>
+                    <div class="sidebar-post-info">
+                        <h4><a href="#">Everything Blocks Shark Tank Update – Shark Tank Season 17</a></h4>
+                        <div class="sidebar-post-date">March 30, 2026</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Popular Startups widget -->
+            <div class="sidebar-widget">
+                <h3 class="sidebar-widget-title" style="font-size:16px">Popular Startups That Appeared on Shark Tank</h3>
+                <div class="sidebar-post">
+                    <div class="sidebar-post-img green"><i class="fas fa-leaf"></i></div>
+                    <div class="sidebar-post-info">
+                        <h4><a href="#">Bloom Shark Tank Update – Shark Tank Season 17</a></h4>
+                        <div class="sidebar-post-date">April 7, 2026</div>
+                    </div>
+                </div>
+                <div class="sidebar-post">
+                    <div class="sidebar-post-img amber"><i class="fas fa-snowflake"></i></div>
+                    <div class="sidebar-post-info">
+                        <h4><a href="#">Hundy Shark Tank Update – Shark Tank Season 17</a></h4>
+                        <div class="sidebar-post-date">April 7, 2026</div>
+                    </div>
+                </div>
+                <div class="sidebar-post">
+                    <div class="sidebar-post-img cyan"><i class="fas fa-cube"></i></div>
+                    <div class="sidebar-post-info">
+                        <h4><a href="#">Everything Blocks Shark Tank Update – Shark Tank Season 17</a></h4>
+                        <div class="sidebar-post-date">April 6, 2026</div>
+                    </div>
+                </div>
+                <div class="sidebar-post">
+                    <div class="sidebar-post-img"><i class="fas fa-mountain"></i></div>
+                    <div class="sidebar-post-info">
+                        <h4><a href="#">Hele Outdoors Shark Tank Update – Shark Tank Season 17</a></h4>
+                        <div class="sidebar-post-date">April 6, 2026</div>
+                    </div>
+                </div>
+                <div class="sidebar-post">
+                    <div class="sidebar-post-img amber"><i class="fas fa-shoe-prints"></i></div>
+                    <div class="sidebar-post-info">
+                        <h4><a href="#">9 Strap Technology Shark Tank Update – Shark Tank Season 17</a></h4>
+                        <div class="sidebar-post-date">April 6, 2026</div>
+                    </div>
+                </div>
+                <div class="sidebar-post">
+                    <div class="sidebar-post-img red"><i class="fas fa-tshirt"></i></div>
+                    <div class="sidebar-post-info">
+                        <h4><a href="hang-hero.html">Hang Hero Shark Tank Update – Shark Tank Season 17</a></h4>
+                        <div class="sidebar-post-date">April 6, 2026</div>
+                    </div>
+                </div>
+                <div class="sidebar-post">
+                    <div class="sidebar-post-img violet"><i class="fas fa-microphone"></i></div>
+                    <div class="sidebar-post-info">
+                        <h4><a href="#">Never Have I Ever Shark Tank Update – Shark Tank Season 17</a></h4>
+                        <div class="sidebar-post-date">April 6, 2026</div>
+                    </div>
+                </div>
+                <div class="sidebar-post">
+                    <div class="sidebar-post-img"><i class="fas fa-cube"></i></div>
+                    <div class="sidebar-post-info">
+                        <h4><a href="#">GOB Shark Tank Update – Shark Tank Season 17</a></h4>
+                        <div class="sidebar-post-date">April 6, 2026</div>
+                    </div>
+                </div>
+                <div class="sidebar-post">
+                    <div class="sidebar-post-img amber"><i class="fas fa-beer"></i></div>
+                    <div class="sidebar-post-info">
+                        <h4><a href="beer-girl.html">Beer Girl Shark Tank Update – Shark Tank Season 17</a></h4>
+                        <div class="sidebar-post-date">April 6, 2026</div>
+                    </div>
+                </div>
+                <div class="sidebar-post">
+                    <div class="sidebar-post-img cyan"><i class="fas fa-recycle"></i></div>
+                    <div class="sidebar-post-info">
+                        <h4><a href="#">REMplenish Shark Tank Update – Shark Tank Season 17</a></h4>
+                        <div class="sidebar-post-date">April 6, 2026</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sticky video ad in sidebar -->
+            <div class="sticky-video-card">
+                <div class="ad-slot demo-ad">
+                    <div class="sticky-video-screen">
+                        <div class="play-icon"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="sticky-video-cta">
+                        <span><i class="fas fa-volume-mute"></i></span>
+                        <a href="#">Learn more</a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="assets/images/shark_logo.jpeg" alt="The Shark Tank Blog" width="80" height="70">
+                        <span class="footer-logo-text">The Shark Tank Blog</span>
+                    </div>
+                    <p>Shark Tank Blog is independent of and not affiliated or endorsed by ABC, Sony, the producers or any other company associated with the television show, Shark Tank. Shark Tank Blog is an opinion blog. Views expressed on this blog are solely owned by the author individually and not that of Shark Tank Blog or principles of Shark Tank Blog.</p>
+                </div>
+                <div class="footer-menu">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="episodes.html">Shark Tank Episodes</a></li>
+                        <li><a href="products.html">Shark Tank Products</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="startup-list.html">Shark Tank Businesses</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Subscribe to our Newsletter</h4>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="footer-bottom-bar">
+        <p><a href="#">Terms of Content Use</a></p>
+        <p class="raptive-badge">A RAPTIVE PARTNER SITE</p>
+    </div>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fa fa-chevron-up"></i></button>
+
+    <!-- Go Ad-Free floating button (bottom-right) -->
+    <a href="go-ads-free.html" class="go-adfree-float" aria-label="Go Ad-Free">
+        <span class="gaf-shark">🦈</span>
+        <span class="gaf-text">Go Ad-Free</span>
+    </a>
+
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script src="go-ad-free.js" data-delay="800" data-poll="3000" data-selectors=".demo-ad"></script>
+</body>
+</html>

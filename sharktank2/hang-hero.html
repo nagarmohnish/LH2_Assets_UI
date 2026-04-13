@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hang Hero Shark Tank Update – Shark Tank Season 17 | Shark Tank Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="page-styles.css">
+    <link rel="stylesheet" href="auth-styles.css">
+    <link rel="stylesheet" href="article-styles.css">
+    <style>
+        /* Ad Slot Styles for Article Page */
+        .ad-slot {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-body);
+            color: #b0b0b0;
+            font-size: 11px;
+            letter-spacing: .5px;
+            position: relative;
+        }
+        .ad-slot-label {
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #c5c5c5;
+            z-index: 1;
+        }
+        .ad-slot.demo-ad {
+            background: #f5f6f7;
+            border: 1px dashed #ddd;
+            border-radius: 6px;
+            min-height: 90px;
+            position: relative;
+        }
+        .ad-slot.demo-ad .ad-dim {
+            color: #c0c0c0;
+            font-size: 10.5px;
+        }
+        .ad-inline {
+            margin: 24px 0;
+            text-align: center;
+        }
+        .ad-inline .ad-slot {
+            width: 100%;
+            min-height: 250px;
+        }
+        .ad-sidebar-rect .ad-slot {
+            width: 100%;
+            max-width: 300px;
+            height: 250px;
+            margin: 0 auto;
+        }
+        .ad-sidebar-sky .ad-slot {
+            width: 100%;
+            max-width: 300px;
+            height: 600px;
+            margin: 0 auto;
+        }
+        /* Sticky bottom bar */
+        .ad-sticky-bottom {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1a1d24;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            z-index: 998;
+            box-shadow: 0 -2px 16px rgba(0,0,0,.25);
+            font-size: 14px;
+            color: #bbb;
+        }
+        .ad-sticky-bottom .sticky-text { font-weight: 400; }
+        .ad-sticky-bottom .sticky-cta {
+            background: var(--cyan);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background .2s;
+            border: none;
+            font-family: var(--font-body);
+        }
+        .ad-sticky-bottom .sticky-cta:hover { background: var(--cyan-hover); }
+        .ad-sticky-bottom .sticky-close {
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 4px 8px;
+            transition: color .15s;
+        }
+        .ad-sticky-bottom .sticky-close:hover { color: #fff; }
+        .ad-sticky-bottom.hidden { display: none; }
+        /* ---- Zone A: Compact inline banner ---- */
+        .zone-a {
+            background: #f8f9fa;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 24px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .zone-a-text { flex: 1; min-width: 200px; }
+        .zone-a-text strong { font-size: 14px; color: #1a1a1a; display: block; margin-bottom: 2px; }
+        .zone-a-text span { font-size: 12.5px; color: #888; }
+        .zone-a-cta {
+            display: inline-flex; align-items: center; gap: 5px;
+            padding: 8px 18px; background: var(--cyan); color: #fff !important;
+            border: none; border-radius: 6px; font-size: 12px; font-weight: 700;
+            cursor: pointer; font-family: var(--font-body); white-space: nowrap;
+            text-decoration: none !important; transition: background .15s;
+        }
+        .zone-a-cta:hover { background: var(--cyan-hover); color: #fff !important; }
+
+        /* ---- Zone B: Mid-article strip ---- */
+        .zone-b {
+            background: linear-gradient(135deg, #0e1117, #151b28);
+            border-radius: 10px;
+            padding: 24px 28px;
+            margin: 32px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .zone-b-text { flex: 1; min-width: 200px; }
+        .zone-b-text strong { font-size: 15px; color: #fff; display: block; margin-bottom: 4px; }
+        .zone-b-text span { font-size: 13px; color: rgba(255,255,255,.5); }
+        .zone-b-cta {
+            display: inline-flex; align-items: center; gap: 5px;
+            padding: 10px 22px; background: var(--cyan); color: #fff !important;
+            border: none; border-radius: 8px; font-size: 13px; font-weight: 700;
+            cursor: pointer; font-family: var(--font-body); white-space: nowrap;
+            text-decoration: none !important; transition: background .15s, transform .1s;
+        }
+        .zone-b-cta:hover { background: var(--cyan-hover); color: #fff !important; transform: translateY(-1px); }
+
+        /* ---- Zone D: Author bio strip ---- */
+        .zone-d {
+            background: #f8f9fa;
+            border-left: 3px solid var(--cyan);
+            border-radius: 0 8px 8px 0;
+            padding: 18px 22px;
+            margin: 24px 0 0;
+        }
+        .zone-d strong { font-size: 14px; color: #1a1a1a; display: block; margin-bottom: 4px; }
+        .zone-d span { font-size: 13px; color: #777; }
+        .zone-d a {
+            display: inline-flex; align-items: center; gap: 4px;
+            color: var(--cyan); font-size: 13px; font-weight: 700;
+            text-decoration: none; margin-top: 8px;
+        }
+        .zone-d a:hover { text-decoration: underline; }
+
+        /* ---- Zone E: Sticky sidebar card ---- */
+        .zone-e {
+            position: sticky;
+            top: 80px;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 24px 20px;
+            text-align: center;
+            margin-top: 24px;
+        }
+        .zone-e h4 { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; }
+        .zone-e p { font-size: 12.5px; color: #999; margin-bottom: 14px; line-height: 1.5; }
+        .zone-e-cta {
+            display: block; width: 100%;
+            padding: 11px 16px; background: var(--cyan); color: #fff;
+            border: none; border-radius: 8px; font-size: 13px; font-weight: 700;
+            cursor: pointer; font-family: var(--font-body);
+            text-decoration: none; text-align: center;
+            transition: background .15s;
+            margin-bottom: 10px;
+        }
+        .zone-e-cta:hover { background: var(--cyan-hover); }
+        .zone-e-link { font-size: 11.5px; color: #bbb; }
+        .zone-e-link a { color: var(--cyan); text-decoration: none; font-weight: 600; }
+        .zone-e-link a:hover { text-decoration: underline; }
+
+        .scroll-top { bottom: 65px; }
+
+        /* ---- Article Support Appeal ---- */
+        .article-support-appeal {
+            margin-top: 40px;
+            padding: 36px 0 0;
+            border-top: 1px solid #e8e8e8;
+        }
+        .appeal-headline {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 18px;
+            line-height: 1.3;
+        }
+        .article-support-appeal > p {
+            font-size: 15.5px !important;
+            color: #444 !important;
+            line-height: 1.8 !important;
+            margin-bottom: 16px !important;
+        }
+        .appeal-reasons {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        .appeal-reasons li {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.75;
+            margin-bottom: 8px;
+        }
+        .appeal-highlight {
+            background: #fffbeb;
+            border-left: 3px solid #f5c518;
+            padding: 18px 22px;
+            border-radius: 0 8px 8px 0;
+            margin: 24px 0 28px;
+        }
+        .appeal-highlight p {
+            font-size: 15px !important;
+            color: #333 !important;
+            line-height: 1.7 !important;
+            margin: 0 !important;
+        }
+        /* Embedded article widget */
+        .aw-widget {
+            border: 1px solid #e8e8e8;
+            border-radius: 14px;
+            background: #fff;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+        }
+        .aw-body { padding: 32px 28px 24px; }
+        .aw-steps { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 22px; }
+        .aw-step { width: 7px; height: 7px; border-radius: 50%; background: #e0e0e0; transition: background 0.2s; }
+        .aw-step.active { background: #6366f1; }
+        .aw-step.done { background: #6366f1; opacity: 0.35; }
+        .aw-line { width: 20px; height: 2px; background: #eee; }
+        .aw-title { font-family: 'Playfair Display', var(--font-heading), Georgia, serif; font-size: 22px; font-weight: 700; color: #1a1a1a; text-align: center; font-style: italic; margin-bottom: 4px; }
+        .aw-sub { font-size: 13px; color: #999; text-align: center; margin-bottom: 24px; }
+        .aw-amt-box { border: 1.5px solid #e4e4e4; border-radius: 12px; padding: 18px 20px; display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 16px; }
+        .aw-amt-left { display: flex; align-items: baseline; gap: 2px; }
+        .aw-amt-dollar { font-size: 17px; color: #bbb; font-weight: 600; }
+        .aw-amt-val { font-size: 38px; font-weight: 900; color: #1a1a1a; line-height: 1; border: none; outline: none; width: 60px; background: transparent; font-family: inherit; }
+        .aw-amt-per { font-size: 14px; color: #999; margin-left: 2px; }
+        .aw-amt-daily { font-size: 12px; color: #ccc; }
+        .aw-presets { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 22px; }
+        .aw-preset { padding: 12px 6px; border: 1.5px solid #e8e8e8; border-radius: 10px; background: #fff; cursor: pointer; font-size: 16px; font-weight: 700; color: #444; text-align: center; position: relative; transition: all 0.15s; font-family: inherit; }
+        .aw-preset:hover { border-color: #6366f1; }
+        .aw-preset.active { border-color: #6366f1; background: #eef2ff; color: #4338ca; }
+        .aw-preset .aw-pop { position: absolute; top: -8px; left: 50%; transform: translateX(-50%); font-size: 9px; font-weight: 700; color: #fff; background: #6366f1; padding: 2px 9px; border-radius: 7px; white-space: nowrap; }
+        .aw-cta { width: 100%; padding: 15px; border: none; border-radius: 12px; background: #6366f1; color: #fff; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; transition: background 0.15s, transform 0.1s; margin-bottom: 14px; }
+        .aw-cta:hover { background: #4f46e5; transform: translateY(-1px); }
+        .aw-cta.processing { opacity: 0.7; cursor: not-allowed; }
+        .aw-perk-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+        .aw-perk { font-size: 12px; color: #6366f1; font-weight: 600; }
+        .aw-perk em { font-style: italic; }
+        .aw-badge { display: inline-flex; align-items: center; gap: 3px; padding: 4px 10px; border: 1px solid #e0e0e0; border-radius: 14px; font-size: 11px; color: #999; }
+        .aw-trust { text-align: center; font-size: 11px; color: #ccc; }
+        /* S2 Google */
+        .aw-glogo { display: flex; justify-content: center; margin-bottom: 14px; }
+        .aw-glogo svg { width: 32px; height: 32px; padding: 5px; background: #f5f5f5; border-radius: 50%; }
+        .aw-s2-title { font-size: 17px; font-weight: 700; color: #1a1a1a; text-align: center; margin-bottom: 3px; }
+        .aw-s2-sub { font-size: 12px; color: #bbb; text-align: center; margin-bottom: 18px; }
+        .aw-account { display: flex; align-items: center; gap: 12px; padding: 13px 14px; border: 1.5px solid #eee; border-radius: 10px; margin-bottom: 8px; cursor: pointer; transition: border-color 0.15s, background 0.15s; }
+        .aw-account:hover { border-color: #ddd; background: #fafafa; }
+        .aw-acc-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; font-weight: 700; flex-shrink: 0; }
+        .aw-acc-info { flex: 1; }
+        .aw-acc-name { font-size: 13px; font-weight: 600; color: #333; }
+        .aw-acc-email { font-size: 11px; color: #999; }
+        .aw-acc-arrow { color: #ccc; font-size: 12px; }
+        .aw-divider { display: flex; align-items: center; gap: 10px; margin: 14px 0; }
+        .aw-divider::before, .aw-divider::after { content: ''; flex: 1; height: 1px; background: #eee; }
+        .aw-divider span { font-size: 11px; color: #ccc; }
+        .aw-email-btn { display: block; width: 100%; padding: 10px; border: none; background: none; color: #aaa; font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit; text-align: center; transition: color 0.15s; }
+        .aw-email-btn:hover { color: #6366f1; }
+        /* S3 Payment */
+        .aw-s3-label { font-size: 12px; color: #999; margin-bottom: 3px; }
+        .aw-s3-amount { font-size: 26px; font-weight: 900; color: #1a1a1a; margin-bottom: 20px; line-height: 1; }
+        .aw-s3-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+        .aw-s3-ht { font-size: 13px; font-weight: 700; color: #333; }
+        .aw-s3-hr { font-size: 11px; color: #aaa; }
+        .aw-method { border: 1.5px solid #eee; border-radius: 10px; padding: 14px 16px; margin-bottom: 8px; cursor: pointer; transition: border-color 0.15s; }
+        .aw-method:hover { border-color: #ddd; }
+        .aw-method.active { border-color: #6366f1; }
+        .aw-method-top { display: flex; align-items: center; justify-content: space-between; }
+        .aw-method-left { display: flex; align-items: center; gap: 10px; }
+        .aw-method-icon { font-size: 15px; color: #888; }
+        .aw-method-name { font-size: 13px; font-weight: 600; color: #333; }
+        .aw-method-sub { font-size: 10px; color: #6366f1; font-weight: 600; }
+        .aw-method-chev { color: #ccc; font-size: 10px; transition: transform 0.2s; }
+        .aw-method.active .aw-method-chev { transform: rotate(180deg); }
+        .aw-method-form { margin-top: 10px; display: none; }
+        .aw-method.active .aw-method-form { display: block; }
+        .aw-field { margin-bottom: 8px; }
+        .aw-field label { display: block; font-size: 10px; font-weight: 600; color: #888; margin-bottom: 3px; }
+        .aw-field input { width: 100%; padding: 9px 11px; border: 1.5px solid #e4e4e4; border-radius: 7px; font-size: 13px; outline: none; font-family: inherit; transition: border-color 0.15s; }
+        .aw-field input:focus { border-color: #6366f1; }
+        .aw-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+        .aw-express-label { font-size: 10px; font-weight: 600; color: #aaa; text-align: center; margin: 14px 0 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .aw-express-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 6px; margin-bottom: 12px; }
+        .aw-express-btn { padding: 9px 4px; border: 1.5px solid #eee; border-radius: 7px; text-align: center; cursor: pointer; font-size: 10px; font-weight: 600; color: #555; background: #fff; transition: border-color 0.15s; font-family: inherit; }
+        .aw-express-btn:hover { border-color: #6366f1; }
+        .aw-s3-trust { text-align: center; font-size: 10px; color: #ccc; margin-bottom: 12px; }
+        /* S4 Success */
+        .aw-s4-check { width: 40px; height: 40px; border-radius: 50%; background: #6366f1; color: #fff; font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; }
+        .aw-s4-text { text-align: center; font-size: 14px; color: #666; line-height: 1.6; margin-bottom: 14px; }
+        .aw-s4-text strong { color: #1a1a1a; }
+        .aw-s4-badge { display: inline-flex; align-items: center; gap: 5px; padding: 6px 14px; border: 1.5px solid #6366f1; border-radius: 16px; color: #6366f1; font-size: 11px; font-weight: 700; margin-bottom: 18px; }
+        .aw-cert { border: 1px solid #e8e8e8; border-radius: 10px; padding: 20px; text-align: center; position: relative; margin-bottom: 14px; }
+        .aw-cert-bar { height: 3px; background: linear-gradient(90deg,#6366f1,#818cf8); border-radius: 10px 10px 0 0; position: absolute; top: 0; left: 0; right: 0; }
+        .aw-cert-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #bbb; margin-bottom: 8px; }
+        .aw-cert-small { font-size: 11px; color: #bbb; }
+        .aw-cert-name { font-size: 18px; font-weight: 800; color: #1a1a1a; margin: 3px 0; }
+        .aw-cert-cause { font-style: italic; color: #aaa; font-size: 11px; margin: 6px 0; }
+        .aw-cert-amount { font-weight: 800; font-size: 14px; color: #1a1a1a; }
+        .aw-cert-date { font-size: 10px; color: #bbb; margin-top: 2px; }
+        .aw-share-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; }
+        .aw-share-btn { padding: 8px; border: 1.5px solid #eee; border-radius: 7px; color: #555; font-size: 11px; font-weight: 600; cursor: pointer; text-decoration: none; text-align: center; display: flex; align-items: center; justify-content: center; gap: 4px; background: #fff; transition: border-color 0.15s; font-family: inherit; }
+        .aw-share-btn:hover { border-color: #6366f1; }
+        .aw-back { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: #bbb; cursor: pointer; border: none; background: none; font-family: inherit; margin-bottom: 12px; transition: color 0.15s; }
+        .aw-back:hover { color: #888; }
+        .aw-spinner { display: inline-block; width: 13px; height: 13px; border: 2.5px solid rgba(255,255,255,.3); border-top-color: #fff; border-radius: 50%; animation: aw-spin 0.6s linear infinite; vertical-align: middle; margin-right: 5px; }
+        @keyframes aw-spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <!-- Top Social Bar -->
+    <div class="top-social-bar">
+        <div class="container top-social-inner">
+            <div class="social-icons top-social-icons">
+                <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="main-nav" id="mainNav">
+        <div class="container nav-inner">
+            <div class="nav-left">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/shark_logo.jpeg" alt="The Shark Tank Blog" width="60" height="50">
+                </a>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="episodes.html">Shark Tank Episodes</a></li>
+                    <li><a href="products.html">Shark Tank Products</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="startup-list.html">Shark Tank Startup List</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <button class="search-toggle" id="searchToggle" aria-label="Search">
+                    <i class="fa fa-search"></i>
+                </button>
+                <a href="#" class="btn-contact" onclick="event.preventDefault();window.gafOpenPopup&&gafOpenPopup()">Go Ads-Free</a>
+                <a href="login.html" class="btn-login-nav"><i class="fas fa-user"></i> Login</a>
+            </div>
+            <div class="search-box" id="searchBox">
+                <input type="text" placeholder="Search...">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Layout: Content + Sidebar -->
+    <div class="article-layout">
+        <main class="article-content">
+            <!-- Article Header -->
+            <article class="article-post">
+                <h1 class="article-title">Hang Hero Shark Tank Update &ndash; Shark Tank Season 17</h1>
+                <p class="article-excerpt">A simple household task turned into a full-blown Shark Tank Season 17, Episode 15 moment but could Hang Hero really nail a deal?</p>
+
+                <div class="article-author-bar">
+                    <div class="author-avatar-lg"></div>
+                    <span>By <a href="#" class="author-link">Liya Shanawas</a></span>
+                </div>
+
+                <!-- Featured Image -->
+                <figure class="article-featured-img">
+                    <img src="assets/images/hang-hero-pitch.svg" alt="Michael and Ana Van Horst pitching Hang Hero on Shark Tank">
+                    <figcaption>Michael and Ana Van Horst pitching Hang Hero on Shark Tank (Image Credit: ABC)</figcaption>
+                </figure>
+
+                <!-- Intro paragraph -->
+                <p>Hanging a picture sounds easy, until it is not. You get frames that are crooked with too many holes in the wall. Then you look for tools. This makes it one of those things that people put off, because it is frustrating. That's where Hang Hero came in.</p>
+
+                <!-- AD: After intro -->
+                <div class="ad-inline">
+                    <div class="ad-slot demo-ad">
+                        <span class="ad-slot-label">Advertisement</span>
+                        <span class="ad-dim">Display Ad &mdash; 728&times;90</span>
+                    </div>
+                </div>
+
+                <!-- Zone A: Compact inline banner (support) -->
+                <div class="zone-a">
+                    <div class="zone-a-text">
+                        <strong>This article exists because readers fund it.</strong>
+                        <span>No paywalls. No corporate backers. Just readers like you.</span>
+                    </div>
+                    <a href="support.html" class="zone-a-cta">Support Us <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Table of Contents -->
+                <div class="toc-box">
+                    <div class="toc-header">
+                        <span class="toc-icon"><i class="fas fa-list"></i></span>
+                        <h3>Contents</h3>
+                        <button class="toc-toggle" aria-label="Toggle contents"><i class="fa fa-chevron-up"></i></button>
+                    </div>
+                    <div class="toc-body">
+                        <div class="toc-columns">
+                            <div class="toc-col">
+                                <a href="#about"><span class="toc-num">1</span> About Hang Hero</a>
+                                <a href="#pitch"><span class="toc-num">2</span> Hang Hero Shark Tank Pitch</a>
+                                <a href="#unique"><span class="toc-num">3</span> What Makes Hang Hero Unique?</a>
+                                <a href="#deal"><span class="toc-num">4</span> Did Hang Hero Get a Deal on Shark Tank?</a>
+                            </div>
+                            <div class="toc-col">
+                                <a href="#update"><span class="toc-num">5</span> Hang Hero Shark Tank Update</a>
+                                <a href="#buy"><span class="toc-num">6</span> Where Can You Buy It?</a>
+                                <a href="#summary"><span class="toc-num">7</span> Quick Summary</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AD: After TOC -->
+                <div class="ad-inline">
+                    <div class="ad-slot demo-ad">
+                        <span class="ad-slot-label">Advertisement</span>
+                        <span class="ad-dim">Display Ad &mdash; 300&times;250</span>
+                    </div>
+                </div>
+
+                <p>It is a tool designed to simplify picture hanging completely. Michael Van Horst and Ana Van Horst asked for $150,000 for 10% equity. They promised a faster, cleaner, and easier way to get it done in Shark Tank Season 17, Episode 15. But would the Sharks buy into it?</p>
+
+                <!-- AD: Mid-content -->
+                <div class="ad-inline">
+                    <div class="ad-slot demo-ad">
+                        <span class="ad-slot-label">Advertisement</span>
+                        <span class="ad-dim">Display Ad &mdash; 300&times;250</span>
+                    </div>
+                </div>
+
+                <!-- About Hang Hero Table -->
+                <h2 id="about">About Hang Hero</h2>
+                <table class="info-table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Business Name</td><td>Hang Hero</td></tr>
+                        <tr><td>Founder</td><td>Michael Van Horst, Ana Van Horst</td></tr>
+                        <tr><td>Industry</td><td>Home Improvement</td></tr>
+                        <tr><td>Product</td><td>Picture-hanging tool with built-in leveling and nail insertion</td></tr>
+                        <tr><td>Funding (Pre-Shark Tank)</td><td>Self-funded</td></tr>
+                        <tr><td>Investment Asked</td><td>$150,000 for 10% equity</td></tr>
+                        <tr><td>Deal Status</td><td>Deal secured</td></tr>
+                        <tr><td>Deal Outcome</td><td>$150,000 for 25% equity</td></tr>
+                        <tr><td>Valuation</td><td>$1.5 Million (based on ask)</td></tr>
+                    </tbody>
+                </table>
+
+                <!-- AD: After table -->
+                <div class="ad-inline">
+                    <div class="ad-slot demo-ad">
+                        <span class="ad-slot-label">Advertisement</span>
+                        <span class="ad-dim">Display Ad &mdash; 728&times;90</span>
+                    </div>
+                </div>
+
+                <p>Michael's idea came from his time in real estate. He noticed his clients would leave pictures leaning against walls simply because they didn't want to hang them.</p>
+
+                <p>Michael and Ana built Hang Hero from the ground up, balancing full-time work. Ana even shared how she works at a doctor's office during the day and then helps fulfill orders at night.</p>
+
+                <p>Their journey wasn't smooth. At first, they licensed it, earning $0.40 for each. After a while, Michael and Ana realized they were not making as much money as they could, so they decided to take Hang Hero back and do it themselves.</p>
+
+                <p>This change was a deal, but it also meant they had to start over with Hang Hero.</p>
+
+                <!-- AD: Mid-article -->
+                <div class="ad-inline">
+                    <div class="ad-slot demo-ad">
+                        <span class="ad-slot-label">Advertisement</span>
+                        <span class="ad-dim">Display Ad &mdash; 300&times;250</span>
+                    </div>
+                </div>
+
+                <p>Hang Hero is designed to remove the hassle from hanging items on walls. To hang something, you just put the nail into a slot that has a magnet. Then line up the level and push the handle. The nail will go into the wall without a hammer.</p>
+
+                <p>Hang Hero works well for picture frames, clocks, or small things you want to decorate with. It can also hold nails at different angles if needed.</p>
+
+                <!-- Pitch Section -->
+                <h2 id="pitch">Hang Hero Shark Tank Pitch</h2>
+
+                <p>The pitch started with a relatable skit between Michael and Ana, showing how frustrating picture hanging can be. It quickly turned humorous, with Kevin O'Leary joking that they had won the "bad theater award," while <a href="#">Lori Greiner</a> called it the "best picture award."</p>
+
+                <hr class="article-divider">
+
+                <!-- AD: Before numbers -->
+                <div class="ad-inline">
+                    <div class="ad-slot demo-ad">
+                        <span class="ad-slot-label">Advertisement</span>
+                        <span class="ad-dim">Display Ad &mdash; 728&times;90</span>
+                    </div>
+                </div>
+
+                <p>But things got awkward when the product demo didn't work on the first try. The founders reset and demonstrated it again, this time successfully showing how simple the tool could be.</p>
+
+                <p>The Sharks were intrigued by the concept and even more impressed by the patents, four in total, including utility and design protections.</p>
+
+                <p>Then came the numbers. Sales were $240,000 in 2020. They grew to $851,000 by 2024. In 2025, sales revenue fell sharply to $40,000. This happened after they took back control from licensing deals. Sales dropped a lot.</p>
+
+                <p>That sudden drop raised concerns. <a href="#">Kevin O'Leary</a> and Daymond John both pointed out that the business had essentially reset.</p>
+
+                <p>Still, the founders explained their long-term vision of moving from small royalties to full ownership and higher margins.</p>
+
+                <!-- Video Embed Placeholder -->
+                <figure class="article-video">
+                    <div class="video-placeholder">
+                        <img src="assets/images/hang-hero-video.svg" alt="Hang Hero Pitch on Shark Tank">
+                        <div class="video-play-overlay">
+                            <div class="play-btn"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="video-yt-bar">
+                            <span>Watch on</span>
+                            <i class="fab fa-youtube"></i> YouTube
+                        </div>
+                    </div>
+                </figure>
+
+                <!-- AD: After video -->
+                <div class="ad-inline">
+                    <div class="ad-slot demo-ad">
+                        <span class="ad-slot-label">Advertisement</span>
+                        <span class="ad-dim">Display Ad &mdash; 300&times;250</span>
+                    </div>
+                </div>
+
+                <!-- Zone B: Mid-article strip (support) -->
+                <div class="zone-b">
+                    <div class="zone-b-text">
+                        <strong>Enjoying this breakdown?</strong>
+                        <span>Over 2 million readers rely on this coverage every month. A small group of supporters make it possible.</span>
+                    </div>
+                    <a href="support.html" class="zone-b-cta">Support the Blog <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- What Makes Unique -->
+                <h2 id="unique">What Makes Hang Hero Unique?</h2>
+                <p>What makes Hang Hero stand out is how it simplifies a task most people avoid altogether.</p>
+                <ul class="article-list">
+                    <li>Combines leveling and nail insertion in one tool</li>
+                    <li>No hammer, measuring, or extra tools required</li>
+                    <li>Designed for anyone to use, from beginners to homeowners</li>
+                </ul>
+
+                <!-- Deal Section -->
+                <h2 id="deal">Did Hang Hero Get a Deal on Shark Tank?</h2>
+                <p>Most sharks loved the product but hesitated on the business.</p>
+
+                <p><a href="#">Rashaun Williams</a> liked the story but said it wasn't his type of investment.</p>
+
+                <p>Kevin O'Leary thought the company was not ready yet.</p>
+
+                <p><a href="#">Barbara Corcoran</a> and Lori Greiner decided not to invest. They liked the founders and their presentation.</p>
+
+                <p>That left Daymond John. He connected with the problem because he remembered being a kid and having trouble hanging pictures. Despite saying it wasn't his usual space, he saw potential.</p>
+
+                <p><a href="#">Daymond John</a> said he would put in $150,000 in exchange for 25% of the company. The founders wanted to give him 20%. Daymond John refused to change his offer. He believed he could save them money on marketing and logistics.</p>
+
+                <p>They accepted the deal and called it "life-changing."</p>
+
+                <!-- AD: After deal -->
+                <div class="ad-inline">
+                    <div class="ad-slot demo-ad">
+                        <span class="ad-slot-label">Advertisement</span>
+                        <span class="ad-dim">Display Ad &mdash; 728&times;90</span>
+                    </div>
+                </div>
+
+                <!-- Update Section -->
+                <h2 id="update">Hang Hero Shark Tank Update</h2>
+                <p>After the show, Hang Hero got a lot of attention online. They had 1.5 to 4 million views on TikTok. The founders are now trying to get things going again. They had stopped signing licensing deals.</p>
+
+                <p>Now Hang Hero wants to make money and be in charge. They are using the internet to advertise and sell things directly to people.</p>
+
+                <p>The big problem is now getting back to where they used to be financially while still making a profit.</p>
+
+                <!-- Where to Buy -->
+                <h2 id="buy">Where Can You Buy It?</h2>
+                <p>Hang Hero is available on the internet and their <a href="#">official website</a>.</p>
+
+                <p>As people learn about the product, it will likely be sold in big stores and on TV shopping channels again, making it even more widely available to everyone. Follow their <a href="#">TikTok</a> for more updates.</p>
+
+                <!-- Quick Summary -->
+                <h2 id="summary">Quick Summary</h2>
+                <ul class="article-list">
+                    <li>Hang Hero simplifies picture hanging with a built-in leveling and nail system</li>
+                    <li>The founders secured a $150K deal from Daymond John for 25% equity</li>
+                    <li>Despite a sales drop, the Sharks saw potential in rebuilding the brand</li>
+                </ul>
+
+                <p>Hang Hero's pitch had humor, heart, and a bit of chaos, but in the end, it landed exactly where it needed to.</p>
+
+                <p>Curious about other businesses from Shark Tank Season 17 Episode 15? Explore more founder stories and deals to see which ideas made waves and which ones missed the mark.</p>
+
+                <!-- AD: Before related -->
+                <div class="ad-inline">
+                    <div class="ad-slot demo-ad">
+                        <span class="ad-slot-label">Advertisement</span>
+                        <span class="ad-dim">Display Ad &mdash; 728&times;90</span>
+                    </div>
+                </div>
+
+                <!-- Related Article Link -->
+                <div class="article-nav-links">
+                    <span class="nav-link-label">Next</span>
+                    <a href="#">R1SE Shark Tank</a>
+                </div>
+
+                <hr class="article-divider">
+
+                <!-- Related Posts -->
+                <div class="related-posts-list">
+                    <ul>
+                        <li><a href="#">Hele Outdoors Shark Tank</a></li>
+                        <li><a href="#">Everything Blocks Shark Tank</a></li>
+                    </ul>
+                </div>
+
+                <hr class="article-divider">
+
+                <!-- Author Bio -->
+                <div class="author-bio-box">
+                    <div class="author-bio-avatar"></div>
+                    <div class="author-bio-info">
+                        <div class="author-bio-top">
+                            <span>By <a href="#" class="author-link">Liya Shanawas</a> <i class="fas fa-check-circle" style="color:#117fb0;font-size:12px"></i></span>
+                            <span class="author-follow">Follow: <a href="#"><i class="fab fa-linkedin-in"></i></a></span>
+                        </div>
+                        <p>Liya Shanawas is a writer, editor, and brand strategist whose work has appeared in major publications, including The New York Times, HuffPost, Vogue, InStyle, Khaleej Times, and HelloGiggles. She previously served as a features editor at Dua Lipa's editorial platform Service95 and has written widely on culture, fashion, business, and lifestyle. With a background in journalism, storytelling, and brand strategy, Liya writes about business, culture, and innovation, bringing clarity and perspective to modern ideas and emerging trends.</p>
+                    </div>
+                </div>
+
+                <!-- Combined: Author appeal + Support widget -->
+                <div class="article-support-appeal">
+                    <div class="zone-d" style="margin:0 0 28px">
+                        <strong>Liya wrote this. Independent writers keep this site alive.</strong>
+                        <span>If this story gave you something &mdash; insight, a product idea, or just a good read &mdash; consider backing the team that made it.</span>
+                    </div>
+
+                    <!-- Embedded payment widget -->
+                    <div class="aw-widget" id="articleWidget"></div>
+
+                    <p style="font-size:13px!important;color:#999!important;text-align:center;margin-top:14px!important">Includes ad-free reading across the entire site.<br>Or just &rarr; <a href="go-ads-free.html" style="color:var(--cyan);font-weight:600">Go Ad-Free for $2/month</a></p>
+                </div>
+
+            </article>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar">
+            <!-- Search Widget -->
+            <div class="sidebar-widget sidebar-search">
+                <div class="sidebar-search-box">
+                    <input type="text" placeholder="Search Headlines, News...">
+                    <span class="search-divider"></span>
+                    <button type="submit">Search</button>
+                </div>
+            </div>
+
+            <!-- AD: Sidebar top -->
+            <div class="ad-sidebar-rect">
+                <div class="ad-slot demo-ad">
+                    <span class="ad-slot-label">Advertisement</span>
+                    <span class="ad-dim">Rectangle Ad &mdash; 300&times;250</span>
+                </div>
+            </div>
+
+            <!-- Recent Blogs -->
+            <div class="sidebar-widget">
+                <h3 class="sidebar-heading"><span class="heading-slash">/</span> Recent Blogs <span class="heading-slash">/</span></h3>
+                <div class="sidebar-post-list">
+                    <div class="sidebar-post">
+                        <a href="#" class="sidebar-post-img"><img src="assets/images/blog-jane-foodie.svg" alt="Jane Foodie"></a>
+                        <div class="sidebar-post-info">
+                            <h4><a href="#">How Jane Foodie Turned a Lori Greiner Shark Tank Deal Into $1.2 Million in Sales</a></h4>
+                            <div class="sidebar-post-tags">
+                                <span>Business</span><span>Season 16</span>
+                            </div>
+                            <div class="sidebar-post-tags">
+                                <span>Shark Tank Season 16</span><span>Success Stories</span>
+                            </div>
+                            <div class="sidebar-post-tags">
+                                <span>The Shark Tank Effect</span>
+                            </div>
+                            <div class="sidebar-post-date">March 27, 2026</div>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <a href="#" class="sidebar-post-img"><img src="assets/images/blog-1.svg" alt="ChompShop"></a>
+                        <div class="sidebar-post-info">
+                            <h4><a href="#">How Mark Cuban and Lori Greiner's $250K Bet Turned a Kid-Safe Cutter into a Shark Tank Hit</a></h4>
+                            <div class="sidebar-post-tags">
+                                <span>Business</span><span>Season 16</span>
+                            </div>
+                            <div class="sidebar-post-tags">
+                                <span>Shark Tank Investors</span>
+                            </div>
+                            <div class="sidebar-post-tags">
+                                <span>Shark Tank Moments</span><span>Success Stories</span>
+                            </div>
+                            <div class="sidebar-post-date">March 27, 2026</div>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <a href="#" class="sidebar-post-img"><img src="assets/images/blog-2.svg" alt="Shark Tank Statistics"></a>
+                        <div class="sidebar-post-info">
+                            <h4><a href="#">Shark Tank Statistics: The Ultimate Breakdown</a></h4>
+                            <div class="sidebar-post-tags">
+                                <span>Business</span><span>Financing</span>
+                            </div>
+                            <div class="sidebar-post-tags">
+                                <span>The Shark Tank Effect</span>
+                            </div>
+                            <div class="sidebar-post-date">March 20, 2026</div>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <a href="#" class="sidebar-post-img"><img src="assets/images/blog-3.svg" alt="Guest Shark Whiskey"></a>
+                        <div class="sidebar-post-info">
+                            <h4><a href="#">How This Guest Shark Built a $1B Whiskey Empire from Scratch</a></h4>
+                            <div class="sidebar-post-tags">
+                                <span>Breaking News</span><span>Business</span><span>Season 17</span>
+                            </div>
+                            <div class="sidebar-post-tags">
+                                <span>Shark Tank Investors</span><span>Success Stories</span>
+                            </div>
+                            <div class="sidebar-post-date">March 18, 2026</div>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <a href="#" class="sidebar-post-img"><img src="assets/images/herjavec.svg" alt="Robert Herjavec"></a>
+                        <div class="sidebar-post-info">
+                            <h4><a href="#">How Robert Herjavec Spotted Shark Tank's Hidden Millionaires</a></h4>
+                            <div class="sidebar-post-tags">
+                                <span>Breaking News</span><span>Shark Tank Investors</span>
+                            </div>
+                            <div class="sidebar-post-tags">
+                                <span>Social Shark</span>
+                            </div>
+                            <div class="sidebar-post-date">March 18, 2026</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AD: Sidebar mid -->
+            <div class="ad-sidebar-rect">
+                <div class="ad-slot demo-ad">
+                    <span class="ad-slot-label">Advertisement</span>
+                    <span class="ad-dim">Rectangle Ad &mdash; 300&times;250</span>
+                </div>
+            </div>
+
+            <!-- Recent Shark Tank Pitches -->
+            <div class="sidebar-widget">
+                <h3 class="sidebar-heading">Recent Shark Tank Pitches</h3>
+                <div class="sidebar-post-list compact">
+                    <div class="sidebar-post">
+                        <a href="#" class="sidebar-post-img"><img src="assets/images/hang-hero-thumb.svg" alt="Hang Hero"></a>
+                        <div class="sidebar-post-info">
+                            <h4><a href="#">Hang Hero Shark Tank Update &ndash; Shark Tank Season 17</a></h4>
+                            <div class="sidebar-post-date">March 27, 2026</div>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <a href="#" class="sidebar-post-img"><img src="assets/images/r1se-thumb.svg" alt="R1SE"></a>
+                        <div class="sidebar-post-info">
+                            <h4><a href="#">R1SE Shark Tank Update &ndash; Shark Tank Season 17</a></h4>
+                            <div class="sidebar-post-date">March 27, 2026</div>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <a href="#" class="sidebar-post-img"><img src="assets/images/episode-s17e14.svg" alt="S17E14"></a>
+                        <div class="sidebar-post-info">
+                            <h4><a href="#">Shark Tank Season 17 Episode 14</a></h4>
+                            <div class="sidebar-post-date">March 25, 2026</div>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <a href="#" class="sidebar-post-img"><img src="assets/images/never-have-i-ever-thumb.svg" alt="Never Have I Ever"></a>
+                        <div class="sidebar-post-info">
+                            <h4><a href="#">Never Have I Ever Shark Tank Update &ndash; Shark Tank Season 17</a></h4>
+                            <div class="sidebar-post-date">March 24, 2026</div>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <a href="#" class="sidebar-post-img"><img src="assets/images/gob-thumb.svg" alt="GOB"></a>
+                        <div class="sidebar-post-info">
+                            <h4><a href="#">GOB Shark Tank Update &ndash; Shark Tank Season 17</a></h4>
+                            <div class="sidebar-post-date">March 24, 2026</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AD: Sidebar skyscraper -->
+            <div class="ad-sidebar-sky">
+                <div class="ad-slot demo-ad">
+                    <span class="ad-slot-label">Advertisement</span>
+                    <span class="ad-dim">Skyscraper Ad &mdash; 300&times;600</span>
+                </div>
+            </div>
+
+            <!-- Popular Startups -->
+            <div class="sidebar-widget">
+                <h3 class="sidebar-heading">Popular Startups That Appeared on Shark Tank</h3>
+                <div class="sidebar-post-list compact">
+                    <div class="sidebar-post">
+                        <a href="#" class="sidebar-post-img"><img src="assets/images/r1se-thumb.svg" alt="R1SE"></a>
+                        <div class="sidebar-post-info">
+                            <h4><a href="#">R1SE Shark Tank Update &ndash; Shark Tank Season 17</a></h4>
+                            <div class="sidebar-post-date">March 27, 2026</div>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <a href="#" class="sidebar-post-img"><img src="assets/images/never-have-i-ever-thumb.svg" alt="Never Have I Ever"></a>
+                        <div class="sidebar-post-info">
+                            <h4><a href="#">Never Have I Ever Shark Tank Update &ndash; Shark Tank Season 17</a></h4>
+                            <div class="sidebar-post-date">March 26, 2026</div>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <a href="#" class="sidebar-post-img"><img src="assets/images/gob-thumb.svg" alt="GOB"></a>
+                        <div class="sidebar-post-info">
+                            <h4><a href="#">GOB Shark Tank Update &ndash; Shark Tank Season 17</a></h4>
+                            <div class="sidebar-post-date">March 26, 2026</div>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <a href="#" class="sidebar-post-img"><img src="assets/images/remplenish-thumb.svg" alt="REMplenish"></a>
+                        <div class="sidebar-post-info">
+                            <h4><a href="#">REMplenish Shark Tank Update &ndash; Shark Tank Season 17</a></h4>
+                            <div class="sidebar-post-date">March 25, 2026</div>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <a href="#" class="sidebar-post-img"><img src="assets/images/beer-girl-thumb.svg" alt="Beer Girl"></a>
+                        <div class="sidebar-post-info">
+                            <h4><a href="#">Beer Girl Shark Tank Update &ndash; Shark Tank Season 17</a></h4>
+                            <div class="sidebar-post-date">March 25, 2026</div>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <a href="#" class="sidebar-post-img"><img src="assets/images/hot-girl-soda-thumb.svg" alt="Hot Girl Soda"></a>
+                        <div class="sidebar-post-info">
+                            <h4><a href="#">Hot Girl Soda Shark Tank Update &ndash; Shark Tank Season 17</a></h4>
+                            <div class="sidebar-post-date">March 16, 2026</div>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <a href="#" class="sidebar-post-img"><img src="assets/images/clean-green-thumb.svg" alt="Clean Green Golf Balls"></a>
+                        <div class="sidebar-post-info">
+                            <h4><a href="#">Clean Green Golf Balls Shark Tank Update &ndash; Shark Tank Season 17</a></h4>
+                            <div class="sidebar-post-date">March 16, 2026</div>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <a href="#" class="sidebar-post-img"><img src="assets/images/nude-foods-thumb.svg" alt="Nude Foods Market"></a>
+                        <div class="sidebar-post-info">
+                            <h4><a href="#">Nude Foods Market Shark Tank Update &ndash; Shark Tank Season 17</a></h4>
+                            <div class="sidebar-post-date">March 16, 2026</div>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <a href="#" class="sidebar-post-img"><img src="assets/images/rip-tie-thumb.svg" alt="Rip Tie Hair"></a>
+                        <div class="sidebar-post-info">
+                            <h4><a href="#">Rip Tie Hair Shark Tank Update &ndash; Shark Tank Season 17</a></h4>
+                            <div class="sidebar-post-date">March 16, 2026</div>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <a href="#" class="sidebar-post-img"><img src="assets/images/cranel-thumb.svg" alt="Cranel"></a>
+                        <div class="sidebar-post-info">
+                            <h4><a href="#">Cranel Shark Tank Update &ndash; Shark Tank Season 17</a></h4>
+                            <div class="sidebar-post-date">March 12, 2026</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AD: Sidebar bottom -->
+            <div class="ad-sidebar-rect" style="margin-top:24px">
+                <div class="ad-slot demo-ad">
+                    <span class="ad-slot-label">Advertisement</span>
+                    <span class="ad-dim">Rectangle Ad &mdash; 300&times;250</span>
+                </div>
+            </div>
+
+            <!-- Zone E: Sticky sidebar card -->
+            <div class="zone-e">
+                <h4>Read without ads</h4>
+                <p>$2/month. Cancel anytime.</p>
+                <a href="go-ads-free.html" class="zone-e-cta">Go Ad-Free <i class="fas fa-arrow-right"></i></a>
+                <div class="zone-e-link">Or <a href="support.html">support the coverage</a> from $3/mo</div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="assets/images/shark_logo.jpeg" alt="The Shark Tank Blog" width="80" height="70">
+                        <span class="footer-logo-text">The Shark Tank Blog</span>
+                    </div>
+                    <p>Shark Tank Blog is independent of and not affiliated or endorsed by ABC, Sony, the producers or any other company associated with the television show, Shark Tank. Shark Tank Blog is an opinion blog. Views expressed on this blog are solely owned by the author individually and not that of Shark Tank Blog or principles of Shark Tank Blog.</p>
+                    <div class="social-icons footer-social">
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-menu">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="episodes.html">Shark Tank Episodes</a></li>
+                        <li><a href="products.html">Shark Tank Products</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="startup-list.html">Shark Tank Businesses</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Subscribe to our Newsletter</h4>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit">Subscribe</button>
+                    </div>
+
+                    <div class="footer-support-box">
+                        <h4>Support Shark Tank Blog</h4>
+                        <p class="support-note">Every deal covered. Every founder's story told. Funded by readers, not corporations.</p>
+                        <a href="support.html" class="support-btn" style="display:block;width:100%;text-align:center;padding:12px 20px;border-radius:4px;margin-top:8px;text-decoration:none;font-size:14px;font-weight:700">Support us <i class="fas fa-arrow-right" style="margin-left:4px"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom-bar">
+        <p>Information from your device can be used to personalize your ad experience.</p>
+        <p><a href="#">Do not sell or share my personal information.</a></p>
+        <p><a href="#">Terms of Content Use</a></p>
+        <p class="raptive-badge">A RAPTIVE PARTNER SITE</p>
+    </div>
+
+    <!-- Go Ad-Free floating button (bottom-right) -->
+    <a href="go-ads-free.html" class="go-adfree-float" aria-label="Go Ad-Free">
+        <span class="gaf-shark">🦈</span>
+        <span class="gaf-text">Go Ad-Free</span>
+    </a>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <i class="fa fa-chevron-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script src="go-ad-free.js" data-delay="1000" data-poll="3000" data-selectors=".demo-ad"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function(){
+        var AW = { screen:1, amount:3, isCustom:false, method:'', name:'John Doe', email:'', selAcc:null };
+        var ACCS = [
+            {name:'Mohnish Nagar',email:'mohnish.nagar@gmail.com',color:'#4285F4',i:'M'},
+            {name:'Mohnish',email:'mohnish@getmega.com',color:'#EA4335',i:'M'}
+        ];
+        var PRESETS = [2,5,9,15], POP = 5;
+        var w = document.getElementById('articleWidget');
+        if(!w) return;
+
+        function annual(){ return AW.amount*12; }
+        function daily(){ return (AW.amount/30).toFixed(2); }
+        function dots(){
+            var h='<div class="aw-steps">';
+            for(var i=1;i<=4;i++){ h+='<div class="aw-step'+(i===AW.screen?' active':(i<AW.screen?' done':''))+'"></div>'; if(i<4) h+='<div class="aw-line"></div>'; }
+            return h+'</div>';
+        }
+
+        function render(){
+            var h='<div class="aw-body">'+dots();
+            if(AW.screen===1) h+=s1();
+            else if(AW.screen===2) h+=s2();
+            else if(AW.screen===3) h+=s3();
+            else h+=s4();
+            h+='</div>';
+            w.innerHTML=h;
+            bind();
+        }
+
+        function s1(){
+            var h='<div class="aw-title">Support Shark Tank Blog</div>';
+            h+='<div class="aw-sub">Support starts with ad-free. Many choose to give a little more.</div>';
+            h+='<div class="aw-amt-box"><div class="aw-amt-left"><span class="aw-amt-dollar">$</span><input class="aw-amt-val" id="awAmt" type="text" value="'+AW.amount+'" inputmode="numeric"><span class="aw-amt-per">/ month</span></div><span class="aw-amt-daily" id="awDaily">$'+daily()+'/day</span></div>';
+            h+='<div class="aw-presets" id="awPresets">';
+            PRESETS.forEach(function(p){ var a=(!AW.isCustom&&AW.amount===p)?'active':''; h+='<div class="aw-preset '+a+'" data-v="'+p+'">'+(p===POP?'<span class="aw-pop">Popular</span>':'')+'$'+p+'</div>'; });
+            h+='</div>';
+            h+='<button class="aw-cta" id="awCta1">Continue with $'+AW.amount+' / month</button>';
+            h+='<div class="aw-perk-row"><span class="aw-perk"><i class="fas fa-globe" style="margin-right:3px"></i> Includes <em>ad-free</em> experience</span><span class="aw-badge"><i class="fas fa-chevron-down" style="font-size:7px"></i> $'+annual()+' Billed Annually</span></div>';
+            h+='<div class="aw-trust"><i class="fas fa-lock"></i> Secure payment &bull; Cancel anytime</div>';
+            return h;
+        }
+
+        function s2(){
+            var h='<button class="aw-back" id="awB2"><i class="fas fa-arrow-left"></i> Back</button>';
+            h+='<div class="aw-glogo"><svg viewBox="0 0 48 48" width="20" height="20"><path fill="#4285F4" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#34A853" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#EA4335" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></div>';
+            h+='<div class="aw-s2-title">Sign in to continue</div><div class="aw-s2-sub">Choose your Google account</div>';
+            ACCS.forEach(function(a,i){ h+='<div class="aw-account" data-i="'+i+'"><div class="aw-acc-avatar" style="background:'+a.color+'">'+a.i+'</div><div class="aw-acc-info"><div class="aw-acc-name">'+a.name+'</div><div class="aw-acc-email">'+a.email+'</div></div><span class="aw-acc-arrow"><i class="fas fa-chevron-right"></i></span></div>'; });
+            h+='<div class="aw-divider"><span>Use email instead</span></div>';
+            h+='<button class="aw-email-btn" id="awEmail">Continue with email</button>';
+            return h;
+        }
+
+        function s3(){
+            var a=annual();
+            var h='<button class="aw-back" id="awB3"><i class="fas fa-arrow-left"></i> Back</button>';
+            h+='<div class="aw-s3-label">You\'re supporting</div><div class="aw-s3-amount">$'+a+' / year</div>';
+            h+='<div class="aw-s3-heading"><span class="aw-s3-ht">Select payment method</span><span class="aw-s3-hr"><small>us</small> United States</span></div>';
+            h+='<div class="aw-method'+(AW.method==='bank'?' active':'')+'" data-m="bank"><div class="aw-method-top"><div class="aw-method-left"><span class="aw-method-icon"><i class="fas fa-building-columns"></i></span><div><div class="aw-method-name">Direct Bank Transfer (ACH)</div><div class="aw-method-sub">Best for long-term support</div></div></div><span class="aw-method-chev"><i class="fas fa-chevron-down"></i></span></div></div>';
+            h+='<div class="aw-express-label">Express checkout</div>';
+            h+='<div class="aw-express-grid"><div class="aw-express-btn">Apple Pay</div><div class="aw-express-btn" style="border-color:#6366f1">Google Pay</div><div class="aw-express-btn">PayPal</div><div class="aw-express-btn">Venmo</div></div>';
+            h+='<div class="aw-method'+(AW.method==='card'?' active':'')+'" data-m="card"><div class="aw-method-top"><div class="aw-method-left"><span class="aw-method-icon"><i class="fas fa-credit-card"></i></span><div><div class="aw-method-name">Card payment</div></div></div><span class="aw-method-chev"><i class="fas fa-chevron-down"></i></span></div><div class="aw-method-form"><div class="aw-field"><label>Name on card</label><input type="text" id="awCN" placeholder="John Doe" value="'+AW.name+'"></div><div class="aw-field"><label>Card number</label><input type="text" placeholder="1234 5678 9012 3456" maxlength="19"></div><div class="aw-field-row"><div class="aw-field"><label>Expiry</label><input type="text" placeholder="MM/YY" maxlength="5"></div><div class="aw-field"><label>CVC</label><input type="text" placeholder="123" maxlength="4"></div></div></div></div>';
+            h+='<div class="aw-s3-trust"><i class="fas fa-lock"></i> Secure payment &bull; Powered by Stripe</div>';
+            h+='<button class="aw-cta" id="awCta3">Complete Payment &mdash; $'+a+' / year</button>';
+            return h;
+        }
+
+        function s4(){
+            var a=annual(), nm=AW.name||(AW.selAcc!==null?ACCS[AW.selAcc].name:'Supporter');
+            var dt=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+            var st=encodeURIComponent('I just became a supporter of Shark Tank Blog!');
+            var h='<div style="text-align:center"><div class="aw-s4-check">&#10003;</div>';
+            h+='<div class="aw-s4-text">Your <strong>$'+a+'/month</strong> support is confirmed.<br>You\'re now helping keep Shark Tank coverage free for millions.</div>';
+            h+='<div class="aw-s4-badge"><i class="far fa-heart"></i> Official Supporter</div></div>';
+            h+='<div class="aw-cert"><div class="aw-cert-bar"></div><div class="aw-cert-label">Certificate of Support</div><hr style="border:none;border-top:1px solid #f0f0f0;margin:6px 0"><div class="aw-cert-small">This certifies that</div><div class="aw-cert-name">'+nm+'</div><div class="aw-cert-small">is a proud supporter of</div><div style="font-weight:700;font-size:14px;margin:6px 0">Shark Tank Blog</div><hr style="border:none;border-top:1px solid #f0f0f0;margin:6px 0"><div class="aw-cert-cause">For keeping Shark Tank coverage free & accessible</div><div class="aw-cert-amount">$'+a+' / year</div><div class="aw-cert-date">'+dt+'</div></div>';
+            h+='<div class="aw-share-grid"><a class="aw-share-btn" href="https://twitter.com/intent/tweet?text='+st+'" target="_blank"><i class="fab fa-x-twitter"></i> X</a><a class="aw-share-btn" href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a><a class="aw-share-btn" href="https://wa.me/?text='+st+'" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>';
+            return h;
+        }
+
+        function bind(){
+            // S1
+            var presets=w.querySelectorAll('.aw-preset');
+            presets.forEach(function(p){ p.addEventListener('click',function(){ AW.amount=parseInt(this.getAttribute('data-v')); AW.isCustom=false; upd1(); }); });
+            var ai=w.querySelector('#awAmt');
+            if(ai){ ai.addEventListener('focus',function(){this.select()}); ai.addEventListener('input',function(){ var v=parseInt(this.value.replace(/[^0-9]/g,''))||0; AW.amount=v; AW.isCustom=true; presets.forEach(function(p){p.classList.remove('active')}); upd1Cta(); }); }
+            var c1=w.querySelector('#awCta1');
+            if(c1) c1.addEventListener('click',function(){ AW.screen=2; render(); });
+            // S2
+            var b2=w.querySelector('#awB2'); if(b2) b2.addEventListener('click',function(){ AW.screen=1; render(); });
+            w.querySelectorAll('.aw-account').forEach(function(a){ a.addEventListener('click',function(){ AW.selAcc=parseInt(this.getAttribute('data-i')); AW.name=ACCS[AW.selAcc].name; AW.email=ACCS[AW.selAcc].email; AW.screen=3; render(); }); });
+            var em=w.querySelector('#awEmail'); if(em) em.addEventListener('click',function(){ AW.screen=3; render(); });
+            // S3
+            var b3=w.querySelector('#awB3'); if(b3) b3.addEventListener('click',function(){ AW.screen=2; render(); });
+            w.querySelectorAll('.aw-method').forEach(function(m){ m.addEventListener('click',function(){ var mt=this.getAttribute('data-m'); AW.method=(AW.method===mt)?'':mt; w.querySelectorAll('.aw-method').forEach(function(x){x.classList.remove('active')}); if(AW.method)this.classList.add('active'); }); });
+            var cn=w.querySelector('#awCN'); if(cn) cn.addEventListener('input',function(){AW.name=this.value});
+            var c3=w.querySelector('#awCta3');
+            if(c3) c3.addEventListener('click',function(){ this.innerHTML='<span class="aw-spinner"></span> Processing...'; this.classList.add('processing'); setTimeout(function(){ AW.screen=4; render(); },1800); });
+        }
+
+        function upd1(){
+            var ai=w.querySelector('#awAmt'); if(ai) ai.value=AW.amount;
+            w.querySelectorAll('.aw-preset').forEach(function(p){ p.classList.toggle('active',!AW.isCustom&&parseInt(p.getAttribute('data-v'))===AW.amount); });
+            upd1Cta();
+        }
+        function upd1Cta(){
+            var c=w.querySelector('#awCta1'); if(c) c.textContent='Continue with $'+AW.amount+' / month';
+            var d=w.querySelector('#awDaily'); if(d) d.textContent='$'+daily()+'/day';
+            var b=w.querySelector('.aw-badge'); if(b) b.innerHTML='<i class="fas fa-chevron-down" style="font-size:7px"></i> $'+annual()+' Billed Annually';
+        }
+
+        render();
+    });
+    </script>
+</body>
+</html>

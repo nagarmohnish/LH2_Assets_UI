@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shark Tank Blog - Episode Recaps, Products & Business Updates</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="article-styles.css">
+    <link rel="stylesheet" href="auth-styles.css">
+    <style>
+        /* Ad Slot Styles */
+        .ad-slot {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-body);
+            color: #999;
+            font-size: 12px;
+            letter-spacing: .5px;
+            position: relative;
+        }
+        .ad-slot-label {
+            position: absolute;
+            top: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #bcbfc5;
+            z-index: 1;
+        }
+        /* Leaderboard 728x90 */
+        .ad-leaderboard {
+            max-width: 728px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .ad-leaderboard .ad-slot {
+            width: 100%;
+            height: 90px;
+            background: linear-gradient(135deg, #3d1c6e, #6c3ab5);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .ad-leaderboard .ad-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            height: 100%;
+            padding: 0 30px;
+        }
+        .ad-leaderboard .ad-text {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .ad-leaderboard .ad-text span {
+            color: #ffd700;
+        }
+        .ad-leaderboard .ad-dim {
+            color: rgba(255,255,255,.4);
+            font-size: 11px;
+            position: absolute;
+            bottom: 4px;
+            right: 10px;
+        }
+
+        /* Rectangle 300x250 */
+        .ad-rectangle .ad-slot {
+            width: 300px;
+            height: 250px;
+            background: linear-gradient(180deg, #c0392b, #e74c3c);
+            border-radius: 6px;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .ad-rectangle .ad-icon { font-size: 32px; color: rgba(255,255,255,.6); }
+        .ad-rectangle .ad-title { color: #fff; font-size: 14px; font-weight: 700; }
+        .ad-rectangle .ad-size { color: rgba(255,255,255,.4); font-size: 11px; }
+
+        /* Skyscraper 160x600 sidebar */
+        .content-with-sidebar {
+            display: flex;
+            gap: 25px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .content-main { flex: 1; min-width: 0; }
+        .content-sidebar {
+            width: 160px;
+            flex-shrink: 0;
+            padding-top: 20px;
+        }
+        .ad-skyscraper {
+            position: sticky;
+            top: 80px;
+        }
+        .ad-skyscraper .ad-slot {
+            width: 160px;
+            height: 600px;
+            background: linear-gradient(180deg, #1a5276, #2e86c1);
+            border-radius: 6px;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .ad-skyscraper .ad-title { color: #fff; font-size: 13px; font-weight: 700; }
+        .ad-skyscraper .ad-size { color: rgba(255,255,255,.4); font-size: 10px; }
+
+        /* CTA Banner (like Wordsmyth's magenta bar) */
+        .ad-cta-banner {
+            background: linear-gradient(135deg, #0d47a1, #1565c0);
+            padding: 18px 20px;
+            text-align: center;
+            margin: 0;
+        }
+        .ad-cta-banner .banner-title {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .ad-cta-banner .banner-sub {
+            font-size: 13px;
+            color: rgba(255,255,255,.8);
+        }
+        .ad-cta-banner .banner-sub a {
+            color: #ffd700;
+            font-weight: 700;
+            text-decoration: underline;
+        }
+
+        /* Individual Subscription promo bar */
+        .ad-promo-bar {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 14px 20px;
+            background: #fff3cd;
+            border-top: 1px solid #f0e1a0;
+            border-bottom: 1px solid #f0e1a0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+        .ad-promo-bar strong { color: var(--cyan); }
+        .ad-promo-bar a { color: var(--cyan); font-weight: 600; }
+
+        /* Sticky bottom bar */
+        .ad-sticky-bottom {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #1a1d24, #2c3e50);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            z-index: 998;
+            box-shadow: 0 -2px 12px rgba(0,0,0,.2);
+            font-size: 14px;
+            color: #ccc;
+        }
+        .ad-sticky-bottom .sticky-text {
+            font-weight: 400;
+        }
+        .ad-sticky-bottom .sticky-cta {
+            background: var(--cyan);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background .2s;
+            border: none;
+            font-family: var(--font-body);
+        }
+        .ad-sticky-bottom .sticky-cta:hover { background: var(--cyan-hover); }
+        .ad-sticky-bottom .sticky-close {
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 4px 8px;
+        }
+        .ad-sticky-bottom .sticky-close:hover { color: #fff; }
+        .ad-sticky-bottom.hidden { display: none; }
+
+        /* Round floating shark button */
+        .ad-helper-round {
+            position: fixed;
+            bottom: 20px;
+            left: 16px;
+            width: 52px;
+            height: 52px;
+            background: var(--cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-decoration: none;
+            z-index: 997;
+            box-shadow: 0 4px 16px rgba(17, 127, 176,.35);
+            transition: transform .15s, box-shadow .15s;
+            cursor: pointer;
+        }
+        .ad-helper-round:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 24px rgba(17, 127, 176,.5);
+        }
+
+        /* See More button */
+        .btn-see-more {
+            display: inline-block;
+            padding: 10px 32px;
+            border: 2px solid var(--text-primary);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all .2s;
+        }
+        .btn-see-more:hover {
+            background: var(--text-primary);
+            color: #fff;
+        }
+
+        /* Adjust scroll-top position */
+        .scroll-top { bottom: 20px; }
+
+        /* Sticky Video Ad */
+        .sv-wrap { position: fixed; bottom: 20px; right: 16px; width: 300px; z-index: 997; animation: svSlideIn 0.4s ease-out; }
+        @keyframes svSlideIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+        .sv-gaf-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+        .sv-close { width: 24px; height: 24px; border-radius: 50%; background: #666; color: #fff; border: none; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; line-height: 1; transition: background .15s; box-shadow: 0 1px 4px rgba(0,0,0,.2); }
+        .sv-close:hover { background: #444; }
+        .sv-gaf { display: inline-flex; align-items: center; gap: 4px; padding: 6px 16px; background: #9b3a3a; color: #fff; border: none; border-radius: 20px; font-size: 11px; font-weight: 800; letter-spacing: .4px; text-transform: uppercase; cursor: pointer; font-family: inherit; white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,.25); transition: transform .15s, box-shadow .15s; }
+        .sv-gaf:hover { transform: scale(1.05); box-shadow: 0 3px 12px rgba(155,58,58,.4); }
+        .sv-box { border-radius: 6px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,.3); background: #000; }
+        .sv-screen { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #0a0a1a, #1a1a2e, #0f1a30); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        .sv-play-btn { width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,.15); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 16px; transition: background .15s; }
+        .sv-screen:hover .sv-play-btn { background: rgba(255,255,255,.25); }
+        .sv-controls { display: flex; align-items: center; gap: 6px; padding: 6px 10px; background: #1a1a1a; }
+        .sv-btn { background: none; border: none; color: #ccc; font-size: 12px; cursor: pointer; padding: 2px; display: flex; align-items: center; transition: color .15s; }
+        .sv-btn:hover { color: #fff; }
+        .sv-progress { flex: 1; height: 3px; background: #444; border-radius: 2px; overflow: hidden; cursor: pointer; }
+        .sv-progress-bar { height: 100%; background: var(--cyan); border-radius: 2px; }
+        .sv-time { font-size: 10px; color: #888; white-space: nowrap; }
+
+        @media (max-width: 768px) { .sv-wrap { width: 260px; bottom: 16px; right: 10px; } }
+        @media (max-width: 480px) { .sv-wrap { width: 220px; } }
+
+        @media (max-width: 992px) {
+            .content-with-sidebar { flex-direction: column; }
+            .content-sidebar { width: 100%; }
+            .ad-skyscraper { position: static; }
+            .ad-skyscraper .ad-slot { width: 100%; height: 120px; }
+        }
+        @media (max-width: 768px) {
+            .ad-leaderboard { max-width: 100%; padding: 12px 16px; }
+            .ad-leaderboard .ad-inner { padding: 0 15px; gap: 10px; }
+            .ad-leaderboard .ad-text { font-size: 13px; }
+            .ad-leaderboard .ad-slot { height: 70px; }
+            .ad-leaderboard .ad-dim { font-size: 9px; }
+            .ad-rectangle .ad-slot { width: 100%; max-width: 300px; height: 200px; }
+            .ad-promo-bar { flex-direction: column; text-align: center; font-size: 13px; padding: 12px 16px; }
+            .ad-cta-banner .banner-title { font-size: 14px; }
+            .ad-cta-banner .banner-sub { font-size: 12px; }
+        }
+        @media (max-width: 480px) {
+            .ad-leaderboard .ad-text { font-size: 11px; }
+            .ad-leaderboard .ad-slot { height: 60px; border-radius: 4px; }
+            .ad-leaderboard .ad-dim { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Social Bar -->
+    <div class="top-social-bar">
+        <div class="container top-social-inner">
+            <div class="social-icons top-social-icons">
+                <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="main-nav" id="mainNav">
+        <div class="container nav-inner">
+            <div class="nav-left">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/shark_logo.jpeg" alt="The Shark Tank Blog" width="60" height="50">
+                </a>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="episodes.html">Shark Tank Episodes</a></li>
+                    <li><a href="products.html">Shark Tank Products</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="startup-list.html">Shark Tank Startup List</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <button class="search-toggle" id="searchToggle" aria-label="Search">
+                    <i class="fa fa-search"></i>
+                </button>
+                <a href="#" class="btn-contact" onclick="event.preventDefault();window.gafOpenPopup&&gafOpenPopup()">Go Ads-Free</a>
+                <a href="login.html" class="btn-login-nav"><i class="fas fa-user"></i> Login</a>
+            </div>
+            <div class="search-box" id="searchBox">
+                <input type="text" placeholder="Search...">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container hero-inner">
+            <div class="hero-text">
+                <h1>Dive into the World of <span class="cyan">Shark Tank</span></h1>
+                <p>Stay updated with all Shark Tank episodes and the businesses featured on the show. Get easy-to-read stories about pitches, deals, and what happens after the tank.</p>
+            </div>
+            <div class="hero-image">
+                <img src="assets/images/hero-cast.svg" alt="Shark Tank Cast" width="560" height="300">
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad: Leaderboard after hero -->
+    <div class="ad-leaderboard">
+        <div class="ad-slot demo-ad">
+            <span class="ad-slot-label">Advertisement</span>
+            <div class="ad-inner">
+                <div class="ad-text">Invest in yourself. <span>Start your business today.</span></div>
+            </div>
+            <span class="ad-dim">Leaderboard Ad &mdash; 728&times;90</span>
+        </div>
+    </div>
+
+    <!-- Main content with sidebar skyscraper -->
+    <div class="content-with-sidebar">
+        <div class="content-main">
+
+            <!-- Latest Episodes Section -->
+            <section class="section-episodes" style="border-bottom:none;padding-top:30px">
+                <h2 class="section-title">Latest Episodes</h2>
+                <div class="episodes-grid">
+                    <div class="episode-main">
+                        <div class="episode-card">
+                            <a href="bloom.html" class="card-img"><img src="assets/images/episode-s17e14.svg" alt="S16E15"></a>
+                            <div class="card-body">
+                                <h3><a href="bloom.html">Shark Tank Season 16 Episode 15</a></h3>
+                                <div class="card-meta"><span class="author-name">Hiedi Pratap</span><span>&bull;</span><span>April 15, 2025</span></div>
+                                <p>Shark Tank features some of the most unique businesses. Each week goes by in anticipation of the coming Friday. This Friday, four brilliant entrepreneurs bring...</p>
+                                <a href="bloom.html" class="read-more">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="episode-side">
+                        <div class="episode-card">
+                            <a href="#" class="card-img"><img src="assets/images/episode-s17e13.svg" alt="S16E14"></a>
+                            <div class="card-body">
+                                <h3><a href="#">Shark Tank Season 16 Episode 14</a></h3>
+                                <div class="card-meta"><span class="author-name">Hiedi Pratap</span><span>&bull;</span><span>March 25, 2025</span></div>
+                                <p>Shark Tank Season 16, Episode 14 becomes fertile ground for an eco-friendly crop, buckwheat, when...</p>
+                                <a href="#" class="read-more">Read More</a>
+                            </div>
+                        </div>
+                        <div class="episode-card">
+                            <a href="#" class="card-img"><img src="assets/images/episode-s17e12.svg" alt="S16E13"></a>
+                            <div class="card-body">
+                                <h3><a href="#">Shark Tank Season 16 Episode 13</a></h3>
+                                <div class="card-meta"><span class="author-name">Hiedi Pratap</span><span>&bull;</span><span>March 17, 2025</span></div>
+                                <p>Shark Tank Season 16 Episode 13 was full of innovative products and skilled entrepreneurs. The...</p>
+                                <a href="#" class="read-more">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Sidebar: Skyscraper Ad -->
+        <div class="content-sidebar">
+            <div class="ad-skyscraper">
+                <div class="ad-slot demo-ad">
+                    <span class="ad-slot-label">Ad</span>
+                    <div class="ad-title">Rectangle Ad</div>
+                    <div class="ad-size">160&times;600</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shark Tank Products Section -->
+    <section class="section-products">
+        <div class="shark-watermark">
+            <svg viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg" opacity="0.08">
+                <path d="M200 50 C280 50 350 120 370 200 C390 280 360 350 300 400 C240 450 160 450 100 400 C40 350 10 280 30 200 C50 120 120 50 200 50Z M150 150 C130 160 120 180 130 200 C140 220 160 230 180 220 L200 180 Z M250 150 C270 160 280 180 270 200 C260 220 240 230 220 220 L200 180 Z M160 280 C170 310 200 330 230 320 C240 310 240 290 230 280 L200 300 Z" fill="white"/>
+            </svg>
+        </div>
+        <div class="container products-inner">
+            <div class="products-header">
+                <h2>Shark Tank Products:</h2>
+                <a href="#" class="cyan-link">Latest Products</a>
+            </div>
+            <div class="products-list">
+                <div class="product-card"><a href="#" class="product-img"><img src="assets/images/product-chompshop.svg" alt="Successful Products"></a><div class="product-info"><h3><a href="#">7 Most Successful Shark Tank Products/Brands of All Time</a></h3><p>After binge-watching so many innovative businesses, their unique products, and ever-so-creative pitches...</p><div class="card-meta"><span class="author-name">Hiedi Pratap</span><span>&bull;</span><span>March 6, 2025</span></div></div></div>
+                <div class="product-card"><a href="#" class="product-img"><img src="assets/images/product-ring.svg" alt="Pitch Duration"></a><div class="product-info"><h3><a href="#">How Long Are Shark Tank Pitches?</a></h3><p>Shark Tank pitches are full of drama and excitement, making the entire...</p><div class="card-meta"><span class="author-name">Hiedi Pratap</span><span>&bull;</span><span>March 11, 2025</span></div></div></div>
+                <div class="product-card"><a href="#" class="product-img"><img src="assets/images/product-sheets.svg" alt="Skin Care Scam"></a><div class="product-info"><h3><a href="#">Shark Tank Skin Care Scam</a></h3><p>For the past year or so, I have been inundated with complaints...</p><div class="card-meta"><span class="author-name">Rob Merlino</span><span>&bull;</span><span>March 6, 2025</span></div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SharkTank Videos Section -->
+    <section class="section-videos">
+        <div class="container">
+            <h2 class="section-title">SharkTank Videos</h2>
+            <div class="videos-grid">
+                <div class="video-card"><div class="video-thumb"><img src="assets/images/video-1.svg" alt="Shopping List"><div class="video-overlay"><div class="play-btn"><i class="fab fa-youtube"></i></div></div><div class="video-info-bar"><span class="channel-name">READEREST</span><span class="video-title-overlay">Shark Tank - The Ultimate Shopping List!</span></div></div><div class="video-actions"><button><i class="fa fa-share"></i></button><button><i class="fa fa-clock"></i></button><span class="yt-link">Watch on <i class="fab fa-youtube"></i> YouTube</span></div></div>
+                <div class="video-card"><div class="video-thumb"><img src="assets/images/video-2.svg" alt="Funny Moments"><div class="video-overlay"><div class="play-btn"><i class="fab fa-youtube"></i></div></div><div class="video-info-bar"><span class="channel-name">TheHotdogmanChannel</span><span class="video-title-overlay">Daymond John Video: Funny Shark Tank Moments</span></div></div><div class="video-actions"><button><i class="fa fa-share"></i></button><button><i class="fa fa-clock"></i></button><span class="yt-link">Watch on <i class="fab fa-youtube"></i> YouTube</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad: Leaderboard between videos and companies -->
+    <div class="ad-leaderboard">
+        <div class="ad-slot demo-ad">
+            <span class="ad-slot-label">Advertisement</span>
+            <div class="ad-inner">
+                <div class="ad-text">From idea to IPO. <span>Read success stories.</span></div>
+            </div>
+            <span class="ad-dim">Leaderboard Ad &mdash; 728&times;90</span>
+        </div>
+    </div>
+
+    <!-- CTA Banner: Go Ads-Free promo -->
+    <div class="ad-cta-banner">
+        <div class="banner-title">Ads are like speed bumps on the road to learning.</div>
+        <div class="banner-sub">Go ads-free for just $2/month and get the best Shark Tank coverage. <a href="subscribe.html">Go Ads-Free &raquo;</a></div>
+    </div>
+
+    <!-- Companies Featured Section -->
+    <section class="section-companies">
+        <div class="container">
+            <h2 class="section-title">Companies Featured in the Latest Shark Tank Episodes</h2>
+            <div class="companies-list">
+                <div class="company-card"><a href="#" class="company-img"><img src="assets/images/company-hang-hero.svg" alt="Article Testing"></a><div class="company-info"><h3><a href="#">Article new testing</a></h3><div class="card-meta"><span class="author-name">Upneet Grover</span><span>&bull;</span><span>June 6, 2025</span></div><p>Testing new article format for the Shark Tank Blog platform...</p></div></div>
+                <div class="company-card"><a href="#" class="company-img"><img src="assets/images/company-r1se.svg" alt="Collars and Co"></a><div class="company-info"><h3><a href="#">Collars and Co Shark Tank Update</a></h3><div class="card-meta"><span class="author-name">Rob Merlino</span><span>&bull;</span><span>June 6, 2025</span></div><p>Collars and Co achieved $5.4 million in sales with their innovative polo shirts featuring dress collars, making them one of the most successful companies featured on Shark Tank...</p></div></div>
+                <div class="company-card"><a href="#" class="company-img"><img src="assets/images/company-nhie.svg" alt="Sock Candy"></a><div class="company-info"><h3><a href="#">Sock Candy Shark Tank | Season 16</a></h3><div class="card-meta"><span class="author-name">Hiedi Pratap</span><span>&bull;</span><span>April 16, 2025</span></div><p>Founder Mary Gui brought her trendy sock business to the Shark Tank stage, showcasing unique designs that caught the attention of the Sharks...</p></div></div>
+                <div class="company-card"><a href="#" class="company-img"><img src="assets/images/company-gob.svg" alt="AirTulip"></a><div class="company-info"><h3><a href="#">AirTulip Shark Tank | Season 16</a></h3><div class="card-meta"><span class="author-name">Hiedi Pratap</span><span>&bull;</span><span>April 16, 2025</span></div><p>AirTulip addresses air pollution concerns with their innovative air purification technology, bringing a fresh approach to clean air solutions...</p></div></div>
+            </div>
+            <div style="text-align:center;padding:24px 0 8px">
+                <a href="startup-list.html" class="btn-see-more">See More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad: Subscription promo bar -->
+    <div class="ad-promo-bar">
+        <strong>Individual Subscription</strong> &mdash; Go ads-free and get all Shark Tank Blog content. Only $2/month. <a href="subscribe.html">Subscribe now &raquo;</a>
+    </div>
+
+    <!-- Latest Blogs Section -->
+    <section class="section-blogs">
+        <div class="container">
+            <h2 class="section-title">Latest Blogs</h2>
+            <div class="blogs-list">
+                <div class="blog-card"><a href="#" class="blog-img"><img src="assets/images/blog-1.svg" alt="Manscaped"><div class="blog-tags"><span class="tag">BUSINESS</span><span class="tag">SHARK TANK INVESTORS</span></div></a><div class="blog-info"><h3><a href="#">Manscaped Mens Grooming – A Business Breakdown</a></h3><p>Steve King and Josh King, a father-and-son team, run the male grooming company that has become one of the most recognizable brands to emerge from Shark Tank...</p><div class="blog-meta"><div class="author-avatar"></div><span class="author-name">Hiedi Pratap</span><span class="meta-dot">&bull;</span><span>April 7, 2025</span></div></div></div>
+                <div class="blog-card"><a href="#" class="blog-img"><img src="assets/images/blog-2.svg" alt="Pluto Pillow"><div class="blog-tags"><span class="tag">BUSINESS</span><span class="tag">SUCCESS STORIES</span></div></a><div class="blog-info"><h3><a href="#">Pluto Customizable Pillow – A Business Breakdown</a></h3><p>Personalized Sleep Like Never Before with Pluto Pillow. The company has revolutionized the way people think about sleep comfort with their customizable pillow technology...</p><div class="blog-meta"><div class="author-avatar"></div><span class="author-name">Hiedi Pratap</span><span class="meta-dot">&bull;</span><span>April 3, 2025</span></div></div></div>
+                <div class="blog-card"><a href="#" class="blog-img"><img src="assets/images/blog-3.svg" alt="Shark Tank Statistics"><div class="blog-tags"><span class="tag">BUSINESS</span><span class="tag">FINANCING</span><span class="tag">THE SHARK TANK EFFECT</span></div></a><div class="blog-info"><h3><a href="#">Shark Tank Statistics: The Ultimate Breakdown</a></h3><p>According to Shark Tank statistics, Shark Tank has telecasted a total of 15 complete seasons with Season 16 currently airing. Over the years, the show has featured thousands of entrepreneurs...</p><div class="blog-meta"><div class="author-avatar"></div><span class="author-name">Hiedi Pratap</span><span class="meta-dot">&bull;</span><span>March 12, 2025</span></div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="assets/images/shark_logo.jpeg" alt="The Shark Tank Blog" width="80" height="70">
+                        <span class="footer-logo-text">The Shark Tank Blog</span>
+                    </div>
+                    <p>Shark Tank Blog is independent of and not affiliated or endorsed by ABC, Sony, the producers or any other company associated with the television show, Shark Tank. Shark Tank Blog is an opinion blog. Views expressed on this blog are solely owned by the author individually and not that of Shark Tank Blog or principles of Shark Tank Blog.</p>
+                    <div class="social-icons footer-social">
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-menu">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="episodes.html">Shark Tank Episodes</a></li>
+                        <li><a href="products.html">Shark Tank Products</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="startup-list.html">Shark Tank Businesses</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Subscribe to our Newsletter</h4>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit">Subscribe</button>
+                    </div>
+
+                    <div class="footer-support-box">
+                        <h4>Support Shark Tank Blog</h4>
+                        <p class="support-note">Every deal covered. Every founder's story told. Funded by readers, not corporations.</p>
+                        <a href="support.html" class="support-btn" style="display:block;width:100%;text-align:center;padding:12px 20px;border-radius:4px;margin-top:8px;text-decoration:none;font-size:14px;font-weight:700">Support us <i class="fas fa-arrow-right" style="margin-left:4px"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom-bar">
+        <p>Information from your device can be used to personalize your ad experience.</p>
+        <p><a href="#">Do not sell or share my personal information.</a></p>
+        <p><a href="#">Terms of Content Use</a></p>
+        <p class="raptive-badge">A RAPTIVE PARTNER SITE</p>
+    </div>
+
+    <!-- Floating support widget (bottom-left) -->
+    <a href="support.html" class="ad-helper-round" aria-label="Invest in SharkTankBlog">
+        <span>🦈</span>
+    </a>
+
+    <!-- Sticky Video Ad (bottom-right) -->
+    <div class="sv-wrap" id="stickyVideoAd">
+        <div class="sv-gaf-row">
+            <button class="sv-close" onclick="document.getElementById('stickyVideoAd').style.display='none'" aria-label="Close">&times;</button>
+            <button class="sv-gaf" onclick="window.gafOpenPopup && gafOpenPopup()">GO ADS-FREE &rarr;</button>
+        </div>
+        <div class="sv-box">
+            <div class="sv-screen">
+                <div class="sv-play-btn"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="sv-controls">
+                <button class="sv-btn"><i class="fas fa-pause"></i></button>
+                <button class="sv-btn"><i class="fas fa-volume-up"></i></button>
+                <div class="sv-progress"><div class="sv-progress-bar" style="width:35%"></div></div>
+                <span class="sv-time">00:12 / 00:30</span>
+                <button class="sv-btn"><i class="fas fa-expand"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <i class="fa fa-chevron-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script src="go-ad-free.js" data-delay="1000" data-poll="3000" data-selectors=".demo-ad"></script>
+</body>
+</html>

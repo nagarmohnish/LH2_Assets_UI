@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTA Map — Shark Tank Blog Ad-Free Campaign</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --navy: #0B1426;
+            --navy-2: #142342;
+            --cyan: #117fb0;
+            --cyan-dark: #0097a7;
+            --gold: #F5A623;
+            --ink: #1e293b;
+            --muted: #64748b;
+            --border: #e5e7eb;
+            --bg: #f8fafc;
+            --card: #ffffff;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+            color: #fff;
+            padding: 60px 24px 48px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 120px; height: 3px;
+            background: linear-gradient(90deg, var(--cyan), var(--gold));
+            border-radius: 0 0 3px 3px;
+        }
+        .page-header .emoji { font-size: 40px; margin-bottom: 16px; }
+        .page-header h1 { font-size: 2rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .page-header p { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 560px; margin: 0 auto; line-height: 1.6; }
+
+        /* Stats bar */
+        .stats-bar {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 20px 24px;
+        }
+        .stats-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .stat { text-align: center; }
+        .stat-val { font-size: 28px; font-weight: 800; color: var(--cyan); }
+        .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+        /* Container */
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+
+        /* Section titles */
+        .section-title {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* CTA Card */
+        .cta-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: 56px 1fr auto;
+            gap: 20px;
+            align-items: start;
+            transition: box-shadow 0.15s, border-color 0.15s;
+        }
+        .cta-card:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border-color: rgba(17, 127, 176,0.25);
+        }
+        .cta-num {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--navy), var(--navy-2));
+            color: var(--cyan);
+            font-size: 18px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cta-body { min-width: 0; }
+        .cta-name {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .cta-name .placement-tag {
+            font-size: 10px;
+            font-weight: 700;
+            background: rgba(17, 127, 176,0.1);
+            color: var(--cyan);
+            padding: 3px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .cta-desc {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        .cta-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .cta-tag {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: var(--bg);
+            color: var(--muted);
+            border: 1px solid var(--border);
+            white-space: nowrap;
+        }
+        .cta-tag.trigger { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+        .cta-tag.frequency { background: #e0f2fe; color: #0369a1; border-color: #bae6fd; }
+        .cta-tag.page { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
+        .cta-tag.zindex { background: #fce7f3; color: #9d174d; border-color: #fbcfe8; }
+        .cta-copy {
+            font-size: 13px;
+            font-style: italic;
+            color: #888;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #f0f0f0;
+        }
+        .cta-copy strong { color: var(--ink); font-style: normal; }
+
+        /* Right side: links */
+        .cta-links {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: flex-end;
+        }
+        .cta-link {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--cyan);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid rgba(17, 127, 176,0.2);
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+        .cta-link:hover {
+            background: rgba(17, 127, 176,0.08);
+            border-color: rgba(17, 127, 176,0.4);
+        }
+        .cta-link i { font-size: 10px; }
+
+        /* Flow diagram */
+        .flow-section { margin: 48px 0; }
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding: 28px 20px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+        .flow-node {
+            background: linear-gradient(135deg, var(--navy), var(--navy-2));
+            color: #fff;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            text-align: center;
+            min-width: 100px;
+        }
+        .flow-node.highlight { border: 2px solid var(--cyan); }
+        .flow-arrow { color: var(--muted); font-size: 16px; }
+
+        /* Table */
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 24px 0;
+        }
+        .summary-table th {
+            background: var(--navy);
+            color: #fff;
+            text-align: left;
+            padding: 12px 16px;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        .summary-table td {
+            padding: 11px 16px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+        .summary-table tr:last-child td { border-bottom: none; }
+        .summary-table tr:hover td { background: #f8fffe; }
+        .summary-table code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 11px;
+            color: #555;
+        }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            padding: 40px 24px;
+            color: var(--muted);
+            font-size: 13px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .page-footer a { color: var(--cyan); text-decoration: none; font-weight: 600; }
+
+        /* Mobile */
+        @media (max-width: 640px) {
+            .page-header h1 { font-size: 1.5rem; }
+            .cta-card { grid-template-columns: 1fr; gap: 12px; }
+            .cta-links { align-items: flex-start; flex-direction: row; }
+            .stats-inner { gap: 24px; }
+            .flow-diagram { gap: 8px; }
+            .flow-node { min-width: 80px; font-size: 11px; padding: 10px 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="page-header">
+        <div class="emoji">🦈</div>
+        <h1>CTA Map — Go Ad-Free Campaign</h1>
+        <p>Every subscription entry point on the Shark Tank Blog article pages. Built to redirect ~40% of traffic to the subscription page.</p>
+    </header>
+
+    <div class="stats-bar">
+        <div class="stats-inner">
+            <div class="stat">
+                <div class="stat-val">11</div>
+                <div class="stat-label">Entry Points</div>
+            </div>
+            <div class="stat">
+                <div class="stat-val">4</div>
+                <div class="stat-label">Article Pages</div>
+            </div>
+            <div class="stat">
+                <div class="stat-val">2</div>
+                <div class="stat-label">Destinations</div>
+            </div>
+            <div class="stat">
+                <div class="stat-val">6</div>
+                <div class="stat-label">Behavioral Triggers</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- ===== STATIC CTAs ===== -->
+        <div class="section-title">Always Visible (Static Placements)</div>
+
+        <div class="cta-card">
+            <div class="cta-num">1</div>
+            <div class="cta-body">
+                <div class="cta-name">Header Nav Button <span class="placement-tag">Navigation</span></div>
+                <div class="cta-desc">Persistent "Go Ads-Free" button in the top navigation bar, visible on every page scroll. Styled in the site's cyan accent color.</div>
+                <div class="cta-details">
+                    <span class="cta-tag page">All pages</span>
+                    <span class="cta-tag">Always visible</span>
+                </div>
+                <div class="cta-copy"><strong>CTA:</strong> "Go Ads-Free"</div>
+            </div>
+            <div class="cta-links">
+                <a href="go-ads-free.html" class="cta-link"><i class="fas fa-arrow-right"></i> go-ads-free.html</a>
+            </div>
+        </div>
+
+        <div class="cta-card">
+            <div class="cta-num">2</div>
+            <div class="cta-body">
+                <div class="cta-name">Independent Coverage Block <span class="placement-tag">In-Article</span></div>
+                <div class="cta-desc">Dark navy card with cyan-to-gold accent stripe. Appears after the introductory paragraphs, before the Table of Contents. Dual CTA — primary support button + secondary ad-free link.</div>
+                <div class="cta-details">
+                    <span class="cta-tag page">Article pages</span>
+                    <span class="cta-tag">After intro</span>
+                </div>
+                <div class="cta-copy"><strong>Headline:</strong> "This article wasn't funded by a Shark." &mdash; <strong>CTA:</strong> "Back This Blog" + "read ad-free for $2/month"</div>
+            </div>
+            <div class="cta-links">
+                <a href="support.html" class="cta-link"><i class="fas fa-heart"></i> support.html</a>
+                <a href="go-ads-free.html" class="cta-link"><i class="fas fa-arrow-right"></i> go-ads-free.html</a>
+            </div>
+        </div>
+
+        <div class="cta-card">
+            <div class="cta-num">3</div>
+            <div class="cta-body">
+                <div class="cta-name">End-of-Article CTA <span class="placement-tag">In-Article</span></div>
+                <div class="cta-desc">Full-width dark navy card after the Quick Summary section, before the author bio. Two side-by-side buttons (primary ad-free + secondary support). Includes social proof line.</div>
+                <div class="cta-details">
+                    <span class="cta-tag page">bloom.html</span>
+                    <span class="cta-tag">After Quick Summary</span>
+                </div>
+                <div class="cta-copy"><strong>Headline:</strong> "Enjoyed This Deep Dive?" &mdash; <strong>CTAs:</strong> "Go Ad-Free &mdash; $2/month" + "Support from $3/mo" &mdash; <strong>Proof:</strong> "Trusted by 12,000+ readers"</div>
+            </div>
+            <div class="cta-links">
+                <a href="go-ads-free.html" class="cta-link"><i class="fas fa-arrow-right"></i> go-ads-free.html</a>
+                <a href="support.html" class="cta-link"><i class="fas fa-heart"></i> support.html</a>
+            </div>
+        </div>
+
+        <div class="cta-card">
+            <div class="cta-num">4</div>
+            <div class="cta-body">
+                <div class="cta-name">Sidebar "Close the Deal" Card <span class="placement-tag">Sidebar</span></div>
+                <div class="cta-desc">Dark navy card in the right sidebar between search box and Recent Blogs widget. Uses deal-making language with bolt icon. Full-width cyan CTA button + support alt-link below.</div>
+                <div class="cta-details">
+                    <span class="cta-tag page">hundy, bloom</span>
+                    <span class="cta-tag">Below search</span>
+                </div>
+                <div class="cta-copy"><strong>Headline:</strong> "Close the Deal" &mdash; <strong>Body:</strong> "No equity. No royalties. Just $2/month for zero ads." &mdash; <strong>CTA:</strong> "I'm In"</div>
+            </div>
+            <div class="cta-links">
+                <a href="go-ads-free.html" class="cta-link"><i class="fas fa-arrow-right"></i> go-ads-free.html</a>
+                <a href="support.html" class="cta-link"><i class="fas fa-heart"></i> support.html</a>
+            </div>
+        </div>
+
+        <div class="cta-card">
+            <div class="cta-num">5</div>
+            <div class="cta-body">
+                <div class="cta-name">Footer Go Ad-Free Box <span class="placement-tag">Footer</span></div>
+                <div class="cta-desc">Placed below the newsletter subscription form in the site footer. Cyan button linking to the landing page + secondary support link. Separated from newsletter by a subtle border.</div>
+                <div class="cta-details">
+                    <span class="cta-tag page">bloom.html</span>
+                    <span class="cta-tag">Below newsletter</span>
+                </div>
+                <div class="cta-copy"><strong>Body:</strong> "Read every article without ads for just $2/month." &mdash; <strong>CTA:</strong> "Go Ad-Free &rarr;"</div>
+            </div>
+            <div class="cta-links">
+                <a href="go-ads-free.html" class="cta-link"><i class="fas fa-arrow-right"></i> go-ads-free.html</a>
+            </div>
+        </div>
+
+        <div class="cta-card">
+            <div class="cta-num">6</div>
+            <div class="cta-body">
+                <div class="cta-name">Ad Slot GO ADS-FREE Pills <span class="placement-tag">On Ads</span></div>
+                <div class="cta-desc">Auto-injected red pill button above every ad unit on the page. Powered by <code>go-ad-free.js</code> which scans for <code>.demo-ad</code> elements and inserts a clickable pill that opens the payment popup modal.</div>
+                <div class="cta-details">
+                    <span class="cta-tag page">All article pages</span>
+                    <span class="cta-tag trigger">Auto-injected by JS</span>
+                </div>
+                <div class="cta-copy"><strong>CTA:</strong> "GO ADS-FREE &rarr;" &mdash; Opens payment popup (4-screen modal: amount &rarr; Google sign-in &rarr; payment &rarr; certificate)</div>
+            </div>
+            <div class="cta-links">
+                <span class="cta-link" style="color:var(--muted);border-color:var(--border)"><i class="fas fa-code"></i> popup modal</span>
+            </div>
+        </div>
+
+        <div class="cta-card">
+            <div class="cta-num">7</div>
+            <div class="cta-body">
+                <div class="cta-name">Floating Sticky Button <span class="placement-tag">Fixed</span></div>
+                <div class="cta-desc">Dark navy pill with shark emoji + "Go Ad-Free" text in cyan. Fixed to bottom-left corner, positioned above the sticky footer CTA to prevent overlap. Always visible while scrolling.</div>
+                <div class="cta-details">
+                    <span class="cta-tag page">All article pages</span>
+                    <span class="cta-tag">Bottom-left, always visible</span>
+                </div>
+                <div class="cta-copy"><strong>CTA:</strong> "🦈 Go Ad-Free"</div>
+            </div>
+            <div class="cta-links">
+                <a href="go-ads-free.html" class="cta-link"><i class="fas fa-arrow-right"></i> go-ads-free.html</a>
+            </div>
+        </div>
+
+        <!-- ===== BEHAVIORAL CTAs ===== -->
+        <div class="section-title" style="margin-top:40px">Behavioral Triggers</div>
+
+        <div class="cta-card">
+            <div class="cta-num">8</div>
+            <div class="cta-body">
+                <div class="cta-name">Welcome Mat <span class="placement-tag">Full-Screen</span></div>
+                <div class="cta-desc">Full-screen takeover for first-time visitors. Dark navy background with shark emoji, headline, and primary CTA. "Continue with ads" skips to article. Blocks body scroll while active.</div>
+                <div class="cta-details">
+                    <span class="cta-tag trigger">First visit ever</span>
+                    <span class="cta-tag frequency">Once per browser (localStorage)</span>
+                    <span class="cta-tag zindex">z-index: 10000</span>
+                    <span class="cta-tag page">bloom.html</span>
+                </div>
+                <div class="cta-copy"><strong>Headline:</strong> "Welcome to Shark Tank Blog" &mdash; <strong>CTA:</strong> "Start Ad-Free &mdash; $2/month" &mdash; <strong>Dismiss:</strong> "Continue with ads &rarr;"</div>
+            </div>
+            <div class="cta-links">
+                <a href="go-ads-free.html" class="cta-link"><i class="fas fa-arrow-right"></i> go-ads-free.html</a>
+            </div>
+        </div>
+
+        <div class="cta-card">
+            <div class="cta-num">9</div>
+            <div class="cta-body">
+                <div class="cta-name">Timed Modal Popup <span class="placement-tag">Modal</span></div>
+                <div class="cta-desc">Centered modal with dark overlay. Triggers on whichever happens first: 20 seconds on page or 50% scroll depth. Fade-in animation. Closeable via X, overlay click, or Escape key.</div>
+                <div class="cta-details">
+                    <span class="cta-tag trigger">20s OR 50% scroll</span>
+                    <span class="cta-tag frequency">Once per session (sessionStorage)</span>
+                    <span class="cta-tag zindex">z-index: 9997</span>
+                    <span class="cta-tag page">bloom.html</span>
+                </div>
+                <div class="cta-copy"><strong>Headline:</strong> "Reading Without Interruptions?" &mdash; <strong>Body:</strong> "Go ad-free for just $2/month. That's less than a single Shark Tank deal gone wrong." &mdash; <strong>CTA:</strong> "Remove All Ads" &mdash; <strong>Dismiss:</strong> "Maybe later"</div>
+            </div>
+            <div class="cta-links">
+                <a href="go-ads-free.html" class="cta-link"><i class="fas fa-arrow-right"></i> go-ads-free.html</a>
+            </div>
+        </div>
+
+        <div class="cta-card">
+            <div class="cta-num">10</div>
+            <div class="cta-body">
+                <div class="cta-name">Sticky Bottom Bar <span class="placement-tag">Fixed Bar</span></div>
+                <div class="cta-desc">Persistent thin bar fixed to the bottom of the viewport. Dark navy gradient with cyan top border. Shows shark emoji + copy on left, CTA button on right. Dismissible per session via X button.</div>
+                <div class="cta-details">
+                    <span class="cta-tag trigger">3 seconds after load</span>
+                    <span class="cta-tag frequency">Dismiss hides for session</span>
+                    <span class="cta-tag zindex">z-index: 9996</span>
+                    <span class="cta-tag page">bloom.html</span>
+                </div>
+                <div class="cta-copy"><strong>Copy:</strong> "🦈 Tired of ads interrupting the pitch?" &mdash; <strong>CTA:</strong> "Go Ad-Free &mdash; $2/month"</div>
+            </div>
+            <div class="cta-links">
+                <a href="go-ads-free.html" class="cta-link"><i class="fas fa-arrow-right"></i> go-ads-free.html</a>
+            </div>
+        </div>
+
+        <div class="cta-card">
+            <div class="cta-num">11</div>
+            <div class="cta-body">
+                <div class="cta-name">Exit-Intent Modal <span class="placement-tag">Desktop Only</span></div>
+                <div class="cta-desc">Triggers when the user's mouse cursor leaves the viewport toward the top (Y &lt; 10px while moving up). Gold top border for urgency. Includes benefit bullet list. Only fires if no other modal is active. Armed after 5 seconds to prevent false triggers.</div>
+                <div class="cta-details">
+                    <span class="cta-tag trigger">Mouse leaves viewport top</span>
+                    <span class="cta-tag frequency">Once per session (sessionStorage)</span>
+                    <span class="cta-tag zindex">z-index: 9998</span>
+                    <span class="cta-tag page">bloom.html (desktop)</span>
+                </div>
+                <div class="cta-copy"><strong>Headline:</strong> "Wait &mdash; One Last Offer Before You Go" &mdash; <strong>Benefits:</strong> Zero ads / Faster loading / Support coverage &mdash; <strong>CTA:</strong> "Claim Ad-Free Access" &mdash; <strong>Dismiss:</strong> "No thanks, I like ads"</div>
+            </div>
+            <div class="cta-links">
+                <a href="go-ads-free.html" class="cta-link"><i class="fas fa-arrow-right"></i> go-ads-free.html</a>
+            </div>
+        </div>
+
+        <!-- ===== USER FLOW ===== -->
+        <div class="flow-section">
+            <div class="section-title">User Flow</div>
+            <div class="flow-diagram">
+                <div class="flow-node">Article Page</div>
+                <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="flow-node highlight">CTA Clicked</div>
+                <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="flow-node">go-ads-free.html<br><small style="opacity:0.6">Landing page</small></div>
+                <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="flow-node">Payment Popup<br><small style="opacity:0.6">4-screen modal</small></div>
+                <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="flow-node highlight">Subscriber</div>
+            </div>
+        </div>
+
+        <!-- ===== Z-INDEX TABLE ===== -->
+        <div class="section-title">Z-Index Layering</div>
+        <table class="summary-table">
+            <thead>
+                <tr><th>Layer</th><th>Component</th><th>Z-Index</th><th>Behavior</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1 (top)</td><td>Welcome Mat</td><td><code>10000</code></td><td>Blocks everything; first visit only</td></tr>
+                <tr><td>2</td><td>Exit-Intent Modal</td><td><code>9998</code></td><td>Desktop only; armed after 5s</td></tr>
+                <tr><td>3</td><td>Timed Modal</td><td><code>9997</code></td><td>20s or 50% scroll</td></tr>
+                <tr><td>4</td><td>Sticky Bottom Bar</td><td><code>9996</code></td><td>Persistent; dismissible</td></tr>
+                <tr><td>5</td><td>Floating Button</td><td><code>997</code></td><td>Always visible; bottom-left</td></tr>
+                <tr><td>6</td><td>GO ADS-FREE Pills</td><td><code>5</code></td><td>Inside ad slots; auto-injected</td></tr>
+            </tbody>
+        </table>
+
+        <!-- ===== PAGES TABLE ===== -->
+        <div class="section-title">Destination Pages</div>
+        <table class="summary-table">
+            <thead>
+                <tr><th>Page</th><th>URL</th><th>Purpose</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Go Ads-Free Landing</strong></td>
+                    <td><a href="go-ads-free.html" style="color:var(--cyan)">go-ads-free.html</a></td>
+                    <td>Hero + comparison + pricing card ($2/mo) + sticky CTA bar</td>
+                </tr>
+                <tr>
+                    <td><strong>Support Page</strong></td>
+                    <td><a href="support.html" style="color:var(--cyan)">support.html</a></td>
+                    <td>Support/donation page with embedded payment widget ($3/mo+)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- ===== ARTICLE PAGES TABLE ===== -->
+        <div class="section-title">Article Pages with CTAs</div>
+        <table class="summary-table">
+            <thead>
+                <tr><th>Page</th><th>Startup</th><th>Static CTAs</th><th>Behavioral CTAs</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="hang-hero.html" style="color:var(--cyan)">hang-hero.html</a></td>
+                    <td>Hang Hero</td>
+                    <td>Header, ad pills, floating button</td>
+                    <td>&mdash;</td>
+                </tr>
+                <tr>
+                    <td><a href="hundy.html" style="color:var(--cyan)">hundy.html</a></td>
+                    <td>Hundy</td>
+                    <td>Header, independent coverage, sidebar deal card, ad pills, floating button</td>
+                    <td>&mdash;</td>
+                </tr>
+                <tr>
+                    <td><a href="beer-girl.html" style="color:var(--cyan)">beer-girl.html</a></td>
+                    <td>Beer Girl</td>
+                    <td>Header, author CTA, sidebar CTA, footer CTA, ad pills, floating button</td>
+                    <td>&mdash;</td>
+                </tr>
+                <tr>
+                    <td><a href="bloom.html" style="color:var(--cyan)">bloom.html</a></td>
+                    <td>Bloom</td>
+                    <td>Header, independent coverage, end-of-article, sidebar deal card, footer box, ad pills, floating button</td>
+                    <td>Welcome mat, timed modal, sticky bar, exit-intent modal</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <footer class="page-footer">
+        <p><a href="index.html">&larr; Back to Shark Tank Blog</a> &middot; Built by Mohnish Nagar</p>
+    </footer>
+
+</body>
+</html>

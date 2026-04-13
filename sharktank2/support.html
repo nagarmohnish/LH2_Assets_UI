@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Us | Shark Tank Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="page-styles.css">
+    <link rel="stylesheet" href="article-styles.css">
+    <link rel="stylesheet" href="auth-styles.css">
+    <style>
+        @property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+
+        :root {
+            --mem-dark: #0a0f1e;
+            --mem-dark2: #111827;
+            --mem-accent: #00d4aa;
+            --mem-accent-glow: rgba(0,212,170,0.3);
+            --mem-accent-soft: rgba(0,212,170,0.08);
+            --mem-glass-bg: rgba(255,255,255,0.04);
+            --mem-glass-border: rgba(255,255,255,0.08);
+            --mem-text-muted: rgba(255,255,255,0.45);
+        }
+
+        body { background: var(--mem-dark); margin: 0; }
+
+        /* =============================================
+           SECTION BASES
+           ============================================= */
+        .mem-dark { background: var(--mem-dark); color: #fff; position: relative; overflow: hidden; }
+        .mem-dark2 { background: var(--mem-dark2); color: #fff; position: relative; overflow: hidden; }
+        .mem-light { background: #fff; color: #1a1a1a; position: relative; }
+
+        /* Dot grid pattern */
+        .mem-dots::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+            background-size: 24px 24px;
+            pointer-events: none;
+        }
+
+        /* Decorative shapes */
+        .mem-deco-circle::after {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.03);
+            pointer-events: none;
+        }
+
+        /* =============================================
+           1. HERO
+           ============================================= */
+        .mem-hero {
+            padding: 140px 24px 100px;
+            text-align: center;
+        }
+        .mem-hero-glow {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 400px;
+            background: radial-gradient(ellipse, rgba(0,212,170,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .mem-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .mem-hero h1 {
+            font-family: var(--font-heading);
+            font-size: 46px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 18px;
+            letter-spacing: -0.5px;
+        }
+        .mem-hero-sub {
+            font-size: 17px;
+            color: var(--mem-text-muted);
+            line-height: 1.7;
+            max-width: 520px;
+            margin: 0 auto 36px;
+        }
+        .mem-hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            background: var(--mem-accent);
+            color: #0a0f1e;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: transform 0.15s, box-shadow 0.15s;
+            box-shadow: 0 0 30px var(--mem-accent-glow);
+        }
+        .mem-hero-cta:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 50px var(--mem-accent-glow);
+        }
+        /* Stat counters */
+        .mem-hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 56px;
+        }
+        .mem-hero-stat {
+            text-align: center;
+        }
+        .mem-hero-stat-val {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .mem-hero-stat-label {
+            font-size: 12px;
+            color: var(--mem-text-muted);
+            margin-top: 2px;
+        }
+
+        /* =============================================
+           2. WHAT MEMBERS GET
+           ============================================= */
+        .mem-benefits {
+            padding: 96px 24px;
+        }
+        .mem-benefits::after {
+            top: -100px;
+            right: -200px;
+        }
+        .mem-section-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--mem-accent);
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        .mem-section-title {
+            font-family: var(--font-heading);
+            font-size: 30px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 48px;
+            color: inherit;
+        }
+        .mem-benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        .mem-benefit-card {
+            padding: 28px 22px;
+            background: var(--mem-glass-bg);
+            border: 1px solid var(--mem-glass-border);
+            border-radius: 12px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        .mem-benefit-card:hover {
+            border-color: rgba(0,212,170,0.2);
+            box-shadow: 0 0 20px rgba(0,212,170,0.06);
+            transform: translateY(-2px);
+        }
+        .mem-benefit-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 9px;
+            background: var(--mem-accent-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+        .mem-benefit-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: var(--mem-accent);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .mem-benefit-card h4 {
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .mem-benefit-card p {
+            font-size: 13px;
+            color: var(--mem-text-muted);
+            line-height: 1.55;
+        }
+
+        /* =============================================
+           3. PRICING
+           ============================================= */
+        .mem-pricing {
+            padding: 96px 24px;
+        }
+        .mem-pricing .mem-section-label { color: var(--mem-accent); }
+        .mem-pricing .mem-section-title { color: #1a1a1a; }
+        /* Toggle */
+        .mem-toggle-wrap {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        .mem-toggle {
+            display: inline-flex;
+            background: #f1f1f1;
+            border-radius: 8px;
+            padding: 3px;
+        }
+        .mem-toggle-btn {
+            padding: 9px 24px;
+            border: none;
+            background: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #999;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .mem-toggle-btn.active {
+            background: #fff;
+            color: #1a1a1a;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+        .mem-toggle-save {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--mem-accent);
+            margin-left: 4px;
+        }
+        /* Cards */
+        .mem-price-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 720px;
+            margin: 0 auto 24px;
+        }
+        .mem-price-card {
+            border: 1.5px solid #e8e8e8;
+            border-radius: 14px;
+            padding: 36px 28px 30px;
+            text-align: center;
+            position: relative;
+            background: #fff;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .mem-price-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+        }
+        /* Animated gradient border for featured */
+        .mem-price-card.featured {
+            border: 2px solid transparent;
+            background: linear-gradient(#fff, #fff) padding-box, conic-gradient(from var(--angle), var(--mem-accent), #6366f1, #117fb0, var(--mem-accent)) border-box;
+            animation: mem-rotate-border 4s linear infinite;
+        }
+        @keyframes mem-rotate-border {
+            to { --angle: 360deg; }
+        }
+        .mem-price-card.featured:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0,212,170,0.1);
+        }
+        .mem-price-badge {
+            position: absolute;
+            top: -11px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            font-weight: 700;
+            color: #fff;
+            background: var(--mem-accent);
+            padding: 3px 16px;
+            border-radius: 8px;
+            white-space: nowrap;
+        }
+        .mem-price-plan {
+            font-size: 12px;
+            font-weight: 700;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 14px;
+        }
+        .mem-price-amount {
+            font-family: var(--font-heading);
+            font-size: 44px;
+            font-weight: 700;
+            color: #1a1a1a;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .mem-price-period {
+            font-size: 14px;
+            color: #bbb;
+            margin-bottom: 4px;
+        }
+        .mem-price-note {
+            font-size: 12px;
+            color: #ccc;
+            margin-bottom: 22px;
+            min-height: 18px;
+        }
+        .mem-price-cta {
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: all 0.15s;
+            border: none;
+        }
+        .mem-price-cta.outline {
+            background: #fff;
+            color: #1a1a1a;
+            border: 1.5px solid #ddd;
+        }
+        .mem-price-cta.outline:hover { border-color: #bbb; }
+        .mem-price-cta.primary {
+            background: var(--mem-accent);
+            color: #0a0f1e;
+            box-shadow: 0 0 24px var(--mem-accent-glow);
+        }
+        .mem-price-cta.primary:hover {
+            box-shadow: 0 0 40px var(--mem-accent-glow);
+            transform: scale(1.02);
+        }
+        .mem-price-features {
+            list-style: none;
+            text-align: left;
+            margin-top: 22px;
+            padding-top: 22px;
+            border-top: 1px solid #f0f0f0;
+        }
+        .mem-price-features li {
+            font-size: 13px;
+            color: #777;
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .mem-price-features li svg {
+            width: 14px;
+            height: 14px;
+            fill: none;
+            stroke: var(--mem-accent);
+            stroke-width: 2.5;
+            flex-shrink: 0;
+        }
+        /* Trust line */
+        .mem-trust {
+            text-align: center;
+            font-size: 12px;
+            color: #ccc;
+        }
+        .mem-trust i { margin-right: 3px; }
+
+        /* =============================================
+           4. TESTIMONIALS
+           ============================================= */
+        .mem-testimonials {
+            padding: 96px 24px;
+        }
+        .mem-testimonials::after {
+            bottom: -150px;
+            left: -200px;
+        }
+        .mem-test-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .mem-test-card {
+            padding: 28px 24px;
+            background: var(--mem-glass-bg);
+            border: 1px solid var(--mem-glass-border);
+            border-radius: 12px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .mem-test-card:hover {
+            border-color: rgba(0,212,170,0.15);
+            transform: translateY(-2px);
+        }
+        .mem-test-quote {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.65;
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+        .mem-test-attr {
+            font-size: 12px;
+            color: rgba(255,255,255,0.3);
+            font-weight: 600;
+        }
+
+        /* =============================================
+           5. BY THE NUMBERS
+           ============================================= */
+        .mem-numbers {
+            padding: 64px 24px;
+            border-top: 1px solid rgba(0,212,170,0.12);
+        }
+        .mem-numbers-row {
+            display: flex;
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .mem-num-item {
+            flex: 1;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
+        .mem-num-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 6px;
+            height: 36px;
+            width: 1px;
+            background: rgba(255,255,255,0.08);
+        }
+        .mem-num-val {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+        .mem-num-label {
+            font-size: 11px;
+            color: var(--mem-text-muted);
+        }
+
+        /* =============================================
+           6. FAQ
+           ============================================= */
+        .mem-faq {
+            padding: 80px 24px;
+        }
+        .mem-faq .mem-section-label { color: #bbb; }
+        .mem-faq .mem-section-title { color: #1a1a1a; }
+        .mem-faq-list {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .mem-faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+        .mem-faq-q {
+            font-size: 15px;
+            font-weight: 700;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: var(--font-body);
+            gap: 12px;
+        }
+        .mem-faq-q i {
+            color: #ccc;
+            font-size: 11px;
+            transition: transform 0.25s ease;
+            flex-shrink: 0;
+        }
+        .mem-faq-a {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.7;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+        }
+        .mem-faq-item.open .mem-faq-a {
+            max-height: 200px;
+            padding-top: 12px;
+        }
+        .mem-faq-item.open .mem-faq-q i {
+            transform: rotate(180deg);
+        }
+
+        /* =============================================
+           7. FINAL CTA
+           ============================================= */
+        .mem-final {
+            padding: 100px 24px;
+            text-align: center;
+        }
+        .mem-final-inner {
+            max-width: 560px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .mem-final h2 {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.3;
+            margin-bottom: 28px;
+        }
+        .mem-final-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 40px;
+            background: var(--mem-accent);
+            color: #0a0f1e;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: transform 0.15s, box-shadow 0.15s;
+            box-shadow: 0 0 30px var(--mem-accent-glow);
+        }
+        .mem-final-cta:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 50px var(--mem-accent-glow);
+        }
+        .mem-final-sub {
+            font-size: 13px;
+            color: var(--mem-text-muted);
+            margin-top: 14px;
+        }
+
+        /* =============================================
+           EMBEDDED PAYMENT WIDGET
+           ============================================= */
+        .emb-widget {
+            max-width: 520px;
+            margin: 0 auto;
+            background: #fff;
+            border: 1px solid #e8e8e8;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+            overflow: hidden;
+            min-height: 200px;
+        }
+        .emb-body {
+            padding: 40px 36px 32px;
+        }
+        /* Steps indicator */
+        .emb-steps {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 28px;
+        }
+        .emb-step-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            transition: background 0.2s;
+        }
+        .emb-step-dot.active { background: var(--mem-accent); }
+        .emb-step-dot.done { background: var(--mem-accent); opacity: 0.4; }
+        .emb-step-line {
+            width: 24px;
+            height: 2px;
+            background: #e8e8e8;
+        }
+        /* Screen 1: Plan selection */
+        .emb-s1-title {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-align: center;
+            margin-bottom: 6px;
+        }
+        .emb-s1-sub {
+            font-size: 14px;
+            color: #999;
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        .emb-toggle-wrap {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+        .emb-toggle {
+            display: inline-flex;
+            background: #f3f3f3;
+            border-radius: 8px;
+            padding: 3px;
+        }
+        .emb-toggle-btn {
+            padding: 8px 20px;
+            border: none;
+            background: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #999;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: all 0.15s;
+        }
+        .emb-toggle-btn.active {
+            background: #fff;
+            color: #1a1a1a;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+        .emb-toggle-save {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--mem-accent);
+            margin-left: 3px;
+        }
+        .emb-plans {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .emb-plan {
+            border: 1.5px solid #e8e8e8;
+            border-radius: 12px;
+            padding: 24px 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.15s;
+            position: relative;
+        }
+        .emb-plan:hover { border-color: #ccc; }
+        .emb-plan.active { border-color: var(--mem-accent); background: rgba(0,212,170,0.03); }
+        .emb-plan-badge {
+            position: absolute;
+            top: -9px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 9px;
+            font-weight: 700;
+            color: #fff;
+            background: var(--mem-accent);
+            padding: 2px 12px;
+            border-radius: 8px;
+            white-space: nowrap;
+        }
+        .emb-plan-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .emb-plan-price {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            font-weight: 700;
+            color: #1a1a1a;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .emb-plan.active .emb-plan-price { color: #0a0f1e; }
+        .emb-plan-period {
+            font-size: 13px;
+            color: #bbb;
+        }
+        .emb-plan-note {
+            font-size: 11px;
+            color: #ccc;
+            margin-top: 4px;
+            min-height: 16px;
+        }
+        .emb-cta {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            background: var(--mem-accent);
+            color: #0a0f1e;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+            box-shadow: 0 0 20px var(--mem-accent-glow);
+            margin-bottom: 14px;
+        }
+        .emb-cta:hover { transform: translateY(-1px); box-shadow: 0 0 30px var(--mem-accent-glow); }
+        .emb-cta:active { transform: translateY(0); }
+        .emb-cta.processing { opacity: 0.7; cursor: not-allowed; }
+        .emb-trust {
+            text-align: center;
+            font-size: 12px;
+            color: #ccc;
+        }
+        .emb-trust i { margin-right: 3px; }
+        /* Screen 2: Google Sign In */
+        .emb-glogo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+        .emb-glogo svg {
+            width: 36px;
+            height: 36px;
+            padding: 6px;
+            background: #f5f5f5;
+            border-radius: 50%;
+        }
+        .emb-s2-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-align: center;
+            margin-bottom: 4px;
+        }
+        .emb-s2-sub {
+            font-size: 13px;
+            color: #bbb;
+            text-align: center;
+            margin-bottom: 22px;
+        }
+        .emb-account {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            border: 1.5px solid #eee;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: border-color 0.15s, background 0.15s;
+        }
+        .emb-account:hover { border-color: #ddd; background: #fafafa; }
+        .emb-account-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .emb-account-info { flex: 1; }
+        .emb-account-name { font-size: 14px; font-weight: 600; color: #333; }
+        .emb-account-email { font-size: 12px; color: #999; }
+        .emb-account-arrow { color: #ccc; font-size: 13px; }
+        .emb-divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 18px 0;
+        }
+        .emb-divider::before, .emb-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #eee;
+        }
+        .emb-divider span { font-size: 12px; color: #ccc; }
+        .emb-email-btn {
+            display: block;
+            width: 100%;
+            padding: 11px;
+            border: none;
+            background: none;
+            color: #aaa;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: var(--font-body);
+            text-align: center;
+            transition: color 0.15s;
+        }
+        .emb-email-btn:hover { color: var(--mem-accent); }
+        /* Screen 3: Payment */
+        .emb-s3-label { font-size: 13px; color: #999; margin-bottom: 4px; }
+        .emb-s3-amount { font-size: 28px; font-weight: 900; color: #1a1a1a; margin-bottom: 24px; line-height: 1; }
+        .emb-s3-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+        .emb-s3-heading-text { font-size: 14px; font-weight: 700; color: #333; }
+        .emb-s3-heading-right { font-size: 12px; color: #aaa; }
+        .emb-method {
+            border: 1.5px solid #eee;
+            border-radius: 12px;
+            padding: 16px 18px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: border-color 0.15s;
+        }
+        .emb-method:hover { border-color: #ddd; }
+        .emb-method.active { border-color: var(--mem-accent); }
+        .emb-method-top { display: flex; align-items: center; justify-content: space-between; }
+        .emb-method-left { display: flex; align-items: center; gap: 10px; }
+        .emb-method-icon { font-size: 16px; color: #888; }
+        .emb-method-name { font-size: 14px; font-weight: 600; color: #333; }
+        .emb-method-sub { font-size: 11px; color: var(--mem-accent); font-weight: 600; }
+        .emb-method-chevron { color: #ccc; font-size: 11px; transition: transform 0.2s; }
+        .emb-method.active .emb-method-chevron { transform: rotate(180deg); }
+        .emb-method-form { margin-top: 12px; display: none; }
+        .emb-method.active .emb-method-form { display: block; }
+        .emb-field { margin-bottom: 10px; }
+        .emb-field label { display: block; font-size: 11px; font-weight: 600; color: #888; margin-bottom: 4px; }
+        .emb-field input { width: 100%; padding: 10px 12px; border: 1.5px solid #e4e4e4; border-radius: 8px; font-size: 14px; outline: none; font-family: inherit; transition: border-color 0.15s; }
+        .emb-field input:focus { border-color: var(--mem-accent); }
+        .emb-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .emb-express-label { font-size: 11px; font-weight: 600; color: #aaa; text-align: center; margin: 16px 0 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .emb-express-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px; }
+        .emb-express-btn { padding: 10px 6px; border: 1.5px solid #eee; border-radius: 8px; text-align: center; cursor: pointer; font-size: 11px; font-weight: 600; color: #555; background: #fff; transition: border-color 0.15s; font-family: inherit; }
+        .emb-express-btn:hover { border-color: var(--mem-accent); }
+        .emb-s3-trust { text-align: center; font-size: 11px; color: #ccc; margin-bottom: 16px; }
+        /* Screen 4: Success */
+        .emb-s4-check {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--mem-accent);
+            color: #0a0f1e;
+            font-size: 22px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+        .emb-s4-text {
+            text-align: center;
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .emb-s4-text strong { color: #1a1a1a; }
+        .emb-s4-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 18px;
+            border: 1.5px solid var(--mem-accent);
+            border-radius: 20px;
+            color: var(--mem-accent);
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+        .emb-cert {
+            border: 1px solid #e8e8e8;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .emb-cert-bar { height: 3px; background: linear-gradient(90deg, var(--mem-accent), #6366f1); border-radius: 12px 12px 0 0; position: absolute; top: 0; left: 0; right: 0; }
+        .emb-cert-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #bbb; margin-bottom: 10px; }
+        .emb-cert-small { font-size: 12px; color: #bbb; }
+        .emb-cert-name { font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 4px 0; }
+        .emb-cert-cause { font-style: italic; color: #aaa; font-size: 12px; margin: 8px 0; }
+        .emb-cert-amount { font-weight: 800; font-size: 15px; color: #1a1a1a; }
+        .emb-cert-date { font-size: 11px; color: #bbb; margin-top: 2px; }
+        .emb-share-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 16px;
+        }
+        .emb-share-btn {
+            padding: 10px;
+            border: 1.5px solid #eee;
+            border-radius: 8px;
+            color: #555;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            background: #fff;
+            transition: border-color 0.15s;
+            font-family: inherit;
+        }
+        .emb-share-btn:hover { border-color: var(--mem-accent); }
+        /* Back button */
+        .emb-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: #bbb;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: inherit;
+            margin-bottom: 16px;
+            transition: color 0.15s;
+        }
+        .emb-back:hover { color: #888; }
+        /* Spinner */
+        .emb-spinner {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 2.5px solid rgba(10,15,30,.15);
+            border-top-color: #0a0f1e;
+            border-radius: 50%;
+            animation: emb-spin 0.6s linear infinite;
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+        @keyframes emb-spin { to { transform: rotate(360deg); } }
+
+        /* =============================================
+           RESPONSIVE
+           ============================================= */
+        @media (max-width: 768px) {
+            .mem-hero { padding: 100px 20px 72px; }
+            .mem-hero h1 { font-size: 32px; }
+            .mem-hero-stats { flex-direction: column; gap: 20px; }
+            .mem-benefits-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+            .emb-plans { grid-template-columns: 1fr; }
+            .emb-body { padding: 32px 24px 24px; }
+            .emb-express-grid { grid-template-columns: repeat(2, 1fr); }
+            .mem-test-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .mem-numbers-row { flex-wrap: wrap; gap: 20px; }
+            .mem-num-item:not(:last-child)::after { display: none; }
+            .mem-num-item { flex: 0 0 calc(50% - 10px); }
+        }
+        @media (max-width: 480px) {
+            .mem-hero h1 { font-size: 28px; }
+            .mem-hero-sub { font-size: 15px; }
+            .mem-num-item { flex: 0 0 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Social Bar -->
+    <div class="top-social-bar">
+        <div class="container top-social-inner">
+            <div class="social-icons top-social-icons">
+                <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nav -->
+    <nav class="main-nav" id="mainNav">
+        <div class="container nav-inner">
+            <div class="nav-left">
+                <a href="index.html" class="logo"><img src="assets/images/shark_logo.jpeg" alt="The Shark Tank Blog" width="60" height="50"></a>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="episodes.html">Shark Tank Episodes</a></li>
+                    <li><a href="products.html">Shark Tank Products</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="startup-list.html">Shark Tank Startup List</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <button class="search-toggle" id="searchToggle" aria-label="Search"><i class="fa fa-search"></i></button>
+                <a href="#" class="btn-contact" onclick="event.preventDefault();window.gafOpenPopup&&gafOpenPopup()">Go Ads-Free</a>
+                <a href="login.html" class="btn-login-nav"><i class="fas fa-user"></i> Login</a>
+            </div>
+            <div class="search-box" id="searchBox"><input type="text" placeholder="Search..."><button type="submit"><i class="fa fa-search"></i></button></div>
+        </div>
+    </nav>
+
+    <!-- 1. HERO -->
+    <section class="mem-dark mem-dots mem-hero">
+        <div class="mem-hero-glow"></div>
+        <div class="mem-hero-content">
+            <h1>The Shark Tank Coverage You Trust. Keep It Free.</h1>
+            <p class="mem-hero-sub">Join 1,200+ supporters who fund ad-free access, full archives, and independent deep-dives into every pitch and deal.</p>
+            <button class="mem-hero-cta" id="heroCtaBtn">Support Now <i class="fas fa-arrow-right"></i></button>
+            <div class="mem-hero-stats">
+                <div class="mem-hero-stat"><div class="mem-hero-stat-val" data-target="500">0</div><div class="mem-hero-stat-label">Articles</div></div>
+                <div class="mem-hero-stat"><div class="mem-hero-stat-val" data-target="17">0</div><div class="mem-hero-stat-label">Seasons Covered</div></div>
+                <div class="mem-hero-stat"><div class="mem-hero-stat-val" data-target="5">0</div><div class="mem-hero-stat-label">Years Running</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. WHAT MEMBERS GET -->
+    <section class="mem-dark2 mem-benefits mem-deco-circle">
+        <div class="mem-section-label">What You Get</div>
+        <div class="mem-section-title" style="color:#fff">Your Support Includes</div>
+        <div class="mem-benefits-grid">
+            <div class="mem-benefit-card">
+                <div class="mem-benefit-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4" y1="4" x2="20" y2="20"/></svg></div>
+                <h4>Ad-Free Reading</h4>
+                <p>Every banner, sidebar, and popup removed instantly across all pages.</p>
+            </div>
+            <div class="mem-benefit-card">
+                <div class="mem-benefit-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+                <h4>Full Episode Archive</h4>
+                <p>Access every recap across all 17 seasons, organized and searchable.</p>
+            </div>
+            <div class="mem-benefit-card">
+                <div class="mem-benefit-icon"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                <h4>Early Access</h4>
+                <p>Get episode recaps 24 hours before free readers see them.</p>
+            </div>
+            <div class="mem-benefit-card">
+                <div class="mem-benefit-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                <h4>Where Are They Now</h4>
+                <p>Exclusive updates on what happened to founders after the show.</p>
+            </div>
+            <div class="mem-benefit-card">
+                <div class="mem-benefit-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                <h4>Member Newsletter</h4>
+                <p>Weekly digest with deal analysis and insider takes delivered to your inbox.</p>
+            </div>
+            <div class="mem-benefit-card">
+                <div class="mem-benefit-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+                <h4>Priority Support</h4>
+                <p>Direct line to the team. Questions, feedback, or story tips.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. PRICING — Embedded widget -->
+    <section class="mem-light mem-pricing">
+        <div class="mem-section-label">Support</div>
+        <div class="mem-section-title">Support Shark Tank Blog</div>
+        <div class="emb-widget" id="embWidget">
+            <!-- Screens rendered by JS -->
+        </div>
+    </section>
+
+    <!-- 4. TESTIMONIALS -->
+    <section class="mem-dark mem-testimonials mem-dots mem-deco-circle">
+        <div class="mem-section-label">Supporters</div>
+        <div class="mem-section-title" style="color:#fff">What Supporters Are Saying</div>
+        <div class="mem-test-grid">
+            <div class="mem-test-card">
+                <p class="mem-test-quote">"I track every Shark Tank company for deal flow research. The member archive is the best database for it."</p>
+                <p class="mem-test-attr">VC Analyst, San Francisco</p>
+            </div>
+            <div class="mem-test-card">
+                <p class="mem-test-quote">"Ad-free plus early recaps means I reference pitches in my MBA classes before anyone else covers them."</p>
+                <p class="mem-test-attr">Business Professor, London</p>
+            </div>
+            <div class="mem-test-card">
+                <p class="mem-test-quote">"I've discovered 3 products I now stock in my retail store directly from STB deep-dives."</p>
+                <p class="mem-test-attr">Retail Founder, Austin</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. BY THE NUMBERS -->
+    <section class="mem-dark2 mem-numbers">
+        <div class="mem-numbers-row">
+            <div class="mem-num-item"><div class="mem-num-val">1,200+</div><div class="mem-num-label">Supporters</div></div>
+            <div class="mem-num-item"><div class="mem-num-val">500+</div><div class="mem-num-label">Articles</div></div>
+            <div class="mem-num-item"><div class="mem-num-val">17</div><div class="mem-num-label">Seasons</div></div>
+            <div class="mem-num-item"><div class="mem-num-val">50M+</div><div class="mem-num-label">Pageviews</div></div>
+            <div class="mem-num-item"><div class="mem-num-val">5+</div><div class="mem-num-label">Years</div></div>
+        </div>
+    </section>
+
+    <!-- 6. FAQ -->
+    <section class="mem-light mem-faq">
+        <div class="mem-section-label">FAQ</div>
+        <div class="mem-section-title">Common Questions</div>
+        <div class="mem-faq-list">
+            <div class="mem-faq-item"><div class="mem-faq-q">What do I get as a supporter? <i class="fas fa-chevron-down"></i></div><div class="mem-faq-a">Ad-free reading across the entire site, full access to the 17-season episode archive, early access to new recaps, exclusive founder deep-dives, a weekly member newsletter, and priority support from the team.</div></div>
+            <div class="mem-faq-item"><div class="mem-faq-q">Can I cancel anytime? <i class="fas fa-chevron-down"></i></div><div class="mem-faq-a">Yes. No contracts, no commitments. Cancel from your account settings and you'll keep access until your current billing period ends. No questions asked.</div></div>
+            <div class="mem-faq-item"><div class="mem-faq-q">How does ad-free work? <i class="fas fa-chevron-down"></i></div><div class="mem-faq-a">Once you're a member, all ads are removed instantly across every page. It's tied to your account, so it works on any device where you're signed in. Pages also load noticeably faster without ad scripts.</div></div>
+            <div class="mem-faq-item"><div class="mem-faq-q">Do you offer team or bulk plans? <i class="fas fa-chevron-down"></i></div><div class="mem-faq-a">Not yet, but we're building it. If you're interested in a team plan for your organization, reach out through the Contact page and we'll work something out.</div></div>
+        </div>
+    </section>
+
+    <!-- 7. FINAL CTA -->
+    <section class="mem-dark mem-dots mem-final">
+        <div class="mem-hero-glow" style="top:auto;bottom:10%"></div>
+        <div class="mem-final-inner">
+            <h2>Every pitch. Every deal. Every update. Zero ads.</h2>
+            <button class="mem-final-cta" id="finalCtaBtn">Support Shark Tank Blog <i class="fas fa-arrow-right"></i></button>
+            <div class="mem-final-sub">Join 1,200+ readers who keep this coverage free</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-grid">
+                <div class="footer-about"><div class="footer-logo"><img src="assets/images/shark_logo.jpeg" alt="The Shark Tank Blog" width="80" height="70"><span class="footer-logo-text">The Shark Tank Blog</span></div><p>Shark Tank Blog is independent of and not affiliated or endorsed by ABC, Sony, the producers or any other company associated with the television show, Shark Tank.</p><div class="social-icons footer-social"><a href="#"><i class="fab fa-pinterest-p"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a></div></div>
+                <div class="footer-menu"><h4>Menu</h4><ul><li><a href="index.html">Home</a></li><li><a href="episodes.html">Shark Tank Episodes</a></li><li><a href="products.html">Shark Tank Products</a></li><li><a href="blog.html">Blog</a></li><li><a href="startup-list.html">Shark Tank Businesses</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
+                <div class="footer-newsletter"><h4>Subscribe to our Newsletter</h4><div class="newsletter-form"><input type="email" placeholder="Enter your email"><button type="submit">Subscribe</button></div></div>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom-bar"><p><a href="#">Terms of Content Use</a></p><p class="raptive-badge">A RAPTIVE PARTNER SITE</p></div>
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fa fa-chevron-up"></i></button>
+
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script src="go-ad-free.js" data-delay="99999" data-poll="0"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function(){
+
+        // === Animated stat counters ===
+        var counted = false;
+        var statEls = document.querySelectorAll('.mem-hero-stat-val');
+        function countUp(){
+            if(counted) return;
+            counted = true;
+            statEls.forEach(function(el){
+                var target = parseInt(el.getAttribute('data-target'));
+                var suffix = target >= 100 ? '+' : '+';
+                var duration = 1600;
+                var start = 0;
+                var startTime = null;
+                function step(ts){
+                    if(!startTime) startTime = ts;
+                    var progress = Math.min((ts - startTime) / duration, 1);
+                    var eased = 1 - Math.pow(1 - progress, 3);
+                    el.textContent = Math.floor(eased * target) + suffix;
+                    if(progress < 1) requestAnimationFrame(step);
+                }
+                requestAnimationFrame(step);
+            });
+        }
+        var heroObserver = new IntersectionObserver(function(entries){
+            entries.forEach(function(e){ if(e.isIntersecting) countUp(); });
+        }, {threshold: 0.3});
+        var heroStats = document.querySelector('.mem-hero-stats');
+        if(heroStats) heroObserver.observe(heroStats);
+
+        // === Hero / Final CTAs scroll to widget ===
+        document.getElementById('heroCtaBtn').addEventListener('click', function(){
+            document.querySelector('.mem-pricing').scrollIntoView({behavior:'smooth'});
+        });
+        document.getElementById('finalCtaBtn').addEventListener('click', function(){
+            document.querySelector('.mem-pricing').scrollIntoView({behavior:'smooth'});
+        });
+
+        // ==========================================
+        // EMBEDDED PAYMENT WIDGET
+        // ==========================================
+        var EW = {
+            screen: 1,
+            billing: 'annual',
+            plan: 'annual', // 'monthly' or 'annual'
+            method: '',
+            name: 'John Doe',
+            email: '',
+            selectedAccount: null
+        };
+        var ACCOUNTS = [
+            {name:'Mohnish Nagar', email:'mohnish.nagar@gmail.com', color:'#4285F4', initial:'M'},
+            {name:'Mohnish', email:'mohnish@getmega.com', color:'#EA4335', initial:'M'}
+        ];
+
+        function ewAnnual(){ return EW.amount * 12; }
+        function ewDaily(){ return (EW.amount / 30).toFixed(2); }
+
+        function ewUpdateS1(){
+            var amtIn = widget.querySelector('#ewAmtInput');
+            if(amtIn) amtIn.value = EW.amount;
+            widget.querySelectorAll('[data-val]').forEach(function(p){
+                var isActive = !EW.isCustom && parseInt(p.getAttribute('data-val')) === EW.amount;
+                p.style.borderColor = isActive ? '#00d4aa' : '#e8e8e8';
+                p.style.background = isActive ? 'rgba(0,212,170,0.04)' : '#fff';
+                p.style.color = isActive ? '#00a080' : '#444';
+            });
+            ewUpdateS1Cta();
+        }
+        function ewUpdateS1Cta(){
+            var c = widget.querySelector('#ewCta1');
+            if(c) c.textContent = 'Continue with $' + EW.amount + ' / month';
+            var d = widget.querySelector('#ewDaily');
+            if(d) d.textContent = '$' + ewDaily() + '/day';
+            var b = widget.querySelector('#ewBilling');
+            if(b) b.innerHTML = '<i class="fas fa-chevron-down" style="font-size:8px"></i> $' + ewAnnual() + ' Billed Annually';
+        }
+
+        var widget = document.getElementById('embWidget');
+
+        function ewRender(){
+            var h = '<div class="emb-body">';
+            // Step dots
+            h += '<div class="emb-steps">';
+            for(var i=1;i<=4;i++){
+                var cls = i===EW.screen?'active':(i<EW.screen?'done':'');
+                h += '<div class="emb-step-dot '+cls+'"></div>';
+                if(i<4) h += '<div class="emb-step-line"></div>';
+            }
+            h += '</div>';
+
+            if(EW.screen===1) h += ewScreen1();
+            else if(EW.screen===2) h += ewScreen2();
+            else if(EW.screen===3) h += ewScreen3();
+            else h += ewScreen4();
+
+            h += '</div>';
+            widget.innerHTML = h;
+            ewBind();
+        }
+
+        // Screen 1: Amount selection (same as popup widget)
+        var PRESETS = [2, 5, 9, 15], POP = 5;
+        function ewScreen1(){
+            var h = '';
+            h += '<div class="emb-s1-title">Support Shark Tank Blog</div>';
+            h += '<div class="emb-s1-sub">Support starts with ad-free. Many choose to give a little more.</div>';
+            // Amount box
+            h += '<div style="border:1.5px solid #e4e4e4;border-radius:14px;padding:22px 24px;display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px">';
+            h += '<div style="display:flex;align-items:baseline;gap:2px"><span style="font-size:20px;color:#bbb;font-weight:600">$</span><input id="ewAmtInput" type="text" value="'+EW.amount+'" inputmode="numeric" style="font-size:44px;font-weight:900;border:none;outline:none;width:70px;color:#1a1a1a;background:transparent;font-family:inherit;line-height:1"><span style="font-size:16px;color:#999;margin-left:2px">/ month</span></div>';
+            h += '<span id="ewDaily" style="font-size:13px;color:#bbb">$'+(EW.amount/30).toFixed(2)+'/day</span>';
+            h += '</div>';
+            // Presets
+            h += '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:28px" id="ewPresets">';
+            PRESETS.forEach(function(p){
+                var cls = (!EW.isCustom && EW.amount===p) ? ' active' : '';
+                h += '<div class="emb-plan'+cls+'" data-val="'+p+'" style="padding:14px 8px;border:1.5px solid #e8e8e8;border-radius:12px;cursor:pointer;font-size:17px;font-weight:700;color:#444;text-align:center;position:relative;transition:all .15s">';
+                if(p===POP) h += '<span style="position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:700;color:#fff;background:#00d4aa;padding:2px 10px;border-radius:8px;white-space:nowrap">Popular</span>';
+                h += '$'+p+'</div>';
+            });
+            h += '</div>';
+            // CTA
+            h += '<button class="emb-cta" id="ewCta1">Continue with $'+EW.amount+' / month</button>';
+            // Perk row
+            h += '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">';
+            h += '<span style="font-size:13px;color:#00d4aa;font-weight:600"><i class="fas fa-globe" style="margin-right:4px"></i> Includes <em>ad-free</em> experience</span>';
+            h += '<span id="ewBilling" style="display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border:1px solid #e0e0e0;border-radius:16px;font-size:11.5px;color:#999"><i class="fas fa-chevron-down" style="font-size:8px"></i> $'+(EW.amount*12)+' Billed Annually</span>';
+            h += '</div>';
+            h += '<div class="emb-trust"><i class="fas fa-lock"></i> Secure payment · Cancel anytime</div>';
+            return h;
+        }
+
+        // Screen 2: Google Sign In
+        function ewScreen2(){
+            var h = '';
+            h += '<button class="emb-back" id="ewBack2"><i class="fas fa-arrow-left"></i> Back</button>';
+            h += '<div class="emb-glogo"><svg viewBox="0 0 48 48" width="24" height="24"><path fill="#4285F4" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#34A853" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#EA4335" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></div>';
+            h += '<div class="emb-s2-title">Sign in to continue</div>';
+            h += '<div class="emb-s2-sub">Choose your Google account</div>';
+            ACCOUNTS.forEach(function(acc,i){
+                h += '<div class="emb-account" data-idx="'+i+'">';
+                h += '<div class="emb-account-avatar" style="background:'+acc.color+'">'+acc.initial+'</div>';
+                h += '<div class="emb-account-info"><div class="emb-account-name">'+acc.name+'</div><div class="emb-account-email">'+acc.email+'</div></div>';
+                h += '<span class="emb-account-arrow"><i class="fas fa-chevron-right"></i></span>';
+                h += '</div>';
+            });
+            h += '<div class="emb-divider"><span>Use email instead</span></div>';
+            h += '<button class="emb-email-btn" id="ewUseEmail">Continue with email</button>';
+            return h;
+        }
+
+        // Screen 3: Payment
+        function ewScreen3(){
+            var amt = ewAnnual();
+            var per = 'year';
+            var h = '';
+            h += '<button class="emb-back" id="ewBack3"><i class="fas fa-arrow-left"></i> Back</button>';
+            h += '<div class="emb-s3-label">You\'re supporting</div>';
+            h += '<div class="emb-s3-amount">$'+amt+' / '+per+'</div>';
+            h += '<div class="emb-s3-heading"><span class="emb-s3-heading-text">Select payment method</span><span class="emb-s3-heading-right"><small>us</small> United States <i class="fas fa-chevron-down" style="font-size:9px"></i></span></div>';
+            h += '<div class="emb-method'+(EW.method==='bank'?' active':'')+'" data-method="bank"><div class="emb-method-top"><div class="emb-method-left"><span class="emb-method-icon"><i class="fas fa-building-columns"></i></span><div><div class="emb-method-name">Direct Bank Transfer (ACH)</div><div class="emb-method-sub">Best for long-term support</div></div></div><span class="emb-method-chevron"><i class="fas fa-chevron-down"></i></span></div></div>';
+            h += '<div class="emb-express-label">Express checkout</div>';
+            h += '<div class="emb-express-grid"><div class="emb-express-btn">Apple Pay</div><div class="emb-express-btn" style="border-color:var(--mem-accent)">Google Pay</div><div class="emb-express-btn">PayPal</div><div class="emb-express-btn">Venmo</div></div>';
+            h += '<div class="emb-method'+(EW.method==='card'?' active':'')+'" data-method="card"><div class="emb-method-top"><div class="emb-method-left"><span class="emb-method-icon"><i class="fas fa-credit-card"></i></span><div><div class="emb-method-name">Card payment</div></div></div><span class="emb-method-chevron"><i class="fas fa-chevron-down"></i></span></div>';
+            h += '<div class="emb-method-form"><div class="emb-field"><label>Name on card</label><input type="text" id="ewCardName" placeholder="John Doe" value="'+EW.name+'"></div><div class="emb-field"><label>Card number</label><input type="text" placeholder="1234 5678 9012 3456" maxlength="19"></div><div class="emb-field-row"><div class="emb-field"><label>Expiry</label><input type="text" placeholder="MM/YY" maxlength="5"></div><div class="emb-field"><label>CVC</label><input type="text" placeholder="123" maxlength="4"></div></div></div>';
+            h += '</div>';
+            h += '<div class="emb-s3-trust"><i class="fas fa-lock"></i> Secure payment · Powered by Stripe</div>';
+            h += '<button class="emb-cta" id="ewCta3">Complete Payment — $'+amt+' / '+per+'</button>';
+            return h;
+        }
+
+        // Screen 4: Success
+        function ewScreen4(){
+            var amt = ewAnnual();
+            var per = 'year';
+            var name = EW.name || (EW.selectedAccount !== null ? ACCOUNTS[EW.selectedAccount].name : 'Member');
+            var date = new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+            var h = '';
+            h += '<div style="text-align:center">';
+            h += '<div class="emb-s4-check">&#10003;</div>';
+            h += '<div class="emb-s4-text">Your <strong>$'+amt+'/'+per+'</strong> support is confirmed.<br>You\'re now one of us — helping keep Shark Tank coverage free for millions.</div>';
+            h += '<div class="emb-s4-badge"><i class="far fa-heart"></i> Official Supporter of Shark Tank Blog</div>';
+            h += '</div>';
+            h += '<div class="emb-cert"><div class="emb-cert-bar"></div>';
+            h += '<div class="emb-cert-label">Certificate of Support</div>';
+            h += '<hr style="border:none;border-top:1px solid #f0f0f0;margin:8px 0">';
+            h += '<div class="emb-cert-small">This certifies that</div>';
+            h += '<div class="emb-cert-name">'+name+'</div>';
+            h += '<div class="emb-cert-small">is a proud supporter of</div>';
+            h += '<div style="font-weight:700;font-size:15px;margin:8px 0">Shark Tank Blog</div>';
+            h += '<hr style="border:none;border-top:1px solid #f0f0f0;margin:8px 0">';
+            h += '<div class="emb-cert-cause">For keeping Shark Tank coverage free & accessible</div>';
+            h += '<div class="emb-cert-amount">$'+amt+' / '+per+'</div>';
+            h += '<div class="emb-cert-date">'+date+'</div>';
+            h += '</div>';
+            var shareText = encodeURIComponent('I just became a supporter of Shark Tank Blog! Helping keep Shark Tank coverage free for everyone.');
+            h += '<div class="emb-share-grid">';
+            h += '<a class="emb-share-btn" href="https://twitter.com/intent/tweet?text='+shareText+'" target="_blank"><i class="fab fa-x-twitter"></i> X</a>';
+            h += '<a class="emb-share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent('https://nagarmohnish.github.io/STB_UI/')+'" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>';
+            h += '<a class="emb-share-btn" href="https://wa.me/?text='+shareText+'" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>';
+            h += '</div>';
+            return h;
+        }
+
+        function ewBind(){
+            // Screen 1 — presets
+            var presetBtns = widget.querySelectorAll('[data-val]');
+            presetBtns.forEach(function(p){
+                p.addEventListener('click', function(){
+                    EW.amount = parseInt(this.getAttribute('data-val'));
+                    EW.isCustom = false;
+                    ewUpdateS1();
+                });
+            });
+            // Amount input
+            var amtIn = widget.querySelector('#ewAmtInput');
+            if(amtIn){
+                amtIn.addEventListener('focus', function(){ this.select(); });
+                amtIn.addEventListener('input', function(){
+                    var v = parseInt(this.value.replace(/[^0-9]/g,'')) || 0;
+                    EW.amount = v; EW.isCustom = true;
+                    presetBtns.forEach(function(p){ p.style.borderColor='#e8e8e8'; p.style.background='#fff'; p.style.color='#444'; });
+                    ewUpdateS1Cta();
+                });
+            }
+            var cta1 = widget.querySelector('#ewCta1');
+            if(cta1) cta1.addEventListener('click', function(){ EW.screen = 2; ewRender(); });
+
+            // Screen 2
+            var back2 = widget.querySelector('#ewBack2');
+            if(back2) back2.addEventListener('click', function(){ EW.screen = 1; ewRender(); });
+            var accs = widget.querySelectorAll('.emb-account');
+            accs.forEach(function(a){
+                a.addEventListener('click', function(){
+                    EW.selectedAccount = parseInt(this.getAttribute('data-idx'));
+                    EW.name = ACCOUNTS[EW.selectedAccount].name;
+                    EW.email = ACCOUNTS[EW.selectedAccount].email;
+                    EW.screen = 3;
+                    ewRender();
+                });
+            });
+            var useEmail = widget.querySelector('#ewUseEmail');
+            if(useEmail) useEmail.addEventListener('click', function(){ EW.screen = 3; ewRender(); });
+
+            // Screen 3
+            var back3 = widget.querySelector('#ewBack3');
+            if(back3) back3.addEventListener('click', function(){ EW.screen = 2; ewRender(); });
+            var methods = widget.querySelectorAll('.emb-method');
+            methods.forEach(function(m){
+                m.addEventListener('click', function(){
+                    var mt = this.getAttribute('data-method');
+                    EW.method = (EW.method === mt) ? '' : mt;
+                    methods.forEach(function(x){ x.classList.remove('active'); });
+                    if(EW.method) this.classList.add('active');
+                });
+            });
+            var cardName = widget.querySelector('#ewCardName');
+            if(cardName) cardName.addEventListener('input', function(){ EW.name = this.value; });
+            var cta3 = widget.querySelector('#ewCta3');
+            if(cta3) cta3.addEventListener('click', function(){
+                this.innerHTML = '<span class="emb-spinner"></span> Processing...';
+                this.classList.add('processing');
+                var self = this;
+                setTimeout(function(){ EW.screen = 4; ewRender(); }, 1800);
+            });
+        }
+
+        // Init widget
+        ewRender();
+
+        // === FAQ ===
+        document.querySelectorAll('.mem-faq-q').forEach(function(q){
+            q.addEventListener('click', function(){ this.parentElement.classList.toggle('open'); });
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beer Girl Shark Tank Update – Shark Tank Season 17 | Shark Tank Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="page-styles.css">
+    <link rel="stylesheet" href="auth-styles.css">
+    <link rel="stylesheet" href="article-styles.css">
+    <style>
+        /* ====== SHARK TANK BRAND THEME ======
+           Navy:    #0B1426  (deep ocean)
+           Navy 2:  #142342  (slightly lighter)
+           Cyan:    #117fb0  (STB accent)
+           Cyan-2:  #1592cc  (highlight)
+           Gold:    #F5A623  (premium accent)
+           Gold-2:  #FFD700  (highlight)
+        */
+        :root {
+            --stb-navy: #0B1426;
+            --stb-navy-2: #142342;
+            --stb-cyan: #117fb0;
+            --stb-cyan-2: #1592cc;
+            --stb-gold: #F5A623;
+            --stb-gold-2: #FFD700;
+            --stb-ink: #1A1A2E;
+            --stb-muted: #6B7280;
+            --stb-subtle: #E5E7EB;
+            --stb-card: #FFFFFF;
+            --stb-card-alt: #F9FAFB;
+        }
+
+        /* Header CTA emoji */
+        .btn-contact .shark-emoji { display: inline-block; margin-left: 4px; }
+
+        /* ===== Shared CTA primitives ===== */
+        .cta-btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--stb-cyan) 0%, #0099b8 100%);
+            color: #fff !important;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s;
+            box-shadow: 0 2px 8px rgba(17, 127, 176, 0.25);
+        }
+        .cta-btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(17, 127, 176, 0.35);
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--stb-cyan-2) 0%, var(--stb-cyan) 100%);
+        }
+        .cta-btn-primary.gold {
+            background: linear-gradient(135deg, var(--stb-gold) 0%, #d98e00 100%);
+            color: var(--stb-navy) !important;
+            box-shadow: 0 2px 8px rgba(245, 166, 35, 0.3);
+        }
+        .cta-btn-primary.gold:hover {
+            background: linear-gradient(135deg, var(--stb-gold-2) 0%, var(--stb-gold) 100%);
+            box-shadow: 0 6px 20px rgba(245, 166, 35, 0.4);
+        }
+        .cta-btn-primary.full-width {
+            display: flex;
+            width: 100%;
+        }
+        .cta-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .cta-secondary { font-size: 13.5px; color: var(--stb-muted); }
+        .cta-secondary a {
+            color: var(--stb-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(17, 127, 176, 0.3);
+            transition: border-color 0.15s, color 0.15s;
+        }
+        .cta-secondary a:hover { color: var(--stb-cyan-2); border-color: var(--stb-cyan); }
+
+        /* ===== CTA #2: After-intro CTA ===== */
+        .support-cta.shark-style {
+            position: relative;
+            background: linear-gradient(135deg, var(--stb-navy) 0%, var(--stb-navy-2) 100%);
+            border-radius: 12px;
+            padding: 26px 28px 24px 32px;
+            margin: 32px 0;
+            color: #fff;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(11, 20, 38, 0.18);
+        }
+        .support-cta.shark-style::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; bottom: 0;
+            width: 5px;
+            background: linear-gradient(180deg, var(--stb-cyan), var(--stb-gold));
+        }
+        .support-cta.shark-style::after {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(17, 127, 176, 0.12), transparent 70%);
+            pointer-events: none;
+        }
+        .support-cta.shark-style .cta-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.4px;
+            color: var(--stb-cyan);
+            margin-bottom: 10px;
+        }
+        .support-cta.shark-style .cta-eyebrow i { font-size: 10px; }
+        .support-cta.shark-style p {
+            font-size: 15.5px;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, 0.78);
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 1;
+        }
+        .support-cta.shark-style strong { color: #fff; font-weight: 700; }
+        .support-cta.shark-style .cta-secondary { color: rgba(255, 255, 255, 0.55); }
+        .support-cta.shark-style .cta-secondary a {
+            color: var(--stb-cyan);
+            border-color: rgba(17, 127, 176, 0.4);
+        }
+        .support-cta.shark-style .cta-secondary a:hover { color: var(--stb-cyan-2); }
+
+        /* ===== CTA #3: Mid-article deal context ===== */
+        .support-cta.deal-context {
+            background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+            color: var(--stb-ink);
+            box-shadow: 0 4px 20px rgba(245, 166, 35, 0.12);
+        }
+        .support-cta.deal-context::before {
+            background: linear-gradient(180deg, var(--stb-gold), #d98e00);
+        }
+        .support-cta.deal-context::after {
+            background: radial-gradient(circle, rgba(245, 166, 35, 0.18), transparent 70%);
+        }
+        .support-cta.deal-context .cta-eyebrow { color: #b45309; }
+        .support-cta.deal-context p { color: rgba(26, 26, 46, 0.82); }
+        .support-cta.deal-context strong { color: var(--stb-ink); }
+
+        /* ===== CTA #4: Author bio CTA ===== */
+        .author-cta.shark-style {
+            background: var(--stb-card-alt);
+            border: 1px solid var(--stb-subtle);
+            border-radius: 12px;
+            padding: 28px;
+            margin: 36px 0;
+            position: relative;
+        }
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--stb-subtle);
+        }
+        .author-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--stb-cyan), #0099b8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 800;
+            font-size: 18px;
+            box-shadow: 0 2px 8px rgba(17, 127, 176, 0.25);
+        }
+        .author-name {
+            display: block;
+            font-weight: 700;
+            font-size: 15.5px;
+            color: var(--stb-ink);
+        }
+        .author-role {
+            display: block;
+            font-size: 12.5px;
+            color: var(--stb-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-top: 2px;
+        }
+        .author-cta.shark-style p {
+            font-size: 15px;
+            line-height: 1.65;
+            color: #374151;
+            margin-bottom: 18px;
+        }
+        .author-cta.shark-style strong { color: var(--stb-ink); }
+
+        /* ===== CTA #5: Sidebar CTA ===== */
+        .sidebar-cta.shark-style {
+            background: linear-gradient(160deg, var(--stb-navy) 0%, var(--stb-navy-2) 100%);
+            border-radius: 12px;
+            padding: 22px 20px;
+            margin: 20px 0;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(11, 20, 38, 0.2);
+        }
+        .sidebar-cta.shark-style::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--stb-cyan), var(--stb-gold));
+        }
+        .sidebar-cta.shark-style h4 {
+            font-size: 17px;
+            font-weight: 800;
+            color: #fff;
+            margin: 4px 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sidebar-cta.shark-style p {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 16px;
+        }
+        .sidebar-cta.shark-style strong { color: #fff; }
+        .cta-alt {
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 12px;
+            margin-bottom: 0;
+        }
+        .cta-alt a {
+            color: var(--stb-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(17, 127, 176, 0.3);
+        }
+        .cta-alt a:hover { color: var(--stb-cyan-2); }
+
+        /* ===== CTA #6: Sticky bottom bar ===== */
+        .sticky-cta-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--stb-navy) 0%, var(--stb-navy-2) 100%);
+            color: #fff;
+            padding: 16px 24px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            z-index: 9999;
+            box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.25);
+            border-top: 2px solid var(--stb-cyan);
+        }
+        .sticky-cta-bar.visible { display: flex; }
+        .sticky-cta-bar p { margin: 0; font-size: 14.5px; color: rgba(255, 255, 255, 0.85); }
+        .sticky-cta-bar strong { font-weight: 700; color: #fff; }
+        .sticky-cta-bar .cta-btn-primary { padding: 10px 22px; font-size: 13px; }
+        .sticky-close {
+            position: absolute;
+            right: 16px;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            font-size: 22px;
+            line-height: 1;
+            padding: 6px;
+            transition: color 0.2s;
+        }
+        .sticky-close:hover { color: #fff; }
+
+        /* ===== CTA #7: Footer CTA ===== */
+        .footer-cta.shark-style {
+            text-align: center;
+            padding: 40px 28px;
+            margin: 32px 0;
+            background: linear-gradient(135deg, var(--stb-navy) 0%, var(--stb-navy-2) 100%);
+            border-radius: 14px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 6px 24px rgba(11, 20, 38, 0.15);
+        }
+        .footer-cta.shark-style::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--stb-cyan), var(--stb-gold));
+            border-radius: 0 0 3px 3px;
+        }
+        .footer-cta.shark-style h4 {
+            font-size: 22px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .footer-cta.shark-style p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 480px;
+            margin: 0 auto 22px;
+            line-height: 1.65;
+        }
+
+        /* ===== AD SLOTS — DUMMY DESIGNED ADS ===== */
+        .ad-slot.demo-ad {
+            background: none;
+            border: none;
+            min-height: auto;
+            padding: 0;
+            display: block;
+            position: relative;
+        }
+        .ad-slot.demo-ad .ad-slot-label,
+        .ad-slot.demo-ad .ad-dim { display: none; }
+
+        /* Generic mock ad container */
+        .mock-ad {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            color: #fff;
+            font-family: inherit;
+        }
+        .mock-ad::after {
+            content: 'Ad';
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.55);
+            color: #fff;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            padding: 3px 7px;
+            border-radius: 3px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* Leaderboard 728x90 — Dark navy w/ cyan accent */
+        .mock-ad.leaderboard {
+            min-height: 90px;
+            background: linear-gradient(120deg, #0B1426 0%, #142342 50%, #0d1f3a 100%);
+            display: flex;
+            align-items: center;
+            padding: 14px 24px;
+            gap: 18px;
+        }
+        .mock-ad.leaderboard .mock-logo {
+            flex-shrink: 0;
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--stb-cyan), #0099b8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(17, 127, 176, 0.3);
+        }
+        .mock-ad.leaderboard .mock-content { flex: 1; min-width: 0; }
+        .mock-ad.leaderboard .mock-eyebrow {
+            font-size: 9px;
+            font-weight: 800;
+            color: var(--stb-cyan);
+            text-transform: uppercase;
+            letter-spacing: 1.4px;
+            margin-bottom: 4px;
+        }
+        .mock-ad.leaderboard .mock-headline {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 3px;
+            line-height: 1.25;
+        }
+        .mock-ad.leaderboard .mock-sub {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.3;
+        }
+        .mock-ad.leaderboard .mock-cta {
+            flex-shrink: 0;
+            background: var(--stb-cyan);
+            color: var(--stb-navy);
+            font-size: 12px;
+            font-weight: 800;
+            padding: 9px 16px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            white-space: nowrap;
+        }
+
+        /* Wrapper that constrains the rectangle ad + GO ADS-FREE pill above it */
+        .ad-rect-wrap {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        /* Rectangle 300x250 — Card style with image area */
+        .mock-ad.rectangle {
+            width: 100%;
+            background: #fff;
+            color: var(--stb-ink);
+            border: 1px solid var(--stb-subtle);
+        }
+        .mock-ad.rectangle .mock-img {
+            height: 130px;
+            background: linear-gradient(135deg, var(--stb-navy) 0%, var(--stb-navy-2) 50%, #1d3258 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .mock-ad.rectangle .mock-img::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(17, 127, 176, 0.25), transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(245, 166, 35, 0.18), transparent 50%);
+        }
+        .mock-ad.rectangle .mock-img-icon {
+            position: relative;
+            font-size: 38px;
+            color: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.1);
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .mock-ad.rectangle .mock-body {
+            padding: 16px 18px 18px;
+        }
+        .mock-ad.rectangle .mock-eyebrow {
+            font-size: 9px;
+            font-weight: 800;
+            color: var(--stb-cyan);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 6px;
+        }
+        .mock-ad.rectangle .mock-headline {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--stb-ink);
+            line-height: 1.3;
+            margin-bottom: 6px;
+        }
+        .mock-ad.rectangle .mock-sub {
+            font-size: 12px;
+            color: var(--stb-muted);
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+        .mock-ad.rectangle .mock-cta {
+            display: inline-block;
+            background: var(--stb-navy);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 8px 14px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Article featured image */
+        .article-featured-img img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .article-featured-img figcaption {
+            font-size: 12px;
+            color: var(--stb-muted);
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 640px) {
+            .sticky-cta-bar {
+                flex-direction: column;
+                gap: 10px;
+                padding: 14px 16px 14px 16px;
+                text-align: center;
+            }
+            .sticky-close { position: absolute; top: 10px; right: 12px; }
+            .support-cta.shark-style { padding: 22px 20px 20px 24px; margin: 24px 0; }
+            .author-cta.shark-style { padding: 22px; }
+            .footer-cta.shark-style { padding: 32px 22px; }
+            .footer-cta.shark-style h4 { font-size: 19px; }
+            .cta-actions { gap: 10px; }
+            .cta-btn-primary { padding: 11px 20px; font-size: 13px; }
+            .mock-ad.leaderboard { padding: 14px 16px; gap: 12px; }
+            .mock-ad.leaderboard .mock-logo { width: 48px; height: 48px; font-size: 20px; }
+            .mock-ad.leaderboard .mock-headline { font-size: 14px; }
+            .mock-ad.leaderboard .mock-sub { font-size: 11px; }
+            .mock-ad.leaderboard .mock-cta { padding: 7px 12px; font-size: 11px; }
+        }
+
+        /* Article featured image styling */
+        .article-featured-img img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .article-featured-img figcaption {
+            font-size: 12px;
+            color: #6B7280;
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 640px) {
+            .sticky-cta-bar {
+                flex-direction: column;
+                gap: 10px;
+                padding: 12px 16px;
+                text-align: center;
+            }
+            .sticky-close { position: absolute; top: 8px; right: 12px; }
+            .support-cta.shark-style { padding: 16px 18px; margin: 22px 0; }
+            .author-cta.shark-style { padding: 18px; }
+            .cta-actions { gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Social Bar -->
+    <div class="top-social-bar">
+        <div class="container top-social-inner">
+            <div class="social-icons top-social-icons">
+                <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="main-nav" id="mainNav">
+        <div class="container nav-inner">
+            <div class="nav-left">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/shark_logo.jpeg" alt="The Shark Tank Blog" width="60" height="50">
+                </a>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="episodes.html">Shark Tank Episodes</a></li>
+                    <li><a href="products.html">Shark Tank Products</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="startup-list.html">Shark Tank Startup List</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <button class="search-toggle" id="searchToggle" aria-label="Search">
+                    <i class="fa fa-search"></i>
+                </button>
+                <a href="go-ads-free.html" class="btn-contact">Go Ads-Free <span class="shark-emoji">🦈</span></a>
+                <a href="login.html" class="btn-login-nav"><i class="fas fa-user"></i> Login</a>
+            </div>
+            <div class="search-box" id="searchBox">
+                <input type="text" placeholder="Search...">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Layout -->
+    <div class="article-layout">
+        <main class="article-content">
+            <article class="article-post">
+                <h1 class="article-title">Beer Girl Shark Tank Update – Shark Tank Season 17</h1>
+                <p class="article-excerpt">A trailer-park beer concept turned into one of Season 17's most talked-about pitches. Did Beer Girl actually walk out with a deal — or did the Sharks pop the tab and walk?</p>
+
+                <div class="article-author-bar">
+                    <div class="author-avatar-lg"></div>
+                    <span>By <a href="#" class="author-link">Liya Shanawas</a> &middot; March 28, 2026</span>
+                </div>
+
+                <!-- Featured Image -->
+                <figure class="article-featured-img">
+                    <img src="assets/images/company-beergirl.svg" alt="Beer Girl founder pitching on Shark Tank">
+                    <figcaption>Mary "Beer Girl" Hernandez pitching on Shark Tank Season 17 (Image Credit: ABC)</figcaption>
+                </figure>
+
+                <!-- Intro paragraph -->
+                <p>Some pitches walk into the Tank with a slide deck. Beer Girl walked in with a six-pack, a working-class story, and a brand built around the kind of beer drinkers Madison Avenue forgot existed. The Sharks weren't sure what to make of it at first — and then the numbers showed up.</p>
+
+                <!-- ============================================
+                     CTA #1: First in-article CTA (after intro)
+                     ============================================ -->
+                <div class="support-cta shark-style">
+                    <span class="cta-eyebrow"><i class="fas fa-shield-alt"></i> Independent Coverage</span>
+                    <p><strong>This article wasn't funded by a Shark.</strong> It was funded by readers like you. No equity taken. No royalty deals. Just independent coverage.</p>
+                    <div class="cta-actions">
+                        <a href="support.html" class="cta-btn-primary">Back This Blog</a>
+                        <span class="cta-secondary">or <a href="go-ads-free.html">read ad-free for $2/month</a></span>
+                    </div>
+                </div>
+
+                <!-- Table of Contents -->
+                <div class="toc-info">
+                    <h3 class="toc-title">In this article</h3>
+                    <ol class="toc-list">
+                        <li><a href="#what-is">What is Beer Girl?</a></li>
+                        <li><a href="#pitch">The Beer Girl Shark Tank Pitch</a></li>
+                        <li><a href="#deal">Did Beer Girl Get a Deal?</a></li>
+                        <li><a href="#after">Beer Girl After Shark Tank</a></li>
+                        <li><a href="#bottom-line">The Bottom Line</a></li>
+                    </ol>
+                </div>
+
+                <h2 id="what-is">What is Beer Girl?</h2>
+                <p>Beer Girl is a working-class lager brand founded by Mary Hernandez, a former bartender from Bakersfield who spent a decade watching her customers drink beer that didn't talk to them, didn't look like them, and didn't fit their wallets. The brand launched in 2023 with a simple promise: a no-nonsense beer for people who actually pay for their own beer.</p>
+                <p>The cans are pink-and-blue with a hand-drawn mascot. The beer is brewed in a contract facility in Modesto. The price point is deliberately under $9 a six-pack. Everything about the brand is loud, cheeky, and unapologetically blue-collar.</p>
+
+                <!-- Inline leaderboard ad -->
+                <div class="ad-inline">
+                    <div class="ad-slot demo-ad">
+                        <div class="mock-ad leaderboard">
+                            <div class="mock-logo"><i class="fas fa-rocket"></i></div>
+                            <div class="mock-content">
+                                <div class="mock-eyebrow">Founder Tools</div>
+                                <div class="mock-headline">Pitch Smarter. Close Faster.</div>
+                                <div class="mock-sub">The deck builder used by 12,000+ founders.</div>
+                            </div>
+                            <span class="mock-cta">Try Free</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 id="pitch">The Beer Girl Shark Tank Pitch</h2>
+                <p>Mary walked into the Tank asking for $200,000 for 10% equity — a $2 million valuation. She came in with a cooler of cans, distributed samples to the Sharks, and opened with a five-minute story about the customers she grew up serving. The Sharks tried the beer. Robert nodded. Mark made a face. Lori smiled and put hers down.</p>
+                <p>The numbers came next. Beer Girl had done $1.4 million in sales in its first 18 months, with $380K in profit. Distribution was already in 740 stores across California, Nevada, and Arizona. Mary had bootstrapped the entire operation with $60K of her own savings and a $40K loan from her brother.</p>
+
+                <!-- Hero/video placeholder -->
+                <figure class="article-featured-img" style="margin: 28px 0;">
+                    <img src="assets/images/beer-girl-thumb.svg" alt="Beer Girl pitch on Shark Tank">
+                    <figcaption>Mary pitching Beer Girl in the Tank (Image Credit: ABC)</figcaption>
+                </figure>
+
+                <h2 id="deal">Did Beer Girl Get a Deal?</h2>
+                <p>Kevin O'Leary went first — and predictably, he wanted a royalty. He offered $200K for 5% equity plus a $1-per-case royalty until $600K was paid back. Mary thanked him and politely passed. Mark Cuban went out, citing the alcohol regulatory environment. Lori went out — "not my space."</p>
+                <p>Then Daymond John leaned in. He didn't love the alcohol category either, but he loved the brand. He saw the same blue-collar marketing playbook he'd run with FUBU two decades earlier. He offered $200,000 for 25% equity. Mary countered at 15%. They settled at 20%.</p>
+
+                <h2 id="after">Beer Girl After Shark Tank</h2>
+                <p>After the episode aired, Beer Girl's website did 4.2 million pageviews in 72 hours. Distribution requests poured in from Texas, Florida, and Illinois. By the end of the quarter, the brand had landed in 1,800 additional stores. Daymond's team helped negotiate a national distribution deal with a midwestern wholesaler that took the brand into 11 new states by the end of 2026.</p>
+                <p>Mary now runs a 14-person team out of a small office in Bakersfield. She's added two new SKUs — a light lager and a Mexican-style amber — and the brand's projected to clear $8 million in revenue by year-end. The Daymond deal closed in due diligence with no changes to the original terms.</p>
+
+                <!-- Inline rectangle ad -->
+                <div class="ad-inline ad-rect-wrap">
+                    <div class="ad-slot demo-ad">
+                        <div class="mock-ad rectangle">
+                            <div class="mock-img">
+                                <div class="mock-img-icon"><i class="fas fa-chart-line"></i></div>
+                            </div>
+                            <div class="mock-body">
+                                <div class="mock-eyebrow">Small Business Banking</div>
+                                <div class="mock-headline">Banking Built for Founders</div>
+                                <div class="mock-sub">No fees. No minimums. Open in 5 minutes.</div>
+                                <span class="mock-cta">Open Account</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 id="bottom-line">The Bottom Line</h2>
+                <p>Beer Girl's pitch worked because Mary didn't try to make her brand bigger than it was — she made it sharper. She wasn't selling a category. She was selling a customer the Sharks could actually picture. That's why Daymond bit, and that's why the deal closed. In an episode full of complicated tech pitches and inflated valuations, Beer Girl was a reminder that sometimes the best business is the one with the clearest customer.</p>
+
+                <!-- ============================================
+                     CTA #4: Author Bio CTA
+                     ============================================ -->
+                <div class="author-cta shark-style">
+                    <div class="author-info">
+                        <div class="author-avatar">LS</div>
+                        <div>
+                            <span class="author-name">Liya Shanawas</span>
+                            <span class="author-role">Writer & Editor</span>
+                        </div>
+                    </div>
+                    <p><strong>No investor deck. No valuation pitch.</strong> Just great Shark Tank coverage, funded by you. If this story gave you something — an idea, a product to try, or just a good read — consider backing the team.</p>
+                    <div class="cta-actions">
+                        <a href="go-ads-free.html" class="cta-btn-primary">Go Ad-Free for $2/month</a>
+                        <span class="cta-secondary">or <a href="support.html">support from $3/mo</a></span>
+                    </div>
+                </div>
+            </article>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar">
+            <!-- AD: Sidebar top -->
+            <div class="ad-sidebar-rect">
+                <div class="ad-slot demo-ad">
+                    <div class="mock-ad rectangle">
+                        <div class="mock-img">
+                            <div class="mock-img-icon"><i class="fas fa-handshake"></i></div>
+                        </div>
+                        <div class="mock-body">
+                            <div class="mock-eyebrow">Legal for Founders</div>
+                            <div class="mock-headline">Term Sheets in 24 Hours</div>
+                            <div class="mock-sub">Used by 8,500+ early-stage startups.</div>
+                            <span class="mock-cta">Get Started</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================
+                 CTA #5: Sidebar CTA (below first ad)
+                 ============================================ -->
+            <div class="sidebar-cta shark-style">
+                <h4><i class="fas fa-bolt" style="color:var(--stb-cyan);font-size:14px"></i> Close the Deal</h4>
+                <p><strong>No equity. No royalties.</strong> Just <strong>$2/month</strong> for zero ads across the entire site.</p>
+                <a href="go-ads-free.html" class="cta-btn-primary full-width">I'm In</a>
+                <p class="cta-alt">Or <a href="support.html">support the coverage</a> from $3/mo</p>
+            </div>
+
+            <!-- Recent Posts widget -->
+            <div class="sidebar-widget">
+                <h3 class="sidebar-widget-title">Recent Posts</h3>
+                <div class="sidebar-posts">
+                    <div class="sidebar-post">
+                        <a href="hang-hero.html" class="sidebar-post-img"><img src="assets/images/hang-hero-thumb.svg" alt="Hang Hero"></a>
+                        <div class="sidebar-post-info">
+                            <h4><a href="hang-hero.html">Hang Hero Shark Tank Update &ndash; Season 17</a></h4>
+                            <div class="sidebar-post-date">March 25, 2026</div>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <a href="#" class="sidebar-post-img"><img src="assets/images/hot-girl-soda-thumb.svg" alt="Hot Girl Soda"></a>
+                        <div class="sidebar-post-info">
+                            <h4><a href="#">Hot Girl Soda Shark Tank Update &ndash; Season 17</a></h4>
+                            <div class="sidebar-post-date">March 22, 2026</div>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <a href="#" class="sidebar-post-img"><img src="assets/images/cranel-thumb.svg" alt="Cranel"></a>
+                        <div class="sidebar-post-info">
+                            <h4><a href="#">Cranel Shark Tank Update &ndash; Season 17</a></h4>
+                            <div class="sidebar-post-date">March 12, 2026</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AD: Sidebar bottom -->
+            <div class="ad-sidebar-rect" style="margin-top:24px">
+                <div class="ad-slot demo-ad">
+                    <div class="mock-ad rectangle">
+                        <div class="mock-img">
+                            <div class="mock-img-icon"><i class="fas fa-bullhorn"></i></div>
+                        </div>
+                        <div class="mock-body">
+                            <div class="mock-eyebrow">Marketing Stack</div>
+                            <div class="mock-headline">All-in-One for D2C Brands</div>
+                            <div class="mock-sub">Email, SMS, automation. One subscription.</div>
+                            <span class="mock-cta">Start Free</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- ============================================
+         CTA #7: Footer CTA (before footer)
+         ============================================ -->
+    <div class="container">
+        <div class="footer-cta shark-style">
+            <h4>We're Bootstrapped</h4>
+            <p>Every deal covered. Every founder's story told. Reader-funded since day one — just like your favorite Shark Tank founders.</p>
+            <a href="support.html" class="cta-btn-primary gold">Back Us</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="assets/images/shark_logo.jpeg" alt="The Shark Tank Blog" width="80" height="70">
+                        <span class="footer-logo-text">The Shark Tank Blog</span>
+                    </div>
+                    <p>Shark Tank Blog is independent of and not affiliated or endorsed by ABC, Sony, the producers or any other company associated with the television show, Shark Tank.</p>
+                </div>
+                <div class="footer-menu">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="episodes.html">Shark Tank Episodes</a></li>
+                        <li><a href="products.html">Shark Tank Products</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="startup-list.html">Shark Tank Businesses</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Subscribe to our Newsletter</h4>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="footer-bottom-bar">
+        <p><a href="#">Terms of Content Use</a></p>
+        <p class="raptive-badge">A RAPTIVE PARTNER SITE</p>
+    </div>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <i class="fa fa-chevron-up"></i>
+    </button>
+
+    <!-- Go Ad-Free floating button (bottom-right) -->
+    <a href="go-ads-free.html" class="go-adfree-float" aria-label="Go Ad-Free">
+        <span class="gaf-shark">🦈</span>
+        <span class="gaf-text">Go Ad-Free</span>
+    </a>
+
+    <!-- ============================================
+         CTA #6: Sticky bottom bar (appears at 50% scroll)
+         ============================================ -->
+    <div class="sticky-cta-bar" id="stickyCtaBar">
+        <p>For that reason… <strong>I'm going ad-free.</strong></p>
+        <a href="go-ads-free.html" class="cta-btn-primary">Make the Deal &rarr;</a>
+        <button class="sticky-close" onclick="closeStickyBar()" aria-label="Close">&times;</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script src="go-ad-free.js" data-delay="1000" data-poll="3000" data-selectors=".demo-ad"></script>
+    <script>
+    (function () {
+        var stickyBar = document.getElementById('stickyCtaBar');
+        var STORAGE_KEY = 'stb_sticky_dismissed';
+        var DISMISS_DURATION = 24 * 60 * 60 * 1000; // 24 hours
+
+        try {
+            var dismissedAt = localStorage.getItem(STORAGE_KEY);
+            if (dismissedAt && Date.now() - parseInt(dismissedAt, 10) < DISMISS_DURATION) {
+                return;
+            }
+        } catch (e) { /* localStorage unavailable */ }
+
+        function checkScroll() {
+            var scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            if (scrollPercent > 50) {
+                stickyBar.classList.add('visible');
+                window.removeEventListener('scroll', checkScroll);
+            }
+        }
+        window.addEventListener('scroll', checkScroll, { passive: true });
+    })();
+
+    function closeStickyBar() {
+        var stickyBar = document.getElementById('stickyCtaBar');
+        stickyBar.classList.remove('visible');
+        try {
+            localStorage.setItem('stb_sticky_dismissed', Date.now().toString());
+        } catch (e) { /* localStorage unavailable */ }
+    }
+    </script>
+</body>
+</html>
