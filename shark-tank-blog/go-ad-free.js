@@ -8,9 +8,9 @@ var SITE_URL = "https://nagarmohnish.github.io/STB_UI/";
 var BASE_PRICE = 14.99;
 var TIP_PRESETS = [1, 2, 5];
 var ANNUAL_DISCOUNT = 0.17;
-var ACCENT = "#6366f1";
-var ACCENT_DARK = "#4f46e5";
-var ACCENT_LIGHT = "#eef2ff";
+var ACCENT = "#117fb0";
+var ACCENT_DARK = "#0d6691";
+var ACCENT_LIGHT = "#e8f4fa";
 
 // Demo Google accounts
 var DEMO_ACCOUNTS = [
@@ -152,21 +152,29 @@ styleEl.textContent = `
 .gaf-s3-cta.processing{opacity:.7;cursor:not-allowed}
 
 /* ---- Screen 4: Success ---- */
-.gaf-s4-check{width:56px;height:56px;border-radius:50%;background:#ecfdf5;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;color:#10b981;font-size:26px}
-.gaf-s4-heading{font-size:22px;font-weight:800;color:#1a1a1a;text-align:center;margin-bottom:8px}
-.gaf-s4-sub{font-size:14px;color:#888;text-align:center;line-height:1.6;margin-bottom:28px}
-.gaf-s4-card{background:#f9fafb;border:1px solid #eaeaea;border-radius:12px;padding:24px;margin-bottom:24px}
-.gaf-s4-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f0f0f0}
+.gaf-s4-hero{background:linear-gradient(160deg,#0a1628,#132d4f);border-radius:14px;padding:36px 28px 32px;text-align:center;margin-bottom:28px;position:relative;overflow:hidden}
+.gaf-s4-hero::after{content:'';position:absolute;top:-60px;right:-60px;width:180px;height:180px;border-radius:50%;background:rgba(17,127,176,.08);pointer-events:none}
+.gaf-s4-check{width:52px;height:52px;border-radius:50%;background:rgba(16,185,129,.15);border:2px solid rgba(16,185,129,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;color:#10b981;font-size:22px}
+.gaf-s4-heading{font-family:'Roboto Slab',Georgia,serif;font-size:24px;font-weight:700;color:#fff;margin-bottom:10px}
+.gaf-s4-sub{font-size:14px;color:rgba(255,255,255,.5);line-height:1.65;max-width:360px;margin:0 auto}
+.gaf-s4-card{background:#fff;border:1px solid #eaeaea;border-radius:12px;overflow:hidden;margin-bottom:20px}
+.gaf-s4-card-header{padding:14px 20px;background:#f8f9fa;border-bottom:1px solid #eaeaea;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#999;display:flex;align-items:center;gap:8px}
+.gaf-s4-card-header i{color:${ACCENT};font-size:13px}
+.gaf-s4-row{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid #f5f5f5}
 .gaf-s4-row:last-child{border-bottom:none}
-.gaf-s4-row-label{font-size:13px;color:#999;font-weight:600}
+.gaf-s4-row-label{font-size:13px;color:#aaa;font-weight:500}
 .gaf-s4-row-value{font-size:14px;font-weight:700;color:#1a1a1a}
-.gaf-s4-row-value .badge{display:inline-flex;align-items:center;gap:4px;background:#ecfdf5;color:#059669;font-size:12px;font-weight:600;padding:3px 10px;border-radius:12px}
-.gaf-s4-perk{display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#0e1726,#1a2742);border-radius:10px;padding:16px 20px;margin-bottom:24px;color:#fff;font-size:13px;font-weight:600}
-.gaf-s4-perk i{color:#00bcd4;font-size:16px;flex-shrink:0}
-.gaf-s4-manage{display:block;width:100%;padding:13px;border:1.5px solid #e0e0e0;border-radius:10px;background:#fff;color:#555;font-size:14px;font-weight:600;text-align:center;cursor:pointer;transition:all .15s;font-family:inherit;text-decoration:none;margin-bottom:16px}
-.gaf-s4-manage:hover{border-color:${ACCENT};color:${ACCENT}}
-.gaf-footer-text{text-align:center;font-size:12.5px;color:#aaa;margin-top:4px}
-.gaf-footer-text i{margin-right:6px}
+.gaf-s4-row-value .badge{display:inline-flex;align-items:center;gap:5px;background:#ecfdf5;color:#059669;font-size:11.5px;font-weight:700;padding:4px 12px;border-radius:14px}
+.gaf-s4-row-value .badge i{font-size:8px}
+.gaf-s4-perk{display:flex;align-items:center;gap:12px;background:${ACCENT_LIGHT};border:1px solid rgba(17,127,176,.15);border-radius:10px;padding:16px 20px;margin-bottom:24px;font-size:13.5px;color:${ACCENT_DARK};font-weight:600;line-height:1.5}
+.gaf-s4-perk i{color:${ACCENT};font-size:18px;flex-shrink:0}
+.gaf-s4-actions{display:flex;gap:10px;margin-bottom:20px}
+.gaf-s4-manage{flex:1;padding:13px;border:1.5px solid #eaeaea;border-radius:10px;background:#fff;color:#555;font-size:13px;font-weight:600;text-align:center;cursor:pointer;transition:all .15s;font-family:inherit;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px}
+.gaf-s4-manage:hover{border-color:${ACCENT};color:${ACCENT};background:${ACCENT_LIGHT}}
+.gaf-s4-manage-primary{flex:1;padding:13px;border:none;border-radius:10px;background:${ACCENT};color:#fff;font-size:13px;font-weight:700;text-align:center;cursor:pointer;transition:all .15s;font-family:inherit;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px}
+.gaf-s4-manage-primary:hover{background:${ACCENT_DARK}}
+.gaf-footer-text{text-align:center;font-size:12px;color:#bbb;display:flex;align-items:center;justify-content:center;gap:6px}
+.gaf-footer-text i{font-size:13px;color:#ccc}
 
 /* ---- Spinner ---- */
 .gaf-spinner{display:inline-block;width:16px;height:16px;border:2.5px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:gaf-spin .6s linear infinite;vertical-align:middle;margin-right:6px}
@@ -366,31 +374,36 @@ function screen3(){
 // ========== SCREEN 4: Success ==========
 function screen4(){
   var annual = getAnnual();
-  var monthly = (annual / 12).toFixed(2);
   var name = S.name || (S.selectedAccount ? DEMO_ACCOUNTS[S.selectedAccount].name : 'Reader');
   var date = new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
 
   var h='';
 
-  // Success header
+  // Dark hero header
+  h+='<div class="gaf-s4-hero">';
   h+='<div class="gaf-s4-check"><i class="fas fa-check"></i></div>';
   h+='<div class="gaf-s4-heading">You\'re Ad-Free!</div>';
-  h+='<div class="gaf-s4-sub">Welcome, '+name+'. Your ad-free subscription is now active. Enjoy uninterrupted Shark Tank coverage.</div>';
+  h+='<div class="gaf-s4-sub">Welcome back, '+name+'. Your subscription is active &mdash; enjoy uninterrupted Shark Tank coverage.</div>';
+  h+='</div>';
 
   // Subscription details card
   h+='<div class="gaf-s4-card">';
+  h+='<div class="gaf-s4-card-header"><i class="fas fa-receipt"></i> Subscription Details</div>';
   h+='<div class="gaf-s4-row"><span class="gaf-s4-row-label">Plan</span><span class="gaf-s4-row-value">Ad-Free Reading</span></div>';
   h+='<div class="gaf-s4-row"><span class="gaf-s4-row-label">Amount</span><span class="gaf-s4-row-value">$'+annual+' / year</span></div>';
   h+='<div class="gaf-s4-row"><span class="gaf-s4-row-label">Billing</span><span class="gaf-s4-row-value">Annual</span></div>';
-  h+='<div class="gaf-s4-row"><span class="gaf-s4-row-label">Status</span><span class="gaf-s4-row-value"><span class="badge"><i class="fas fa-check" style="font-size:9px"></i> Active</span></span></div>';
+  h+='<div class="gaf-s4-row"><span class="gaf-s4-row-label">Status</span><span class="gaf-s4-row-value"><span class="badge"><i class="fas fa-check"></i> Active</span></span></div>';
   h+='<div class="gaf-s4-row"><span class="gaf-s4-row-label">Started</span><span class="gaf-s4-row-value">'+date+'</span></div>';
   h+='</div>';
 
   // Perk banner
   h+='<div class="gaf-s4-perk"><i class="fas fa-eye-slash"></i> All ads, banners, and popups are now removed from your Shark Tank Blog experience.</div>';
 
-  // Manage link
-  h+='<a href="my-account.html" class="gaf-s4-manage"><i class="fas fa-cog" style="margin-right:6px"></i> Manage Subscription</a>';
+  // Action buttons
+  h+='<div class="gaf-s4-actions">';
+  h+='<a href="index.html" class="gaf-s4-manage-primary"><i class="fas fa-arrow-right"></i> Start Reading</a>';
+  h+='<a href="my-account.html" class="gaf-s4-manage"><i class="fas fa-cog"></i> My Account</a>';
+  h+='</div>';
 
   h+='<div class="gaf-footer-text"><i class="far fa-envelope"></i> Confirmation and invoice sent to your email</div>';
   return h;
