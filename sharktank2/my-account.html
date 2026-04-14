@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - Shark Tank Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="page-styles.css">
+    <link rel="stylesheet" href="auth-styles.css">
+    <style>
+        /* ===== MY ACCOUNT PAGE ===== */
+        .account-layout {
+            display: flex;
+            gap: 40px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+        }
+
+        /* --- Main Column --- */
+        .account-main {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .account-page-title {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid var(--cyan);
+        }
+
+        /* Welcome Card */
+        .account-welcome {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+            padding: 28px 32px;
+            margin-bottom: 28px;
+        }
+
+        .account-welcome-header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 20px;
+        }
+
+        .account-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--cyan), #0d5f85);
+            color: #fff;
+            font-size: 26px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .account-user-info h2 {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .account-user-info .user-email {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .account-user-info .user-since {
+            font-size: 12px;
+            color: #bbb;
+            margin-top: 2px;
+        }
+
+        /* Subscription Section */
+        .account-section {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+            margin-bottom: 28px;
+            overflow: hidden;
+        }
+
+        .account-section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 28px;
+            background: linear-gradient(135deg, #0a2a4a, #0d3b66);
+            color: #fff;
+        }
+
+        .account-section-header h3 {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .account-section-header .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(255,255,255,0.15);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #4ade80;
+        }
+
+        .account-section-body {
+            padding: 24px 28px;
+        }
+
+        /* Subscription Details Grid */
+        .sub-details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px 32px;
+            margin-bottom: 24px;
+        }
+
+        .sub-detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .sub-detail-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #999;
+        }
+
+        .sub-detail-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .sub-detail-value .highlight {
+            color: var(--cyan);
+        }
+
+        /* Stripe Badge */
+        .stripe-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f0f4ff;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #635bff;
+        }
+
+        .stripe-badge i {
+            font-size: 14px;
+        }
+
+        /* Action Buttons */
+        .account-actions {
+            display: flex;
+            gap: 12px;
+            padding-top: 20px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .btn-account {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 22px;
+            border-radius: 6px;
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            text-decoration: none;
+        }
+
+        .btn-account-primary {
+            background: var(--cyan);
+            color: #fff;
+        }
+        .btn-account-primary:hover {
+            background: var(--cyan-hover);
+        }
+
+        .btn-account-outline {
+            background: transparent;
+            border: 1.5px solid #ddd;
+            color: var(--text-secondary);
+        }
+        .btn-account-outline:hover {
+            border-color: #bbb;
+            color: var(--text-primary);
+        }
+
+        .btn-account-danger {
+            background: transparent;
+            border: 1.5px solid #fca5a5;
+            color: #dc2626;
+        }
+        .btn-account-danger:hover {
+            background: #fef2f2;
+            border-color: #f87171;
+        }
+
+        /* Payment History Table */
+        .payment-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .payment-table thead th {
+            text-align: left;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #999;
+            padding: 12px 16px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .payment-table tbody td {
+            padding: 14px 16px;
+            font-size: 14px;
+            color: var(--text-primary);
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .payment-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .payment-table .status-paid {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #dcfce7;
+            color: #16a34a;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .payment-table .status-paid i {
+            font-size: 10px;
+        }
+
+        .payment-table .amount {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .payment-table .receipt-link {
+            color: var(--cyan);
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .payment-table .receipt-link:hover {
+            color: var(--cyan-hover);
+        }
+
+        /* Cancel Notice */
+        .cancel-notice {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-top: 4px;
+        }
+
+        /* --- Sidebar --- */
+        .account-sidebar {
+            width: 320px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-widget {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .sidebar-search {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            border: 1.5px solid #e0e0e0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .sidebar-search i {
+            padding: 0 12px;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .sidebar-search input {
+            flex: 1;
+            padding: 10px 0;
+            border: none;
+            outline: none;
+            font-family: var(--font-body);
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+        .sidebar-search input::placeholder { color: #bbb; }
+
+        .sidebar-search-btn {
+            padding: 10px 16px;
+            background: none;
+            border: none;
+            border-left: 1.5px solid #e0e0e0;
+            color: var(--cyan);
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .sidebar-search-btn:hover { background: #f5f5f5; }
+
+        .sidebar-title {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .sidebar-title-accent {
+            color: var(--cyan);
+            font-weight: 800;
+        }
+
+        /* Recent Blog Items */
+        .recent-blog-item {
+            display: flex;
+            gap: 14px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .recent-blog-item:first-child { padding-top: 0; }
+        .recent-blog-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+        .recent-blog-thumb {
+            width: 80px;
+            height: 60px;
+            border-radius: 6px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .recent-blog-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .recent-blog-info h4 {
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.35;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .recent-blog-info h4 a {
+            color: inherit;
+            transition: color 0.2s;
+        }
+        .recent-blog-info h4 a:hover { color: var(--cyan); }
+
+        .recent-blog-info .blog-category {
+            font-size: 11px;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        /* Recent Pitches */
+        .recent-pitch-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .recent-pitch-item:first-child { padding-top: 0; }
+        .recent-pitch-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+        .recent-pitch-item h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+        .recent-pitch-item h4 a {
+            color: inherit;
+            transition: color 0.2s;
+        }
+        .recent-pitch-item h4 a:hover { color: var(--cyan); }
+
+        .recent-pitch-item .pitch-date {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .account-layout {
+                flex-direction: column;
+            }
+            .account-sidebar {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .account-layout {
+                padding: 24px 16px 40px;
+            }
+            .account-page-title {
+                font-size: 26px;
+            }
+            .account-welcome-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .sub-details-grid {
+                grid-template-columns: 1fr;
+            }
+            .account-actions {
+                flex-direction: column;
+            }
+            .btn-account {
+                justify-content: center;
+            }
+            .account-section-header {
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-start;
+            }
+            .payment-table {
+                font-size: 13px;
+            }
+            .payment-table thead th,
+            .payment-table tbody td {
+                padding: 10px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .account-page-title {
+                font-size: 22px;
+            }
+            .account-welcome {
+                padding: 20px;
+            }
+            .account-section-body {
+                padding: 18px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Social Bar -->
+    <div class="top-social-bar">
+        <div class="container top-social-inner">
+            <div class="social-icons top-social-icons">
+                <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="main-nav" id="mainNav">
+        <div class="container nav-inner">
+            <div class="nav-left">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/shark_logo.jpeg" alt="The Shark Tank Blog" width="60" height="50">
+                </a>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="episodes.html">Shark Tank Episodes</a></li>
+                    <li><a href="products.html">Shark Tank Products</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="startup-list.html">Shark Tank Startup List</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <button class="search-toggle" id="searchToggle" aria-label="Search">
+                    <i class="fa fa-search"></i>
+                </button>
+                <a href="my-account.html" class="btn-contact">My Profile</a>
+            </div>
+            <div class="search-box" id="searchBox">
+                <input type="text" placeholder="Search...">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Account Layout -->
+    <div class="account-layout">
+
+        <!-- Main Content -->
+        <div class="account-main">
+            <h1 class="account-page-title">My Account</h1>
+
+            <!-- Welcome Card -->
+            <div class="account-welcome">
+                <div class="account-welcome-header">
+                    <div class="account-avatar">UG</div>
+                    <div class="account-user-info">
+                        <h2>Welcome, Upneet Grover</h2>
+                        <div class="user-email">upneet.grover@email.com</div>
+                        <div class="user-since">Member since April 2026</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ad-free Subscription Section -->
+            <div class="account-section">
+                <div class="account-section-header">
+                    <h3><i class="fas fa-crown" style="margin-right:8px;color:#fbbf24"></i> Ad-free Subscription (Stripe)</h3>
+                    <span class="badge"><span class="badge-dot"></span> Active</span>
+                </div>
+                <div class="account-section-body">
+                    <div class="sub-details-grid">
+                        <div class="sub-detail-item">
+                            <span class="sub-detail-label">Plan</span>
+                            <span class="sub-detail-value">Ad-Free Reading</span>
+                        </div>
+                        <div class="sub-detail-item">
+                            <span class="sub-detail-label">Price</span>
+                            <span class="sub-detail-value"><span class="highlight">$2.00</span> / month</span>
+                        </div>
+                        <div class="sub-detail-item">
+                            <span class="sub-detail-label">Billing Cycle</span>
+                            <span class="sub-detail-value">Monthly</span>
+                        </div>
+                        <div class="sub-detail-item">
+                            <span class="sub-detail-label">Next Billing Date</span>
+                            <span class="sub-detail-value">May 10, 2026</span>
+                        </div>
+                        <div class="sub-detail-item">
+                            <span class="sub-detail-label">Payment Method</span>
+                            <span class="sub-detail-value">
+                                <span class="stripe-badge"><i class="fab fa-stripe-s"></i> Stripe</span>
+                            </span>
+                        </div>
+                        <div class="sub-detail-item">
+                            <span class="sub-detail-label">Card</span>
+                            <span class="sub-detail-value"><i class="fab fa-cc-visa" style="color:#1a1f71;margin-right:4px"></i> **** 4242</span>
+                        </div>
+                    </div>
+
+                    <div class="account-actions">
+                        <button class="btn-account btn-account-danger" onclick="confirmCancel()">
+                            <i class="fas fa-times-circle"></i> Cancel subscription renewal
+                        </button>
+                        <a href="#" class="btn-account btn-account-outline">
+                            <i class="fas fa-credit-card"></i> Update Payment
+                        </a>
+                    </div>
+                    <p class="cancel-notice" style="margin-top:14px">Stops future charges at the end of your current billing period. You will not be charged again.</p>
+                </div>
+            </div>
+
+            <!-- Payment History Section -->
+            <div class="account-section">
+                <div class="account-section-header" style="background:linear-gradient(135deg,#1a1d24,#2a2d33)">
+                    <h3><i class="fas fa-receipt" style="margin-right:8px;opacity:0.7"></i> Payment History</h3>
+                </div>
+                <div class="account-section-body" style="padding:0">
+                    <table class="payment-table">
+                        <thead>
+                            <tr>
+                                <th>Amount</th>
+                                <th>Tenure</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Receipt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="amount">$2.00</td>
+                                <td>month</td>
+                                <td><span class="status-paid"><i class="fas fa-check"></i> paid</span></td>
+                                <td>2026-04-10 12:39:48</td>
+                                <td><a href="#" class="receipt-link"><i class="fas fa-download"></i> PDF</a></td>
+                            </tr>
+                            <tr>
+                                <td class="amount">$2.00</td>
+                                <td>month</td>
+                                <td><span class="status-paid"><i class="fas fa-check"></i> paid</span></td>
+                                <td>2026-03-10 09:14:22</td>
+                                <td><a href="#" class="receipt-link"><i class="fas fa-download"></i> PDF</a></td>
+                            </tr>
+                            <tr>
+                                <td class="amount">$2.00</td>
+                                <td>month</td>
+                                <td><span class="status-paid"><i class="fas fa-check"></i> paid</span></td>
+                                <td>2026-02-10 10:05:37</td>
+                                <td><a href="#" class="receipt-link"><i class="fas fa-download"></i> PDF</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Account Settings -->
+            <div class="account-section">
+                <div class="account-section-header" style="background:linear-gradient(135deg,#1e3a5f,#2c5282)">
+                    <h3><i class="fas fa-cog" style="margin-right:8px;opacity:0.7"></i> Account Settings</h3>
+                </div>
+                <div class="account-section-body">
+                    <div class="sub-details-grid">
+                        <div class="sub-detail-item">
+                            <span class="sub-detail-label">Email Notifications</span>
+                            <span class="sub-detail-value"><i class="fas fa-toggle-on" style="color:var(--cyan);font-size:20px;vertical-align:middle"></i> Enabled</span>
+                        </div>
+                        <div class="sub-detail-item">
+                            <span class="sub-detail-label">Newsletter</span>
+                            <span class="sub-detail-value"><i class="fas fa-toggle-on" style="color:var(--cyan);font-size:20px;vertical-align:middle"></i> Subscribed</span>
+                        </div>
+                        <div class="sub-detail-item">
+                            <span class="sub-detail-label">Login Method</span>
+                            <span class="sub-detail-value"><i class="fab fa-google" style="color:#4285f4;margin-right:4px"></i> Google OAuth</span>
+                        </div>
+                        <div class="sub-detail-item">
+                            <span class="sub-detail-label">Last Login</span>
+                            <span class="sub-detail-value">April 14, 2026</span>
+                        </div>
+                    </div>
+                    <div class="account-actions">
+                        <a href="#" class="btn-account btn-account-outline">
+                            <i class="fas fa-envelope"></i> Change Email
+                        </a>
+                        <a href="#" class="btn-account btn-account-outline">
+                            <i class="fas fa-bell"></i> Notification Preferences
+                        </a>
+                        <a href="index.html" class="btn-account btn-account-danger" onclick="localStorage.removeItem('stb_user')">
+                            <i class="fas fa-sign-out-alt"></i> Log Out
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="account-sidebar">
+
+            <!-- Search Widget -->
+            <div class="sidebar-widget">
+                <div class="sidebar-search">
+                    <i class="fa fa-search"></i>
+                    <input type="text" placeholder="Search Headlines, News...">
+                    <button class="sidebar-search-btn">Search</button>
+                </div>
+            </div>
+
+            <!-- Recent Blogs Widget -->
+            <div class="sidebar-widget">
+                <h3 class="sidebar-title"><span class="sidebar-title-accent">/</span> Recent Blogs <span class="sidebar-title-accent">/</span></h3>
+
+                <div class="recent-blog-item">
+                    <div class="recent-blog-thumb">
+                        <img src="assets/images/blog-whiskey-empire.svg" alt="Manscaped">
+                    </div>
+                    <div class="recent-blog-info">
+                        <h4><a href="#">Manscaped Mens Grooming &ndash; A Business Breakdown</a></h4>
+                        <span class="blog-category">season 10</span>
+                    </div>
+                </div>
+
+                <div class="recent-blog-item">
+                    <div class="recent-blog-thumb">
+                        <img src="assets/images/blog-herjavec-millionaires.svg" alt="Pluto Pillow">
+                    </div>
+                    <div class="recent-blog-info">
+                        <h4><a href="#">Pluto Customizable Pillow &ndash; A Business Breakdown</a></h4>
+                        <span class="blog-category">Season 12</span>
+                    </div>
+                </div>
+
+                <div class="recent-blog-item">
+                    <div class="recent-blog-thumb">
+                        <img src="assets/images/blog-corcoran-passive.svg" alt="Shark Tank Statistics">
+                    </div>
+                    <div class="recent-blog-info">
+                        <h4><a href="#">Shark Tank Statistics: The Ultimate Breakdown</a></h4>
+                        <span class="blog-category">Financing</span>
+                    </div>
+                </div>
+
+                <div class="recent-blog-item">
+                    <div class="recent-blog-thumb">
+                        <img src="assets/images/blog-ring-exit.svg" alt="How Long Are Pitches">
+                    </div>
+                    <div class="recent-blog-info">
+                        <h4><a href="#">How Long Are Shark Tank Pitches? What Entrepreneurs Need to Know</a></h4>
+                        <span class="blog-category">Entrepreneur Training</span>
+                    </div>
+                </div>
+
+                <div class="recent-blog-item">
+                    <div class="recent-blog-thumb">
+                        <img src="assets/images/blog-oleary-ai.svg" alt="Best Food Products">
+                    </div>
+                    <div class="recent-blog-info">
+                        <h4><a href="#">10 Best Shark Tank Food Products of All Time</a></h4>
+                        <span class="blog-category">Success Stories</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Shark Tank Pitches Widget -->
+            <div class="sidebar-widget">
+                <h3 class="sidebar-title">Recent Shark Tank Pitches</h3>
+
+                <div class="recent-pitch-item">
+                    <h4><a href="login.html">Profile Login</a></h4>
+                    <span class="pitch-date">April 8, 2026</span>
+                </div>
+
+                <div class="recent-pitch-item">
+                    <h4><a href="#">Collars and Co Shark Tank Update</a></h4>
+                    <span class="pitch-date">June 6, 2025</span>
+                </div>
+
+                <div class="recent-pitch-item">
+                    <h4><a href="#">Sock Candy Shark Tank | Season 16</a></h4>
+                    <span class="pitch-date">April 16, 2025</span>
+                </div>
+
+                <div class="recent-pitch-item">
+                    <h4><a href="#">AirTulip Shark Tank | Season 16</a></h4>
+                    <span class="pitch-date">April 16, 2025</span>
+                </div>
+
+                <div class="recent-pitch-item">
+                    <h4><a href="#">Shark Tank Season 16 Episode 15</a></h4>
+                    <span class="pitch-date">April 15, 2025</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="assets/images/shark_logo.jpeg" alt="The Shark Tank Blog" width="80" height="70">
+                        <span class="footer-logo-text">The Shark Tank Blog</span>
+                    </div>
+                    <p>Shark Tank Blog is independent of and not affiliated or endorsed by ABC, Sony, the producers or any other company associated with the television show, Shark Tank. Shark Tank Blog is an opinion blog. Views expressed on this blog are solely owned by the author individually and not that of Shark Tank Blog or principles of Shark Tank Blog.</p>
+                    <div class="social-icons footer-social">
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-menu">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="episodes.html">Shark Tank Episodes</a></li>
+                        <li><a href="products.html">Shark Tank Products</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="startup-list.html">Shark Tank Businesses</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Subscribe to our Newsletter</h4>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom">
+        <a href="#">Terms of Content Use</a>
+        <span class="raptive">A RAPTIVE PARTNER SITE</span>
+    </div>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <i class="fa fa-chevron-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        function confirmCancel() {
+            if (confirm('Are you sure you want to cancel your subscription renewal?\n\nYou will continue to have ad-free access until the end of your current billing period.')) {
+                var btn = document.querySelector('.btn-account-danger');
+                btn.innerHTML = '<i class="fas fa-check-circle"></i> Cancellation Requested';
+                btn.style.background = '#dcfce7';
+                btn.style.color = '#16a34a';
+                btn.style.borderColor = '#86efac';
+                btn.disabled = true;
+                btn.style.cursor = 'default';
+            }
+        }
+    </script>
+</body>
+</html>
