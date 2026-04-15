@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account - Vintage Aviation News</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/auth-styles.css">
+  <style>
+    .acct-wrap { display:flex; gap:48px; max-width:var(--max-width); margin:0 auto; padding:48px 20px 80px; }
+    .acct-main { flex:1; min-width:0; }
+    .acct-sidebar { width:320px; flex-shrink:0; }
+
+    .acct-title { font-family:var(--font-heading); font-size:28px; font-weight:700; color:var(--dark); margin:0 0 36px; }
+
+    .acct-card { background:#fff; border:1px solid #eaeaea; border-radius:10px; margin-bottom:24px; overflow:hidden; }
+    .acct-card-header { padding:16px 24px; border-bottom:1px solid #eaeaea; display:flex; align-items:center; gap:10px; }
+    .acct-card-header h2 { font-family:var(--font-heading); font-size:16px; font-weight:700; color:var(--dark); margin:0; }
+    .acct-card-header i { color:var(--primary); font-size:15px; }
+    .acct-card-body { padding:24px; }
+
+    .welcome-row { display:flex; align-items:center; gap:16px; }
+    .welcome-avatar { width:48px; height:48px; border-radius:50%; background:var(--primary); color:#fff; font-size:18px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .welcome-text h3 { font-family:var(--font-main); font-size:16px; font-weight:700; color:var(--dark); margin:0 0 2px; }
+    .welcome-text span { font-size:13px; color:var(--text-light); }
+
+    .sub-status { display:inline-flex; align-items:center; gap:6px; background:#ecfdf5; color:#059669; font-size:12px; font-weight:600; padding:4px 12px; border-radius:20px; margin-bottom:16px; }
+    .sub-status-dot { width:6px; height:6px; border-radius:50%; background:#059669; }
+
+    .sub-info { display:flex; gap:32px; margin-bottom:20px; flex-wrap:wrap; }
+    .sub-info-item { display:flex; flex-direction:column; gap:2px; }
+    .sub-info-label { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.6px; color:#aaa; }
+    .sub-info-value { font-size:15px; font-weight:600; color:var(--dark); }
+
+    .sub-divider { height:1px; background:#f0f0f0; margin:20px 0; }
+
+    .sub-cancel-row { display:flex; align-items:flex-start; gap:16px; }
+    .acct-cancel-btn { display:inline-flex; align-items:center; gap:6px; padding:9px 20px; background:none; border:1.5px solid #fca5a5; color:#dc2626; border-radius:6px; font-family:var(--font-main); font-size:13px; font-weight:600; cursor:pointer; transition:all .2s; white-space:nowrap; flex-shrink:0; }
+    .acct-cancel-btn:hover { background:#fef2f2; border-color:#f87171; }
+    .acct-cancel-btn.cancelled { background:#ecfdf5; color:#059669; border-color:#6ee7b7; cursor:default; }
+    .acct-cancel-note { font-size:13px; color:var(--text-light); line-height:1.55; padding-top:2px; }
+
+    .acct-table { width:100%; border-collapse:collapse; }
+    .acct-table th { text-align:left; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.6px; color:#aaa; padding:10px 16px 10px 0; border-bottom:1px solid #eaeaea; }
+    .acct-table td { font-size:14px; color:var(--text); padding:14px 16px 14px 0; border-bottom:1px solid #f5f5f5; }
+    .acct-table tbody tr:last-child td { border-bottom:none; }
+    .acct-table .amount { font-weight:700; color:var(--dark); }
+    .acct-table .status-badge { display:inline-flex; align-items:center; gap:4px; background:#ecfdf5; color:#059669; font-size:12px; font-weight:600; padding:3px 10px; border-radius:12px; }
+    .acct-table .status-badge i { font-size:8px; }
+
+    /* Sidebar */
+    .sb-widget { background:#fff; border:1px solid #eaeaea; border-radius:10px; padding:20px; margin-bottom:24px; }
+    .sb-search { display:flex; align-items:center; background:#f7f7f7; border-radius:6px; overflow:hidden; }
+    .sb-search i { padding:0 12px; color:#aaa; font-size:14px; }
+    .sb-search input { flex:1; padding:10px 0; border:none; outline:none; background:transparent; font-family:var(--font-main); font-size:13px; color:var(--dark); }
+    .sb-search input::placeholder { color:#bbb; }
+    .sb-search-btn { padding:10px 14px; background:none; border:none; color:var(--primary); font-family:var(--font-main); font-size:13px; font-weight:700; cursor:pointer; }
+
+    .sb-title { font-family:var(--font-heading); font-size:16px; font-weight:700; color:var(--dark); margin-bottom:16px; padding-bottom:12px; border-bottom:2px solid var(--accent-orange); display:inline-block; }
+
+    .sb-post-item { display:flex; gap:12px; padding:10px 0; }
+    .sb-post-item:first-child { padding-top:0; }
+    .sb-post-item + .sb-post-item { border-top:1px solid #f5f5f5; }
+    .sb-post-thumb { width:72px; height:52px; border-radius:6px; overflow:hidden; flex-shrink:0; background:linear-gradient(135deg,#2c3e50,#34495e); }
+    .sb-post-info h4 { font-size:13px; font-weight:600; line-height:1.4; color:var(--dark); margin:0 0 3px; }
+    .sb-post-info h4 a { color:inherit; text-decoration:none; }
+    .sb-post-info h4 a:hover { color:var(--primary); }
+    .sb-post-meta { font-size:11px; color:var(--text-light); }
+
+    .sb-social-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .sb-social-item { display:flex; align-items:center; gap:10px; padding:10px 14px; border:1px solid var(--border); border-radius:6px; }
+    .sb-social-item .s-name { font-size:13px; font-weight:700; color:var(--dark); }
+    .sb-social-item .s-action { font-size:11px; color:var(--text-light); }
+    .sb-social-item.fb i { color:#1877f2; font-size:18px; }
+    .sb-social-item.tw i { color:#000; font-size:18px; }
+    .sb-social-item.ig i { color:#e1306c; font-size:18px; }
+    .sb-social-item.yt i { color:#ff0000; font-size:18px; }
+
+    @media (max-width:992px) { .acct-wrap { flex-direction:column; gap:32px; } .acct-sidebar { width:100%; } }
+    @media (max-width:768px) { .acct-wrap { padding:28px 16px 48px; } .acct-title { font-size:24px; margin-bottom:24px; } .sub-info { flex-direction:column; gap:14px; } .sub-cancel-row { flex-direction:column; } }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-top">
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+      <div class="site-logo">
+        <a href="../index.html"><img src="../assets/van-logo.png" alt="Vintage Aviation News" style="height:90px;"></a>
+      </div>
+      <div class="header-search">
+        <input type="text" placeholder="Search Headlines, News...">
+        <button><i class="fas fa-arrow-circle-right"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="main-nav">
+    <div class="container">
+      <ul class="nav-list">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="restorations.html">Restorations</a></li>
+        <li><a href="warbirds-news.html">Warbirds News</a></li>
+        <li><a href="vintage.html">Vintage</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="museum-news.html">Aviation Museum News</a></li>
+        <li><a href="#">Sponsors</a></li>
+        <li><a href="../go-ad-free/" style="background:#bb361b;color:#fff;padding:6px 16px;border-radius:4px;font-weight:700;font-size:13px">Go Ad-Free</a></li>
+        <li><a href="my-account.html" style="background:var(--primary);color:#fff;padding:6px 16px;border-radius:4px;font-weight:700;font-size:13px"><i class="fas fa-user" style="margin-right:4px"></i> My Profile</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Account Layout -->
+  <div class="acct-wrap">
+    <div class="acct-main">
+      <h1 class="acct-title">My Account</h1>
+
+      <!-- Welcome Card -->
+      <div class="acct-card">
+        <div class="acct-card-header">
+          <i class="fas fa-user-circle"></i>
+          <h2>My Account</h2>
+        </div>
+        <div class="acct-card-body">
+          <div class="welcome-row">
+            <div class="welcome-avatar">KK</div>
+            <div class="welcome-text">
+              <h3>Welcome, Kapil Kajal</h3>
+              <span>kapil.kajal@email.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subscription Card -->
+      <div class="acct-card">
+        <div class="acct-card-header">
+          <i class="fab fa-stripe-s" style="color:#635bff"></i>
+          <h2>Ad-Free Subscription (Stripe)</h2>
+        </div>
+        <div class="acct-card-body">
+          <div class="sub-status"><span class="sub-status-dot"></span> Active</div>
+          <div class="sub-info">
+            <div class="sub-info-item">
+              <span class="sub-info-label">Plan</span>
+              <span class="sub-info-value">Ad-Free Reading</span>
+            </div>
+            <div class="sub-info-item">
+              <span class="sub-info-label">Amount</span>
+              <span class="sub-info-value">$2.00 / month</span>
+            </div>
+            <div class="sub-info-item">
+              <span class="sub-info-label">Since</span>
+              <span class="sub-info-value">April 10, 2026</span>
+            </div>
+          </div>
+          <div class="sub-divider"></div>
+          <div class="sub-cancel-row">
+            <button class="acct-cancel-btn" onclick="cancelSub(this)"><i class="fas fa-times-circle"></i> Cancel subscription renewal</button>
+            <p class="acct-cancel-note">Stops future charges at the end of your current billing period. You will not be charged again.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment History -->
+      <div class="acct-card">
+        <div class="acct-card-header">
+          <i class="fas fa-receipt"></i>
+          <h2>Payment History</h2>
+        </div>
+        <div class="acct-card-body">
+          <table class="acct-table">
+            <thead><tr><th>Amount</th><th>Tenure</th><th>Status</th><th>Date</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="amount">$2.00</td>
+                <td>month</td>
+                <td><span class="status-badge"><i class="fas fa-check"></i> paid</span></td>
+                <td>2026-04-10 12:39:48</td>
+              </tr>
+              <tr>
+                <td class="amount">$2.00</td>
+                <td>month</td>
+                <td><span class="status-badge"><i class="fas fa-check"></i> paid</span></td>
+                <td>2026-03-10 09:14:22</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="acct-sidebar">
+      <div class="sb-widget">
+        <div class="sb-search">
+          <i class="fa fa-search"></i>
+          <input type="text" placeholder="Search Headlines, News...">
+          <button class="sb-search-btn">Search</button>
+        </div>
+      </div>
+
+      <div class="sb-widget">
+        <h3 class="sb-title">Stay Connected</h3>
+        <div class="sb-social-grid">
+          <div class="sb-social-item fb"><i class="fab fa-facebook-f"></i><div><div class="s-name">Facebook</div><div class="s-action">Like</div></div></div>
+          <div class="sb-social-item tw"><i class="fab fa-x-twitter"></i><div><div class="s-name">Twitter</div><div class="s-action">Follow</div></div></div>
+          <div class="sb-social-item ig"><i class="fab fa-instagram"></i><div><div class="s-name">Instagram</div><div class="s-action">Follow</div></div></div>
+          <div class="sb-social-item yt"><i class="fab fa-youtube"></i><div><div class="s-name">Youtube</div><div class="s-action">Subscribe</div></div></div>
+        </div>
+      </div>
+
+      <div class="sb-widget">
+        <h3 class="sb-title">Latest Posts</h3>
+        <div class="sb-post-item">
+          <div class="sb-post-thumb"></div>
+          <div class="sb-post-info">
+            <h4><a href="carl-menckhoff.html">Aces of War: Carl Menckhoff – The Knight of the Albatros</a></h4>
+            <div class="sb-post-meta">Kapil Kajal / April 14, 2026</div>
+          </div>
+        </div>
+        <div class="sb-post-item">
+          <div class="sb-post-thumb"></div>
+          <div class="sb-post-info">
+            <h4><a href="#">Today In Aviation History: First U.S. Army Air Service Aerial Victory</a></h4>
+            <div class="sb-post-meta">Austin Hancock / April 14, 2026</div>
+          </div>
+        </div>
+        <div class="sb-post-item">
+          <div class="sb-post-thumb"></div>
+          <div class="sb-post-info">
+            <h4><a href="#">Boneyard Files: McDonnell F-101 Voodoo</a></h4>
+            <div class="sb-post-meta">Kapil Kajal / April 13, 2026</div>
+          </div>
+        </div>
+        <div class="sb-post-item">
+          <div class="sb-post-thumb"></div>
+          <div class="sb-post-info">
+            <h4><a href="#">Flight Test Files: Lockheed U-2</a></h4>
+            <div class="sb-post-meta">Kapil Kajal / April 13, 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-row">
+        <div class="footer-brand">
+          <div class="footer-logo"><img src="../assets/van-logo.png" alt="Vintage Aviation News" style="height:60px;"></div>
+        </div>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-grid">
+        <div class="footer-brand"><p><em>Vintage Aviation News is a company founded by a group of passionate aviation enthusiasts who love the history and technology Aviation and Flying Museums preserve for the public.</em></p></div>
+        <div class="footer-links"><ul><li><a href="../index.html">Home</a></li><li><a href="restorations.html">Restorations</a></li><li><a href="vintage.html">Vintage Aviation</a></li><li><a href="museum-news.html">Aviation Museum News</a></li><li><a href="articles.html">Articles</a></li></ul></div>
+        <div class="footer-links"><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Newsletter</a></li><li><a href="#">About Us</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="#">Ethics-Policy</a></li></ul></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    function cancelSub(btn) {
+      if (confirm('Are you sure you want to cancel your subscription renewal?')) {
+        btn.innerHTML = '<i class="fas fa-check-circle"></i> Cancellation Requested';
+        btn.classList.add('cancelled');
+        btn.disabled = true;
+      }
+    }
+  </script>
+</body>
+</html>

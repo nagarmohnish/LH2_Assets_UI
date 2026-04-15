@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 
 const CTA_COLOR = "#bb361b";
 const CTA_HOVER = "#9e2e17";
-const LOGO_URL = "../../assets/van-logo.png";
-const BASE = "../../";
+const LOGO_URL = "/LH2_Assets_UI/vintage-aviation-news/assets/van-logo.png";
+const BASE = "/LH2_Assets_UI/vintage-aviation-news/";
 
 const goToPayment = () => { window.location.hash = "#/payment"; };
 
