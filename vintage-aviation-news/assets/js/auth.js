@@ -132,13 +132,13 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeSSOPopup();
 });
 
-// ===== Support Button -> Navigate to Support Landing Page =====
+// ===== Go Ad-Free Button -> Navigate to Go Ad-Free Landing Page =====
 function openSupportPage() {
   var base = window.location.pathname;
   if (base.includes('/pages/')) {
-    window.location.href = '../support/';
+    window.location.href = '../go-ad-free/';
   } else {
-    window.location.href = 'support/';
+    window.location.href = 'go-ad-free/';
   }
 }
 
@@ -154,15 +154,7 @@ function initAuthUI() {
   const user = getUser();
 
   if (!user) {
-    // Support button only (no sign in)
-    const supportLi = document.createElement('li');
-    supportLi.className = 'nav-auth-item';
-    supportLi.innerHTML = '<a href="#" class="nav-auth-btn nav-subscribe" id="navSupport">Support</a>';
-    navList.appendChild(supportLi);
-    supportLi.querySelector('#navSupport').addEventListener('click', function(e) {
-      e.preventDefault();
-      openSupportPage();
-    });
+    // No buttons when logged out — Go Ad-Free is already in nav
   } else {
     // Logged in state
     const userLi = document.createElement('li');
@@ -175,7 +167,7 @@ function initAuthUI() {
       </button>
       <div class="dropdown nav-user-dropdown">
         <a href="#" id="navSupportLoggedIn">
-          <i class="fas fa-heart"></i> Support VAN
+          <i class="fas fa-eye-slash"></i> Go Ad-Free
         </a>
         <a href="${getBasePath()}pages/subscription.html">
           <i class="fas fa-credit-card"></i> My Subscription
