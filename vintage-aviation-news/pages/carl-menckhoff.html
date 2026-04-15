@@ -485,7 +485,7 @@
 
   <!-- Floating Go Ad-Free -->
   <a href="../go-ad-free/" class="floating-gaf" aria-label="Go Ad-Free">
-    <i class="fas fa-eye-slash"></i>
+    <i class="fas fa-fighter-jet"></i>
     Go Ad-Free
   </a>
 
@@ -496,11 +496,7 @@
     <div class="van-modal">
       <button class="van-modal-close" onclick="document.getElementById('vanTimedModal').classList.remove('active');sessionStorage.setItem('van_modal_shown','1')">&times;</button>
       <div class="van-modal-header">
-        <div style="display:inline-flex;flex-direction:column;align-items:center;margin:0 auto 16px;line-height:1;font-family:'Merriweather',Georgia,serif;color:#fff">
-          <span style="font-size:9px;font-weight:400;text-transform:uppercase;letter-spacing:3px;opacity:.5">Vintage</span>
-          <span style="font-size:24px;font-weight:700;letter-spacing:1px;margin:2px 0">Aviation</span>
-          <span style="font-size:10px;font-weight:400;text-transform:uppercase;letter-spacing:4px;opacity:.5">News</span>
-        </div>
+        <img src="../assets/van-logo.png" alt="Vintage Aviation News" style="height:55px;margin:0 auto 14px;display:block">
         <h2>Reading Without Interruptions?</h2>
         <p>That's less than a cup of hangar coffee.</p>
       </div>
@@ -531,11 +527,11 @@
     .van-modal-overlay.active{display:flex;background:rgba(0,0,0,.55)}
     .van-modal{max-width:420px;width:calc(100% - 32px);border-radius:16px;overflow:hidden;box-shadow:0 28px 70px rgba(0,0,0,.35);position:relative;animation:vanModalIn .3s ease-out}
     @keyframes vanModalIn{from{opacity:0;transform:scale(.95) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
-    .van-modal-close{position:absolute;top:14px;right:16px;z-index:2;background:none;border:none;color:rgba(255,255,255,.4);font-size:22px;cursor:pointer;transition:color .15s}
-    .van-modal-close:hover{color:rgba(255,255,255,.8)}
-    .van-modal-header{background:linear-gradient(160deg,#1a1a2e,#16213e);padding:36px 32px 28px;text-align:center}
-    .van-modal-header h2{font-family:var(--font-heading);font-size:22px;font-weight:700;color:#fff;margin:0 0 10px;line-height:1.3}
-    .van-modal-header p{font-size:13.5px;color:rgba(255,255,255,.45);margin:0;line-height:1.5}
+    .van-modal-close{position:absolute;top:14px;right:16px;z-index:2;background:none;border:none;color:#bbb;font-size:22px;cursor:pointer;transition:color .15s}
+    .van-modal-close:hover{color:#666}
+    .van-modal-header{background:#f5f0ea;padding:36px 32px 28px;text-align:center}
+    .van-modal-header h2{font-family:var(--font-heading);font-size:22px;font-weight:700;color:#1a1a1a;margin:0 0 10px;line-height:1.3}
+    .van-modal-header p{font-size:13.5px;color:#888;margin:0;line-height:1.5}
     .van-modal-body{background:#fff;padding:32px 36px 28px;text-align:center}
     .van-modal-price{display:flex;align-items:baseline;justify-content:center;gap:8px;margin-bottom:28px}
     .van-modal-price .old{font-size:20px;color:#bbb;text-decoration:line-through}
