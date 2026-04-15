@@ -18,7 +18,7 @@
   var SITE_NAME = "Vintage Aviation News";
   var SITE_CAUSE = "aviation heritage preservation";
   var SITE_AUDIENCE = "aviation enthusiasts worldwide";
-  var SITE_TITLE = "Support Aviation Heritage";
+  var SITE_TITLE = "Go Ad-Free";
 
   // ===== PRESETS =====
   var PRESETS = [5, 10, 25, 50];
@@ -37,7 +37,7 @@
     "Plot twist: this ad vanishes when you subscribe.",
     "Imagine this space \u2014 completely yours.",
     "Fun fact: subscribers never see this.",
-    "Support aviation heritage. Lose the ads.",
+    "Go ad-free. Lose the distractions.",
     "Less noise. More warbirds.",
   ];
   var narrowCopy = ["No more ads?", "Go clean", "Lose the ads", "Distraction-free"];
@@ -233,8 +233,8 @@
 
   function getSupportUrl() {
     var path = window.location.pathname;
-    if (path.includes('/pages/')) return '../support/';
-    return 'support/';
+    if (path.includes('/pages/')) return '../go-ad-free/';
+    return 'go-ad-free/';
   }
 
   function makeAdBadge() {
@@ -304,9 +304,9 @@
   function renderScreen2() {
     var amt = getAmount(), freqLabel = getFreqLabel();
     return '<div class="gaf-summary">' +
-        '<div class="gaf-summary-label">You\u2019re supporting</div>' +
+        '<div class="gaf-summary-label">Going Ad-Free</div>' +
         '<div class="gaf-summary-amount">$' + amt + freqLabel + '</div>' +
-        '<div class="gaf-summary-cause">Helping preserve ' + SITE_CAUSE + ' every day</div></div>' +
+        '<div class="gaf-summary-cause">Uninterrupted ' + SITE_CAUSE + ' reading</div></div>' +
       '<div class="gaf-input-group"><label>Email address</label><input class="gaf-input" id="gafEmail" type="email" placeholder="you@example.com" value="' + esc(S.email) + '"></div>' +
       '<div style="font-size:13px;font-weight:600;color:#333;margin-bottom:10px;">Select payment method</div>' +
       '<div class="gaf-method-card' + (S.method === "bank" ? " active" : "") + '" data-gaf-method="bank"><div class="gaf-method-header"><span class="gaf-method-icon">\uD83C\uDFE6</span><div class="gaf-method-info"><div class="gaf-method-name">Direct Bank Transfer (ACH)</div><div class="gaf-method-sub">Best for long-term support</div></div></div><div class="gaf-method-body"><input class="gaf-input" placeholder="Routing number"><input class="gaf-input" placeholder="Account number"></div></div>' +
@@ -321,33 +321,23 @@
   function renderScreen3() {
     var amt = getAmount();
     var freqText = S.freq === "one-time" ? "" : S.freq === "monthly" ? "every month" : S.freq === "quarterly" ? "every quarter" : "every year";
-    var displayName = S.name || S.email || "Supporter";
+    var displayName = S.name || S.email || "Reader";
     var today = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
-    var shareText = encodeURIComponent("I just became an official supporter of " + SITE_NAME + "! Helping keep " + SITE_CAUSE + " free for everyone. \u2708\uFE0F");
-    var shareUrl = encodeURIComponent(window.location.origin);
     return '<div class="gaf-success-header">' +
         '<div class="gaf-check-circle">\u2713</div>' +
-        '<div class="gaf-success-text">Your <strong>$' + amt + ' ' + freqText + '</strong> support is confirmed.</div>' +
-        '<div class="gaf-success-text">You\u2019re now one of us \u2014 helping keep ' + SITE_CAUSE + ' free for ' + SITE_AUDIENCE + '.</div>' +
-        '<span class="gaf-badge-pill">\uD83D\uDC99 Official Supporter of ' + SITE_NAME + '</span></div>' +
-      '<div class="gaf-cert"><div class="gaf-cert-top"><span>\u2764\uFE0F</span><span class="gaf-cert-share-icon" title="Share">\uD83D\uDD17</span></div>' +
-        '<div class="gaf-cert-label">CERTIFICATE OF SUPPORT</div><div class="gaf-cert-divider"></div>' +
-        '<div class="gaf-cert-certifies">This certifies that</div>' +
-        '<div class="gaf-cert-name">' + esc(displayName) + '</div>' +
-        '<div class="gaf-cert-of">is a proud supporter of</div>' +
-        '<div class="gaf-cert-logo"><div class="gaf-cert-logo-circle">VA</div><span class="gaf-cert-logo-text">' + SITE_NAME + '</span></div>' +
+        '<div class="gaf-success-text"><strong>You\u2019re Ad-Free!</strong></div>' +
+        '<div class="gaf-success-text">Welcome, ' + esc(displayName) + '. Your subscription is now active. Enjoy uninterrupted ' + SITE_CAUSE + '.</div></div>' +
+      '<div class="gaf-cert">' +
+        '<div class="gaf-cert-label">SUBSCRIPTION DETAILS</div><div class="gaf-cert-divider"></div>' +
+        '<div class="gaf-cert-certifies">Plan</div>' +
+        '<div class="gaf-cert-name">Ad-Free Reading</div>' +
+        '<div class="gaf-cert-of">Amount</div>' +
+        '<div class="gaf-cert-logo"><span class="gaf-cert-logo-text">$' + amt + ' ' + freqText + '</span></div>' +
         '<div class="gaf-cert-divider"></div>' +
-        '<div class="gaf-cert-cause">For keeping ' + SITE_CAUSE + ' free &amp; accessible for everyone</div>' +
-        '<div class="gaf-cert-amount">$' + amt + ' ' + freqText + '</div>' +
-        '<div class="gaf-cert-date">' + today + '</div>' +
-        '<div class="gaf-cert-perk">\u2714 Your ' + SITE_NAME + ' experience will be <strong>ads-free</strong> while your support is active.</div></div>' +
-      '<div class="gaf-social-label">SHOW OTHERS YOU SUPPORT AVIATION HERITAGE</div>' +
-      '<div class="gaf-social-grid">' +
-        '<a class="gaf-social-btn gaf-social-x" href="https://twitter.com/intent/tweet?text=' + shareText + '&url=' + shareUrl + '" target="_blank" rel="noopener">X</a>' +
-        '<a class="gaf-social-btn gaf-social-li" href="https://www.linkedin.com/sharing/share-offsite/?url=' + shareUrl + '" target="_blank" rel="noopener">LinkedIn</a>' +
-        '<a class="gaf-social-btn gaf-social-wa" href="https://wa.me/?text=' + shareText + '%20' + shareUrl + '" target="_blank" rel="noopener">WhatsApp</a></div>' +
-      '<div class="gaf-footer-links"><a href="#">Manage your support</a></div>' +
-      '<div class="gaf-footer-email">\u2709 Certificate and invoice sent to your email</div>';
+        '<div class="gaf-cert-cause">Started ' + today + '</div>' +
+        '<div class="gaf-cert-perk">\u2714 All ads, banners, and popups are now removed from your ' + SITE_NAME + ' experience.</div></div>' +
+      '<div class="gaf-footer-links"><a href="go-ad-free/">Manage Subscription</a></div>' +
+      '<div class="gaf-footer-email">\u2709 Confirmation and invoice sent to your email</div>';
   }
 
   function esc(s) { return (s || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
@@ -360,7 +350,7 @@
     if (t.id === "gafClose" || (t.closest && t.closest("#gafClose"))) { closePopup(); return; }
 
     // Sticky banner CTA
-    if (t.id === "gafStickyCta" || (t.closest && t.closest("#gafStickyCta"))) { window.location.href = getSupportUrl(); return; }
+    if (t.id === "gafStickyCta" || (t.closest && t.closest("#gafStickyCta"))) { window.location.href = getSupportUrl(); return; } // getSupportUrl now returns go-ad-free/
 
     // Sticky banner close
     if (t.id === "gafStickyClose" || (t.closest && t.closest("#gafStickyClose"))) {
@@ -403,7 +393,7 @@
     if (t.closest && t.closest(".gaf-express-btn")) {
       var emailEl2 = document.getElementById("gafEmail");
       if (emailEl2) S.email = emailEl2.value.trim();
-      S.name = S.email.split("@")[0] || "Supporter";
+      S.name = S.email.split("@")[0] || "Reader";
       S.screen = 3; renderScreen(); return;
     }
   });

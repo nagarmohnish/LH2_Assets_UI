@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aces of War: Carl Menckhoff – The Knight of the Albatros - Vintage Aviation News</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/auth-styles.css">
+  <style>
+    /* Article Layout */
+    .article-wrap { display: flex; gap: 40px; max-width: var(--max-width); margin: 0 auto; padding: 0 20px 60px; }
+    .article-main { flex: 1; min-width: 0; }
+    .article-sidebar { width: 300px; flex-shrink: 0; }
+
+    /* Breadcrumb */
+    .article-breadcrumb { padding: 16px 0; font-size: 13px; color: var(--text-light); }
+    .article-breadcrumb a { color: var(--text-light); text-decoration: none; }
+    .article-breadcrumb a:hover { color: var(--primary); }
+
+    /* Article Header */
+    .article-title { font-family: var(--font-heading); font-size: 36px; font-weight: 700; color: var(--dark); line-height: 1.25; margin-bottom: 16px; }
+    .article-excerpt { font-size: 16px; color: var(--text-light); line-height: 1.7; margin-bottom: 20px; }
+    .article-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .article-author-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #e67e22, #d35400); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 16px; flex-shrink: 0; }
+    .article-author-name { font-size: 14px; font-weight: 700; color: var(--dark); }
+    .article-date { font-size: 13px; color: var(--text-light); }
+
+    /* Featured Image */
+    .article-featured-img { margin-bottom: 8px; border-radius: 4px; overflow: hidden; }
+    .article-featured-img img { width: 100%; height: auto; display: block; }
+    .article-img-caption { font-size: 13px; color: var(--text-light); font-style: italic; margin-bottom: 28px; display: flex; align-items: baseline; gap: 8px; }
+    .article-img-caption::before { content: ''; width: 24px; height: 2px; background: #e74c3c; flex-shrink: 0; margin-top: 8px; }
+
+    /* Share Sidebar */
+    .share-strip { position: sticky; top: 160px; display: flex; flex-direction: column; align-items: center; gap: 8px; padding-right: 20px; }
+    .share-strip-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-light); margin-bottom: 4px; }
+    .share-strip-icon { display: flex; }
+    .share-strip a { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-light); font-size: 15px; transition: all 0.15s; border: 1px solid var(--border); }
+    .share-strip a:hover { color: var(--primary); border-color: var(--primary); }
+    .share-strip a.fb:hover { color: #1877f2; border-color: #1877f2; }
+    .share-strip a.tw:hover { color: #000; border-color: #000; }
+
+    /* Article Body */
+    .article-body { font-family: var(--font-heading); font-size: 17px; line-height: 1.85; color: var(--text); }
+    .article-body p { margin-bottom: 20px; }
+    .article-body h2 { font-family: var(--font-heading); font-size: 26px; font-weight: 700; color: var(--dark); margin: 40px 0 18px; }
+    .article-body a { color: #2980b9; text-decoration: underline; }
+    .article-body img { width: 100%; height: auto; border-radius: 4px; margin: 24px 0 8px; }
+    .article-body .img-credit { font-size: 13px; color: var(--text-light); font-style: italic; margin-bottom: 24px; display: flex; align-items: baseline; gap: 8px; }
+    .article-body .img-credit::before { content: ''; width: 24px; height: 2px; background: #333; flex-shrink: 0; margin-top: 8px; }
+
+    /* Ad Banner */
+    .article-ad { margin: 28px 0; padding: 20px 0; border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0; }
+    .ad-banner { background: linear-gradient(135deg, #1a8fc4, #0d6891); border-radius: 6px; padding: 20px; text-align: center; color: #fff; font-size: 13px; font-weight: 600; }
+
+    /* Table of Contents */
+    .toc-box { border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin: 32px 0; }
+    .toc-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .toc-header h3 { font-family: var(--font-heading); font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+    .toc-header h3 i { color: var(--accent-orange); }
+    .toc-list { display: flex; gap: 24px; }
+    .toc-list a { font-size: 14px; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+    .toc-list a:hover { color: var(--primary); }
+    .toc-num { background: var(--bg-light); color: var(--text-light); font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 4px; }
+
+    /* Related Articles */
+    .related-section { margin: 40px 0; }
+    .related-section h3 { font-family: var(--font-heading); font-size: 22px; font-weight: 700; margin-bottom: 20px; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .related-card { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: box-shadow 0.15s; }
+    .related-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .related-card-img { height: 140px; background: linear-gradient(135deg, #2c3e50, #34495e); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); font-size: 32px; }
+    .related-card-body { padding: 14px; }
+    .related-card-body a { font-size: 14px; font-weight: 600; color: var(--primary); text-decoration: none; line-height: 1.4; }
+    .related-card-body a:hover { color: #2980b9; }
+
+    /* Tags */
+    .article-tags { margin: 32px 0; padding: 20px 0; border-top: 1px solid var(--border); }
+    .article-tags span { font-size: 13px; color: var(--text-light); margin-right: 8px; }
+    .article-tags a { font-size: 13px; color: var(--dark); font-weight: 600; text-decoration: none; }
+    .article-tags a:hover { color: var(--primary); }
+
+    /* Share Bottom */
+    .share-bottom { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; border-top: 1px solid var(--border); margin-bottom: 32px; }
+    .share-bottom-label { font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+    .share-btns { display: flex; gap: 8px; }
+    .share-btns a { padding: 8px 16px; border: 1px solid var(--border); border-radius: 4px; font-size: 13px; font-weight: 600; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: all 0.15s; }
+    .share-btns a:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* Author Box */
+    .author-box { display: flex; gap: 16px; padding: 24px 0; border-top: 1px solid var(--border); margin-bottom: 32px; }
+    .author-box-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #e67e22, #d35400); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 20px; flex-shrink: 0; }
+    .author-box-info h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+    .author-box-info p { font-size: 14px; color: var(--text-light); line-height: 1.6; font-style: italic; }
+
+    /* Sidebar Widgets */
+    .sidebar-widget { margin-bottom: 28px; }
+    .sidebar-widget-title { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 16px; display: flex; align-items: center; gap: 4px; }
+    .sidebar-widget-title .accent { color: #e74c3c; }
+    .sidebar-social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .sidebar-social-item { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 6px; }
+    .sidebar-social-item i { font-size: 18px; }
+    .sidebar-social-item .s-name { font-size: 13px; font-weight: 700; color: var(--dark); }
+    .sidebar-social-item .s-action { font-size: 11px; color: var(--text-light); }
+    .sidebar-social-item.fb i { color: #1877f2; }
+    .sidebar-social-item.tw i { color: #000; }
+    .sidebar-social-item.ig i { color: #e1306c; }
+    .sidebar-social-item.yt i { color: #ff0000; }
+
+    .sidebar-post-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+    .sidebar-post-item:last-child { border-bottom: none; }
+    .sidebar-post-thumb { width: 80px; height: 60px; border-radius: 4px; overflow: hidden; flex-shrink: 0; background: linear-gradient(135deg, #34495e, #2c3e50); }
+    .sidebar-post-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .sidebar-post-info h4 { font-size: 13px; font-weight: 700; line-height: 1.35; color: var(--dark); margin-bottom: 4px; }
+    .sidebar-post-info h4 a { color: inherit; text-decoration: none; }
+    .sidebar-post-info h4 a:hover { color: var(--primary); }
+    .sidebar-post-meta { font-size: 11px; color: var(--text-light); }
+
+    /* Comment Section */
+    .comment-section { margin: 40px 0; }
+    .comment-section h3 { font-family: var(--font-heading); font-size: 20px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .comment-note { font-size: 13px; color: var(--text-light); font-style: italic; margin-bottom: 20px; }
+    .comment-note .req { color: #e74c3c; }
+    .comment-form label { font-size: 14px; font-weight: 700; color: var(--dark); display: block; margin-bottom: 6px; }
+    .comment-form label .req { color: #e74c3c; }
+    .comment-form textarea, .comment-form input[type="text"], .comment-form input[type="email"], .comment-form input[type="url"] {
+      width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 4px; font-family: var(--font-main); font-size: 14px; outline: none; transition: border-color 0.15s; margin-bottom: 16px;
+    }
+    .comment-form textarea:focus, .comment-form input:focus { border-color: var(--primary); }
+    .comment-form textarea { min-height: 140px; resize: vertical; }
+    .comment-fields-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .comment-save { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-light); margin-bottom: 20px; }
+    .comment-submit { padding: 12px 28px; background: #e74c3c; color: #fff; border: none; border-radius: 4px; font-family: var(--font-main); font-size: 14px; font-weight: 700; cursor: pointer; transition: background 0.15s; }
+    .comment-submit:hover { background: #c0392b; }
+
+    /* Floating Go Ad-Free */
+    .floating-gaf { position: fixed; bottom: 20px; left: 16px; z-index: 997; display: flex; align-items: center; gap: 8px; padding: 10px 18px 10px 14px; background: linear-gradient(135deg, #0e1726, #1a2742); color: #fff; border: 1.5px solid rgba(44,62,107,0.4); border-radius: 28px; text-decoration: none; font-size: 13px; font-weight: 700; box-shadow: 0 4px 20px rgba(0,0,0,0.25); transition: transform 0.15s, box-shadow 0.15s; }
+    .floating-gaf:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.3); color: #fff; }
+    .floating-gaf i { font-size: 16px; color: var(--accent-orange); }
+
+    @media (max-width: 992px) {
+      .article-wrap { flex-direction: column; }
+      .article-sidebar { width: 100%; }
+      .share-strip { position: static; flex-direction: row; padding: 0 0 16px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+    }
+    @media (max-width: 768px) {
+      .article-title { font-size: 28px; }
+      .related-grid { grid-template-columns: 1fr; }
+      .comment-fields-row { grid-template-columns: 1fr; }
+      .share-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-top">
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+      <div class="site-logo">
+        <a href="../index.html">
+          <img src="../assets/van-logo.png" alt="Vintage Aviation News" style="height:90px;">
+        </a>
+      </div>
+      <div class="header-search">
+        <input type="text" placeholder="Search Headlines, News...">
+        <button><i class="fas fa-arrow-circle-right"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="main-nav">
+    <div class="container">
+      <button class="nav-toggle"><i class="fas fa-bars"></i></button>
+      <ul class="nav-list">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="restorations.html">Restorations</a></li>
+        <li><a href="warbirds-news.html">Warbirds News <span class="arrow">&#9662;</span></a></li>
+        <li><a href="vintage.html">Vintage</a></li>
+        <li><a href="articles.html" class="active">Articles</a></li>
+        <li><a href="museum-news.html">Aviation Museum News</a></li>
+        <li><a href="#">Sponsors <span class="arrow">&#9662;</span></a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="news-ticker">
+    <div class="container ticker-inner">
+      <div class="ticker-label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Latest News
+      </div>
+      <div class="ticker-content"><a href="#">Aces: Oswald Boelcke &ndash; The Father of the German Air...</a></div>
+      <span class="ticker-arrow">&rarr;</span>
+      <div class="ticker-links"><a href="#">Youtube</a><span>-</span><a href="#">Newsletter</a><span>-</span><a href="#">Events</a></div>
+    </div>
+  </div>
+
+  <!-- ARTICLE -->
+  <div style="max-width:var(--max-width);margin:0 auto;padding:0 20px">
+    <div class="article-breadcrumb">
+      <a href="../index.html">Home</a> &gt; <a href="articles.html">Articles</a> &gt; <a href="#">Aces</a> &gt; Aces of War: Carl Menckhoff &ndash; The Knight of the Albatros
+    </div>
+  </div>
+
+  <div class="article-wrap">
+    <div style="display:flex;gap:0">
+      <!-- Share Strip -->
+      <div class="share-strip">
+        <div class="share-strip-icon"><a href="#"><i class="fas fa-share-square"></i></a></div>
+        <div class="share-strip-label">SHARE</div>
+        <a href="#" class="fb"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="tw"><i class="fab fa-x-twitter"></i></a>
+        <a href="#"><i class="fas fa-link"></i></a>
+        <a href="#"><i class="fas fa-print"></i></a>
+        <a href="#"><i class="fas fa-ellipsis-h"></i></a>
+      </div>
+
+      <!-- Main Content -->
+      <div class="article-main">
+        <h1 class="article-title">Aces of War: Carl Menckhoff &ndash; The Knight of the Albatros</h1>
+        <p class="article-excerpt">Carl Menckhoff was one of the oldest aces of WWI, rising from infantry service to score 39 victories. He later commanded Jagdstaffel 72, where his leadership helped achieve high success with minimal losses.</p>
+
+        <div class="article-meta">
+          <div class="article-author-avatar">KK</div>
+          <div>
+            <div class="article-author-name">Kapil Kajal</div>
+            <div class="article-date">Published April 14, 2026</div>
+          </div>
+        </div>
+
+        <div class="article-featured-img">
+          <img src="../assets/images/placeholder-hero.svg" alt="Carl Menckhoff" style="width:100%;height:400px;object-fit:cover;background:linear-gradient(135deg,#2c3e50,#4a6741)">
+        </div>
+        <div class="article-img-caption">Carl Menckhoff. <em>Image via Wikipedia</em></div>
+
+        <!-- Ad -->
+        <div class="article-ad">
+          <div class="ad-banner">HOME TO THE WORLD'S LARGEST SUPPLY OF P-51 MUSTANG PARTS &mdash; AIRCORPS DEPOT</div>
+        </div>
+
+        <!-- Article Body -->
+        <div class="article-body">
+          <p>In WWI, most aces were young or had started flying in their early years. However, some were at an age where adopting new skills was difficult. One such ace was Carl Menckhoff. Born on April 14, 1883, at Herford in the Kingdom of Prussia, he was one of the oldest pilots in the German Air Service and was in his 30s when the war began. He began his military service in 1903 as a one-year volunteer, but had to leave early due to poor health. In 1914, when WWI began, he was 31 and enlisted as an infantryman to serve on the Western Front against France.</p>
+
+          <p>Wounded several times, by the end of 1914, he was awarded both the Iron Cross, First Class and Second Class for his brave actions. Due to injuries, he had to leave the infantry and requested a transfer to the German Air Service. His request was accepted, and he joined pilot training in February 1915. He completed his training in October 1915 and was sent to the Western Front, where he was wounded again in aerial combat in January 1916.</p>
+
+          <p>After recovery, he was transferred to the Eastern Front in 1916, where he gained experience in flying aircraft in combat. In mid-1916, he went to Warsaw for fighter pilot training, and in January 1917, he was sent back to the Western Front to join the German fighter squadron, Jagdstaffel 3. In this unit, he flew an <a href="#">Albatros D.III</a> aircraft.</p>
+
+          <!-- Ad -->
+          <div class="article-ad">
+            <div class="ad-banner">REGISTER NOW TO SAVE $100+ &mdash; 2026 JOINT CONFERENCE</div>
+          </div>
+
+          <!-- Table of Contents -->
+          <div class="toc-box">
+            <div class="toc-header">
+              <h3><i class="fas fa-book-open"></i> Contents</h3>
+              <i class="fas fa-chevron-up" style="color:var(--text-light);cursor:pointer"></i>
+            </div>
+            <div class="toc-list">
+              <a href="#ace-journey"><span class="toc-num">1</span> Ace Journey of Carl Menckhoff</a>
+              <a href="#life-after"><span class="toc-num">2</span> Life After WWI</a>
+              <a href="#related"><span class="toc-num">2.1</span> Related Articles</a>
+            </div>
+          </div>
+
+          <h2 id="ace-journey">Ace Journey of Carl Menckhoff</h2>
+
+          <img src="../assets/images/placeholder-hero.svg" alt="Carl Menckhoff portrait" style="height:500px;object-fit:cover;background:linear-gradient(135deg,#4a4a3a,#2c2c20)">
+          <div class="img-credit">Carl Menckhoff. (Image Credit: Wikimedia Commons)</div>
+
+          <p>Carl Menckhoff's first victory came on April 5, 1917, when he shot down a Nieuport 23, followed by another victory on April 6 and a third victory on April 30. After scoring another victory on May 7, he shot a Sopwith Triplane on May 9 to complete his five victories to officially become an ace. He scored a victory in July and two in August to reach a score of 8.</p>
+
+          <p>He scored four more victories in September, and on September 23, 1917, he was shot down while trying to assist Werner Voss in his famous dogfight with 56 Squadron. Menckhoff and Voss were both shot down during the same engagement in which Voss was killed by Arthur Rhys Davids. Five days later, Menckhoff was shot down again by 56 Squadron. Despite a few setbacks, he returned and scored two victories in October, one in November, and two in December to end his 1917 at a personal score of 18.</p>
+
+          <p>He was awarded the Hohenzollern House Order, Knight's Cross 2nd Class with Swords in December. He achieved one victory in January 1918, followed by another in February to reach a personal score of 20. On February 11, he was transferred to command Jagdstaffel 72. He received a new Fokker D.VII in this unit and scored five victories in April, three in May, and six in June. He shot down five aircraft in July, with the last victory coming on July 19, to reach a <a href="#">personal score of 39</a>.</p>
+
+          <!-- Ad -->
+          <div class="article-ad">
+            <div class="ad-banner">CLEANPOWER &mdash; POWERING THE FUTURE OF ENERGY &bull; June 1-4, 2026 | Houston, TX</div>
+          </div>
+
+          <h2 id="life-after">Life After WWI</h2>
+
+          <img src="../assets/images/placeholder-hero.svg" alt="Carl Menckhoff's Fokker D.VII" style="height:450px;object-fit:cover;background:linear-gradient(135deg,#3a3a2a,#555540)">
+          <div class="img-credit">Carl Menckhoff's Fokker D.VII was marked with prominent letter "M". Jagdstaffel 72 flightline, Bergnicourt, July 1918. (Image Credit: Wikipedia)</div>
+
+          <p>On July 25, 1918, Carl Menckhoff was shot down by the U.S. Air Service's Lieutenant Walter Avery with the 95th Aero Squadron, and he was captured. He remained a prisoner of war until August 1919, when he escaped and managed to reach Switzerland after eight days. He returned to Germany and settled in Herford. In 1920, he moved to Berlin, where he became the manager of an airline called Deutsche Luft Lloyd. However, this airline failed in 1922-1923, and in the late 1920s, he started a heating company, Caliqua Wärmegesellschaft MBH, which became successful and expanded internationally into France and Switzerland.</p>
+
+          <p>He set up a second home in Switzerland. However, in October 1938, while crossing the German-Swiss border at Basel, he was caught carrying an illegal quantity of Swiss francs. The Nazi customs authorities arrested him, and he spent more than eight months in custody. During this time, he had to give up many of his business shares and patents, and he was released in May 1939. In the autumn of 1939, he moved to Switzerland. Carl Menckhoff died after surgery on January 11, 1949, and was buried in Wolfgottesacker in Basel.</p>
+
+          <p>In the Aces series, Carl Menckhoff stands out as one of the oldest German aces who, in addition to his fighting skills, demonstrated strong leadership while commanding Jagdstaffel 72. Under his leadership, the unit shot down 60 aerial targets and lost only one pilot, showcasing his careful style of mentoring. Read stories about more Aces <a href="#">HERE</a>.</p>
+
+          <!-- Ad -->
+          <div class="article-ad">
+            <div class="ad-banner">PRSA &mdash; Get ready to step into your dream job &bull; JOIN FOR LESS THAN $1 A DAY</div>
+          </div>
+
+          <img src="../assets/images/placeholder-hero.svg" alt="Carl Menckhoff with his aircraft" style="height:500px;object-fit:cover;background:linear-gradient(135deg,#3a4a3a,#2a3520)">
+          <div class="img-credit">Carl Menckhoff with his aircraft. (Image Credit: War Relics Forum)</div>
+        </div>
+
+        <!-- Related Articles -->
+        <div class="related-section" id="related">
+          <h3>Related Articles</h3>
+          <div class="related-grid">
+            <div class="related-card">
+              <div class="related-card-img"><i class="fas fa-plane"></i></div>
+              <div class="related-card-body"><a href="#">Aces: Oswald Boelcke &ndash; The Father of the German Air Force</a></div>
+            </div>
+            <div class="related-card">
+              <div class="related-card-img"><i class="fas fa-plane"></i></div>
+              <div class="related-card-body"><a href="#">Aces of the Great War: Lothar von Richthofen &ndash; The 40 Victory Blitz of Jasta 11</a></div>
+            </div>
+            <div class="related-card">
+              <div class="related-card-img"><i class="fas fa-plane"></i></div>
+              <div class="related-card-body"><a href="#">Aces: Charles Dawson Booker &ndash; The 29 Victories of Sopwith...</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tags -->
+        <div class="article-tags">
+          <span><i class="fas fa-tag"></i> TAGGED:</span>
+          <a href="#">Aces</a>, <a href="#">Carl Menckhoff</a>
+        </div>
+
+        <!-- Share Bottom -->
+        <div class="share-bottom">
+          <div class="share-bottom-label"><i class="fas fa-share-alt"></i> Share This Article</div>
+          <div class="share-btns">
+            <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+            <a href="#"><i class="fab fa-x-twitter"></i> Twitter</a>
+            <a href="#"><i class="fab fa-flipboard"></i></a>
+            <a href="#"><i class="fas fa-link"></i></a>
+            <a href="#"><i class="fas fa-ellipsis-h"></i></a>
+          </div>
+        </div>
+
+        <!-- Author Box -->
+        <div class="author-box">
+          <div class="author-box-avatar">KK</div>
+          <div class="author-box-info">
+            <h4>By Kapil Kajal</h4>
+            <p>Kapil is a journalist with nearly a decade of experience. Reported across a wide range of beats with a particular focus on air warfare and military affairs, his work is shaped by a deep interest in twentieth-century conflict, from both World Wars through the Cold War and Vietnam, as well as the ways these histories inform contemporary security and technology.</p>
+          </div>
+        </div>
+
+        <!-- Comment Section -->
+        <div class="comment-section">
+          <h3><i class="far fa-comment"></i> Leave a comment</h3>
+          <p class="comment-note">Your email address will not be published. Required fields are marked <span class="req">*</span></p>
+          <form class="comment-form">
+            <label>Comment <span class="req">*</span></label>
+            <textarea placeholder="Leave a comment"></textarea>
+            <div class="comment-fields-row">
+              <div><label>Name <span class="req">*</span></label><input type="text" placeholder="Your name"></div>
+              <div><label>Email <span class="req">*</span></label><input type="email" placeholder="Your email"></div>
+              <div><label>Website</label><input type="url" placeholder="Your Website"></div>
+            </div>
+            <div class="comment-save"><input type="checkbox"> Save my name, email, and website in this browser for the next time I comment.</div>
+            <button type="button" class="comment-submit">Post Comment</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="article-sidebar">
+      <!-- Stay Connected -->
+      <div class="sidebar-widget">
+        <div class="sidebar-widget-title"><span class="accent">/</span> Stay Connected <span class="accent">/</span></div>
+        <div class="sidebar-social-grid">
+          <div class="sidebar-social-item fb"><i class="fab fa-facebook-f"></i><div><div class="s-name">Facebook</div><div class="s-action">Like</div></div></div>
+          <div class="sidebar-social-item tw"><i class="fab fa-x-twitter"></i><div><div class="s-name">Twitter</div><div class="s-action">Follow</div></div></div>
+          <div class="sidebar-social-item ig"><i class="fab fa-instagram"></i><div><div class="s-name">Instagram</div><div class="s-action">Follow</div></div></div>
+          <div class="sidebar-social-item yt"><i class="fab fa-youtube"></i><div><div class="s-name">Youtube</div><div class="s-action">Subscribe</div></div></div>
+        </div>
+      </div>
+
+      <!-- Latest Posts -->
+      <div class="sidebar-widget">
+        <div class="sidebar-widget-title"><span class="accent">/</span> Latest Posts <span class="accent">/</span></div>
+
+        <div class="sidebar-post-item">
+          <div class="sidebar-post-thumb"></div>
+          <div class="sidebar-post-info">
+            <h4><a href="#">Today In Aviation History: First U.S. Army Air Service Aerial Victory &ndash; WWI</a></h4>
+            <div class="sidebar-post-meta">Austin Hancock &nbsp;/&nbsp; April 14, 2026</div>
+          </div>
+        </div>
+
+        <div class="sidebar-post-item">
+          <div class="sidebar-post-thumb"></div>
+          <div class="sidebar-post-info">
+            <h4><a href="#">New Contract Secures Long-Term Future of Battle of Britain Memorial Flight Spitfires and Hurricanes</a></h4>
+            <div class="sidebar-post-meta">Kevin Wilkins &nbsp;/&nbsp; April 14, 2026</div>
+          </div>
+        </div>
+
+        <div class="sidebar-post-item">
+          <div class="sidebar-post-thumb"></div>
+          <div class="sidebar-post-info">
+            <h4><a href="#">Boneyard Files: McDonnell F-101 Voodoo &ndash; The Silver Phantoms of the Desert</a></h4>
+            <div class="sidebar-post-meta">Kapil Kajal &nbsp;/&nbsp; April 13, 2026</div>
+          </div>
+        </div>
+
+        <div class="sidebar-post-item">
+          <div class="sidebar-post-thumb"></div>
+          <div class="sidebar-post-info">
+            <h4><a href="#">Flight Test Files: Lockheed U-2 &ndash; The High-Flying Researcher of the 1970s</a></h4>
+            <div class="sidebar-post-meta">Kapil Kajal &nbsp;/&nbsp; April 13, 2026</div>
+          </div>
+        </div>
+
+        <div class="sidebar-post-item">
+          <div class="sidebar-post-thumb"></div>
+          <div class="sidebar-post-info">
+            <h4><a href="#">Aces of the Great War: Lothar von Richthofen &ndash; The 40 Victory Blitz of Jasta 11</a></h4>
+            <div class="sidebar-post-meta">Kapil Kajal &nbsp;/&nbsp; April 13, 2026</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Events -->
+      <div class="sidebar-widget">
+        <div class="sidebar-widget-title"><span class="accent">/</span> Events <span class="accent">/</span></div>
+        <p style="font-size:14px;color:var(--text-light)">No events</p>
+      </div>
+
+      <!-- Ad -->
+      <div class="sidebar-widget">
+        <div class="ad-banner" style="padding:40px 20px;font-size:14px">CLEANPOWER &bull; Powering the Future of Energy<br><small>June 1-4, 2026 | Houston, TX</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-top">
+        <div class="footer-logo">
+          <img src="../assets/van-logo.png" alt="Vintage Aviation News" style="height:80px;">
+        </div>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-grid">
+        <div class="footer-about">
+          <p><em>Vintage Aviation News is a company founded by a group of passionate aviation enthusiasts who love the history and technology Aviation and Flying Museums preserve for the public. It is our intention to play a role in safeguarding the heritage of these beautiful machines by providing increased awareness and education through the use of internet based digital media.</em></p>
+        </div>
+        <div class="footer-links">
+          <a href="../index.html">Home</a>
+          <a href="restorations.html">Restorations</a>
+          <a href="vintage.html">Vintage Aviation</a>
+          <a href="museum-news.html">Aviation Museum News</a>
+          <a href="articles.html">Articles</a>
+        </div>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Newsletter</a>
+          <a href="#">About Us</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="#">Ethics Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Go Ad-Free -->
+  <a href="../go-ad-free/" class="floating-gaf" aria-label="Go Ad-Free">
+    <i class="fas fa-eye-slash"></i>
+    Go Ad-Free
+  </a>
+
+  <button class="back-to-top" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/go-ad-free.js?v=6" data-delay="1000" data-poll="3000"></script>
+</body>
+</html>
