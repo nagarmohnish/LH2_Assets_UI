@@ -8,7 +8,89 @@ const CTA_HOVER = "#9e2e17";
 const LOGO_URL = "/LH2_Assets_UI/vintage-aviation-news/assets/van-logo.png";
 const BASE = "/LH2_Assets_UI/vintage-aviation-news/";
 
-const goToPayment = () => { window.location.hash = "#/payment"; };
+// Event-based trigger for the login modal
+const openLoginModal = () => { window.dispatchEvent(new CustomEvent("van-open-login")); };
+
+const goToPayment = () => {
+  const loggedIn = localStorage.getItem("van_user");
+  if (loggedIn) {
+    window.location.hash = "#/payment";
+  } else {
+    openLoginModal();
+  }
+};
+
+/* ─── Login Modal ─── */
+const LoginModal = () => {
+  const [open, setOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [sent, setSent] = useState(false);
+
+  useEffect(() => {
+    const handler = () => setOpen(true);
+    window.addEventListener("van-open-login", handler);
+    return () => window.removeEventListener("van-open-login", handler);
+  }, []);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, []);
+
+  if (!open) return null;
+
+  const completeLogin = (name: string) => {
+    localStorage.setItem("van_user", JSON.stringify({ name, ts: Date.now() }));
+    setOpen(false);
+    setTimeout(() => { window.location.hash = "#/payment"; }, 200);
+  };
+
+  const onGoogle = () => completeLogin("Google User");
+  const onMagicLink = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setSent(true);
+    setTimeout(() => completeLogin(email.split("@")[0]), 1200);
+  };
+
+  return (
+    <div onClick={(e) => { if (e.target === e.currentTarget) setOpen(false); }} style={{position:"fixed",inset:0,zIndex:99999,background:"rgba(0,0,0,0.55)",display:"flex",alignItems:"center",justifyContent:"center",padding:16,fontFamily:"Inter,sans-serif"}}>
+      <div style={{background:"#fff",borderRadius:12,maxWidth:440,width:"100%",padding:"36px 36px 32px",position:"relative",boxShadow:"0 28px 70px rgba(0,0,0,0.3)"}}>
+        <button onClick={() => setOpen(false)} aria-label="Close" style={{position:"absolute",top:14,right:16,background:"#f0f0f0",border:"none",width:32,height:32,borderRadius:6,cursor:"pointer",fontSize:18,color:"#333",display:"flex",alignItems:"center",justifyContent:"center"}}>&times;</button>
+
+        <h2 style={{fontFamily:"'Merriweather',Georgia,serif",fontSize:22,fontWeight:700,color:"#1a1a1a",textAlign:"center",margin:"0 0 24px"}}>Sign In to Go Ad-Free</h2>
+
+        <button onClick={onGoogle} style={{display:"flex",alignItems:"center",justifyContent:"center",gap:10,width:"100%",padding:"12px 20px",background:"#fff",border:"1px solid #ddd",borderRadius:8,fontSize:14,fontWeight:600,color:"#444",cursor:"pointer",fontFamily:"inherit",marginBottom:20}}>
+          <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0124 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 01-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>
+          Continue with Google
+        </button>
+
+        <div style={{display:"flex",alignItems:"center",gap:14,margin:"20px 0"}}>
+          <div style={{flex:1,height:1,background:"#eee"}}/>
+          <span style={{fontSize:12,color:"#bbb",fontWeight:600,letterSpacing:0.5}}>OR</span>
+          <div style={{flex:1,height:1,background:"#eee"}}/>
+        </div>
+
+        <h3 style={{fontFamily:"'Merriweather',Georgia,serif",fontSize:15,fontWeight:700,color:"#1a1a1a",textAlign:"center",margin:"0 0 14px"}}>Sign in with Magic Link</h3>
+
+        {sent ? (
+          <div style={{textAlign:"center",padding:"16px 0"}}>
+            <div style={{width:44,height:44,borderRadius:"50%",background:"#ecfdf5",color:"#059669",display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto 12px",fontSize:20}}>✓</div>
+            <p style={{fontSize:14,color:"#666",margin:0}}>Link sent! Signing you in...</p>
+          </div>
+        ) : (
+          <form onSubmit={onMagicLink}>
+            <label style={{display:"block",fontSize:12,fontWeight:700,color:"#555",marginBottom:6,textTransform:"uppercase",letterSpacing:0.4}}>Email Address</label>
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" required style={{width:"100%",padding:"12px 14px",border:"1.5px solid #e0e0e0",borderRadius:8,fontSize:14,outline:"none",fontFamily:"inherit",marginBottom:14,boxSizing:"border-box"}}/>
+            <button type="submit" style={{width:"100%",padding:"13px",background:CTA_COLOR,color:"#fff",border:"none",borderRadius:8,fontSize:15,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>Send Magic Link</button>
+            <p style={{fontSize:12,color:"#999",textAlign:"center",margin:"12px 0 0",lineHeight:1.5}}>We'll send a secure login link to your email. No password needed.</p>
+          </form>
+        )}
+      </div>
+    </div>
+  );
+};
 
 /* ─── VAN Site Header ─── */
 const VANHeader = () => (
@@ -226,6 +308,7 @@ const Index = () => (
     <WhyWeExist />
     <EndCTA />
     <VANFooter />
+    <LoginModal />
   </>
 );
 
