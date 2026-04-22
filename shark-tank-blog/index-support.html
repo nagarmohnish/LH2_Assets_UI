@@ -63,8 +63,8 @@
         .support-banner-title { font-family: var(--font-serif); font-size: 17px; font-weight: 600; color: #fff; margin-bottom: 2px; letter-spacing: -0.01em; }
         .support-banner-title .accent { color: var(--cyan); font-style: italic; font-weight: 500; }
         .support-banner-sub { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; }
-        .support-banner-cta { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; background: var(--cyan); color: #fff; font-size: 13.5px; font-weight: 700; border-radius: 8px; white-space: nowrap; transition: all 0.15s; box-shadow: 0 4px 16px var(--cyan-glow); flex-shrink: 0; }
-        .support-banner-cta:hover { background: var(--cyan-light); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(17,127,176,0.35); color: #fff; }
+        .support-banner-cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: transparent; color: var(--cyan); font-size: 13px; font-weight: 600; letter-spacing: 0.3px; border: 1px solid rgba(17,127,176,0.45); border-radius: 6px; white-space: nowrap; transition: all 0.18s; flex-shrink: 0; }
+        .support-banner-cta:hover { background: rgba(17,127,176,0.12); border-color: var(--cyan); color: var(--cyan); }
         .support-banner-cta i { font-size: 10px; transition: transform 0.15s; }
         .support-banner-cta:hover i { transform: translateX(2px); }
         .support-banner-close { position: absolute; top: 10px; right: 14px; background: none; border: none; color: rgba(255,255,255,0.3); font-size: 18px; cursor: pointer; padding: 4px 8px; line-height: 1; transition: color 0.15s; }
@@ -206,7 +206,7 @@
                     <div class="support-banner-sub">Independent, reader-supported coverage. Just $1/month — optional, cancel anytime.</div>
                 </div>
             </div>
-            <a href="go-ads-free-support.html" class="support-banner-cta">Go Ad-Free <i class="fas fa-arrow-right"></i></a>
+            <a href="go-ads-free-support.html" class="support-banner-cta">See how it works <i class="fas fa-arrow-right"></i></a>
             <button class="support-banner-close" onclick="document.getElementById('supportBanner').style.display='none'" aria-label="Close">&times;</button>
         </div>
     </section>
