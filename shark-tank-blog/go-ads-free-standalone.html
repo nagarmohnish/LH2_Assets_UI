@@ -1,509 +1,559 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Go Ad-Free — Shark Tank Blog</title>
-  <meta name="description" content="Read Shark Tank Blog without ads. Every pitch, every deal, every update — uninterrupted. $2/month.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <style>
-    :root {
-      --cyan: #117fb0;
-      --cyan-hover: #1592cc;
-      --nav-bg: #191c20;
-      --dark: #0e0f12;
-      --text-primary: #222;
-      --text-secondary: #555;
-      --text-light: #888;
-      --bg: #fff;
-      --bg-light: #f8f8f8;
-      --border: #e0e0e0;
-      --accent: #10b981;
-      --destructive: #ef4444;
-      --font-body: 'Open Sans', -apple-system, sans-serif;
-      --font-heading: 'Roboto Slab', Georgia, serif;
-      --max-width: 1100px;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: var(--font-body); color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-    a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
-    button { font-family: inherit; cursor: pointer; border: none; }
-    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go Ad-Free | Shark Tank Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600&family=Open+Sans:wght@300;400;600;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ===== RESET & BASE ===== */
+        :root {
+            --cyan: #117fb0;
+            --cyan-hover: #1592cc;
+            --nav-bg: #191c20;
+            --text-primary: #222;
+            --text-secondary: #555;
+            --text-light: #888;
+            --font-body: 'Open Sans', sans-serif;
+            --font-heading: 'Roboto Slab', serif;
+            --max-width: 1100px;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); font-size: 15px; line-height: 1.6; color: var(--text-primary); background: #fff; -webkit-font-smoothing: antialiased; }
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; height: auto; display: block; }
+        ul { list-style: none; }
+        button { font-family: inherit; cursor: pointer; }
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
 
-    /* ===== NAV ===== */
-    .main-nav { background: var(--nav-bg); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
-    .nav-left { display: flex; align-items: center; gap: 25px; }
-    .nav-logo { display: flex; align-items: center; gap: 8px; }
-    .nav-logo img { height: 42px; border-radius: 4px; }
-    .nav-menu { list-style: none; display: flex; align-items: center; gap: 0; }
-    .nav-menu li a { color: #fff; font-size: 13.5px; font-weight: 600; padding: 18px 14px; display: block; transition: color 0.2s; white-space: nowrap; }
-    .nav-menu li a:hover, .nav-menu li a.active { color: var(--cyan); }
-    .nav-right { display: flex; align-items: center; gap: 12px; }
-    .nav-cta-btn { background: var(--cyan); color: #fff; padding: 8px 18px; border-radius: 4px; font-size: 13px; font-weight: 700; transition: background 0.2s; }
-    .nav-cta-btn:hover { background: var(--cyan-hover); color: #fff; }
-    .nav-login-btn { color: #fff; padding: 7px 16px; border: 1.5px solid rgba(255,255,255,0.2); border-radius: 6px; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s; }
-    .nav-login-btn:hover { background: var(--cyan); border-color: var(--cyan); color: #fff; }
+        /* ===== TOP SOCIAL BAR ===== */
+        .top-social-bar { background: var(--cyan); border-bottom: 1px solid rgba(0,0,0,0.08); }
+        .top-social-inner { display: flex; align-items: center; justify-content: flex-end; padding: 8px 20px; max-width: var(--max-width); margin: 0 auto; }
+        .top-social-icons { display: flex; gap: 18px; }
+        .top-social-icons a { color: rgba(255,255,255,0.95); font-size: 14px; transition: color 0.2s, transform 0.15s; line-height: 1; }
+        .top-social-icons a:hover { color: #fff; transform: translateY(-1px); }
 
-    /* ===== STICKY HEADER (appears on scroll) ===== */
-    .sticky-header { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(14,15,18,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(17,127,176,0.3); transform: translateY(-100%); transition: transform 0.3s; }
-    .sticky-header.visible { transform: translateY(0); }
-    .sticky-header-inner { max-width: var(--max-width); margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; }
-    .sticky-header-logo { font-family: var(--font-heading); font-weight: 700; color: #fff; font-size: 15px; display: flex; align-items: center; gap: 8px; }
-    .sticky-header-logo span { font-size: 18px; }
-    .sticky-cta { padding: 8px 20px; background: var(--cyan); color: #fff; border-radius: 6px; font-size: 13px; font-weight: 700; }
-    .sticky-cta:hover { background: var(--cyan-hover); }
+        /* ===== NAV ===== */
+        .main-nav { background: var(--nav-bg); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; position: relative; max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+        .nav-left { display: flex; align-items: center; gap: 25px; }
+        .logo img { height: 45px; width: auto; border-radius: 4px; }
+        .nav-menu { display: flex; align-items: center; gap: 0; }
+        .nav-menu li a { color: #fff; font-size: 13.5px; font-weight: 600; padding: 18px 14px; display: block; transition: color 0.2s; white-space: nowrap; }
+        .nav-menu li a:hover, .nav-menu li a.active { color: var(--cyan); }
+        .nav-right { display: flex; align-items: center; gap: 15px; }
+        .search-toggle { background: none; border: none; color: #aaa; font-size: 16px; cursor: pointer; padding: 8px; }
+        .search-toggle:hover { color: var(--cyan); }
+        .btn-contact { background: var(--cyan); color: #fff !important; padding: 7px 18px; border-radius: 4px; font-size: 13px; font-weight: 600; transition: background 0.2s; white-space: nowrap; }
+        .btn-contact:hover { background: var(--cyan-hover); }
+        .btn-login-nav { display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; background: transparent; color: #fff !important; border: 1.5px solid rgba(255,255,255,0.2); border-radius: 6px; font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
+        .btn-login-nav:hover { background: var(--cyan); border-color: var(--cyan); color: #fff !important; }
+        .btn-login-nav i { font-size: 11px; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: #fff; transition: 0.3s; }
 
-    /* ===== HERO ===== */
-    .hero { position: relative; min-height: 88vh; display: flex; align-items: center; overflow: hidden; background: linear-gradient(135deg, #0e0f12 0%, #1a2742 100%); }
-    .hero::before { content: ''; position: absolute; top: -120px; right: -120px; width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, rgba(17,127,176,0.25), transparent 70%); }
-    .hero::after { content: ''; position: absolute; bottom: -80px; left: -80px; width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(circle, rgba(17,127,176,0.15), transparent 70%); }
-    .hero-inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 96px 24px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: rgba(17,127,176,0.15); border: 1px solid rgba(17,127,176,0.3); border-radius: 20px; color: var(--cyan); font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 20px; }
-    .hero-badge i { font-size: 10px; }
-    .hero-text h1 { font-family: var(--font-heading); font-size: 52px; font-weight: 700; line-height: 1.1; color: #fff; margin-bottom: 22px; letter-spacing: -0.5px; }
-    .hero-text h1 .accent { color: var(--cyan); }
-    .hero-text p { font-size: 18px; color: rgba(255,255,255,0.65); line-height: 1.6; max-width: 480px; margin-bottom: 32px; }
-    .hero-cta { display: inline-block; padding: 16px 40px; background: var(--cyan); color: #fff; border-radius: 10px; font-size: 16px; font-weight: 700; box-shadow: 0 4px 20px rgba(17,127,176,0.45); transition: all 0.15s; }
-    .hero-cta:hover { background: var(--cyan-hover); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(17,127,176,0.55); }
-    .hero-pricing { font-size: 14px; color: rgba(255,255,255,0.5); margin-top: 14px; }
-    .hero-pricing .strike { text-decoration: line-through; opacity: 0.6; }
-    .hero-pricing .highlight { font-weight: 600; color: rgba(255,255,255,0.85); }
-    .hero-visual { position: relative; text-align: center; }
-    .hero-shark { font-size: 180px; line-height: 1; filter: drop-shadow(0 20px 60px rgba(17,127,176,0.6)); animation: heroFloat 4s ease-in-out infinite; }
-    @keyframes heroFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+        /* ===== LOVABLE-UI LANDING PAGE ===== */
+        :root {
+            --lv-warm: #d97706;
+            --lv-warm-glow: #b45309;
+            --lv-fg: #1e293b;
+            --lv-muted: #64748b;
+            --lv-border: #e5e7eb;
+            --lv-bg: #ffffff;
+            --lv-secondary: #f8fafc;
+            --lv-destructive: #ef4444;
+            --lv-emerald: #10b981;
+            --lv-serif: 'Newsreader', Georgia, serif;
+            --lv-sans: 'Inter', -apple-system, sans-serif;
+        }
+        .lv-page { background: var(--lv-bg); color: var(--lv-fg); font-family: var(--lv-sans); -webkit-font-smoothing: antialiased; }
+        .lv-cta { display: inline-flex; align-items: center; justify-content: center; font-family: var(--lv-sans); font-weight: 600; font-size: 15px; background: var(--lv-warm); color: #fff; padding: 16px 40px; border-radius: 10px; border: none; cursor: pointer; letter-spacing: -0.01em; box-shadow: 0 1px 3px rgba(217,119,6,0.2), 0 4px 16px rgba(217,119,6,0.15); transition: all 0.2s; }
+        .lv-cta:hover { background: var(--lv-warm-glow); transform: translateY(-1px); box-shadow: 0 2px 4px rgba(217,119,6,0.25), 0 8px 24px rgba(217,119,6,0.2); }
+        .lv-cta:active { transform: translateY(0); }
+        .lv-cta-sm { padding: 10px 20px; font-size: 14px; border-radius: 8px; }
 
-    /* ===== VALUE STRIP ===== */
-    .value-strip { background: var(--bg-light); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 24px 20px; }
-    .value-strip-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .value-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
-    .value-item i { color: var(--cyan); font-size: 22px; }
-    .value-item span { font-size: 13px; font-weight: 700; color: var(--text-primary); }
-    .value-divider { width: 1px; height: 40px; background: var(--border); flex-shrink: 0; }
+        /* HERO */
+        .lv-hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; background: #0a0a0a; }
+        .lv-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+        .lv-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.85)); }
+        .lv-hero-content { position: relative; text-align: center; padding: 0 24px; max-width: 520px; margin: 0 auto; }
+        .lv-hero h1 { font-family: var(--lv-serif); font-size: 3.5rem; font-weight: 600; line-height: 1.08; letter-spacing: -0.02em; color: #fff; margin: 0 0 20px; }
+        .lv-hero-sub { font-size: 17px; color: rgba(255,255,255,0.55); line-height: 1.6; margin-bottom: 32px; }
+        .lv-hero-price { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 16px; }
+        .lv-hero-price .strike { text-decoration: line-through; }
+        .lv-hero-price .highlight { color: rgba(255,255,255,0.55); font-weight: 500; }
+        .lv-scroll-hint { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.25); animation: lvBounce 2s infinite; cursor: pointer; background: none; border: none; }
+        @keyframes lvBounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
 
-    /* ===== SECTIONS ===== */
-    .section { padding: 80px 20px; }
-    .section-heading { text-align: center; margin-bottom: 40px; }
-    .section-heading h2 { font-family: var(--font-heading); font-size: 36px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; }
-    .section-heading p { color: var(--text-light); font-size: 17px; max-width: 600px; margin: 0 auto; }
+        /* VALUE STRIP */
+        .lv-value-strip { background: var(--lv-secondary); border-top: 1px solid var(--lv-border); border-bottom: 1px solid var(--lv-border); }
+        .lv-value-inner { max-width: 520px; margin: 0 auto; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; text-align: center; }
+        .lv-value-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+        .lv-value-item i { color: var(--lv-warm); font-size: 14px; }
+        .lv-value-item span { font-size: 11px; font-weight: 600; color: var(--lv-fg); line-height: 1.3; }
+        .lv-value-div { width: 1px; height: 32px; background: var(--lv-border); flex-shrink: 0; }
 
-    /* ===== COMPARISON ===== */
-    .comparison { background: #fafafa; }
-    .compare-img { max-width: 1000px; margin: 0 auto; border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.1); overflow: hidden; height: 420px; }
-    .compare-img-placeholder { display: grid; grid-template-columns: 1fr 1fr; width: 100%; height: 100%; }
-    .compare-img-side { padding: 40px; display: flex; flex-direction: column; justify-content: space-between; }
-    .compare-img-side.with-ads { background: linear-gradient(180deg, #fef2f2, #fee2e2); }
-    .compare-img-side.ad-free { background: linear-gradient(180deg, #f0f9ff, #dbeafe); }
-    .compare-img-label { font-family: var(--font-heading); font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
-    .with-ads .compare-img-label { color: var(--destructive); }
-    .ad-free .compare-img-label { color: var(--cyan); }
-    .compare-mock-headline { font-family: var(--font-heading); font-size: 22px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; line-height: 1.25; }
-    .compare-mock-line { height: 8px; border-radius: 4px; margin-bottom: 8px; }
-    .with-ads .compare-mock-line { background: rgba(239,68,68,0.2); }
-    .ad-free .compare-mock-line { background: rgba(17,127,176,0.2); }
-    .compare-mock-ad { background: #fde68a; padding: 14px; text-align: center; font-size: 11px; font-weight: 700; color: #92400e; border-radius: 4px; margin: 12px 0; text-transform: uppercase; letter-spacing: 1px; }
+        /* COMPARISON */
+        .lv-compare { background: var(--lv-secondary); border-bottom: 1px solid var(--lv-border); padding: 56px 20px 64px; }
+        .lv-compare-inner { max-width: 520px; margin: 0 auto; }
+        .lv-compare h2 { font-family: var(--lv-serif); font-size: 1.75rem; font-weight: 600; text-align: center; margin-bottom: 8px; color: var(--lv-fg); }
+        .lv-compare-sub { text-align: center; color: var(--lv-muted); font-size: 14px; margin-bottom: 32px; }
+        .lv-mockup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+        .lv-mockup-label { font-size: 10px; font-weight: 600; color: var(--lv-muted); text-transform: uppercase; letter-spacing: 1px; text-align: center; margin-bottom: 8px; }
+        .lv-mockup { border-radius: 8px; border: 1px solid var(--lv-border); background: #fff; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+        .lv-mock-nav { display: flex; align-items: center; justify-content: space-between; padding: 4px 6px; border-bottom: 1px solid #f3f4f6; }
+        .lv-mock-nav-left { display: flex; align-items: center; gap: 3px; }
+        .lv-mock-dot { width: 8px; height: 8px; border-radius: 50%; background: #e0f2fe; }
+        .lv-mock-nav-text { font-size: 5px; font-weight: 700; color: #6b7280; }
+        .lv-mock-bars { display: flex; gap: 3px; }
+        .lv-mock-bar { height: 2px; width: 12px; background: #e5e7eb; border-radius: 1px; }
+        .lv-mock-body { padding: 6px; }
+        .lv-mock-title { font-size: 7px; font-weight: 700; color: #1f2937; margin-bottom: 3px; line-height: 1.3; }
+        .lv-mock-author { display: flex; align-items: center; gap: 3px; margin-bottom: 4px; }
+        .lv-mock-avatar { width: 7px; height: 7px; border-radius: 50%; background: #e5e7eb; }
+        .lv-mock-author-text { font-size: 4px; color: #9ca3af; }
+        .lv-mock-img { width: 100%; height: 28px; border-radius: 3px; background: linear-gradient(135deg, #f0f9ff, #e0e7ff); margin-bottom: 4px; }
+        .lv-mock-line { height: 2px; border-radius: 1px; background: #f3f4f6; margin-bottom: 2px; }
+        .lv-mock-ad-banner { border: 1px solid #bfdbfe; border-radius: 3px; background: linear-gradient(90deg, #eff6ff, #ecfdf5); padding: 4px 5px; display: flex; align-items: center; gap: 4px; margin: 4px 0; }
+        .lv-mock-ad-thumb { width: 14px; height: 14px; border-radius: 2px; background: linear-gradient(135deg, #60a5fa, #06b6d4); flex-shrink: 0; }
+        .lv-mock-ad-btn { height: 8px; width: 28px; background: #3b82f6; border-radius: 2px; display: flex; align-items: center; justify-content: center; }
+        .lv-mock-ad-btn-text { font-size: 4px; color: #fff; font-weight: 700; }
+        .lv-mock-ad-label { font-size: 3px; color: #d1d5db; align-self: flex-start; }
+        .lv-mock-ad-video { position: relative; width: 100%; height: 24px; border-radius: 3px; background: linear-gradient(135deg, #fff1f2, #fef3c7); border: 1px solid #e5e7eb; margin: 4px 0; display: flex; align-items: center; justify-content: center; }
+        .lv-mock-play-circle { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.8); display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        .lv-mock-play-tri { width: 0; height: 0; border-left: 4px solid #6b7280; border-top: 2.5px solid transparent; border-bottom: 2.5px solid transparent; margin-left: 1px; }
+        .lv-mock-ad-tag { position: absolute; top: 2px; right: 2px; background: rgba(0,0,0,0.5); color: #fff; font-size: 3px; font-weight: 700; padding: 1px 3px; border-radius: 1px; }
+        .lv-mock-ad-skip { position: absolute; top: 2px; left: 2px; background: #facc15; color: #000; font-size: 3px; font-weight: 700; padding: 1px 3px; border-radius: 1px; }
+        .lv-mock-ad-native { background: #fffbeb; border: 1px solid rgba(217,119,6,0.2); border-radius: 3px; padding: 4px; margin: 4px 0; }
+        .lv-mock-ad-native-label { font-size: 3px; color: #d97706; font-weight: 700; text-transform: uppercase; margin-bottom: 2px; }
+        .lv-mock-ad-native-row { display: flex; gap: 3px; }
+        .lv-mock-ad-native-img { width: 14px; height: 10px; border-radius: 2px; background: linear-gradient(135deg, #fde68a, #fdba74); flex-shrink: 0; }
+        .lv-bullets-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .lv-bullets-title { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .lv-bullets-title.red { color: var(--lv-destructive); }
+        .lv-bullets-title.green { color: var(--lv-emerald); }
+        .lv-bullet { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+        .lv-bullet-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+        .lv-bullet-dot.red { background: var(--lv-destructive); }
+        .lv-bullet-dot.green { background: var(--lv-emerald); }
+        .lv-bullet span { font-size: 12px; color: var(--lv-muted); }
+        .lv-bullet.green span { color: var(--lv-fg); }
 
-    .compare-lists { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; max-width: 1000px; margin: 32px auto 0; padding: 0 20px; }
-    .compare-list h3 { font-family: var(--font-heading); font-size: 16px; font-weight: 700; margin-bottom: 12px; }
-    .compare-list.bad h3 { color: var(--destructive); }
-    .compare-list.good h3 { color: var(--cyan); }
-    .compare-list ul { list-style: none; }
-    .compare-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text-secondary); padding: 6px 0; }
-    .compare-list li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; margin-top: 8px; flex-shrink: 0; }
-    .compare-list.bad li::before { background: var(--destructive); }
-    .compare-list.good li::before { background: var(--cyan); }
+        /* PRICING */
+        .lv-pricing { background: var(--lv-bg); padding: 56px 24px 72px; }
+        .lv-pricing h2 { font-family: var(--lv-serif); font-size: 1.75rem; font-weight: 600; text-align: center; margin-bottom: 32px; color: var(--lv-fg); }
+        .lv-price-card { max-width: 420px; margin: 0 auto; border-radius: 16px; border: 1px solid var(--lv-border); background: #fff; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.04); text-align: center; }
+        .lv-price-card h3 { font-size: 20px; font-weight: 600; margin-bottom: 20px; }
+        .lv-price-row { display: flex; align-items: baseline; justify-content: center; gap: 8px; margin-bottom: 8px; }
+        .lv-price-old { font-size: 24px; color: var(--lv-muted); text-decoration: line-through; font-weight: 500; }
+        .lv-price-new { font-size: 56px; font-weight: 700; color: var(--lv-fg); letter-spacing: -2px; line-height: 1; }
+        .lv-price-period { font-size: 18px; color: var(--lv-muted); }
+        .lv-price-badge { display: inline-flex; align-items: center; gap: 4px; background: rgba(217,119,6,0.1); color: var(--lv-warm); font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-bottom: 20px; }
+        .lv-benefits { text-align: left; max-width: 280px; margin: 0 auto 24px; }
+        .lv-benefit { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+        .lv-benefit-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(30,41,59,0.3); flex-shrink: 0; margin-top: 6px; }
+        .lv-benefit span { font-size: 14px; color: rgba(30,41,59,0.7); }
+        .lv-price-cta { width: 100%; padding: 16px; border-radius: 12px; font-size: 16px; font-weight: 600; background: var(--lv-fg); color: #fff; border: none; cursor: pointer; transition: background 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .lv-price-cta:hover { background: rgba(30,41,59,0.9); }
+        .lv-price-cancel { font-size: 12px; color: var(--lv-muted); margin-top: 12px; }
 
-    /* ===== PRICING ===== */
-    .pricing { background: #fff; padding: 96px 20px; }
-    .pricing-card { max-width: 440px; margin: 40px auto 0; background: #fff; border: 1px solid var(--border); border-radius: 14px; box-shadow: 0 12px 32px rgba(0,0,0,0.08); padding: 44px; text-align: center; }
-    .pricing-tag { display: inline-block; padding: 4px 14px; background: rgba(17,127,176,0.1); color: var(--cyan); border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-    .pricing-name { font-family: var(--font-heading); font-size: 18px; color: var(--text-primary); margin-bottom: 20px; }
-    .pricing-amount { margin-bottom: 10px; display: flex; align-items: baseline; justify-content: center; gap: 8px; }
-    .pricing-amount .strike { font-family: var(--font-heading); font-size: 22px; color: var(--text-light); text-decoration: line-through; opacity: 0.6; }
-    .pricing-amount .main { font-family: var(--font-heading); font-size: 60px; font-weight: 700; color: var(--text-primary); letter-spacing: -2px; line-height: 1; }
-    .pricing-amount .per { color: var(--text-light); font-size: 16px; }
-    .pricing-note { font-size: 13px; color: var(--text-light); margin-bottom: 28px; }
-    .pricing-features { list-style: none; text-align: left; max-width: 280px; margin: 0 auto 28px; }
-    .pricing-features li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-secondary); padding: 8px 0; }
-    .pricing-features li i { color: var(--cyan); font-size: 14px; width: 20px; }
-    .pricing-btn { display: block; width: 100%; padding: 16px; background: var(--cyan); color: #fff; font-size: 16px; font-weight: 700; border-radius: 10px; transition: all 0.15s; }
-    .pricing-btn:hover { background: var(--cyan-hover); }
-    .pricing-cancel { font-size: 12px; color: var(--text-light); margin-top: 12px; }
+        /* CONTEXT */
+        .lv-context { position: relative; padding: 112px 24px; overflow: hidden; background: #1a1a1a; }
+        .lv-context-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+        .lv-context-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.65); }
+        .lv-context-content { position: relative; max-width: 520px; margin: 0 auto; text-align: center; }
+        .lv-context h2 { font-family: var(--lv-serif); font-size: 1.75rem; font-weight: 600; color: #fff; margin-bottom: 16px; }
+        .lv-context p { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 440px; margin: 0 auto; }
 
-    /* ===== TESTIMONIAL / WHY ===== */
-    .why { padding: 80px 20px; background: #0e0f12; color: #fff; }
-    .why-inner { max-width: 720px; margin: 0 auto; text-align: center; }
-    .why-shark { font-size: 56px; margin-bottom: 16px; }
-    .why h2 { font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 20px; }
-    .why p { font-family: var(--font-heading); font-style: italic; font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.65); }
+        /* FINAL CTA */
+        .lv-final { background: var(--lv-secondary); border-top: 1px solid var(--lv-border); padding: 56px 24px 64px; text-align: center; }
+        .lv-final p { font-family: var(--lv-serif); font-size: 1.3rem; font-weight: 600; color: var(--lv-fg); margin-bottom: 24px; max-width: 480px; margin-left: auto; margin-right: auto; }
 
-    /* ===== END CTA ===== */
-    .end-cta { position: relative; padding: 112px 20px; text-align: center; background: linear-gradient(135deg, #f8f8f8, #eef2f7); overflow: hidden; }
-    .end-cta::before { content: '🦈'; position: absolute; font-size: 400px; right: -80px; top: 50%; transform: translateY(-50%); opacity: 0.05; }
-    .end-cta-inner { position: relative; max-width: 640px; margin: 0 auto; }
-    .end-cta p { font-family: var(--font-heading); font-size: 22px; color: var(--text-primary); line-height: 1.5; margin-bottom: 28px; }
-    .end-cta-btn { display: inline-block; padding: 16px 40px; background: var(--cyan); color: #fff; border-radius: 10px; font-size: 16px; font-weight: 700; box-shadow: 0 4px 20px rgba(17,127,176,0.35); transition: all 0.15s; }
-    .end-cta-btn:hover { background: var(--cyan-hover); transform: translateY(-2px); }
-    .end-cta-note { font-size: 14px; color: var(--text-light); margin-top: 14px; }
+        /* STICKY CTA BAR */
+        .lv-sticky { position: fixed; bottom: 0; left: 0; right: 0; z-index: 50; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-top: 1px solid var(--lv-border); transform: translateY(100%); transition: transform 0.3s ease; }
+        .lv-sticky.visible { transform: translateY(0); }
+        .lv-sticky-inner { max-width: 520px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+        .lv-sticky-price { display: flex; align-items: baseline; gap: 6px; }
+        .lv-sticky-price .old { font-size: 12px; color: var(--lv-muted); text-decoration: line-through; }
+        .lv-sticky-price .new { font-size: 14px; font-weight: 600; color: var(--lv-fg); }
+        .lv-sticky-price .per { color: var(--lv-muted); font-weight: 400; }
 
-    /* ===== FAQ ===== */
-    .faq { padding: 80px 20px; background: #fff; }
-    .faq-list { max-width: 720px; margin: 40px auto 0; }
-    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; cursor: pointer; }
-    .faq-item summary { font-family: var(--font-heading); font-size: 17px; font-weight: 700; color: var(--text-primary); list-style: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: '+'; font-size: 24px; color: var(--cyan); font-weight: 400; transition: transform 0.2s; }
-    .faq-item[open] summary::after { transform: rotate(45deg); }
-    .faq-item p { margin-top: 12px; font-size: 15px; color: var(--text-secondary); line-height: 1.7; }
+        /* ===== FOOTER ===== */
+        .site-footer { background: var(--nav-bg); padding: 50px 0 40px; color: #ccc; }
+        .footer-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 0.8fr 1.2fr; gap: 40px; }
+        .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+        .footer-logo img { width: 60px; height: auto; border-radius: 4px; }
+        .footer-logo-text { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: #fff; }
+        .footer-about p { font-size: 13px; line-height: 1.7; color: #999; margin-bottom: 20px; }
+        .social-icons { display: flex; gap: 14px; }
+        .social-icons a { color: #888; font-size: 16px; transition: color 0.2s; }
+        .social-icons a:hover { color: var(--cyan); }
+        .footer-menu h4, .footer-newsletter h4 { color: #fff; font-family: var(--font-heading); font-size: 16px; margin-bottom: 18px; }
+        .footer-menu ul li { margin-bottom: 10px; }
+        .footer-menu ul li a { color: #999; font-size: 14px; transition: color 0.2s; }
+        .footer-menu ul li a:hover { color: var(--cyan); }
+        .newsletter-form { display: flex; max-width: 300px; }
+        .newsletter-form input { flex: 1; padding: 10px 14px; border: 1px solid #444; background: #2a2d33; color: #fff; font-size: 14px; font-family: var(--font-body); border-radius: 4px 0 0 4px; outline: none; }
+        .newsletter-form input::placeholder { color: #777; }
+        .newsletter-form button { padding: 10px 20px; background: var(--cyan); color: #fff; border: none; font-size: 14px; font-weight: 600; cursor: pointer; border-radius: 0 4px 4px 0; font-family: var(--font-body); transition: background 0.2s; }
+        .newsletter-form button:hover { background: var(--cyan-hover); }
+        .footer-bottom-bar { background: #121418; color: #777; text-align: center; padding: 14px 20px; font-size: 11.5px; }
+        .footer-bottom-bar a { color: #999; }
+        .raptive-badge { font-size: 10px; letter-spacing: 1px; color: #666; margin-top: 4px; }
 
-    /* ===== FOOTER ===== */
-    .site-footer { background: var(--nav-bg); padding: 48px 0 32px; color: #ccc; }
-    .footer-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
-    .footer-grid { display: grid; grid-template-columns: 1.5fr 0.8fr 1.2fr; gap: 40px; }
-    .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
-    .footer-logo img { width: 50px; height: auto; border-radius: 4px; }
-    .footer-logo-text { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: #fff; }
-    .footer-about p { font-size: 13px; line-height: 1.7; color: #999; margin-bottom: 20px; }
-    .footer-social { display: flex; gap: 14px; }
-    .footer-social a { color: #888; font-size: 16px; transition: color 0.2s; }
-    .footer-social a:hover { color: var(--cyan); }
-    .footer-menu h4 { color: #fff; font-family: var(--font-heading); font-size: 16px; margin-bottom: 18px; }
-    .footer-menu ul { list-style: none; }
-    .footer-menu ul li { margin-bottom: 10px; }
-    .footer-menu ul li a { color: #999; font-size: 14px; transition: color 0.2s; }
-    .footer-menu ul li a:hover { color: var(--cyan); }
+        /* LOGIN MODAL */
+        .login-overlay { position: fixed; inset: 0; z-index: 99999; background: rgba(0,0,0,0.55); display: none; align-items: center; justify-content: center; padding: 16px; }
+        .login-overlay.active { display: flex; }
+        .login-modal { background: #fff; border-radius: 12px; max-width: 440px; width: 100%; padding: 36px 36px 32px; position: relative; box-shadow: 0 28px 70px rgba(0,0,0,0.3); font-family: var(--font-body); }
+        .login-close { position: absolute; top: 14px; right: 16px; background: #f0f0f0; border: none; width: 32px; height: 32px; border-radius: 6px; font-size: 18px; color: #333; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        .login-modal h2 { font-family: var(--font-heading); font-size: 22px; font-weight: 700; color: var(--text-primary); text-align: center; margin-bottom: 24px; }
+        .google-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 12px 20px; background: #fff; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; font-weight: 600; color: #444; margin-bottom: 20px; transition: background 0.15s; cursor: pointer; }
+        .google-btn:hover { background: #fafafa; }
+        .divider { display: flex; align-items: center; gap: 14px; margin: 20px 0; }
+        .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: #eee; }
+        .divider span { font-size: 12px; color: #bbb; font-weight: 600; letter-spacing: 0.5px; }
+        .login-modal h3 { font-family: var(--font-heading); font-size: 15px; font-weight: 700; color: var(--text-primary); text-align: center; margin-bottom: 14px; }
+        .login-modal label { display: block; font-size: 12px; font-weight: 700; color: #555; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.4px; }
+        .login-modal input { width: 100%; padding: 12px 14px; border: 1.5px solid #e0e0e0; border-radius: 8px; font-size: 14px; outline: none; font-family: inherit; margin-bottom: 14px; }
+        .login-modal input:focus { border-color: var(--cyan); }
+        .magic-link-btn { width: 100%; padding: 13px; background: var(--cyan); color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; }
+        .magic-link-btn:hover { background: var(--cyan-hover); }
+        .login-helper { font-size: 12px; color: var(--text-light); text-align: center; margin-top: 12px; line-height: 1.5; }
 
-    /* ===== STICKY BOTTOM CTA ===== */
-    .sticky-bottom { position: fixed; bottom: 0; left: 0; right: 0; z-index: 50; background: rgba(14,15,18,0.96); backdrop-filter: blur(8px); border-top: 1px solid rgba(17,127,176,0.3); transform: translateY(100%); transition: transform 0.3s; }
-    .sticky-bottom.visible { transform: translateY(0); }
-    .sticky-bottom-inner { max-width: 1024px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .sticky-bottom-text { color: #fff; font-size: 14px; font-weight: 600; }
-    .sticky-bottom-text .strike { text-decoration: line-through; opacity: 0.5; font-weight: 400; margin-right: 4px; }
-    .sticky-bottom-text .per { color: rgba(255,255,255,0.5); font-weight: 400; margin-left: 4px; }
-
-    /* ===== LOGIN MODAL ===== */
-    .login-overlay { position: fixed; inset: 0; z-index: 99999; background: rgba(0,0,0,0.55); display: none; align-items: center; justify-content: center; padding: 16px; }
-    .login-overlay.active { display: flex; }
-    .login-modal { background: #fff; border-radius: 12px; max-width: 440px; width: 100%; padding: 36px 36px 32px; position: relative; box-shadow: 0 28px 70px rgba(0,0,0,0.3); }
-    .login-close { position: absolute; top: 14px; right: 16px; background: #f0f0f0; width: 32px; height: 32px; border-radius: 6px; font-size: 18px; color: #333; display: flex; align-items: center; justify-content: center; }
-    .login-modal h2 { font-family: var(--font-heading); font-size: 22px; font-weight: 700; color: var(--text-primary); text-align: center; margin-bottom: 24px; }
-    .google-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 12px 20px; background: #fff; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; font-weight: 600; color: #444; margin-bottom: 20px; transition: background 0.15s; }
-    .google-btn:hover { background: #fafafa; }
-    .divider { display: flex; align-items: center; gap: 14px; margin: 20px 0; }
-    .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: #eee; }
-    .divider span { font-size: 12px; color: #bbb; font-weight: 600; letter-spacing: 0.5px; }
-    .login-modal h3 { font-family: var(--font-heading); font-size: 15px; font-weight: 700; color: var(--text-primary); text-align: center; margin-bottom: 14px; }
-    .login-modal label { display: block; font-size: 12px; font-weight: 700; color: #555; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.4px; }
-    .login-modal input { width: 100%; padding: 12px 14px; border: 1.5px solid #e0e0e0; border-radius: 8px; font-size: 14px; outline: none; font-family: inherit; margin-bottom: 14px; }
-    .login-modal input:focus { border-color: var(--cyan); }
-    .magic-link-btn { width: 100%; padding: 13px; background: var(--cyan); color: #fff; border-radius: 8px; font-size: 15px; font-weight: 700; }
-    .magic-link-btn:hover { background: var(--cyan-hover); }
-    .login-helper { font-size: 12px; color: var(--text-light); text-align: center; margin-top: 12px; line-height: 1.5; }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 768px) {
-      .nav-menu { display: none; }
-      .nav-inner { height: 56px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 24px; padding: 48px 24px; text-align: center; }
-      .hero-text p { margin-left: auto; margin-right: auto; }
-      .hero-text h1 { font-size: 36px; }
-      .hero-shark { font-size: 120px; }
-      .section { padding: 56px 20px; }
-      .section-heading h2 { font-size: 28px; }
-      .compare-img { height: auto; }
-      .compare-img-placeholder { grid-template-columns: 1fr; }
-      .compare-lists { grid-template-columns: 1fr; gap: 24px; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .pricing-card { padding: 28px 20px; }
-      .pricing-amount .main { font-size: 48px; }
-      .end-cta p { font-size: 18px; }
-      .value-strip-inner { flex-wrap: wrap; justify-content: center; }
-      .value-divider { display: none; }
-    }
-  </style>
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .nav-menu { display: none; }
+            .hamburger { display: flex; order: -1; }
+            .logo { order: 0; }
+            .nav-left { flex: 1; gap: 12px; }
+            .top-social-bar { display: none; }
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+        }
+        @media (max-width: 640px) {
+            .lv-hero h1 { font-size: 2.5rem; }
+            .lv-hero-sub { font-size: 15px; }
+            .lv-compare h2, .lv-pricing h2, .lv-context h2 { font-size: 1.5rem; }
+            .lv-price-new { font-size: 44px; }
+            .lv-price-card { padding: 24px 20px; }
+            .lv-final p { font-size: 1.1rem; }
+            .lv-value-item span { font-size: 10px; }
+        }
+        .lv-spacer { height: 64px; }
+    </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="main-nav">
-    <div class="nav-inner">
-      <div class="nav-left">
-        <a href="#" class="nav-logo"><img src="https://nagarmohnish.github.io/LH2_Assets_UI/shark-tank-blog/assets/images/shark_logo.jpeg" alt="Shark Tank Blog"></a>
-        <ul class="nav-menu">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Episodes</a></li>
-          <li><a href="#">Products</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Startup List</a></li>
-        </ul>
-      </div>
-      <div class="nav-right">
-        <a href="#" class="nav-cta-btn">Go Ad-Free</a>
-        <a href="#" class="nav-login-btn"><i class="fas fa-user"></i> Login</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- STICKY HEADER -->
-  <header class="sticky-header" id="stickyHeader">
-    <div class="sticky-header-inner">
-      <span class="sticky-header-logo"><span>🦈</span> Shark Tank Blog</span>
-      <button class="sticky-cta" onclick="openLogin()">Remove All Ads</button>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <div class="hero-badge"><i class="fas fa-bolt"></i> Today only</div>
-        <h1>Every pitch. Every deal. <span class="accent">Uninterrupted.</span></h1>
-        <p>No ads. No popups. No video preroll. Read every Shark Tank recap, product update, and startup story the way it was meant to be read.</p>
-        <button class="hero-cta" onclick="openLogin()">Remove All Ads</button>
-        <p class="hero-pricing"><span class="strike">$3/month</span> <span class="highlight">$2/month — today only.</span> Cancel anytime.</p>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-shark">🦈</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VALUE STRIP -->
-  <div class="value-strip">
-    <div class="value-strip-inner">
-      <div class="value-item"><i class="fas fa-eye-slash"></i><span>Zero ads</span></div>
-      <div class="value-divider"></div>
-      <div class="value-item"><i class="fas fa-bolt"></i><span>2x faster pages</span></div>
-      <div class="value-divider"></div>
-      <div class="value-item"><i class="fas fa-check-circle"></i><span>Cancel anytime</span></div>
-      <div class="value-divider"></div>
-      <div class="value-item"><i class="fas fa-lock"></i><span>Secure payment</span></div>
-    </div>
-  </div>
-
-  <!-- COMPARISON -->
-  <section class="section comparison">
-    <div class="section-heading">
-      <h2>The difference is immediate</h2>
-      <p>Same article. Same content. One lets you actually read it.</p>
-    </div>
-    <div class="compare-img">
-      <div class="compare-img-placeholder">
-        <div class="compare-img-side with-ads">
-          <div>
-            <div class="compare-img-label">With Ads</div>
-            <div class="compare-mock-headline">Bombas Socks Makes $300M After Shark Tank</div>
-            <div class="compare-mock-line" style="width:90%"></div>
-            <div class="compare-mock-line" style="width:75%"></div>
-          </div>
-          <div class="compare-mock-ad">Advertisement</div>
-          <div>
-            <div class="compare-mock-line" style="width:85%"></div>
-            <div class="compare-mock-line" style="width:70%"></div>
-          </div>
+    <!-- Top Social Bar -->
+    <div class="top-social-bar">
+        <div class="top-social-inner">
+            <div class="social-icons top-social-icons">
+                <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
         </div>
-        <div class="compare-img-side ad-free">
-          <div>
-            <div class="compare-img-label">Ad-Free</div>
-            <div class="compare-mock-headline">Bombas Socks Makes $300M After Shark Tank</div>
-            <div class="compare-mock-line" style="width:90%"></div>
-            <div class="compare-mock-line" style="width:75%"></div>
-            <div class="compare-mock-line" style="width:85%"></div>
-            <div class="compare-mock-line" style="width:70%"></div>
-            <div class="compare-mock-line" style="width:88%"></div>
-            <div class="compare-mock-line" style="width:72%"></div>
-          </div>
+    </div>
+
+    <!-- Nav -->
+    <nav class="main-nav">
+        <div class="nav-inner">
+            <div class="nav-left">
+                <a href="#" class="logo"><img src="https://nagarmohnish.github.io/LH2_Assets_UI/shark-tank-blog/assets/images/shark_logo.jpeg" alt="The Shark Tank Blog"></a>
+                <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+                <ul class="nav-menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shark Tank Episodes</a></li>
+                    <li><a href="#">Shark Tank Products</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Shark Tank Startup List</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <button class="search-toggle" aria-label="Search"><i class="fa fa-search"></i></button>
+                <a href="#" class="btn-contact" onclick="event.preventDefault();openLogin()">Go Ads-Free</a>
+                <a href="#" class="btn-login-nav" onclick="event.preventDefault();openLogin()"><i class="fas fa-user"></i> Login</a>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="compare-lists">
-      <div class="compare-list bad">
-        <h3>With Ads</h3>
-        <ul>
-          <li>Broken reading flow</li>
-          <li>Slower pages</li>
-          <li>Constant distractions</li>
-        </ul>
-      </div>
-      <div class="compare-list good">
-        <h3>Ad-Free</h3>
-        <ul>
-          <li>Uninterrupted reading</li>
-          <li>Faster load times</li>
-          <li>Full focus on the story</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+    </nav>
 
-  <!-- PRICING -->
-  <section class="pricing">
-    <div class="section-heading">
-      <h2>One plan. No surprises.</h2>
-    </div>
-    <div class="pricing-card">
-      <span class="pricing-tag">Today only</span>
-      <p class="pricing-name">Ad-Free Reading</p>
-      <div class="pricing-amount">
-        <span class="strike">$3</span>
-        <span class="main">$2</span>
-        <span class="per">/ month</span>
-      </div>
-      <p class="pricing-note">That's less than a single Shark Tank deal gone wrong.</p>
-      <ul class="pricing-features">
-        <li><i class="fas fa-check"></i> Every article, no interruptions</li>
-        <li><i class="fas fa-check"></i> No banners, popups, or video ads</li>
-        <li><i class="fas fa-check"></i> Faster, lighter pages</li>
-        <li><i class="fas fa-check"></i> Fund independent coverage</li>
-      </ul>
-      <button class="pricing-btn" onclick="openLogin()">Remove All Ads</button>
-      <p class="pricing-cancel"><i class="fas fa-lock" style="font-size:10px"></i> Secure payment &bull; Cancel anytime</p>
-    </div>
-  </section>
+    <!-- ===== LOVABLE-UI LANDING PAGE ===== -->
+    <div class="lv-page">
 
-  <!-- WHY -->
-  <section class="why">
-    <div class="why-inner">
-      <div class="why-shark">🦈</div>
-      <h2>Built for the real fans</h2>
-      <p>You don't just watch Shark Tank — you follow the deals, track the companies, and remember which products actually made it. Ads are fine. But when you're reading about a pitch that made history, you deserve to finish the story without interruption.</p>
-    </div>
-  </section>
+        <!-- 1. HERO -->
+        <section class="lv-hero">
+            <img src="https://nagarmohnish.github.io/LH2_Assets_UI/shark-tank-blog/assets/images/hero-stage.jpg" alt="Shark Tank stage" class="lv-hero-img">
+            <div class="lv-hero-overlay"></div>
+            <div class="lv-hero-content">
+                <h1>You came for the story.<br>Not the ads.</h1>
+                <p class="lv-hero-sub">Finish every pitch, deal, and update — without interruptions.</p>
+                <button class="lv-cta" id="heroCta">Start reading ad-free</button>
+                <p class="lv-hero-price">
+                    <span class="strike">$3/month</span>
+                    <span class="highlight">$2/month — today only</span>
+                    &middot; Cancel anytime
+                </p>
+            </div>
+            <button class="lv-scroll-hint" onclick="document.getElementById('valueStrip').scrollIntoView({behavior:'smooth'})" aria-label="Scroll down">
+                <i class="fas fa-chevron-down" style="font-size:20px"></i>
+            </button>
+        </section>
 
-  <!-- END CTA -->
-  <section class="end-cta">
-    <div class="end-cta-inner">
-      <p>You've scrolled this far — now read every pitch without interruptions.</p>
-      <button class="end-cta-btn" onclick="openLogin()">Remove All Ads — $2/month</button>
-      <p class="end-cta-note">Cancel anytime. Takes seconds.</p>
-    </div>
-  </section>
+        <!-- 2. VALUE STRIP -->
+        <section class="lv-value-strip" id="valueStrip">
+            <div class="lv-value-inner">
+                <div class="lv-value-item"><i class="fas fa-eye"></i><span>No ads.<br>No popups</span></div>
+                <div class="lv-value-div"></div>
+                <div class="lv-value-item"><i class="fas fa-bolt"></i><span>Faster<br>pages</span></div>
+                <div class="lv-value-div"></div>
+                <div class="lv-value-item"><i class="fas fa-file-alt"></i><span>Finish without<br>interruptions</span></div>
+            </div>
+        </section>
 
-  <!-- FAQ -->
-  <section class="faq">
-    <div class="section-heading">
-      <h2>Frequently asked</h2>
-    </div>
-    <div class="faq-list">
-      <details class="faq-item">
-        <summary>What does ad-free include?</summary>
-        <p>All display ads, banner ads, sponsored content blocks, and video preroll are removed across every page on Shark Tank Blog. You still see article images, author info, and related content — just no ads in between.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Can I cancel anytime?</summary>
-        <p>Yes. Cancel from your account page in two clicks — no questions asked, no retention calls. You'll keep ad-free access until the end of your current billing period.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Will prices go up later?</summary>
-        <p>As long as you're subscribed, you lock in $2/month forever. If prices change for new subscribers, yours stays the same.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Is my payment secure?</summary>
-        <p>Payments are processed by Stripe — the same provider used by Shopify, Amazon, and Google. We never see or store your card details.</p>
-      </details>
-      <details class="faq-item">
-        <summary>What if I already have an account?</summary>
-        <p>Sign in when prompted and your ad-free access will activate immediately on the account you're logged into.</p>
-      </details>
-    </div>
-  </section>
+        <!-- 3. COMPARISON -->
+        <section class="lv-compare">
+            <div class="lv-compare-inner">
+                <h2>The difference is immediate</h2>
+                <p class="lv-compare-sub">Same article. Same content. One lets you actually read it.</p>
+                <div class="lv-mockup-grid">
+                    <div>
+                        <p class="lv-mockup-label">With Ads</p>
+                        <div class="lv-mockup">
+                            <div class="lv-mock-nav">
+                                <div class="lv-mock-nav-left"><div class="lv-mock-dot"></div><span class="lv-mock-nav-text">The Shark Tank Blog</span></div>
+                                <div class="lv-mock-bars"><div class="lv-mock-bar"></div><div class="lv-mock-bar"></div></div>
+                            </div>
+                            <div class="lv-mock-body">
+                                <div class="lv-mock-title">Shark Tank Season 17 Episode 13</div>
+                                <div class="lv-mock-author"><div class="lv-mock-avatar"></div><span class="lv-mock-author-text">By Author &middot; Mar 2026</span></div>
+                                <div class="lv-mock-img"></div>
+                                <div class="lv-mock-line" style="width:100%"></div>
+                                <div class="lv-mock-line" style="width:90%"></div>
+                                <div class="lv-mock-ad-banner">
+                                    <div class="lv-mock-ad-thumb"></div>
+                                    <div style="flex:1"><div class="lv-mock-line" style="width:75%;margin-bottom:3px"></div><div class="lv-mock-ad-btn"><span class="lv-mock-ad-btn-text">Shop Now</span></div></div>
+                                    <span class="lv-mock-ad-label">Ad</span>
+                                </div>
+                                <div class="lv-mock-line" style="width:100%"></div>
+                                <div class="lv-mock-line" style="width:80%"></div>
+                                <div class="lv-mock-ad-video">
+                                    <div class="lv-mock-play-circle"><div class="lv-mock-play-tri"></div></div>
+                                    <span class="lv-mock-ad-tag">Ad &middot; 0:30</span>
+                                    <span class="lv-mock-ad-skip">Skip &#9654;</span>
+                                </div>
+                                <div class="lv-mock-line" style="width:100%"></div>
+                                <div class="lv-mock-line" style="width:85%"></div>
+                                <div class="lv-mock-ad-native">
+                                    <div class="lv-mock-ad-native-label">Sponsored</div>
+                                    <div class="lv-mock-ad-native-row"><div class="lv-mock-ad-native-img"></div><div style="flex:1"><div class="lv-mock-line" style="width:100%"></div><div class="lv-mock-line" style="width:75%"></div></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="lv-mockup-label">Ad-Free</p>
+                        <div class="lv-mockup">
+                            <div class="lv-mock-nav">
+                                <div class="lv-mock-nav-left"><div class="lv-mock-dot"></div><span class="lv-mock-nav-text">The Shark Tank Blog</span></div>
+                                <div class="lv-mock-bars"><div class="lv-mock-bar" style="background:#f3f4f6"></div><div class="lv-mock-bar" style="background:#f3f4f6"></div></div>
+                            </div>
+                            <div class="lv-mock-body">
+                                <div class="lv-mock-title">Shark Tank Season 17 Episode 13</div>
+                                <div class="lv-mock-author"><div class="lv-mock-avatar"></div><span class="lv-mock-author-text">By Author &middot; Mar 2026</span></div>
+                                <div class="lv-mock-img"></div>
+                                <div class="lv-mock-line" style="width:97%"></div>
+                                <div class="lv-mock-line" style="width:88%"></div>
+                                <div class="lv-mock-line" style="width:82%"></div>
+                                <div style="height:3px"></div>
+                                <div class="lv-mock-line" style="width:95%"></div>
+                                <div class="lv-mock-line" style="width:78%"></div>
+                                <div class="lv-mock-line" style="width:70%"></div>
+                                <div style="height:3px"></div>
+                                <div class="lv-mock-img" style="height:22px"></div>
+                                <div class="lv-mock-line" style="width:92%"></div>
+                                <div class="lv-mock-line" style="width:80%"></div>
+                                <div class="lv-mock-line" style="width:86%"></div>
+                                <div style="height:3px"></div>
+                                <div class="lv-mock-line" style="width:88%"></div>
+                                <div class="lv-mock-line" style="width:72%"></div>
+                                <div style="height:3px"></div>
+                                <div class="lv-mock-line" style="width:60%;height:3px;background:#e5e7eb"></div>
+                                <div style="height:2px"></div>
+                                <div class="lv-mock-line" style="width:94%"></div>
+                                <div class="lv-mock-line" style="width:76%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lv-bullets-grid">
+                    <div>
+                        <p class="lv-bullets-title red">With Ads</p>
+                        <div class="lv-bullet"><span class="lv-bullet-dot red"></span><span>Broken reading flow</span></div>
+                        <div class="lv-bullet"><span class="lv-bullet-dot red"></span><span>Slower pages</span></div>
+                        <div class="lv-bullet"><span class="lv-bullet-dot red"></span><span>Constant distractions</span></div>
+                    </div>
+                    <div>
+                        <p class="lv-bullets-title green">Ad-Free</p>
+                        <div class="lv-bullet green"><span class="lv-bullet-dot green"></span><span>Uninterrupted reading</span></div>
+                        <div class="lv-bullet green"><span class="lv-bullet-dot green"></span><span>Faster load times</span></div>
+                        <div class="lv-bullet green"><span class="lv-bullet-dot green"></span><span>Full focus on the story</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-grid">
-        <div class="footer-about">
-          <div class="footer-logo">
-            <img src="https://nagarmohnish.github.io/LH2_Assets_UI/shark-tank-blog/assets/images/shark_logo.jpeg" alt="Shark Tank Blog">
-            <span class="footer-logo-text">The Shark Tank Blog</span>
-          </div>
-          <p>Shark Tank Blog is independent of and not affiliated or endorsed by ABC, Sony, the producers or any other company associated with the television show, Shark Tank. Views expressed on this blog are solely owned by the author individually.</p>
-          <div class="footer-social">
-            <a href="#"><i class="fab fa-pinterest-p"></i></a>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-x-twitter"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          </div>
+        <!-- 4. PRICING -->
+        <section class="lv-pricing" id="pricing">
+            <h2>One plan. No surprises.</h2>
+            <div class="lv-price-card">
+                <h3>Ad-Free Access</h3>
+                <div class="lv-price-row">
+                    <span class="lv-price-old">$3</span>
+                    <span class="lv-price-new">$2</span>
+                    <span class="lv-price-period">/ month</span>
+                </div>
+                <div class="lv-price-badge">Today only — save $1</div>
+                <div class="lv-benefits">
+                    <div class="lv-benefit"><span class="lv-benefit-dot"></span><span>Every article, no interruptions</span></div>
+                    <div class="lv-benefit"><span class="lv-benefit-dot"></span><span>No banners, popups, or video ads</span></div>
+                    <div class="lv-benefit"><span class="lv-benefit-dot"></span><span>Faster, lighter pages</span></div>
+                </div>
+                <button class="lv-price-cta" id="pricingCta">Read Without Ads</button>
+                <p class="lv-price-cancel">Cancel anytime. Takes seconds.</p>
+            </div>
+        </section>
+
+        <!-- 5. CONTEXT -->
+        <section class="lv-context">
+            <img src="https://nagarmohnish.github.io/LH2_Assets_UI/shark-tank-blog/assets/images/founders-stories.jpg" alt="Entrepreneur pitching on stage" class="lv-context-img" loading="lazy">
+            <div class="lv-context-overlay"></div>
+            <div class="lv-context-content">
+                <h2>Built for readers who actually finish the story</h2>
+                <p>Shark Tank stories aren't meant to be skimmed. You're here for the pitch, the deal, the outcome. Ads break that flow. Ad-free keeps you in it.</p>
+            </div>
+        </section>
+
+        <!-- 6. FINAL CTA -->
+        <section class="lv-final">
+            <p>You've read this far — now read without interruptions.</p>
+            <button class="lv-cta" id="finalCta">Go ad-free — $2/month</button>
+        </section>
+
+        <!-- 7. STICKY CTA BAR -->
+        <div class="lv-sticky" id="stickyBar">
+            <div class="lv-sticky-inner">
+                <div class="lv-sticky-price">
+                    <span class="old">$3</span>
+                    <span class="new">$2<span class="per">/month</span></span>
+                </div>
+                <button class="lv-cta lv-cta-sm" id="stickyCta">Read Without Ads</button>
+            </div>
         </div>
-        <div class="footer-menu">
-          <h4>Menu</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Episodes</a></li>
-            <li><a href="#">Products</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Businesses</a></li>
-          </ul>
+
+        <div class="lv-spacer"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="https://nagarmohnish.github.io/LH2_Assets_UI/shark-tank-blog/assets/images/shark_logo.jpeg" alt="The Shark Tank Blog">
+                        <span class="footer-logo-text">The Shark Tank Blog</span>
+                    </div>
+                    <p>Shark Tank Blog is independent of and not affiliated or endorsed by ABC, Sony, the producers or any other company associated with the television show, Shark Tank.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-menu">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Shark Tank Episodes</a></li>
+                        <li><a href="#">Shark Tank Products</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Shark Tank Businesses</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Subscribe to our Newsletter</h4>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit">Subscribe</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="footer-menu">
-          <h4>Account</h4>
-          <ul>
-            <li><a href="#">Login</a></li>
-            <li><a href="#">My Profile</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Use</a></li>
-          </ul>
+    </footer>
+    <div class="footer-bottom-bar">
+        <p><a href="#">Terms of Content Use</a></p>
+        <p class="raptive-badge">A RAPTIVE PARTNER SITE</p>
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div class="login-overlay" id="loginOverlay" onclick="if(event.target===this)closeLogin()">
+        <div class="login-modal">
+            <button class="login-close" onclick="closeLogin()" aria-label="Close">&times;</button>
+            <h2>Sign In to Shark Tank Blog</h2>
+            <button class="google-btn" onclick="handleLogin('Google User')">
+                <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0124 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 01-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>
+                Continue with Google
+            </button>
+            <div class="divider"><span>OR</span></div>
+            <h3>Sign in with Magic Link</h3>
+            <form onsubmit="event.preventDefault();handleMagicLink();">
+                <label for="loginEmail">Email Address</label>
+                <input type="email" id="loginEmail" placeholder="you@example.com" required>
+                <button type="submit" class="magic-link-btn">Send Magic Link</button>
+                <p class="login-helper">We'll send a secure login link to your email. No password needed.</p>
+            </form>
         </div>
-      </div>
     </div>
-  </footer>
 
-  <!-- STICKY BOTTOM -->
-  <div class="sticky-bottom" id="stickyBottom">
-    <div class="sticky-bottom-inner">
-      <div class="sticky-bottom-text">🦈 <span class="strike">$3</span> $2<span class="per">/month — today only</span></div>
-      <button class="sticky-cta" onclick="openLogin()">Remove All Ads</button>
-    </div>
-  </div>
-
-  <!-- LOGIN MODAL -->
-  <div class="login-overlay" id="loginOverlay" onclick="if(event.target===this)closeLogin()">
-    <div class="login-modal">
-      <button class="login-close" onclick="closeLogin()" aria-label="Close">&times;</button>
-      <h2>Sign In to Shark Tank Blog</h2>
-      <button class="google-btn" onclick="handleLogin('Google User')">
-        <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0124 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 01-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>
-        Continue with Google
-      </button>
-      <div class="divider"><span>OR</span></div>
-      <h3>Sign in with Magic Link</h3>
-      <form onsubmit="event.preventDefault();handleMagicLink();">
-        <label for="loginEmail">Email Address</label>
-        <input type="email" id="loginEmail" placeholder="you@example.com" required>
-        <button type="submit" class="magic-link-btn">Send Magic Link</button>
-        <p class="login-helper">We'll send a secure login link to your email. No password needed.</p>
-      </form>
-    </div>
-  </div>
-
-  <script>
-    const stickyHeader = document.getElementById('stickyHeader');
-    const stickyBottom = document.getElementById('stickyBottom');
-    window.addEventListener('scroll', function() {
-      if (window.scrollY > 500) stickyHeader.classList.add('visible'); else stickyHeader.classList.remove('visible');
-      if (window.scrollY > 300) stickyBottom.classList.add('visible'); else stickyBottom.classList.remove('visible');
-    }, { passive: true });
+    <script>
+    document.addEventListener('DOMContentLoaded', function(){
+        // CTA buttons -> open login popup
+        var ctaIds = ['heroCta','pricingCta','finalCta','stickyCta'];
+        ctaIds.forEach(function(id){
+            var el = document.getElementById(id);
+            if(el) el.addEventListener('click', openLogin);
+        });
+        // Sticky bar: show after scrolling past 60% of viewport
+        var sticky = document.getElementById('stickyBar');
+        window.addEventListener('scroll', function(){
+            if(window.scrollY > window.innerHeight * 0.6) sticky.classList.add('visible');
+            else sticky.classList.remove('visible');
+        }, {passive: true});
+    });
 
     function openLogin() {
-      if (localStorage.getItem('stb_user')) { alert('Redirecting to payment...'); return; }
-      document.getElementById('loginOverlay').classList.add('active');
+        if (localStorage.getItem('stb_user')) { alert('Redirecting to payment...'); return; }
+        document.getElementById('loginOverlay').classList.add('active');
     }
     function closeLogin() { document.getElementById('loginOverlay').classList.remove('active'); }
     function handleLogin(name) {
-      localStorage.setItem('stb_user', JSON.stringify({ name: name, ts: Date.now() }));
-      closeLogin();
-      setTimeout(function() { alert('Logged in as ' + name + '. Redirecting to payment...'); }, 200);
+        localStorage.setItem('stb_user', JSON.stringify({ name: name, ts: Date.now() }));
+        closeLogin();
+        setTimeout(function() { alert('Logged in as ' + name + '. Redirecting to payment...'); }, 200);
     }
     function handleMagicLink() {
-      const email = document.getElementById('loginEmail').value;
-      if (email) handleLogin(email.split('@')[0]);
+        var email = document.getElementById('loginEmail').value;
+        if (email) handleLogin(email.split('@')[0]);
     }
     document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLogin(); });
-  </script>
+    </script>
 </body>
 </html>
