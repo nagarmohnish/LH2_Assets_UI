@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shark Tank Blog — Episode Recaps, Products &amp; Business Updates</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Open+Sans:wght@300;400;600;700&family=Roboto+Slab:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --cyan: #117fb0;
+            --cyan-light: #1592cc;
+            --cyan-glow: rgba(17,127,176,0.25);
+            --nav-bg: #191c20;
+            --bg-dark: #0e1116;
+            --text-primary: #222;
+            --text-secondary: #555;
+            --text-light: #888;
+            --border: #e0e0e0;
+            --font-body: 'Open Sans', -apple-system, sans-serif;
+            --font-serif: 'Newsreader', Georgia, serif;
+            --font-heading: 'Roboto Slab', Georgia, serif;
+            --max-width: 1100px;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); font-size: 15px; line-height: 1.6; color: var(--text-primary); background: #fff; -webkit-font-smoothing: antialiased; }
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+        button { font-family: inherit; cursor: pointer; border: none; }
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+
+        /* ===== NAV ===== */
+        .top-social-bar { background: var(--cyan); }
+        .top-social-inner { display: flex; justify-content: flex-end; padding: 8px 20px; max-width: var(--max-width); margin: 0 auto; }
+        .top-social-icons { display: flex; gap: 18px; }
+        .top-social-icons a { color: rgba(255,255,255,0.95); font-size: 14px; transition: transform 0.15s; }
+        .top-social-icons a:hover { color: #fff; transform: translateY(-1px); }
+
+        .main-nav { background: var(--nav-bg); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+        .nav-left { display: flex; align-items: center; gap: 25px; }
+        .logo img { height: 45px; border-radius: 4px; }
+        .nav-menu { display: flex; }
+        .nav-menu li a { color: #fff; font-size: 13.5px; font-weight: 600; padding: 18px 14px; display: block; transition: color 0.2s; white-space: nowrap; }
+        .nav-menu li a:hover, .nav-menu li a.active { color: var(--cyan); }
+        .nav-right { display: flex; align-items: center; gap: 12px; }
+        .btn-contact { background: var(--cyan); color: #fff !important; padding: 7px 18px; border-radius: 4px; font-size: 13px; font-weight: 600; transition: background 0.2s; white-space: nowrap; }
+        .btn-contact:hover { background: var(--cyan-light); }
+        .btn-login-nav { display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; color: #fff !important; border: 1.5px solid rgba(255,255,255,0.2); border-radius: 6px; font-size: 13px; font-weight: 600; transition: all 0.2s; white-space: nowrap; }
+        .btn-login-nav:hover { background: var(--cyan); border-color: var(--cyan); }
+
+        /* ===== SUPPORT BANNER (the new piece) ===== */
+        .support-banner { background: linear-gradient(180deg, #0e1116 0%, #131720 100%); border-bottom: 1px solid rgba(17,127,176,0.18); position: relative; overflow: hidden; }
+        .support-banner::before { content: ''; position: absolute; top: -60%; right: -10%; width: 480px; height: 480px; background: radial-gradient(circle, rgba(17,127,176,0.10), transparent 70%); pointer-events: none; }
+        .support-banner-inner { position: relative; max-width: var(--max-width); margin: 0 auto; padding: 22px 24px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+        .support-banner-text { display: flex; align-items: center; gap: 16px; color: #fff; flex: 1; min-width: 0; }
+        .support-banner-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(17,127,176,0.15); color: var(--cyan); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+        .support-banner-copy { min-width: 0; }
+        .support-banner-title { font-family: var(--font-serif); font-size: 17px; font-weight: 600; color: #fff; margin-bottom: 2px; letter-spacing: -0.01em; }
+        .support-banner-title .accent { color: var(--cyan); font-style: italic; font-weight: 500; }
+        .support-banner-sub { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+        .support-banner-cta { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; background: var(--cyan); color: #fff; font-size: 13.5px; font-weight: 700; border-radius: 8px; white-space: nowrap; transition: all 0.15s; box-shadow: 0 4px 16px var(--cyan-glow); flex-shrink: 0; }
+        .support-banner-cta:hover { background: var(--cyan-light); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(17,127,176,0.35); color: #fff; }
+        .support-banner-cta i { font-size: 10px; transition: transform 0.15s; }
+        .support-banner-cta:hover i { transform: translateX(2px); }
+        .support-banner-close { position: absolute; top: 10px; right: 14px; background: none; border: none; color: rgba(255,255,255,0.3); font-size: 18px; cursor: pointer; padding: 4px 8px; line-height: 1; transition: color 0.15s; }
+        .support-banner-close:hover { color: rgba(255,255,255,0.7); }
+
+        /* ===== HERO ===== */
+        .hero-section { background: var(--bg-dark); padding: 50px 0 60px; }
+        .hero-inner { display: flex; align-items: center; gap: 40px; }
+        .hero-text { flex: 1; }
+        .hero-text h1 { font-family: var(--font-heading); font-size: 38px; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 18px; }
+        .hero-text h1 .accent { color: var(--cyan); }
+        .hero-text p { font-size: 15px; color: #bbb; line-height: 1.7; max-width: 480px; }
+        .hero-image { flex-shrink: 0; width: 50%; max-width: 560px; }
+        .hero-image img { width: 100%; border-radius: 8px; background: #1a1a1a; aspect-ratio: 16/9; object-fit: cover; }
+
+        /* ===== SECTIONS ===== */
+        .section-title { font-family: var(--font-heading); font-size: 26px; font-weight: 700; color: var(--text-primary); margin-bottom: 25px; }
+        .section { padding: 45px 0; }
+        .section-light { background: #fff; border-bottom: 1px solid #eee; }
+
+        /* ===== EPISODES GRID ===== */
+        .episodes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
+        .episode-card { overflow: hidden; }
+        .episode-main .card-img { aspect-ratio: 16/10; background: linear-gradient(135deg, #1a3a5c, #0e1f33); border-radius: 6px; }
+        .episode-side { display: flex; flex-direction: column; gap: 24px; }
+        .episode-side .card-img { aspect-ratio: 16/9; background: linear-gradient(135deg, #2c1a5c, #331f66); border-radius: 6px; }
+        .card-body { padding-top: 12px; }
+        .card-body h3 { font-family: var(--font-heading); font-size: 20px; font-weight: 700; line-height: 1.3; margin-bottom: 4px; color: var(--text-primary); }
+        .card-body h3 a:hover { color: var(--cyan); }
+        .card-meta { display: flex; gap: 6px; font-size: 13px; color: var(--text-light); margin-bottom: 8px; }
+        .card-meta .author-name { color: var(--cyan); }
+        .card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 8px; }
+        .read-more { color: var(--cyan); font-size: 14px; font-weight: 600; }
+
+        /* ===== PRODUCTS DARK SECTION ===== */
+        .section-products { background: var(--bg-dark); padding: 50px 0 60px; color: #fff; }
+        .products-header { margin-bottom: 30px; display: flex; justify-content: space-between; align-items: baseline; }
+        .products-header h2 { font-family: var(--font-heading); font-size: 30px; font-weight: 700; color: #fff; }
+        .cyan-link { color: var(--cyan); font-size: 15px; font-weight: 600; }
+        .products-list { display: flex; flex-direction: column; gap: 20px; }
+        .product-card { display: flex; gap: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(17,127,176,0.15); border-radius: 8px; padding: 20px; transition: border-color 0.2s; }
+        .product-card:hover { border-color: var(--cyan); }
+        .product-img { flex-shrink: 0; width: 200px; height: 140px; background: linear-gradient(135deg, #2a5a8a, #1a3a5c); border-radius: 6px; }
+        .product-info { flex: 1; min-width: 0; }
+        .product-info h3 { font-family: var(--font-heading); font-size: 18px; font-weight: 700; line-height: 1.35; margin-bottom: 8px; color: #fff; }
+        .product-info h3 a:hover { color: var(--cyan); }
+        .product-info p { font-size: 14px; color: #999; line-height: 1.5; margin-bottom: 10px; }
+        .product-info .card-meta { color: #777; }
+        .product-info .author-name { color: var(--cyan); }
+
+        /* ===== COMPANIES ===== */
+        .section-companies { padding: 45px 0; background: #fff; border-bottom: 1px solid #eee; }
+        .companies-list { display: flex; flex-direction: column; }
+        .company-card { display: flex; gap: 25px; padding: 25px 0; border-bottom: 1px solid #eee; }
+        .company-card:first-child { padding-top: 0; }
+        .company-card:last-child { border-bottom: none; }
+        .company-img { flex-shrink: 0; width: 220px; height: 155px; background: linear-gradient(135deg, #5a3a8a, #3a1a5c); border-radius: 6px; }
+        .company-info { flex: 1; min-width: 0; }
+        .company-info h3 { font-family: var(--font-heading); font-size: 19px; font-weight: 700; line-height: 1.3; margin-bottom: 4px; color: var(--text-primary); }
+        .company-info h3 a:hover { color: var(--cyan); }
+        .company-info p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+        /* ===== FOOTER ===== */
+        .site-footer { background: var(--nav-bg); padding: 50px 0 40px; color: #ccc; }
+        .footer-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 0.8fr 1.2fr; gap: 40px; }
+        .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+        .footer-logo img { width: 60px; border-radius: 4px; }
+        .footer-logo-text { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: #fff; }
+        .footer-about p { font-size: 13px; line-height: 1.7; color: #999; margin-bottom: 20px; }
+        .social-icons { display: flex; gap: 14px; }
+        .social-icons a { color: #888; font-size: 16px; transition: color 0.2s; }
+        .social-icons a:hover { color: var(--cyan); }
+        .footer-menu h4, .footer-newsletter h4 { color: #fff; font-family: var(--font-heading); font-size: 16px; margin-bottom: 18px; }
+        .footer-menu ul li { margin-bottom: 10px; }
+        .footer-menu ul li a { color: #999; font-size: 14px; transition: color 0.2s; }
+        .footer-menu ul li a:hover { color: var(--cyan); }
+        .newsletter-form { display: flex; max-width: 300px; }
+        .newsletter-form input { flex: 1; padding: 10px 14px; border: 1px solid #444; background: #2a2d33; color: #fff; font-size: 14px; border-radius: 4px 0 0 4px; outline: none; font-family: inherit; }
+        .newsletter-form button { padding: 10px 20px; background: var(--cyan); color: #fff; font-size: 14px; font-weight: 600; border-radius: 0 4px 4px 0; font-family: inherit; transition: background 0.2s; }
+        .newsletter-form button:hover { background: var(--cyan-light); }
+        .footer-bottom-bar { background: #121418; color: #777; text-align: center; padding: 14px 20px; font-size: 11.5px; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .nav-menu { display: none; }
+            .top-social-bar { display: none; }
+            .hero-section { padding: 0; }
+            .hero-inner { flex-direction: column-reverse; gap: 0; }
+            .hero-image { width: 100%; max-width: 100%; }
+            .hero-image img { border-radius: 0; }
+            .hero-text { padding: 24px 20px 32px; background: var(--bg-dark); width: 100%; }
+            .hero-text h1 { font-size: 28px; }
+            .episodes-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+            .support-banner-inner { flex-direction: column; text-align: left; align-items: stretch; gap: 16px; padding: 18px 24px; }
+            .support-banner-cta { justify-content: center; }
+            .company-card, .product-card { flex-direction: column; }
+            .company-img, .product-img { width: 100%; height: 200px; }
+        }
+        @media (max-width: 480px) {
+            .support-banner-title { font-size: 15px; }
+            .support-banner-sub { font-size: 12.5px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Social Bar -->
+    <div class="top-social-bar">
+        <div class="top-social-inner">
+            <div class="top-social-icons">
+                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nav -->
+    <nav class="main-nav">
+        <div class="nav-inner">
+            <div class="nav-left">
+                <a href="#" class="logo"><img src="https://nagarmohnish.github.io/LH2_Assets_UI/shark-tank-blog/assets/images/shark_logo.jpeg" alt="The Shark Tank Blog"></a>
+                <ul class="nav-menu">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Shark Tank Episodes</a></li>
+                    <li><a href="#">Shark Tank Products</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Shark Tank Startup List</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <a href="go-ads-free-support.html" class="btn-contact">Go Ad-Free</a>
+                <a href="#" class="btn-login-nav" onclick="event.preventDefault()"><i class="fas fa-user"></i> Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== SUPPORT BANNER ===== -->
+    <section class="support-banner" id="supportBanner">
+        <div class="support-banner-inner">
+            <div class="support-banner-text">
+                <div class="support-banner-icon"><i class="fas fa-heart"></i></div>
+                <div class="support-banner-copy">
+                    <div class="support-banner-title">Love The Shark Tank Blog? <span class="accent">Support us by going ad-free.</span></div>
+                    <div class="support-banner-sub">Independent, reader-supported coverage. Just $1/month — optional, cancel anytime.</div>
+                </div>
+            </div>
+            <a href="go-ads-free-support.html" class="support-banner-cta">Go Ad-Free <i class="fas fa-arrow-right"></i></a>
+            <button class="support-banner-close" onclick="document.getElementById('supportBanner').style.display='none'" aria-label="Close">&times;</button>
+        </div>
+    </section>
+
+    <!-- Hero -->
+    <section class="hero-section">
+        <div class="container hero-inner">
+            <div class="hero-text">
+                <h1>Dive into the World of <span class="accent">Shark Tank</span></h1>
+                <p>Stay updated with all Shark Tank episodes and the businesses featured on the show. Get easy-to-read stories about pitches, deals, and what happens after the tank.</p>
+            </div>
+            <div class="hero-image">
+                <img src="https://nagarmohnish.github.io/LH2_Assets_UI/shark-tank-blog/assets/images/hero-cast.svg" alt="Shark Tank Cast">
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Episodes -->
+    <section class="section section-light">
+        <div class="container">
+            <h2 class="section-title">Latest Episodes</h2>
+            <div class="episodes-grid">
+                <div class="episode-main">
+                    <div class="episode-card">
+                        <div class="card-img"></div>
+                        <div class="card-body">
+                            <h3><a href="article-support.html">Shark Tank Season 16 Episode 15</a></h3>
+                            <div class="card-meta"><span class="author-name">Hiedi Pratap</span><span>&bull;</span><span>April 15, 2025</span></div>
+                            <p>Shark Tank features some of the most unique businesses. Each week goes by in anticipation of the coming Friday. This Friday, four brilliant entrepreneurs bring...</p>
+                            <a href="article-support.html" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="episode-side">
+                    <div class="episode-card">
+                        <div class="card-img"></div>
+                        <div class="card-body">
+                            <h3><a href="#">Shark Tank Season 16 Episode 14</a></h3>
+                            <div class="card-meta"><span class="author-name">Hiedi Pratap</span><span>&bull;</span><span>March 25, 2025</span></div>
+                            <p>Shark Tank Season 16, Episode 14 becomes fertile ground for an eco-friendly crop, buckwheat, when...</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                    <div class="episode-card">
+                        <div class="card-img"></div>
+                        <div class="card-body">
+                            <h3><a href="#">Shark Tank Season 16 Episode 13</a></h3>
+                            <div class="card-meta"><span class="author-name">Hiedi Pratap</span><span>&bull;</span><span>March 17, 2025</span></div>
+                            <p>Shark Tank Season 16 Episode 13 was full of innovative products and skilled entrepreneurs...</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="section-products">
+        <div class="container">
+            <div class="products-header">
+                <h2>Shark Tank Products</h2>
+                <a href="#" class="cyan-link">Latest Products &rarr;</a>
+            </div>
+            <div class="products-list">
+                <div class="product-card">
+                    <div class="product-img"></div>
+                    <div class="product-info">
+                        <h3><a href="#">7 Most Successful Shark Tank Products/Brands of All Time</a></h3>
+                        <p>After binge-watching so many innovative businesses, their unique products, and ever-so-creative pitches...</p>
+                        <div class="card-meta"><span class="author-name">Hiedi Pratap</span><span>&bull;</span><span>March 6, 2025</span></div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img"></div>
+                    <div class="product-info">
+                        <h3><a href="#">How Long Are Shark Tank Pitches?</a></h3>
+                        <p>Shark Tank pitches are full of drama and excitement, making the entire viewing experience captivating...</p>
+                        <div class="card-meta"><span class="author-name">Hiedi Pratap</span><span>&bull;</span><span>March 11, 2025</span></div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img"></div>
+                    <div class="product-info">
+                        <h3><a href="#">Shark Tank Skin Care Scam</a></h3>
+                        <p>For the past year or so, I have been inundated with complaints from readers about...</p>
+                        <div class="card-meta"><span class="author-name">Rob Merlino</span><span>&bull;</span><span>March 6, 2025</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Companies -->
+    <section class="section-companies">
+        <div class="container">
+            <h2 class="section-title">Companies Featured in the Latest Shark Tank Episodes</h2>
+            <div class="companies-list">
+                <div class="company-card">
+                    <div class="company-img"></div>
+                    <div class="company-info">
+                        <h3><a href="#">Collars and Co Shark Tank Update</a></h3>
+                        <div class="card-meta"><span class="author-name">Rob Merlino</span><span>&bull;</span><span>June 6, 2025</span></div>
+                        <p>Collars and Co achieved $5.4 million in sales with their innovative polo shirts featuring dress collars...</p>
+                    </div>
+                </div>
+                <div class="company-card">
+                    <div class="company-img"></div>
+                    <div class="company-info">
+                        <h3><a href="#">Sock Candy Shark Tank | Season 16</a></h3>
+                        <div class="card-meta"><span class="author-name">Hiedi Pratap</span><span>&bull;</span><span>April 16, 2025</span></div>
+                        <p>Founder Mary Gui brought her trendy sock business to the Shark Tank stage, showcasing unique designs...</p>
+                    </div>
+                </div>
+                <div class="company-card">
+                    <div class="company-img"></div>
+                    <div class="company-info">
+                        <h3><a href="#">AirTulip Shark Tank | Season 16</a></h3>
+                        <div class="card-meta"><span class="author-name">Hiedi Pratap</span><span>&bull;</span><span>April 16, 2025</span></div>
+                        <p>AirTulip addresses air pollution concerns with their innovative air purification technology...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="https://nagarmohnish.github.io/LH2_Assets_UI/shark-tank-blog/assets/images/shark_logo.jpeg" alt="The Shark Tank Blog">
+                        <span class="footer-logo-text">The Shark Tank Blog</span>
+                    </div>
+                    <p>Shark Tank Blog is independent of and not affiliated or endorsed by ABC, Sony, the producers or any other company associated with the television show, Shark Tank.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-menu">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Shark Tank Episodes</a></li>
+                        <li><a href="#">Shark Tank Products</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="go-ads-free-support.html">Go Ad-Free</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Subscribe to our Newsletter</h4>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom-bar"><p><a href="#">Terms of Content Use</a></p></div>
+
+</body>
+</html>

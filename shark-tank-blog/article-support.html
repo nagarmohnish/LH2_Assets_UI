@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shark Tank Season 16 Episode 15 — Shark Tank Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Open+Sans:wght@300;400;600;700&family=Roboto+Slab:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --cyan: #117fb0;
+            --cyan-light: #1592cc;
+            --cyan-glow: rgba(17,127,176,0.25);
+            --nav-bg: #191c20;
+            --bg-dark: #0e1116;
+            --text-primary: #222;
+            --text-secondary: #555;
+            --text-light: #888;
+            --border: #e0e0e0;
+            --font-body: 'Open Sans', -apple-system, sans-serif;
+            --font-serif: 'Newsreader', Georgia, serif;
+            --font-heading: 'Roboto Slab', Georgia, serif;
+            --max-width: 1100px;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); font-size: 15px; line-height: 1.6; color: var(--text-primary); background: #fff; -webkit-font-smoothing: antialiased; }
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+        button { font-family: inherit; cursor: pointer; border: none; }
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+
+        /* ===== NAV ===== */
+        .top-social-bar { background: var(--cyan); }
+        .top-social-inner { display: flex; justify-content: flex-end; padding: 8px 20px; max-width: var(--max-width); margin: 0 auto; }
+        .top-social-icons { display: flex; gap: 18px; }
+        .top-social-icons a { color: rgba(255,255,255,0.95); font-size: 14px; }
+
+        .main-nav { background: var(--nav-bg); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+        .nav-left { display: flex; align-items: center; gap: 25px; }
+        .logo img { height: 45px; border-radius: 4px; }
+        .nav-menu { display: flex; }
+        .nav-menu li a { color: #fff; font-size: 13.5px; font-weight: 600; padding: 18px 14px; display: block; transition: color 0.2s; white-space: nowrap; }
+        .nav-menu li a:hover { color: var(--cyan); }
+        .nav-right { display: flex; align-items: center; gap: 12px; }
+        .btn-contact { background: var(--cyan); color: #fff !important; padding: 7px 18px; border-radius: 4px; font-size: 13px; font-weight: 600; }
+        .btn-contact:hover { background: var(--cyan-light); }
+        .btn-login-nav { display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; color: #fff !important; border: 1.5px solid rgba(255,255,255,0.2); border-radius: 6px; font-size: 13px; font-weight: 600; }
+        .btn-login-nav:hover { background: var(--cyan); border-color: var(--cyan); }
+
+        /* ===== SUPPORT BANNER ===== */
+        .support-banner { background: linear-gradient(180deg, #0e1116 0%, #131720 100%); border-bottom: 1px solid rgba(17,127,176,0.18); position: relative; overflow: hidden; }
+        .support-banner::before { content: ''; position: absolute; top: -60%; right: -10%; width: 480px; height: 480px; background: radial-gradient(circle, rgba(17,127,176,0.10), transparent 70%); pointer-events: none; }
+        .support-banner-inner { position: relative; max-width: var(--max-width); margin: 0 auto; padding: 22px 24px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+        .support-banner-text { display: flex; align-items: center; gap: 16px; color: #fff; flex: 1; min-width: 0; }
+        .support-banner-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(17,127,176,0.15); color: var(--cyan); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+        .support-banner-copy { min-width: 0; }
+        .support-banner-title { font-family: var(--font-serif); font-size: 17px; font-weight: 600; color: #fff; margin-bottom: 2px; letter-spacing: -0.01em; }
+        .support-banner-title .accent { color: var(--cyan); font-style: italic; font-weight: 500; }
+        .support-banner-sub { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+        .support-banner-cta { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; background: var(--cyan); color: #fff; font-size: 13.5px; font-weight: 700; border-radius: 8px; white-space: nowrap; transition: all 0.15s; box-shadow: 0 4px 16px var(--cyan-glow); flex-shrink: 0; }
+        .support-banner-cta:hover { background: var(--cyan-light); transform: translateY(-1px); color: #fff; }
+        .support-banner-cta i { font-size: 10px; transition: transform 0.15s; }
+        .support-banner-cta:hover i { transform: translateX(2px); }
+        .support-banner-close { position: absolute; top: 10px; right: 14px; background: none; border: none; color: rgba(255,255,255,0.3); font-size: 18px; cursor: pointer; padding: 4px 8px; line-height: 1; }
+        .support-banner-close:hover { color: rgba(255,255,255,0.7); }
+
+        /* ===== ARTICLE LAYOUT ===== */
+        .article-wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+        .breadcrumb { padding: 16px 0; font-size: 13px; color: var(--text-light); }
+        .breadcrumb a { color: var(--text-light); }
+        .breadcrumb a:hover { color: var(--cyan); }
+        .breadcrumb span { margin: 0 6px; opacity: 0.5; }
+
+        .article-header { padding: 16px 0 28px; border-bottom: 1px solid #eee; margin-bottom: 32px; }
+        .article-category { display: inline-block; background: var(--cyan); color: #fff; padding: 4px 12px; border-radius: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px; }
+        .article-title { font-family: var(--font-heading); font-size: 40px; font-weight: 700; line-height: 1.2; color: var(--text-primary); margin-bottom: 18px; letter-spacing: -0.5px; }
+        .article-meta { display: flex; align-items: center; gap: 12px; font-size: 13.5px; color: var(--text-light); }
+        .author-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--cyan), #0e5f85); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; }
+        .article-meta .author-name { color: var(--text-primary); font-weight: 700; }
+        .article-meta .sep { opacity: 0.4; }
+
+        .article-hero-img { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #1a3a5c, #0e1f33); border-radius: 8px; margin-bottom: 32px; }
+
+        .article-body { font-family: var(--font-serif); font-size: 18px; line-height: 1.75; color: #2a2a2a; }
+        .article-body p { margin-bottom: 22px; }
+        .article-body h2 { font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: var(--text-primary); margin: 40px 0 18px; letter-spacing: -0.3px; }
+        .article-body a { color: var(--cyan); border-bottom: 1px solid rgba(17,127,176,0.3); }
+        .article-body a:hover { border-bottom-color: var(--cyan); }
+
+        /* Inline ad placeholder (shows what ad-free subscribers skip) */
+        .inline-ad { margin: 32px 0; padding: 24px; background: #f8f9fa; border: 1px solid #e5e7eb; border-radius: 8px; text-align: center; position: relative; }
+        .inline-ad-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #bbb; font-weight: 700; margin-bottom: 6px; font-family: var(--font-body); }
+        .inline-ad-box { padding: 40px 20px; background: linear-gradient(135deg, #e5e7eb, #d1d5db); border-radius: 4px; font-size: 13px; color: #9ca3af; font-family: var(--font-body); font-weight: 600; }
+
+        /* Inline Support CTA */
+        .inline-support { margin: 40px 0; padding: 28px 32px; background: linear-gradient(135deg, #0e1116, #131720); border: 1px solid rgba(17,127,176,0.2); border-radius: 12px; color: #fff; display: flex; align-items: center; gap: 24px; position: relative; overflow: hidden; }
+        .inline-support::before { content: ''; position: absolute; top: -50%; right: -10%; width: 280px; height: 280px; background: radial-gradient(circle, rgba(17,127,176,0.15), transparent 70%); pointer-events: none; }
+        .inline-support-copy { position: relative; flex: 1; }
+        .inline-support-copy h3 { font-family: var(--font-serif); font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 6px; letter-spacing: -0.01em; }
+        .inline-support-copy h3 .accent { color: var(--cyan); font-style: italic; font-weight: 500; }
+        .inline-support-copy p { font-family: var(--font-body); font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.55; margin: 0; }
+        .inline-support-cta { position: relative; display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; background: var(--cyan); color: #fff; font-family: var(--font-body); font-size: 14px; font-weight: 700; border-radius: 8px; white-space: nowrap; transition: all 0.15s; flex-shrink: 0; }
+        .inline-support-cta:hover { background: var(--cyan-light); color: #fff; transform: translateY(-1px); }
+
+        /* End-of-article support */
+        .end-support { margin-top: 56px; padding: 40px 32px; background: #f8f9fa; border-radius: 12px; text-align: center; }
+        .end-support-icon { width: 56px; height: 56px; border-radius: 14px; background: rgba(17,127,176,0.1); color: var(--cyan); display: inline-flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
+        .end-support h3 { font-family: var(--font-serif); font-size: 24px; font-weight: 600; color: var(--text-primary); margin-bottom: 10px; letter-spacing: -0.01em; }
+        .end-support p { font-size: 15px; color: var(--text-secondary); line-height: 1.6; max-width: 440px; margin: 0 auto 24px; }
+        .end-support-cta { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; background: var(--cyan); color: #fff; font-size: 14px; font-weight: 700; border-radius: 8px; transition: all 0.15s; box-shadow: 0 4px 16px var(--cyan-glow); }
+        .end-support-cta:hover { background: var(--cyan-light); color: #fff; transform: translateY(-1px); }
+        .end-support-note { font-size: 12px; color: var(--text-light); margin-top: 12px; }
+
+        /* Article footer */
+        .article-footer { margin-top: 48px; padding: 32px 0; border-top: 1px solid #eee; }
+        .article-share { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+        .article-share-label { font-size: 13px; font-weight: 700; color: var(--text-primary); }
+        .article-share-btns { display: flex; gap: 8px; }
+        .article-share-btns a { width: 36px; height: 36px; border-radius: 50%; background: #f0f2f5; color: #555; display: flex; align-items: center; justify-content: center; font-size: 14px; transition: all 0.15s; }
+        .article-share-btns a:hover { background: var(--cyan); color: #fff; }
+
+        /* ===== FOOTER ===== */
+        .site-footer { background: var(--nav-bg); padding: 50px 0 40px; color: #ccc; margin-top: 80px; }
+        .footer-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 0.8fr 1.2fr; gap: 40px; }
+        .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+        .footer-logo img { width: 60px; border-radius: 4px; }
+        .footer-logo-text { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: #fff; }
+        .footer-about p { font-size: 13px; line-height: 1.7; color: #999; margin-bottom: 20px; }
+        .social-icons { display: flex; gap: 14px; }
+        .social-icons a { color: #888; font-size: 16px; }
+        .footer-menu h4, .footer-newsletter h4 { color: #fff; font-family: var(--font-heading); font-size: 16px; margin-bottom: 18px; }
+        .footer-menu ul li { margin-bottom: 10px; }
+        .footer-menu ul li a { color: #999; font-size: 14px; }
+        .footer-menu ul li a:hover { color: var(--cyan); }
+        .newsletter-form { display: flex; max-width: 300px; }
+        .newsletter-form input { flex: 1; padding: 10px 14px; border: 1px solid #444; background: #2a2d33; color: #fff; font-size: 14px; border-radius: 4px 0 0 4px; outline: none; font-family: inherit; }
+        .newsletter-form button { padding: 10px 20px; background: var(--cyan); color: #fff; font-size: 14px; font-weight: 600; border-radius: 0 4px 4px 0; font-family: inherit; }
+        .footer-bottom-bar { background: #121418; color: #777; text-align: center; padding: 14px 20px; font-size: 11.5px; }
+
+        @media (max-width: 992px) {
+            .nav-menu { display: none; }
+            .top-social-bar { display: none; }
+            .support-banner-inner { flex-direction: column; align-items: stretch; gap: 16px; padding: 18px 24px; }
+            .support-banner-cta { justify-content: center; }
+            .article-title { font-size: 30px; }
+            .article-body { font-size: 16px; }
+            .inline-support { flex-direction: column; text-align: center; padding: 24px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Social Bar -->
+    <div class="top-social-bar">
+        <div class="top-social-inner">
+            <div class="top-social-icons">
+                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nav -->
+    <nav class="main-nav">
+        <div class="nav-inner">
+            <div class="nav-left">
+                <a href="index-support.html" class="logo"><img src="https://nagarmohnish.github.io/LH2_Assets_UI/shark-tank-blog/assets/images/shark_logo.jpeg" alt="The Shark Tank Blog"></a>
+                <ul class="nav-menu">
+                    <li><a href="index-support.html">Home</a></li>
+                    <li><a href="#">Shark Tank Episodes</a></li>
+                    <li><a href="#">Shark Tank Products</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Shark Tank Startup List</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <a href="go-ads-free-support.html" class="btn-contact">Go Ad-Free</a>
+                <a href="#" class="btn-login-nav" onclick="event.preventDefault()"><i class="fas fa-user"></i> Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== SUPPORT BANNER (below header) ===== -->
+    <section class="support-banner" id="supportBanner">
+        <div class="support-banner-inner">
+            <div class="support-banner-text">
+                <div class="support-banner-icon"><i class="fas fa-heart"></i></div>
+                <div class="support-banner-copy">
+                    <div class="support-banner-title">Love The Shark Tank Blog? <span class="accent">Support us by going ad-free.</span></div>
+                    <div class="support-banner-sub">Independent, reader-supported coverage. Just $1/month — optional, cancel anytime.</div>
+                </div>
+            </div>
+            <a href="go-ads-free-support.html" class="support-banner-cta">Go Ad-Free <i class="fas fa-arrow-right"></i></a>
+            <button class="support-banner-close" onclick="document.getElementById('supportBanner').style.display='none'" aria-label="Close">&times;</button>
+        </div>
+    </section>
+
+    <!-- ===== ARTICLE ===== -->
+    <div class="article-wrap">
+        <div class="breadcrumb">
+            <a href="index-support.html">Home</a><span>&rsaquo;</span><a href="#">Episodes</a><span>&rsaquo;</span>Season 16 Episode 15
+        </div>
+
+        <header class="article-header">
+            <span class="article-category">Season 16 Episodes</span>
+            <h1 class="article-title">Shark Tank Season 16 Episode 15 — Four Entrepreneurs, Four Unforgettable Pitches</h1>
+            <div class="article-meta">
+                <div class="author-avatar">HP</div>
+                <div>
+                    <div class="author-name">Hiedi Pratap</div>
+                </div>
+                <span class="sep">&bull;</span>
+                <span>Published April 15, 2025</span>
+                <span class="sep">&bull;</span>
+                <span>7 min read</span>
+            </div>
+        </header>
+
+        <div class="article-hero-img"></div>
+
+        <article class="article-body">
+            <p>Shark Tank features some of the most unique businesses. Each week goes by in anticipation of the coming Friday. This Friday, four brilliant entrepreneurs bring their products to the tank, each hoping to walk away with a life-changing deal from one of the Sharks.</p>
+
+            <p>Season 16 Episode 15 aired on April 11, 2025, and featured a lineup that spanned food tech, sustainable apparel, smart home accessories, and a wellness product that caught the attention of every Shark on the panel. What followed was two hours of negotiation, surprise alliances, and at least one deal that nobody saw coming.</p>
+
+            <!-- Inline Ad Placeholder (what ad-free readers skip) -->
+            <div class="inline-ad">
+                <div class="inline-ad-label">Advertisement</div>
+                <div class="inline-ad-box">728 &times; 90 Banner Ad</div>
+            </div>
+
+            <h2>The First Pitch: A Food Tech Play</h2>
+            <p>The first entrepreneur walked into the tank with an asking ask of $400,000 for 10% equity — a valuation that raised eyebrows across the panel. Kevin O'Leary immediately dug into the unit economics, while Lori Greiner focused on retail readiness. The pitch hinged on a proprietary shelf-stable technology that claimed to extend product life by six months without additives.</p>
+
+            <p>Mark Cuban passed early. Daymond John followed. But Barbara Corcoran saw something the others missed and made an offer that shifted the room.</p>
+
+            <!-- Inline Support CTA (replaces a big ad slot) -->
+            <div class="inline-support">
+                <div class="inline-support-copy">
+                    <h3>Enjoying this story? <span class="accent">Help us keep writing.</span></h3>
+                    <p>Independent coverage takes time. Go ad-free for $1/month and support what we do here.</p>
+                </div>
+                <a href="go-ads-free-support.html" class="inline-support-cta">Go Ad-Free <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <h2>Round Two: Sustainable Apparel</h2>
+            <p>The second entrepreneur's pitch centered on a closed-loop textile process with real traction — $1.2M in sales over 18 months, mostly direct-to-consumer. The Sharks leaned in. Daymond, who has more experience in apparel than anyone on the panel, took the lead on questions.</p>
+
+            <p>The valuation was aggressive, but the margins were solid. A counter-offer came quickly, and the founder had to decide in real time whether to accept a lower valuation for a better partner, or push back and risk the whole deal.</p>
+
+            <!-- Inline Ad Placeholder -->
+            <div class="inline-ad">
+                <div class="inline-ad-label">Advertisement</div>
+                <div class="inline-ad-box">300 &times; 250 Rectangle Ad</div>
+            </div>
+
+            <h2>The Wellness Product That Surprised Everyone</h2>
+            <p>By far the most unexpected moment of the episode came during the third pitch. A husband-and-wife team presented a wellness product that, on paper, sounded niche — but the demo landed in a way that clearly moved the Sharks.</p>
+
+            <p>Within three minutes, three Sharks were actively bidding. The tension built as each counter came in faster than the last. In the end, the founders had to pick between two offers with nearly identical terms but very different strategic implications.</p>
+
+            <h2>What Happened Next</h2>
+            <p>We'll continue to follow all four companies from this episode. Of the four, two closed their deals after due diligence, one is still in negotiations, and one walked away and has since raised a seed round from a traditional VC.</p>
+
+            <p>For more episode recaps, subscribe to our newsletter or browse the <a href="#">Season 16 archive</a>.</p>
+
+            <!-- END-OF-ARTICLE SUPPORT -->
+            <div class="end-support">
+                <div class="end-support-icon"><i class="fas fa-heart"></i></div>
+                <h3>Found this helpful?</h3>
+                <p>The Shark Tank Blog is independent and reader-supported. Go ad-free for $1/month to support our coverage and read every episode recap without interruptions.</p>
+                <a href="go-ads-free-support.html" class="end-support-cta">Go Ad-Free &mdash; $1/month <i class="fas fa-arrow-right"></i></a>
+                <p class="end-support-note">Optional. Cancel anytime. No hidden fees.</p>
+            </div>
+
+            <div class="article-footer">
+                <div class="article-share">
+                    <span class="article-share-label">Share this article</span>
+                    <div class="article-share-btns">
+                        <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fas fa-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="https://nagarmohnish.github.io/LH2_Assets_UI/shark-tank-blog/assets/images/shark_logo.jpeg" alt="The Shark Tank Blog">
+                        <span class="footer-logo-text">The Shark Tank Blog</span>
+                    </div>
+                    <p>Shark Tank Blog is independent of and not affiliated or endorsed by ABC, Sony, the producers or any other company associated with the television show, Shark Tank.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-menu">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="index-support.html">Home</a></li>
+                        <li><a href="#">Shark Tank Episodes</a></li>
+                        <li><a href="#">Shark Tank Products</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="go-ads-free-support.html">Go Ad-Free</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Subscribe to our Newsletter</h4>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom-bar"><p><a href="#">Terms of Content Use</a></p></div>
+
+</body>
+</html>
