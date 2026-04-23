@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Open+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
-:root{--cyan:#117fb0;--cyan-light:#1592cc;--stripe:#635bff;--nav-bg:#191c20;--bg:#f7f8fa;--bg-card:#fff;--border:#e5e7eb;--border-strong:#d1d5db;--text:#1e293b;--text-sec:#475569;--text-muted:#64748b;--text-dim:#94a3b8;--green:#10b981;--font-body:'Open Sans',sans-serif;--font-serif:'Newsreader',Georgia,serif;--font-mono:'JetBrains Mono',monospace}
+:root{--cyan:#117fb0;--cyan-light:#1592cc;--stripe:#635bff;--nav-bg:#191c20;--bg:#f7f8fa;--bg-card:#fff;--border:#e5e7eb;--text:#1e293b;--text-sec:#475569;--text-muted:#64748b;--text-dim:#94a3b8;--green:#10b981;--amber:#f59e0b;--font-body:'Open Sans',sans-serif;--font-serif:'Newsreader',Georgia,serif;--font-mono:'JetBrains Mono',monospace}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
 a{color:inherit;text-decoration:none}
@@ -29,7 +29,6 @@ button{font-family:inherit;cursor:pointer;border:none}
 .page-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1.3fr;gap:40px}
 
 /* LEFT: Order summary */
-.summary{padding:0}
 .summary-head{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px}
 .summary-title{font-family:var(--font-serif);font-size:22px;font-weight:600;color:var(--text);margin-bottom:4px;line-height:1.3}
 .summary-subtitle{font-size:14px;color:var(--text-muted);margin-bottom:28px}
@@ -37,7 +36,8 @@ button{font-family:inherit;cursor:pointer;border:none}
 .summary-price .cur{font-family:var(--font-serif);font-size:24px;color:var(--text-muted);font-weight:500}
 .summary-price .big{font-family:var(--font-serif);font-size:56px;font-weight:600;color:var(--text);line-height:1;letter-spacing:-2px}
 .summary-price .per{font-size:14px;color:var(--text-muted)}
-.summary-features li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-sec);padding:6px 0;list-style:none;line-height:1.55}
+.summary-features{list-style:none}
+.summary-features li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-sec);padding:6px 0;line-height:1.55}
 .summary-features li i{color:var(--green);font-size:12px;margin-top:5px;flex-shrink:0}
 .summary-trust{margin-top:28px;padding-top:24px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:10px}
 .summary-trust-row{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text-muted)}
@@ -45,44 +45,92 @@ button{font-family:inherit;cursor:pointer;border:none}
 
 /* RIGHT: Checkout card */
 .checkout{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:32px;box-shadow:0 4px 24px rgba(0,0,0,0.04)}
-.checkout-tabs{display:flex;gap:4px;background:#f1f5f9;border-radius:8px;padding:4px;margin-bottom:24px}
-.checkout-tabs button{flex:1;padding:8px 10px;background:transparent;color:var(--text-muted);font-size:12px;font-weight:600;border-radius:5px;transition:all 0.15s;letter-spacing:0.2px}
-.checkout-tabs button.active{background:#fff;color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,0.08)}
+
+/* STEP INDICATOR */
+.step-indicator{display:flex;align-items:center;gap:0;margin-bottom:28px}
+.step{display:flex;align-items:center;gap:8px;flex:1}
+.step-num{width:24px;height:24px;border-radius:50%;background:#e2e8f0;color:#94a3b8;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;transition:all 0.3s}
+.step.active .step-num{background:var(--cyan);color:#fff;box-shadow:0 0 0 3px rgba(17,127,176,0.15)}
+.step.done .step-num{background:var(--green);color:#fff}
+.step-label{font-size:12px;font-weight:600;color:var(--text-muted);transition:color 0.3s}
+.step.active .step-label{color:var(--text)}
+.step.done .step-label{color:var(--green)}
+.step-line{flex:1;height:2px;background:#e2e8f0;margin:0 8px;border-radius:1px;transition:background 0.3s}
+.step-line.done{background:var(--green)}
+
+/* SECTION TITLES */
+.section-heading{font-family:var(--font-serif);font-size:18px;font-weight:600;color:var(--text);margin-bottom:4px}
+.section-sub{font-size:13px;color:var(--text-muted);margin-bottom:18px}
+
+/* EMAIL STEP */
+.email-step{display:block}
+.email-step.hidden{display:none}
+
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12px;font-weight:600;color:var(--text-sec);margin-bottom:6px}
+.field input{width:100%;padding:12px 14px;background:#fff;border:1.5px solid var(--border);border-radius:6px;color:var(--text);font-size:14.5px;font-family:inherit;outline:none;transition:all 0.15s}
+.field input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(17,127,176,0.08)}
+.field input.valid{border-color:var(--green);padding-right:38px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.field-help{font-size:12px;color:var(--text-muted);margin-top:6px;line-height:1.5;display:flex;align-items:flex-start;gap:5px}
+.field-help i{color:var(--text-dim);margin-top:3px;font-size:10px}
+
+.btn-primary{width:100%;padding:14px;background:var(--text);color:#fff;border-radius:8px;font-size:14.5px;font-weight:700;margin-top:12px;transition:background 0.15s;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-primary:hover{background:#334155}
+.btn-primary.loading{background:#64748b;cursor:not-allowed}
+.btn-primary.loading::before{content:'';width:14px;height:14px;border:2px solid rgba(255,255,255,0.4);border-top-color:#fff;border-radius:50%;animation:spin 0.6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* BLOCKED BANNER (duplicate email) */
+.blocked-banner{background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);border-radius:10px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px;margin-bottom:18px}
+.blocked-banner i{color:var(--amber);font-size:16px;margin-top:2px;flex-shrink:0}
+.blocked-banner .blocked-text{font-size:13.5px;color:var(--text-sec);line-height:1.5}
+.blocked-banner strong{color:var(--text);font-weight:600;display:block;margin-bottom:2px;font-size:14px}
+.blocked-actions{display:flex;flex-direction:column;gap:10px}
+.btn-send-link{width:100%;padding:13px;background:var(--cyan);color:#fff;border-radius:8px;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;transition:background 0.15s}
+.btn-send-link:hover{background:var(--cyan-light)}
+.btn-reset{width:100%;padding:11px;background:transparent;border:1px solid var(--border);color:var(--text-sec);border-radius:8px;font-size:13px;font-weight:600;transition:all 0.15s}
+.btn-reset:hover{border-color:var(--cyan);color:var(--cyan)}
+
+/* PAYMENT STEP */
+.payment-step{display:none}
+.payment-step.active{display:block}
+
+.verified-email{background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.2);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.verified-email i{color:var(--green);font-size:13px}
+.verified-email .label{font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--green);flex-shrink:0}
+.verified-email .addr{font-size:13px;color:var(--text);font-weight:600;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.verified-email button{background:none;color:var(--text-muted);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;padding:4px 10px;border-radius:4px;transition:all 0.15s}
+.verified-email button:hover{color:var(--cyan);background:rgba(17,127,176,0.05)}
 
 .express{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-.express-btn{display:flex;align-items:center;justify-content:center;height:48px;background:#fff;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-weight:600;font-size:14px;color:#000;transition:all 0.15s;gap:8px}
+.express-btn{display:flex;align-items:center;justify-content:center;height:44px;background:#fff;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-weight:600;font-size:13.5px;color:#000;transition:all 0.15s;gap:8px}
 .express-btn:hover{border-color:var(--text);background:#fafbfd}
 .express-btn.apple{background:#000;color:#fff;border-color:#000}
-.express-btn.apple:hover{background:#1a1a1a}
 .express-btn.gpay{background:#fff}
 .express-btn.link{background:#00d664;color:#000;border-color:#00d664}
 .express-btn.paypal{background:#ffc439;color:#003087;border-color:#ffc439;font-weight:700}
 
-.express-divider{display:flex;align-items:center;gap:14px;margin:20px 0;font-size:11px;color:var(--text-dim);font-weight:600;text-transform:uppercase;letter-spacing:1px}
+.express-divider{display:flex;align-items:center;gap:14px;margin:18px 0;font-size:11px;color:var(--text-dim);font-weight:600;text-transform:uppercase;letter-spacing:1px}
 .express-divider::before,.express-divider::after{content:'';flex:1;height:1px;background:var(--border)}
 
-.field{margin-bottom:14px}
-.field label{display:block;font-size:12px;font-weight:600;color:var(--text-sec);margin-bottom:6px}
-.field input{width:100%;padding:11px 14px;background:#fff;border:1.5px solid var(--border);border-radius:6px;color:var(--text);font-size:14px;font-family:inherit;outline:none;transition:all 0.15s}
-.field input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(17,127,176,0.08)}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .card-input-wrap{position:relative}
-.card-input-wrap input{padding-right:80px}
-.card-input-wrap .brands{position:absolute;right:10px;top:50%;transform:translateY(-50%);display:flex;gap:4px;pointer-events:none}
-.card-input-wrap .brands img{height:16px;opacity:0.6}
-.card-brand-logo{display:inline-block;padding:2px 6px;background:#f1f5f9;border-radius:3px;font-size:9px;font-weight:700;color:#64748b;letter-spacing:0.3px}
+.card-input-wrap input{padding-right:70px}
+.card-brand-logo{position:absolute;right:10px;top:50%;transform:translateY(-50%);padding:2px 6px;background:#f1f5f9;border-radius:3px;font-size:9px;font-weight:700;color:#64748b;letter-spacing:0.3px}
 
-.pay-btn{width:100%;padding:14px;background:var(--text);color:#fff;border-radius:8px;font-size:14.5px;font-weight:700;margin-top:18px;transition:background 0.15s;display:flex;align-items:center;justify-content:center;gap:8px}
+.pay-btn{width:100%;padding:15px;background:var(--text);color:#fff;border-radius:8px;font-size:15px;font-weight:700;margin-top:18px;transition:background 0.15s;display:flex;align-items:center;justify-content:center;gap:8px}
 .pay-btn:hover{background:#334155}
+.pay-btn.loading{background:#64748b;cursor:not-allowed}
+.pay-btn.loading::before{content:'';width:14px;height:14px;border:2px solid rgba(255,255,255,0.4);border-top-color:#fff;border-radius:50%;animation:spin 0.6s linear infinite}
 
-.stripe-foot{text-align:center;margin-top:18px;font-size:11.5px;color:var(--text-dim);display:flex;align-items:center;justify-content:center;gap:4px}
+.stripe-foot{text-align:center;margin-top:16px;font-size:11.5px;color:var(--text-dim);display:flex;align-items:center;justify-content:center;gap:4px}
 .stripe-foot strong{color:var(--stripe);font-weight:700}
 
-/* API peek */
-.api-peek{margin-top:20px;padding:12px 14px;background:#0f172a;border-radius:6px;font-family:var(--font-mono);font-size:10.5px;color:rgba(255,255,255,0.55);line-height:1.7}
-.api-peek .k{color:#a5b4fc}
-.api-peek .s{color:#fde68a}
-.api-peek .c{color:rgba(255,255,255,0.35);font-style:italic}
+/* TOGGLE for demo — floating pill */
+.state-toggle{position:fixed;bottom:20px;left:20px;background:#0f172a;color:#fff;border-radius:24px;padding:5px;display:flex;gap:4px;z-index:99;box-shadow:0 8px 24px rgba(0,0,0,0.2);font-size:11px;font-weight:600}
+.state-toggle button{padding:7px 14px;background:transparent;color:rgba(255,255,255,0.5);border-radius:20px;transition:all 0.15s;font-family:inherit}
+.state-toggle button.active{background:var(--cyan);color:#fff}
+.state-toggle-label{padding:7px 6px 7px 14px;color:rgba(255,255,255,0.4);font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:700}
 
 @media (max-width:820px){
   .page-inner{grid-template-columns:1fr;gap:24px}
@@ -93,12 +141,12 @@ button{font-family:inherit;cursor:pointer;border:none}
 </head>
 <body>
 
-<div class="demo-strip"><span class="tag">Demo</span>Step 4 of 6 &mdash; Stripe Express Checkout + Payment Element. <a href="index.html">← Overview</a></div>
+<div class="demo-strip"><span class="tag">Demo</span>Step 3 of 5 &mdash; Checkout: email verification + payment on one page. <a href="index.html">← Overview</a></div>
 
 <nav class="main-nav">
   <div class="nav-inner">
     <a href="home.html" class="logo"><img src="https://nagarmohnish.github.io/LH2_Assets_UI/shark-tank-blog/assets/images/shark_logo.jpeg" alt="STB"></a>
-    <a href="go-ad-free.html"><i class="fas fa-arrow-left"></i> Back</a>
+    <a href="home.html"><i class="fas fa-arrow-left"></i> Back to home</a>
   </div>
 </nav>
 
@@ -110,21 +158,18 @@ button{font-family:inherit;cursor:pointer;border:none}
       <div class="summary-head">Your Order</div>
       <div class="summary-title">Ad-Free Lifetime Access</div>
       <div class="summary-subtitle">Shark Tank Blog</div>
-
       <div class="summary-price">
         <span class="cur">$</span>
         <span class="big">10</span>
         <span class="per">one-time</span>
       </div>
-
       <h4 style="font-size:11px;font-weight:700;color:var(--text-muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px">What's included</h4>
       <ul class="summary-features">
         <li><i class="fas fa-check"></i>Every ad removed across Shark Tank Blog</li>
         <li><i class="fas fa-check"></i>Lifetime access &mdash; no expiry, no renewal</li>
         <li><i class="fas fa-check"></i>Works on any device (sign in with email)</li>
-        <li><i class="fas fa-check"></i>Faster page loads, cleaner reading</li>
+        <li><i class="fas fa-check"></i>Supports independent Shark Tank coverage</li>
       </ul>
-
       <div class="summary-trust">
         <div class="summary-trust-row"><i class="fab fa-stripe-s"></i> Secure checkout via Stripe</div>
         <div class="summary-trust-row"><i class="fas fa-undo"></i> 7-day refund window</div>
@@ -135,83 +180,234 @@ button{font-family:inherit;cursor:pointer;border:none}
     <!-- RIGHT: CHECKOUT -->
     <section class="checkout">
 
-      <!-- Express Checkout Element (Stripe) -->
-      <div class="express">
-        <button class="express-btn apple"><i class="fab fa-apple"></i> Pay</button>
-        <button class="express-btn gpay"><span style="color:#4285F4;font-weight:700">G</span> Pay</button>
-        <button class="express-btn link"><strong>Link</strong></button>
-        <button class="express-btn paypal">PayPal</button>
+      <!-- Step indicator -->
+      <div class="step-indicator">
+        <div class="step active" id="stepA">
+          <div class="step-num" id="numA">1</div>
+          <div class="step-label">Email</div>
+        </div>
+        <div class="step-line" id="lineA"></div>
+        <div class="step" id="stepB">
+          <div class="step-num" id="numB">2</div>
+          <div class="step-label">Payment</div>
+        </div>
       </div>
 
-      <div class="express-divider">Or pay with card</div>
+      <!-- STEP 1: EMAIL -->
+      <div class="email-step" id="emailStep">
+        <h3 class="section-heading">Enter your email</h3>
+        <p class="section-sub">We'll email your login link here after payment. Use an email you check &mdash; it's how you'll sign in to activate ad-free on this device.</p>
 
-      <!-- Payment Element (Stripe) -->
-      <form onsubmit="event.preventDefault();completePayment()">
-        <div class="field">
-          <label>Email</label>
-          <input type="email" id="payEmail" value="reader@example.com" readonly>
+        <!-- BLOCKED BANNER (toggleable for duplicate flow) -->
+        <div class="blocked-banner" id="blockedBanner" style="display:none">
+          <i class="fas fa-info-circle"></i>
+          <div class="blocked-text"><strong>You've already purchased</strong>This email has a lifetime entitlement on file. Send yourself a login link to activate on this device &mdash; no need to pay again.</div>
         </div>
 
-        <div class="field">
-          <label>Card number</label>
-          <div class="card-input-wrap">
-            <input type="text" placeholder="1234 1234 1234 1234" value="4242 4242 4242 4242" maxlength="19">
-            <div class="brands">
+        <form id="emailForm" onsubmit="event.preventDefault();verifyEmail()">
+          <div class="field">
+            <label for="emailInput">Email address</label>
+            <input type="email" id="emailInput" placeholder="you@example.com" value="reader@example.com" required autocomplete="email">
+            <div class="field-help"><i class="fas fa-lock"></i>We never share your email. Used only to send your login link and receipt.</div>
+          </div>
+
+          <!-- New purchase: continue to payment -->
+          <button type="submit" class="btn-primary" id="verifyBtn">
+            <i class="fas fa-lock" style="font-size:11px"></i>
+            Continue to payment &mdash; $10
+          </button>
+
+          <!-- Blocked state actions (hidden by default) -->
+          <div class="blocked-actions" id="blockedActions" style="display:none;margin-top:12px">
+            <button type="button" class="btn-send-link" onclick="sendLoginLink()">
+              Email me the login link
+              <i class="fas fa-paper-plane"></i>
+            </button>
+            <button type="button" class="btn-reset" onclick="resetToEmailEntry()">
+              Use a different email
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- STEP 2: PAYMENT -->
+      <div class="payment-step" id="paymentStep">
+        <!-- verified email chip -->
+        <div class="verified-email">
+          <i class="fas fa-check-circle"></i>
+          <span class="label">Email</span>
+          <span class="addr" id="verifiedAddr">reader@example.com</span>
+          <button onclick="editEmail()">Edit</button>
+        </div>
+
+        <h3 class="section-heading">Complete payment</h3>
+        <p class="section-sub">One-time $10 charge. No subscription, no recurring.</p>
+
+        <!-- Express checkout -->
+        <div class="express">
+          <button class="express-btn apple"><i class="fab fa-apple"></i> Pay</button>
+          <button class="express-btn gpay"><span style="color:#4285F4;font-weight:700">G</span> Pay</button>
+          <button class="express-btn link"><strong>Link</strong></button>
+          <button class="express-btn paypal">PayPal</button>
+        </div>
+
+        <div class="express-divider">Or pay with card</div>
+
+        <!-- Payment Element -->
+        <form onsubmit="event.preventDefault();completePayment()">
+          <div class="field">
+            <label>Card number</label>
+            <div class="card-input-wrap">
+              <input type="text" placeholder="1234 1234 1234 1234" value="4242 4242 4242 4242" maxlength="19">
               <span class="card-brand-logo">VISA</span>
             </div>
           </div>
-        </div>
 
-        <div class="field-row">
-          <div class="field">
-            <label>Expiry</label>
-            <input type="text" placeholder="MM / YY" value="12 / 28" maxlength="7">
+          <div class="field-row">
+            <div class="field">
+              <label>Expiry</label>
+              <input type="text" placeholder="MM / YY" value="12 / 28" maxlength="7">
+            </div>
+            <div class="field">
+              <label>CVC</label>
+              <input type="text" placeholder="CVC" value="123" maxlength="4">
+            </div>
           </div>
+
           <div class="field">
-            <label>CVC</label>
-            <input type="text" placeholder="CVC" value="123" maxlength="4">
+            <label>Country</label>
+            <input type="text" value="United States" readonly>
           </div>
-        </div>
 
-        <div class="field">
-          <label>Country</label>
-          <input type="text" value="United States" readonly>
-        </div>
+          <button type="submit" class="pay-btn" id="payBtn">
+            <i class="fas fa-lock" style="font-size:11px"></i>
+            Pay $10.00
+          </button>
 
-        <button type="submit" class="pay-btn">
-          <i class="fas fa-lock" style="font-size:11px"></i>
-          Pay $10.00
-        </button>
-
-        <div class="stripe-foot">
-          Powered by <strong>stripe</strong>
-        </div>
-      </form>
-
-      <div class="api-peek">
-        <div class="c">// Stripe PaymentIntent created with clientSecret from /adfree/init</div>
-        stripe.confirmPayment({<br>
-        &nbsp;&nbsp;<span class="k">elements</span>,<br>
-        &nbsp;&nbsp;<span class="k">confirmParams</span>: {<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="k">return_url</span>: <span class="s">"https://sharktankblog.com/ad-free-success"</span><br>
-        &nbsp;&nbsp;}<br>
-        })
+          <div class="stripe-foot">
+            Powered by <strong>stripe</strong>
+          </div>
+        </form>
       </div>
+
     </section>
   </div>
 </main>
 
+<!-- Floating demo state toggle -->
+<div class="state-toggle">
+  <span class="state-toggle-label">Demo</span>
+  <button class="active" id="tglNew" onclick="setFlow('new')">New purchase</button>
+  <button id="tglBlocked" onclick="setFlow('blocked')">Duplicate email</button>
+</div>
+
 <script>
-// populate email from URL param
+var FLOW = 'new'; // 'new' or 'blocked'
+
+function setFlow(f){
+  FLOW = f;
+  document.getElementById('tglNew').classList.toggle('active',f==='new');
+  document.getElementById('tglBlocked').classList.toggle('active',f==='blocked');
+  resetToEmailEntry();
+}
+
+function verifyEmail(){
+  var email = document.getElementById('emailInput').value;
+  if(!email) return;
+
+  var btn = document.getElementById('verifyBtn');
+  btn.classList.add('loading');
+  btn.innerHTML = 'Checking email&hellip;';
+
+  // Simulate server check /adfree/init
+  setTimeout(function(){
+    if(FLOW === 'blocked'){
+      showBlockedState(email);
+    } else {
+      continueToPayment(email);
+    }
+  }, 800);
+}
+
+function showBlockedState(email){
+  document.getElementById('blockedBanner').style.display = 'flex';
+  document.getElementById('verifyBtn').style.display = 'none';
+  document.getElementById('blockedActions').style.display = 'flex';
+  document.getElementById('emailInput').classList.add('valid');
+  document.getElementById('emailInput').readOnly = true;
+}
+
+function continueToPayment(email){
+  // Mark step 1 done, step 2 active
+  document.getElementById('stepA').classList.remove('active');
+  document.getElementById('stepA').classList.add('done');
+  document.getElementById('numA').innerHTML = '<i class="fas fa-check" style="font-size:10px"></i>';
+  document.getElementById('lineA').classList.add('done');
+  document.getElementById('stepB').classList.add('active');
+  // Swap panels
+  document.getElementById('emailStep').classList.add('hidden');
+  document.getElementById('paymentStep').classList.add('active');
+  document.getElementById('verifiedAddr').textContent = email;
+}
+
+function editEmail(){
+  // Go back to email step
+  document.getElementById('stepA').classList.add('active');
+  document.getElementById('stepA').classList.remove('done');
+  document.getElementById('numA').innerHTML = '1';
+  document.getElementById('lineA').classList.remove('done');
+  document.getElementById('stepB').classList.remove('active');
+  document.getElementById('emailStep').classList.remove('hidden');
+  document.getElementById('paymentStep').classList.remove('active');
+  // Reset submit button state
+  var btn = document.getElementById('verifyBtn');
+  btn.classList.remove('loading');
+  btn.style.display = 'flex';
+  btn.innerHTML = '<i class="fas fa-lock" style="font-size:11px"></i> Continue to payment &mdash; $10';
+  document.getElementById('emailInput').readOnly = false;
+  document.getElementById('emailInput').classList.remove('valid');
+}
+
+function resetToEmailEntry(){
+  document.getElementById('blockedBanner').style.display = 'none';
+  document.getElementById('blockedActions').style.display = 'none';
+  document.getElementById('emailInput').classList.remove('valid');
+  document.getElementById('emailInput').readOnly = false;
+  var btn = document.getElementById('verifyBtn');
+  btn.classList.remove('loading');
+  btn.style.display = 'flex';
+  btn.innerHTML = '<i class="fas fa-lock" style="font-size:11px"></i> Continue to payment &mdash; $10';
+  // also reset steps
+  document.getElementById('stepA').classList.add('active');
+  document.getElementById('stepA').classList.remove('done');
+  document.getElementById('numA').innerHTML = '1';
+  document.getElementById('lineA').classList.remove('done');
+  document.getElementById('stepB').classList.remove('active');
+  document.getElementById('emailStep').classList.remove('hidden');
+  document.getElementById('paymentStep').classList.remove('active');
+}
+
+function sendLoginLink(){
+  var email = document.getElementById('emailInput').value;
+  location.href = 'success.html?email=' + encodeURIComponent(email) + '&from=blocked';
+}
+
+function completePayment(){
+  var email = document.getElementById('verifiedAddr').textContent;
+  var btn = document.getElementById('payBtn');
+  btn.classList.add('loading');
+  btn.innerHTML = 'Processing&hellip;';
+  setTimeout(function(){
+    location.href = 'success.html?email=' + encodeURIComponent(email);
+  }, 1000);
+}
+
+// Populate email if passed via URL
 (function(){
   var p = new URLSearchParams(location.search);
   var e = p.get('email');
-  if(e) document.getElementById('payEmail').value = e;
+  if(e) document.getElementById('emailInput').value = e;
 })();
-function completePayment(){
-  var email = document.getElementById('payEmail').value;
-  location.href = 'success.html?email=' + encodeURIComponent(email);
-}
 </script>
 
 </body>
