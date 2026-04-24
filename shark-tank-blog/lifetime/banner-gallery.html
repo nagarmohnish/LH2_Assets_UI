@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banner Gallery — Lifetime Supporter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Open+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Courier+Prime:wght@400;700&family=Bebas+Neue&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root {
+  --cyan: #117fb0;
+  --cyan-light: #1592cc;
+  --gold: #d4a574;
+  --gold-soft: #e8c894;
+  --stripe:#635bff;
+  --page-bg: #f5f7fa;
+  --text: #1e293b;
+  --text-sec: #64748b;
+  --text-dim: #94a3b8;
+  --border: #e2e8f0;
+  --font-body: 'Open Sans',-apple-system,sans-serif;
+  --font-serif: 'Newsreader', Georgia, serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-mono: 'JetBrains Mono', 'Courier Prime', monospace;
+  --font-hand: 'Caveat', cursive;
+  --font-condensed: 'Bebas Neue', sans-serif;
+}
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box }
+body { font-family: var(--font-body); background: var(--page-bg); color: var(--text); line-height:1.55; -webkit-font-smoothing: antialiased }
+a { color:inherit; text-decoration:none }
+button { font-family:inherit; cursor:pointer; border:none }
+
+/* PAGE HEAD */
+.page-head { background:#0b0e13; color:#fff; padding:48px 24px 40px; text-align:center }
+.page-head .kicker { display:inline-block; padding:5px 14px; background:rgba(17,127,176,0.15); border:1px solid rgba(17,127,176,0.3); border-radius:20px; font-size:10.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--cyan); margin-bottom:16px }
+.page-head h1 { font-family:var(--font-serif); font-size:36px; font-weight:600; letter-spacing:-0.02em; margin-bottom:10px; line-height:1.15 }
+.page-head h1 .accent { color:var(--cyan); font-style:italic; font-weight:500 }
+.page-head p { font-size:15px; color:rgba(255,255,255,0.6); max-width:640px; margin:0 auto; line-height:1.65 }
+.page-head .back { display:inline-flex; align-items:center; gap:6px; font-size:12.5px; color:rgba(255,255,255,0.5); margin-top:20px; padding:6px 14px; border:1px solid rgba(255,255,255,0.15); border-radius:20px; transition:all 0.15s }
+.page-head .back:hover { color:#fff; border-color:rgba(255,255,255,0.35) }
+
+/* VARIANT WRAPPER */
+.variant { padding:0 24px; margin-bottom:48px }
+.variant-meta { max-width:1100px; margin:0 auto 14px; padding:0 4px; display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap }
+.variant-num { font-family:var(--font-mono); font-size:11px; font-weight:700; color:var(--text-dim); letter-spacing:2px; display:flex; align-items:center; gap:10px }
+.variant-num span { width:24px; height:24px; background:var(--text); color:#fff; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:11px }
+.variant-title { font-family:var(--font-serif); font-size:18px; font-weight:600; color:var(--text); letter-spacing:-0.01em }
+.variant-tag { display:inline-flex; align-items:center; gap:6px; padding:2px 10px; background:#fff; border:1px solid var(--border); border-radius:20px; font-size:10.5px; font-weight:600; color:var(--text-sec); letter-spacing:0.5px; text-transform:uppercase }
+.variant-tag.long { color:#b45309; border-color:#fde68a; background:#fffbeb }
+.variant-tag.mid  { color:var(--cyan); border-color:rgba(17,127,176,0.25); background:rgba(17,127,176,0.05) }
+.variant-tag.short{ color:#059669; border-color:rgba(16,185,129,0.25); background:rgba(16,185,129,0.05) }
+.variant-sub { font-size:13px; color:var(--text-sec); max-width:720px; margin:0 auto 14px; padding:0 4px }
+.variant-frame { max-width:1100px; margin:0 auto; border-radius:12px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.08); border:1px solid var(--border) }
+
+/* ============ V1 · Editorial Dark ============ */
+.v1 { background:linear-gradient(180deg,#0a1118,#0c1622); position:relative }
+.v1::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--cyan); opacity:0.75 }
+.v1 .inner { max-width:1100px; margin:0 auto; padding:14px 56px 14px 28px; display:flex; align-items:center; gap:20px; position:relative }
+.v1 .mark { width:36px; height:36px; border-radius:50%; background:rgba(17,127,176,0.12); border:1px solid rgba(17,127,176,0.28); color:var(--cyan); display:flex; align-items:center; justify-content:center; flex-shrink:0 }
+.v1 .copy { flex:1; min-width:0; display:flex; flex-direction:column; gap:3px; justify-content:center }
+.v1 .eyebrow { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:var(--cyan); line-height:1.2 }
+.v1 .title { font-family:var(--font-serif); font-size:17px; font-weight:500; color:#fff; line-height:1.3; letter-spacing:-0.015em }
+.v1 .title .sep { color:rgba(255,255,255,0.25); margin:0 8px; font-weight:300 }
+.v1 .cta { padding:10px 22px; background:var(--cyan); color:#fff; border-radius:6px; font-size:13px; font-weight:700; white-space:nowrap }
+.v1 .cta:hover { background:var(--cyan-light) }
+
+/* ============ V2 · Newspaper Minimal (light, serif, long copy) ============ */
+.v2 { background:#fbf8f3; border-top:4px double #1a1a1a; border-bottom:4px double #1a1a1a }
+.v2 .masthead { text-align:center; padding:8px 16px 4px; border-bottom:1px solid #1a1a1a; font-family:var(--font-serif); font-size:10px; letter-spacing:4px; text-transform:uppercase; color:#555; background:#fbf8f3 }
+.v2 .inner { max-width:1100px; margin:0 auto; padding:18px 28px 18px; display:flex; align-items:center; gap:28px }
+.v2 .copy { flex:1 }
+.v2 .h { font-family:var(--font-display); font-size:22px; font-weight:700; color:#1a1a1a; line-height:1.15; margin-bottom:4px; letter-spacing:-0.01em }
+.v2 .p { font-family:var(--font-serif); font-size:13.5px; color:#333; line-height:1.6; font-style:italic }
+.v2 .cta { padding:10px 22px; background:#1a1a1a; color:#fbf8f3; font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; flex-shrink:0; border:2px solid #1a1a1a; transition:all 0.15s }
+.v2 .cta:hover { background:#fbf8f3; color:#1a1a1a }
+
+/* ============ V3 · Bold Magazine (huge numeric) ============ */
+.v3 { background:#fff }
+.v3 .inner { max-width:1100px; margin:0 auto; padding:20px 28px; display:flex; align-items:center; gap:24px }
+.v3 .num { font-family:var(--font-display); font-size:64px; font-weight:700; color:#1a1a1a; line-height:0.9; letter-spacing:-3px; flex-shrink:0; display:flex; align-items:flex-start }
+.v3 .num small { font-size:22px; color:var(--text-sec); margin-right:2px; font-weight:500 }
+.v3 .num sup { font-size:11px; font-weight:700; color:var(--cyan); text-transform:uppercase; letter-spacing:2px; margin-left:14px; margin-top:6px }
+.v3 .copy { flex:1; border-left:1px solid var(--border); padding-left:24px }
+.v3 .h { font-family:var(--font-display); font-size:18px; font-weight:600; color:#1a1a1a; line-height:1.25; margin-bottom:4px; letter-spacing:-0.01em }
+.v3 .p { font-size:13px; color:var(--text-sec); line-height:1.55 }
+.v3 .cta { padding:11px 22px; background:#1a1a1a; color:#fff; border-radius:4px; font-size:13px; font-weight:700; flex-shrink:0 }
+.v3 .cta:hover { background:#000 }
+
+/* ============ V4 · Luxury Gold on Black (concise, premium) ============ */
+.v4 { background:#0a0a0a; position:relative; overflow:hidden }
+.v4::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at top right, rgba(212,165,116,0.15), transparent 60%); pointer-events:none }
+.v4 .inner { max-width:1100px; margin:0 auto; padding:22px 32px; display:flex; align-items:center; gap:24px; position:relative }
+.v4 .mono { font-family:var(--font-mono); font-size:10.5px; font-weight:500; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); padding:4px 12px; border:1px solid rgba(212,165,116,0.35); border-radius:2px; flex-shrink:0 }
+.v4 .copy { flex:1 }
+.v4 .h { font-family:var(--font-serif); font-size:20px; font-weight:500; color:#fff; letter-spacing:-0.01em; line-height:1.25 }
+.v4 .h em { color:var(--gold-soft); font-style:italic; font-weight:400 }
+.v4 .cta { padding:11px 26px; background:transparent; color:var(--gold); border:1px solid var(--gold); font-size:11.5px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; transition:all 0.2s; flex-shrink:0 }
+.v4 .cta:hover { background:var(--gold); color:#0a0a0a }
+
+/* ============ V5 · Gradient Modern (tech startup) ============ */
+.v5 { background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 50%,#06b6d4 100%); position:relative; overflow:hidden }
+.v5::before { content:''; position:absolute; top:-50%; right:-10%; width:400px; height:400px; background:radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%) }
+.v5 .inner { max-width:1100px; margin:0 auto; padding:18px 28px; display:flex; align-items:center; gap:22px; position:relative }
+.v5 .mark { width:42px; height:42px; border-radius:12px; background:rgba(255,255,255,0.18); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.3); color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:18px }
+.v5 .copy { flex:1 }
+.v5 .chip { display:inline-block; padding:3px 10px; background:rgba(255,255,255,0.18); backdrop-filter:blur(10px); border-radius:20px; font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#fff; margin-bottom:4px }
+.v5 .h { font-family:var(--font-body); font-size:17px; font-weight:700; color:#fff; line-height:1.35; letter-spacing:-0.02em }
+.v5 .h .b { background:rgba(255,255,255,0.22); padding:1px 7px; border-radius:4px; font-weight:700; margin:0 2px }
+.v5 .cta { padding:11px 22px; background:#fff; color:#4f46e5; border-radius:8px; font-size:13px; font-weight:700; flex-shrink:0; box-shadow:0 4px 14px rgba(0,0,0,0.15) }
+.v5 .cta:hover { transform:translateY(-1px); box-shadow:0 8px 20px rgba(0,0,0,0.2) }
+
+/* ============ V6 · Terminal / Monospace ============ */
+.v6 { background:#0d1117; border:1px solid #30363d; font-family:var(--font-mono) }
+.v6 .header { background:#161b22; padding:6px 16px; font-size:10.5px; color:#7d8590; border-bottom:1px solid #30363d; display:flex; align-items:center; gap:8px }
+.v6 .header::before { content:''; display:inline-flex; gap:6px; margin-right:6px }
+.v6 .dots { display:inline-flex; gap:5px }
+.v6 .dots span { width:10px; height:10px; border-radius:50%; background:#30363d }
+.v6 .inner { padding:20px 20px; font-size:13.5px; line-height:1.7; color:#c9d1d9 }
+.v6 .c { color:#8b949e; font-style:italic }
+.v6 .k { color:#ff7b72 }
+.v6 .s { color:#a5d6ff }
+.v6 .v { color:#79c0ff }
+.v6 .fn { color:#d2a8ff }
+.v6 .nl { color:#8b949e; user-select:none; display:inline-block; width:24px; text-align:right; padding-right:12px; border-right:1px solid #30363d; margin-right:12px; font-size:11px }
+.v6 .line { padding:1px 0 }
+.v6 .cta-line { margin-top:8px; display:flex; align-items:center; gap:12px }
+.v6 .cta { padding:6px 18px; background:#238636; color:#fff; border-radius:6px; font-size:12px; font-weight:600; font-family:var(--font-body) }
+.v6 .cta:hover { background:#2ea043 }
+
+/* ============ V7 · Typewriter / Personal Letter ============ */
+.v7 { background:#f5efe4; border-top:1px solid #d9cfb8; border-bottom:1px solid #d9cfb8; position:relative }
+.v7 .tape { position:absolute; top:-8px; left:50%; transform:translateX(-50%) rotate(-2deg); width:80px; height:18px; background:rgba(212,165,116,0.4); border:1px dashed rgba(101,78,41,0.3) }
+.v7 .inner { max-width:1100px; margin:0 auto; padding:20px 32px; display:flex; align-items:center; gap:28px }
+.v7 .copy { flex:1 }
+.v7 .salute { font-family:var(--font-hand); font-size:22px; color:#8b4513; line-height:1; margin-bottom:4px; letter-spacing:-0.3px }
+.v7 .h { font-family:'Courier Prime',var(--font-mono); font-size:13.5px; color:#3a2e1e; line-height:1.6 }
+.v7 .h strong { color:#1a1a1a; background:rgba(212,165,116,0.3); padding:0 4px }
+.v7 .signoff { font-family:var(--font-hand); font-size:18px; color:#8b4513; margin-top:6px; line-height:1 }
+.v7 .cta { padding:10px 22px; background:#3a2e1e; color:#f5efe4; font-size:12px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; flex-shrink:0; border-radius:2px; font-family:'Courier Prime',var(--font-mono) }
+.v7 .cta:hover { background:#1a1a1a }
+
+/* ============ V8 · Ticker / Marquee ============ */
+.v8 { background:#111; border-top:2px solid var(--cyan); border-bottom:1px solid rgba(255,255,255,0.08) }
+.v8 .inner { max-width:1100px; margin:0 auto; padding:12px 24px; display:flex; align-items:center; gap:16px; overflow:hidden }
+.v8 .badge { background:var(--cyan); color:#fff; padding:5px 10px; font-family:var(--font-mono); font-size:10.5px; font-weight:700; letter-spacing:1px; flex-shrink:0; text-transform:uppercase }
+.v8 .ticker { flex:1; display:flex; align-items:center; gap:0; color:#fff; font-size:13px; font-weight:500; overflow:hidden; white-space:nowrap }
+.v8 .ticker span { display:inline-flex; align-items:center; gap:14px }
+.v8 .ticker span::after { content:''; display:inline-block; width:5px; height:5px; background:var(--cyan); border-radius:50%; margin:0 6px }
+.v8 .ticker span:last-child::after { display:none }
+.v8 .ticker strong { font-weight:700; color:#fff }
+.v8 .ticker em { color:rgba(255,255,255,0.5); font-style:normal; font-weight:400 }
+.v8 .cta { padding:7px 18px; background:transparent; color:var(--cyan); border:1px solid var(--cyan); border-radius:3px; font-size:11.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; flex-shrink:0; font-family:var(--font-mono) }
+.v8 .cta:hover { background:var(--cyan); color:#fff }
+
+/* ============ V9 · Pull Quote Editorial ============ */
+.v9 { background:#f8fafc; border-top:1px solid var(--border); border-bottom:1px solid var(--border) }
+.v9 .inner { max-width:1100px; margin:0 auto; padding:26px 32px; display:flex; align-items:center; gap:32px; position:relative }
+.v9 .qmark { font-family:var(--font-display); font-size:88px; line-height:0.8; color:var(--cyan); opacity:0.25; font-weight:700; flex-shrink:0; align-self:flex-start; margin-top:-6px }
+.v9 .copy { flex:1 }
+.v9 .quote { font-family:var(--font-serif); font-size:19px; font-style:italic; color:#1e293b; line-height:1.35; letter-spacing:-0.01em; margin-bottom:8px }
+.v9 .attrib { font-size:11.5px; color:var(--text-sec); letter-spacing:1.5px; text-transform:uppercase; font-weight:600 }
+.v9 .attrib strong { color:var(--cyan); font-weight:700 }
+.v9 .cta { padding:11px 24px; background:var(--text); color:#fff; border-radius:6px; font-size:13px; font-weight:600; flex-shrink:0 }
+.v9 .cta:hover { background:#000 }
+
+/* ============ V10 · Three-Card Grid ============ */
+.v10 { background:#fff; border-top:1px solid var(--border); border-bottom:1px solid var(--border) }
+.v10 .inner { max-width:1100px; margin:0 auto; padding:16px 28px; display:flex; align-items:center; gap:18px }
+.v10 .lead { flex:0 0 auto; padding-right:18px; border-right:1px solid var(--border) }
+.v10 .lead-kick { font-size:9.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--cyan); margin-bottom:2px }
+.v10 .lead-big { font-family:var(--font-serif); font-size:22px; font-weight:600; color:var(--text); line-height:1; letter-spacing:-0.5px }
+.v10 .lead-big small { font-size:12px; color:var(--text-sec); font-weight:500; margin-left:4px; letter-spacing:0 }
+.v10 .cards { flex:1; display:flex; gap:8px }
+.v10 .card { flex:1; padding:8px 12px; border:1px solid var(--border); border-radius:6px; display:flex; align-items:center; gap:10px; transition:all 0.15s }
+.v10 .card:hover { border-color:var(--cyan); background:rgba(17,127,176,0.03) }
+.v10 .card i { width:26px; height:26px; border-radius:6px; background:rgba(17,127,176,0.08); color:var(--cyan); display:flex; align-items:center; justify-content:center; font-size:11px; flex-shrink:0 }
+.v10 .card div { display:flex; flex-direction:column; gap:1px; min-width:0 }
+.v10 .card strong { font-size:12px; font-weight:600; color:var(--text); line-height:1.15 }
+.v10 .card span { font-size:10.5px; color:var(--text-sec); line-height:1.3 }
+.v10 .cta { padding:11px 22px; background:var(--cyan); color:#fff; border-radius:6px; font-size:13px; font-weight:700; flex-shrink:0 }
+.v10 .cta:hover { background:var(--cyan-light) }
+
+/* FOOT */
+.foot { text-align:center; padding:40px 24px; color:var(--text-dim); font-size:13px }
+.foot a { color:var(--text-sec); border-bottom:1px dashed var(--border) }
+.foot a:hover { color:var(--cyan) }
+
+/* RESPONSIVE */
+@media (max-width:820px){
+  .v1 .inner,.v2 .inner,.v3 .inner,.v4 .inner,.v5 .inner,.v7 .inner,.v8 .inner,.v9 .inner,.v10 .inner { flex-direction:column; align-items:stretch; gap:14px; padding:16px 20px }
+  .v10 .cards { flex-direction:column }
+  .v10 .lead { border-right:none; border-bottom:1px solid var(--border); padding-right:0; padding-bottom:12px }
+  .v8 .ticker { white-space:normal }
+  .v3 .num { font-size:44px }
+  .v3 .copy { border-left:none; padding-left:0; border-top:1px solid var(--border); padding-top:12px }
+}
+</style>
+</head>
+<body>
+
+<!-- PAGE HEAD -->
+<header class="page-head">
+  <span class="kicker">Banner Gallery · 10 Variants</span>
+  <h1>Same product. <span class="accent">Ten ways to say it.</span></h1>
+  <p>Ten banner treatments for the Lifetime Supporter Membership, spanning editorial, premium, modern, and personal tones. Each variant pairs a distinct design theme with a specific copy length &mdash; concise, mid, or long.</p>
+  <a href="index.html" class="back"><i class="fas fa-arrow-left" style="font-size:10px"></i> Back to architecture</a>
+</header>
+
+<!-- V1 · EDITORIAL DARK (current) -->
+<section class="variant">
+  <div class="variant-meta">
+    <div class="variant-num"><span>1</span><span class="variant-title" style="font-family:var(--font-body);font-size:14px;color:var(--text);letter-spacing:0">Editorial Dark</span></div>
+    <div><span class="variant-tag mid">Mid copy</span> <span class="variant-tag">Dark · Serif</span></div>
+  </div>
+  <p class="variant-sub" style="max-width:1100px">The current baseline. Dark navy gradient, cyan accent bar, serif title with slash separators. Editorial tone, good balance.</p>
+  <div class="variant-frame">
+    <div class="v1">
+      <div class="inner">
+        <div class="mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <div class="copy">
+          <span class="eyebrow">Lifetime Supporter Membership &middot; $10 one-time</span>
+          <span class="title">Ad-free reading <span class="sep">/</span> Exclusive newsletter <span class="sep">/</span> Support independent coverage</span>
+        </div>
+        <a href="payment.html" class="cta">Subscribe &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- V2 · NEWSPAPER MINIMAL (long copy, light) -->
+<section class="variant">
+  <div class="variant-meta">
+    <div class="variant-num"><span>2</span><span class="variant-title" style="font-family:var(--font-body);font-size:14px;color:var(--text);letter-spacing:0">Newspaper Minimal</span></div>
+    <div><span class="variant-tag long">Long copy</span> <span class="variant-tag">Light · Editorial</span></div>
+  </div>
+  <p class="variant-sub" style="max-width:1100px">Inspired by Sunday paper masthead typography. Double-rule top and bottom, italic serif body, full narrative copy.</p>
+  <div class="variant-frame">
+    <div class="v2">
+      <div class="masthead">Dear Reader &middot; A Note From The Editor &middot; Issue No. 1</div>
+      <div class="inner">
+        <div class="copy">
+          <div class="h">If you value our writing, become a Lifetime Supporter.</div>
+          <div class="p">For a single $10 payment &mdash; no subscription, no renewal &mdash; you'll get ad-free reading across the site, our subscriber-only weekly newsletter, and the quiet satisfaction of keeping independent Shark Tank coverage alive.</div>
+        </div>
+        <button class="cta">Subscribe for $10</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- V3 · BOLD MAGAZINE -->
+<section class="variant">
+  <div class="variant-meta">
+    <div class="variant-num"><span>3</span><span class="variant-title" style="font-family:var(--font-body);font-size:14px;color:var(--text);letter-spacing:0">Bold Magazine Cover</span></div>
+    <div><span class="variant-tag mid">Mid copy</span> <span class="variant-tag">Light · Display serif</span></div>
+  </div>
+  <p class="variant-sub" style="max-width:1100px">Price as the hero element &mdash; massive Playfair Display numeral anchors the banner. Rest of content is a supporting sentence.</p>
+  <div class="variant-frame">
+    <div class="v3">
+      <div class="inner">
+        <div class="num"><small>$</small>10<sup>Lifetime</sup></div>
+        <div class="copy">
+          <div class="h">A one-time payment. Lifetime Supporter Membership.</div>
+          <div class="p">Ad-free reading, exclusive subscriber-only newsletter, and direct support for independent Shark Tank coverage.</div>
+        </div>
+        <button class="cta">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- V4 · LUXURY GOLD -->
+<section class="variant">
+  <div class="variant-meta">
+    <div class="variant-num"><span>4</span><span class="variant-title" style="font-family:var(--font-body);font-size:14px;color:var(--text);letter-spacing:0">Luxury Black &amp; Gold</span></div>
+    <div><span class="variant-tag short">Short copy</span> <span class="variant-tag">Dark · Premium</span></div>
+  </div>
+  <p class="variant-sub" style="max-width:1100px">Pure black with a warm gold accent. Fine serif headline with italic subphrase. Ghost-outlined CTA. Premium subscription feel.</p>
+  <div class="variant-frame">
+    <div class="v4">
+      <div class="inner">
+        <span class="mono">Members' Circle</span>
+        <div class="copy">
+          <div class="h">An invitation to become a <em>lifetime supporter.</em> $10. Once. Forever.</div>
+        </div>
+        <button class="cta">Join</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- V5 · GRADIENT MODERN -->
+<section class="variant">
+  <div class="variant-meta">
+    <div class="variant-num"><span>5</span><span class="variant-title" style="font-family:var(--font-body);font-size:14px;color:var(--text);letter-spacing:0">Gradient Modern</span></div>
+    <div><span class="variant-tag mid">Mid copy</span> <span class="variant-tag">Color · Sans</span></div>
+  </div>
+  <p class="variant-sub" style="max-width:1100px">Purple-to-cyan gradient with glassmorphic icon badge. SaaS-startup feel with inline bold highlights on key terms.</p>
+  <div class="variant-frame">
+    <div class="v5">
+      <div class="inner">
+        <div class="mark"><i class="fas fa-infinity"></i></div>
+        <div class="copy">
+          <span class="chip">Lifetime · $10 one-time</span>
+          <div class="h">Pay <span class="b">once</span>. Read ad-free <span class="b">forever</span>. Get our <span class="b">exclusive newsletter</span> on the house.</div>
+        </div>
+        <button class="cta">Subscribe &rarr;</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- V6 · TERMINAL / MONOSPACE -->
+<section class="variant">
+  <div class="variant-meta">
+    <div class="variant-num"><span>6</span><span class="variant-title" style="font-family:var(--font-body);font-size:14px;color:var(--text);letter-spacing:0">Terminal / Code</span></div>
+    <div><span class="variant-tag mid">Mid copy</span> <span class="variant-tag">Dark · Monospace</span></div>
+  </div>
+  <p class="variant-sub" style="max-width:1100px">GitHub-esque terminal frame with syntax-highlighted pseudo-code. Hacker/dev audience &mdash; playful, unexpected in an editorial context.</p>
+  <div class="variant-frame">
+    <div class="v6">
+      <div class="header"><span class="dots"><span></span><span></span><span></span></span> &mdash; supporter.subscribe()</div>
+      <div class="inner">
+        <div class="line"><span class="nl">1</span><span class="c">// Lifetime Supporter Membership &mdash; one payment, no renewal</span></div>
+        <div class="line"><span class="nl">2</span><span class="k">const</span> <span class="v">membership</span> = <span class="fn">subscribe</span>({ <span class="v">price</span>: <span class="s">"$10"</span>, <span class="v">type</span>: <span class="s">"lifetime"</span> })</div>
+        <div class="line"><span class="nl">3</span><span class="c">// Returns: ad-free site + exclusive newsletter + funded coverage</span></div>
+        <div class="line cta-line"><span class="nl">4</span><span class="k">await</span> <a href="payment.html" class="cta">Subscribe →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- V7 · TYPEWRITER / PERSONAL -->
+<section class="variant">
+  <div class="variant-meta">
+    <div class="variant-num"><span>7</span><span class="variant-title" style="font-family:var(--font-body);font-size:14px;color:var(--text);letter-spacing:0">Typewriter / Letter</span></div>
+    <div><span class="variant-tag long">Long copy</span> <span class="variant-tag">Warm · Personal</span></div>
+  </div>
+  <p class="variant-sub" style="max-width:1100px">Warm beige paper tone, Courier typewriter body, Caveat handwritten salutation and signoff. Feels like a short letter taped to the page.</p>
+  <div class="variant-frame">
+    <div class="v7">
+      <span class="tape"></span>
+      <div class="inner">
+        <div class="copy">
+          <div class="salute">Hey &mdash;</div>
+          <div class="h">If you've been reading us a while, would you consider becoming a <strong>Lifetime Supporter for $10</strong>? You'd get an ad-free site, our subscriber-only newsletter, and you'd quietly keep this whole thing running. One payment. Forever.</div>
+          <div class="signoff">&ndash; The Editor</div>
+        </div>
+        <button class="cta">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- V8 · TICKER -->
+<section class="variant">
+  <div class="variant-meta">
+    <div class="variant-num"><span>8</span><span class="variant-title" style="font-family:var(--font-body);font-size:14px;color:var(--text);letter-spacing:0">News Ticker</span></div>
+    <div><span class="variant-tag short">Short copy</span> <span class="variant-tag">Dark · Mono</span></div>
+  </div>
+  <p class="variant-sub" style="max-width:1100px">Bloomberg-style breaking news ticker. Cyan badge on the left, dotted-separated status items, ghost CTA on the right. Ultra compact.</p>
+  <div class="variant-frame">
+    <div class="v8">
+      <div class="inner">
+        <span class="badge">Live</span>
+        <div class="ticker">
+          <span><strong>LIFETIME SUPPORTER</strong> <em>$10 one-time</em></span>
+          <span><strong>AD-FREE</strong></span>
+          <span><strong>NEWSLETTER</strong> <em>exclusive</em></span>
+          <span><strong>NO RENEWAL</strong></span>
+        </div>
+        <button class="cta">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- V9 · PULL QUOTE -->
+<section class="variant">
+  <div class="variant-meta">
+    <div class="variant-num"><span>9</span><span class="variant-title" style="font-family:var(--font-body);font-size:14px;color:var(--text);letter-spacing:0">Pull Quote Editorial</span></div>
+    <div><span class="variant-tag mid">Mid copy</span> <span class="variant-tag">Light · Serif italic</span></div>
+  </div>
+  <p class="variant-sub" style="max-width:1100px">Oversized opening quote-mark in cyan, italic serif pull quote with attribution. Frames the offer as an editorial statement rather than a CTA.</p>
+  <div class="variant-frame">
+    <div class="v9">
+      <div class="inner">
+        <div class="qmark">&ldquo;</div>
+        <div class="copy">
+          <div class="quote">Independent Shark Tank coverage, kept ad-free and reader-funded &mdash; plus an exclusive subscriber newsletter. $10, once, forever.</div>
+          <div class="attrib">Lifetime Supporter Membership &middot; <strong>Subscribe for $10</strong></div>
+        </div>
+        <a href="payment.html" class="cta">Subscribe</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- V10 · THREE CARDS -->
+<section class="variant">
+  <div class="variant-meta">
+    <div class="variant-num"><span>10</span><span class="variant-title" style="font-family:var(--font-body);font-size:14px;color:var(--text);letter-spacing:0">Three-Card Grid</span></div>
+    <div><span class="variant-tag short">Short copy</span> <span class="variant-tag">Light · Card UI</span></div>
+  </div>
+  <p class="variant-sub" style="max-width:1100px">The 3 pillars broken out as micro-cards with icons. Pricing on the left, cards in the middle, CTA on the right. Most scannable of the set.</p>
+  <div class="variant-frame">
+    <div class="v10">
+      <div class="inner">
+        <div class="lead">
+          <div class="lead-kick">Lifetime</div>
+          <div class="lead-big">$10<small>once</small></div>
+        </div>
+        <div class="cards">
+          <div class="card"><i><i class="fas fa-eye-slash"></i></i><div><strong>Ad-free</strong><span>Every page, forever</span></div></div>
+          <div class="card"><i><i class="fas fa-envelope-open-text"></i></i><div><strong>Newsletter</strong><span>Subscriber-only weekly</span></div></div>
+          <div class="card"><i><i class="fas fa-heart"></i></i><div><strong>Support</strong><span>Independent coverage</span></div></div>
+        </div>
+        <a href="payment.html" class="cta">Subscribe</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="foot">
+  Ten designs, one product. Full working flow at <a href="home.html">home page</a> &middot; architecture at <a href="index.html">overview</a>.
+</div>
+
+</body>
+</html>
