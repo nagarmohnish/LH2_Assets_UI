@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Activating Ad-Free Access — Shark Tank Blog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Open+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{--cyan:#117fb0;--cyan-light:#1592cc;--nav-bg:#191c20;--bg:#0b0e13;--bg-card:#141922;--border:rgba(255,255,255,0.08);--text:#fff;--text-muted:rgba(255,255,255,0.62);--text-dim:rgba(255,255,255,0.38);--green:#10b981;--font-body:'Open Sans',sans-serif;--font-serif:'Newsreader',Georgia,serif;--font-mono:'JetBrains Mono',monospace}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none}
+
+.demo-strip{background:#050709;color:#fff;padding:8px 20px;text-align:center;font-size:12px;border-bottom:1px solid var(--border)}
+.demo-strip a{color:#7bc7e8;font-weight:600;margin-left:6px}
+.demo-strip .tag{display:inline-block;padding:2px 8px;background:rgba(17,127,176,0.2);border:1px solid rgba(17,127,176,0.4);border-radius:10px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#7bc7e8;margin-right:8px}
+.demo-strip code{background:rgba(17,127,176,0.15);color:#7bc7e8;padding:1px 6px;border-radius:3px;font-family:monospace}
+
+.main-nav{background:var(--nav-bg);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px;max-width:1100px;margin:0 auto;padding:0 20px}
+.logo img{height:40px;border-radius:4px}
+
+.page{flex:1;padding:60px 20px;display:flex;align-items:center;justify-content:center}
+.wrap{max-width:560px;width:100%;text-align:center}
+
+/* Activating state */
+.activating{padding:48px 40px;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;position:relative;overflow:hidden}
+.activating::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),var(--green),var(--cyan));background-size:200% 100%;animation:sweep 2s linear infinite}
+@keyframes sweep{from{background-position:0% 0}to{background-position:200% 0}}
+
+.spinner{width:72px;height:72px;border-radius:50%;border:3px solid rgba(17,127,176,0.15);border-top-color:var(--cyan);margin:0 auto 24px;animation:spin 0.9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.activating h1{font-family:var(--font-serif);font-size:26px;font-weight:600;margin-bottom:10px}
+.activating p{font-size:14.5px;color:var(--text-muted);margin-bottom:28px}
+
+.steps{display:flex;flex-direction:column;gap:10px;max-width:380px;margin:0 auto;text-align:left}
+.step{display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:8px;font-size:12.5px;color:var(--text-muted);font-family:var(--font-mono);transition:all 0.3s}
+.step.done{background:rgba(16,185,129,0.08);border-color:rgba(16,185,129,0.2);color:var(--green)}
+.step.done .step-dot{background:var(--green)}
+.step.active{background:rgba(17,127,176,0.08);border-color:rgba(17,127,176,0.2);color:var(--cyan)}
+.step.active .step-dot{background:var(--cyan);animation:pulse-dot 1.2s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(17,127,176,0.5)}50%{box-shadow:0 0 0 6px rgba(17,127,176,0)}}
+.step-dot{width:8px;height:8px;border-radius:50%;background:var(--text-dim);flex-shrink:0}
+.step-text{flex:1}
+.step i{color:var(--green);font-size:11px;opacity:0;transition:opacity 0.2s}
+.step.done i{opacity:1}
+
+/* Success state (hidden by default) */
+.success-state{display:none;padding:48px 40px;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;position:relative;overflow:hidden}
+.success-state.show{display:block;animation:fadeIn 0.4s ease-out}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.success-state::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),var(--cyan),transparent)}
+
+.check-big{width:88px;height:88px;border-radius:50%;background:rgba(16,185,129,0.12);border:2px solid rgba(16,185,129,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;color:var(--green);font-size:36px;animation:popIn 0.5s cubic-bezier(0.34,1.56,0.64,1)}
+@keyframes popIn{from{opacity:0;transform:scale(0.5)}to{opacity:1;transform:scale(1)}}
+
+.success-state h1{font-family:var(--font-serif);font-size:32px;font-weight:600;margin-bottom:12px;line-height:1.2}
+.success-state h1 .accent{color:var(--green);font-style:italic;font-weight:500}
+.success-state .sub{font-size:15px;color:var(--text-muted);margin-bottom:32px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.65}
+
+.user-chip{display:inline-flex;align-items:center;gap:10px;padding:10px 16px 10px 10px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:30px;margin-bottom:28px}
+.user-chip .avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),#0e5f85);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px}
+.user-chip .email{font-size:13px;font-weight:600}
+.user-chip .badge{padding:2px 8px;background:rgba(16,185,129,0.18);color:var(--green);border-radius:10px;font-size:10px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase}
+
+.continue-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;background:var(--cyan);color:#fff;border-radius:8px;font-size:14.5px;font-weight:700;transition:all 0.15s;box-shadow:0 6px 20px rgba(17,127,176,0.3)}
+.continue-btn:hover{background:var(--cyan-light);transform:translateY(-1px);box-shadow:0 10px 28px rgba(17,127,176,0.4)}
+.continue-btn i{transition:transform 0.15s}
+.continue-btn:hover i{transform:translateX(3px)}
+
+.state-change{margin-top:32px;padding:20px;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:10px;font-family:var(--font-mono);font-size:11.5px;line-height:1.7;color:var(--text-dim);text-align:left}
+.state-change .c{color:var(--text-dim);font-style:italic}
+.state-change .k{color:#a5b4fc}
+.state-change .s{color:#fcd34d}
+.state-change .method-get{color:var(--cyan)}
+
+@media (max-width:520px){
+  .activating,.success-state{padding:36px 24px}
+  .success-state h1{font-size:24px}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-strip"><span class="tag">Demo</span>Step 6 of 6 &mdash; <code>/sub-login?stb_magic={token}</code> &mdash; activation + auto-login. <a href="index.html">← Overview</a></div>
+
+<nav class="main-nav">
+  <div class="nav-inner">
+    <a href="home.html" class="logo"><img src="https://nagarmohnish.github.io/LH2_Assets_UI/shark-tank-blog/assets/images/shark_logo.jpeg" alt="STB"></a>
+  </div>
+</nav>
+
+<main class="page">
+  <div class="wrap">
+
+    <!-- ACTIVATING -->
+    <div class="activating" id="activating">
+      <div class="spinner"></div>
+      <h1>Activating ad-free access&hellip;</h1>
+      <p>Validating your login link.</p>
+
+      <div class="steps">
+        <div class="step active" id="s1"><span class="step-dot"></span><span class="step-text">Validating magic-link token</span><i class="fas fa-check"></i></div>
+        <div class="step" id="s2"><span class="step-dot"></span><span class="step-text">Looking up subscription by email</span><i class="fas fa-check"></i></div>
+        <div class="step" id="s3"><span class="step-dot"></span><span class="step-text">Creating WP user (first-time login)</span><i class="fas fa-check"></i></div>
+        <div class="step" id="s4"><span class="step-dot"></span><span class="step-text">Linking wp_stb_subscribers.user_id</span><i class="fas fa-check"></i></div>
+        <div class="step" id="s5"><span class="step-dot"></span><span class="step-text">Setting WP auth cookie</span><i class="fas fa-check"></i></div>
+      </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="success-state" id="success">
+      <div class="check-big"><i class="fas fa-check"></i></div>
+      <h1>You're all set. <span class="accent">Ads are gone.</span></h1>
+      <p class="sub">Welcome back. You're logged in and your monthly ad-free subscription is active on this device. The banner is hidden and every ad across Shark Tank Blog is removed.</p>
+
+      <div class="user-chip">
+        <div class="avatar" id="avatarEl">RE</div>
+        <div class="email" id="emailEl">reader@example.com</div>
+        <span class="badge">Supporter</span>
+      </div>
+
+      <div>
+        <a href="home.html?loggedIn=1" class="continue-btn">Go to Shark Tank Blog <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="state-change">
+        <div class="c">// Ad-hiding gate now returns true for this session</div>
+        <span class="method-get">GET</span> /any-page<br>
+        <span class="c">// Server-rendered window.STB_USER:</span><br>
+        { <span class="k">"id"</span>: <span class="s">1427</span>, <span class="k">"email_hash"</span>: <span class="s">"a7b3&hellip;"</span>, <span class="k">"sub_status"</span>: <span class="s">"active"</span>, <span class="k">"ad_free"</span>: <span class="s">true</span> }<br><br>
+        <span class="c">// Banner JS reads window.STB_USER.ad_free === true &mdash; hides banner</span><br>
+        <span class="c">// PHP ad-insertion hook short-circuits &mdash; no ad markup rendered</span>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script>
+// Simulate activation steps
+var steps = ['s1','s2','s3','s4','s5'];
+var delays = [600, 900, 1200, 1500, 1800];
+
+steps.forEach(function(id,i){
+  setTimeout(function(){
+    document.getElementById(id).classList.remove('active');
+    document.getElementById(id).classList.add('done');
+    if(steps[i+1]) document.getElementById(steps[i+1]).classList.add('active');
+  }, delays[i]);
+});
+
+// Show success state
+setTimeout(function(){
+  document.getElementById('activating').style.display = 'none';
+  document.getElementById('success').classList.add('show');
+}, 2400);
+
+// Populate email from URL or default
+(function(){
+  var p = new URLSearchParams(location.search);
+  var e = p.get('email') || 'reader@example.com';
+  document.getElementById('emailEl').textContent = e;
+  var initials = e.split('@')[0].slice(0,2).toUpperCase();
+  document.getElementById('avatarEl').textContent = initials;
+})();
+</script>
+
+</body>
+</html>

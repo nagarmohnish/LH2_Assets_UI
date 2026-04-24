@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subscribe — Monthly Supporter Membership</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root {
+  --stripe-blue: #635bff;
+  --stripe-pay-blue: #1a7fe3;
+  --link-green: #00d664;
+  --amazon-yellow: #ffcc01;
+  --cashapp-green: #00d54b;
+  --text:#30313d;
+  --text-sec:#6d7175;
+  --text-dim:#a5acb8;
+  --border:#e6e6e6;
+  --border-strong:#c0c0c0;
+  --bg-page:#fff;
+  --bg-left:#f6f9fc;
+  --radius:6px;
+  --font:'Open Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);background:var(--bg-page);color:var(--text);font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased;min-height:100vh}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+.demo-strip{background:#0a0d12;color:#fff;padding:7px 20px;text-align:center;font-size:11.5px}
+.demo-strip a{color:#7bc7e8;font-weight:600;margin-left:6px}
+.demo-strip .tag{display:inline-block;padding:2px 8px;background:rgba(17,127,176,0.2);border:1px solid rgba(17,127,176,0.4);border-radius:10px;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#7bc7e8;margin-right:8px}
+
+/* Main page - two columns like Stripe Checkout */
+.checkout{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 28px)}
+
+/* LEFT SIDE - order summary */
+.left{background:var(--bg-left);padding:56px 56px 40px;display:flex;flex-direction:column}
+.left-inner{max-width:420px;margin-left:auto;width:100%}
+.back-link{display:flex;align-items:center;gap:12px;color:var(--text-sec);margin-bottom:32px}
+.back-arrow{width:18px;height:18px;display:flex;align-items:center;justify-content:center;color:var(--text-sec);cursor:pointer}
+.back-arrow:hover{color:var(--text)}
+.merchant-row{display:flex;align-items:center;gap:10px}
+.merchant-logo{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#117fb0,#0e5f85);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.merchant-logo img{width:100%;height:100%;object-fit:cover}
+.merchant-name{font-size:15px;font-weight:600;color:var(--text)}
+
+.product-head{margin-top:20px;margin-bottom:8px}
+.product-desc{font-size:15px;color:var(--text-sec);line-height:1.4;margin-bottom:6px}
+.product-price{display:flex;align-items:flex-end;gap:8px}
+.price-big{font-size:38px;font-weight:500;color:var(--text);letter-spacing:-1.5px;line-height:1}
+.price-unit{font-size:13px;color:var(--text-sec);line-height:1.3;padding-bottom:4px;display:flex;flex-direction:column}
+.price-unit span{display:block}
+
+.currency-toggle{display:flex;gap:8px;margin-top:20px;max-width:400px}
+.currency-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 14px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);font-size:14px;font-weight:500;color:var(--text);transition:all 0.15s;cursor:pointer}
+.currency-btn.active{border-color:var(--text);border-width:2px;padding:10px 13px}
+.currency-btn:hover:not(.active){background:#fafafa}
+.currency-btn .flag{font-size:17px;line-height:1}
+
+.exchange-note{font-size:12.5px;color:var(--text-sec);margin-top:10px;line-height:1.4}
+
+.items-list{margin-top:40px}
+.item-row{display:flex;justify-content:space-between;align-items:flex-start;padding:4px 0}
+.item-info{flex:1}
+.item-name{font-size:14px;font-weight:500;color:var(--text);margin-bottom:2px}
+.item-sub{font-size:13px;color:var(--text-sec)}
+.item-price{font-size:14px;font-weight:500;color:var(--text);margin-left:12px;white-space:nowrap}
+
+.divider-h{height:1px;background:var(--border);margin:18px 0}
+.totals{display:flex;flex-direction:column;gap:8px}
+.total-line{display:flex;justify-content:space-between;font-size:14px;color:var(--text-sec)}
+.total-line.final{font-weight:600;color:var(--text);margin-top:8px;padding-top:12px;border-top:1px solid var(--border);font-size:15px}
+.total-line.final span:last-child{font-size:17px}
+
+/* RIGHT SIDE - payment */
+.right{padding:56px 56px 40px;background:#fff}
+.right-inner{max-width:400px;margin-right:auto;width:100%}
+
+/* Wallet buttons (top) */
+.wallets{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.wallet-btn{display:flex;align-items:center;justify-content:center;height:44px;border-radius:var(--radius);font-weight:600;font-size:15px;transition:filter 0.15s;cursor:pointer;gap:6px}
+.wallet-btn:hover{filter:brightness(0.95)}
+.wallet-btn.link{background:var(--link-green);color:#011e0f}
+.wallet-btn.link .link-icon{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:#011e0f;color:var(--link-green);border-radius:50%;font-size:10px;font-weight:700}
+.wallet-btn.amazon{background:var(--amazon-yellow);color:#232f3e;font-family:'Helvetica Neue','Arial',sans-serif}
+.wallet-btn.amazon .smile{font-size:13px;font-style:italic;font-weight:400;display:inline-flex;align-items:flex-end;gap:1px}
+.wallet-btn.amazon .smile::after{content:'';width:22px;height:10px;border:1.5px solid #232f3e;border-top:none;border-radius:0 0 22px 22px;margin-left:2px;transform:translateY(-1px)}
+
+.or-divider{display:flex;align-items:center;gap:12px;margin:18px 0;font-size:13px;color:var(--text-dim);letter-spacing:0.3px}
+.or-divider::before,.or-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* Sections */
+.section-label{font-size:14.5px;font-weight:500;color:var(--text);margin-bottom:8px}
+
+/* Contact info field */
+.contact-field{background:#f6f9fc;border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;display:flex;align-items:center;gap:0;margin-bottom:22px}
+.contact-field-label{font-size:14px;color:var(--text-sec);width:100px;flex-shrink:0}
+.contact-field-value{font-size:14px;color:var(--text);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* Payment methods */
+.pm-group{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.pm-card{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color 0.15s}
+.pm-card.active{border-color:var(--text);border-width:2px}
+
+.pm-head{display:flex;align-items:center;gap:14px;padding:13px 16px;cursor:pointer}
+.pm-card.active .pm-head{padding:12px 15px}
+.pm-radio{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--border-strong);position:relative;flex-shrink:0}
+.pm-card.active .pm-radio{border-color:var(--text);border-width:5px;background:#fff}
+.pm-icon{display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;color:var(--text)}
+.pm-icon-card{background:var(--text);color:#fff;border-radius:3px;padding:3px 5px}
+.pm-icon-cashapp{background:var(--cashapp-green);color:#fff;border-radius:5px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.pm-icon-bank{color:var(--text-sec)}
+.pm-label{font-size:14px;font-weight:500;color:var(--text);flex:1}
+
+.pm-body{padding:0 16px 16px;display:none}
+.pm-card.active .pm-body{display:block;padding:0 15px 15px}
+.pm-form-label{font-size:13px;font-weight:500;color:var(--text);margin:12px 0 6px}
+.pm-input{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:var(--radius);font-size:14px;font-family:inherit;color:var(--text);outline:none;transition:all 0.15s;background:#fff}
+.pm-input:focus{border-color:var(--stripe-blue);box-shadow:0 0 0 1px var(--stripe-blue)}
+.pm-input::placeholder{color:var(--text-dim)}
+
+.card-num-wrap{position:relative}
+.card-num-wrap .pm-input{padding-right:130px}
+.card-brands{position:absolute;right:10px;top:50%;transform:translateY(-50%);display:flex;gap:3px;align-items:center}
+.card-brands .brand{height:18px;padding:0 5px;border-radius:3px;display:flex;align-items:center;font-size:9px;font-weight:700;letter-spacing:0.3px}
+.card-brand-visa{background:#1a1f71;color:#fff}
+.card-brand-mc{background:#eb001b;color:#fff;position:relative}
+.card-brand-amex{background:#006fcf;color:#fff}
+.card-brand-jcb{background:linear-gradient(90deg,#00aef4 33%,#de1e27 33% 66%,#009e5f 66%);color:#fff}
+
+.card-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.card-row .pm-input{padding-right:38px}
+.cvc-wrap{position:relative}
+.cvc-wrap::after{content:'';position:absolute;right:10px;top:50%;transform:translateY(-50%);width:22px;height:14px;background:linear-gradient(180deg,#fff 0%,#fff 35%,#a5acb8 35%,#a5acb8 60%,#fff 60%);border:1px solid var(--border-strong);border-radius:2px;pointer-events:none;background-image:linear-gradient(90deg,transparent 3px,#a5acb8 3px,#a5acb8 6px,transparent 6px,transparent 9px,#a5acb8 9px,#a5acb8 12px,transparent 12px);background-size:14px 14px;background-repeat:no-repeat;background-position:center}
+
+.pm-select{position:relative}
+.pm-select select{width:100%;padding:11px 14px;padding-right:36px;border:1px solid var(--border);border-radius:var(--radius);font-size:14px;font-family:inherit;color:var(--text);background:#fff;appearance:none;outline:none;cursor:pointer}
+.pm-select::after{content:'';position:absolute;right:12px;top:50%;transform:translateY(-50%) rotate(45deg);width:6px;height:6px;border-right:1.5px solid var(--text-sec);border-bottom:1.5px solid var(--text-sec);pointer-events:none;margin-top:-3px}
+
+/* Save my info */
+.save-info{display:flex;gap:10px;padding:14px 16px;border:1px solid var(--border);border-radius:var(--radius);margin-top:16px}
+.save-info-check{width:18px;height:18px;border:1.5px solid var(--border-strong);border-radius:3px;cursor:pointer;flex-shrink:0;margin-top:1px;background:#fff;position:relative;transition:all 0.15s}
+.save-info-check.checked{background:var(--stripe-blue);border-color:var(--stripe-blue)}
+.save-info-check.checked::after{content:'';position:absolute;left:5px;top:2px;width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.save-info-text{font-size:13.5px;line-height:1.45}
+.save-info-text strong{color:var(--text);font-weight:600;display:block;margin-bottom:2px;font-size:14px}
+.save-info-text span{color:var(--text-sec)}
+.save-info-text span u{text-decoration:underline;font-weight:500}
+
+/* Subscribe button */
+.subscribe-btn{width:100%;padding:13px;background:var(--stripe-pay-blue);color:#fff;border-radius:var(--radius);font-size:15px;font-weight:600;margin-top:22px;transition:background 0.15s}
+.subscribe-btn:hover{background:#176ac3}
+.subscribe-btn.loading{background:#6ba4d9;cursor:not-allowed;display:flex;align-items:center;justify-content:center;gap:8px}
+.subscribe-btn.loading::before{content:'';width:14px;height:14px;border:2px solid rgba(255,255,255,0.4);border-top-color:#fff;border-radius:50%;animation:spin 0.6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.subscribe-legal{font-size:12.5px;color:var(--text-sec);line-height:1.5;text-align:center;margin-top:14px}
+.subscribe-legal strong{color:var(--text);font-weight:500}
+
+/* Footer */
+.checkout-foot{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:28px;font-size:12.5px;color:var(--text-dim)}
+.checkout-foot .powered{display:flex;align-items:center;gap:4px}
+.checkout-foot .powered strong{color:#5469d4;font-weight:600;letter-spacing:-0.3px;font-size:13px}
+.checkout-foot .divider-v{width:1px;height:14px;background:var(--border)}
+.checkout-foot a:hover{color:var(--text)}
+
+/* Responsive */
+@media (max-width:900px){
+  .checkout{grid-template-columns:1fr}
+  .left{padding:32px 24px;background:#fff;border-bottom:1px solid var(--border)}
+  .right{padding:32px 24px}
+  .left-inner,.right-inner{max-width:100%;margin:0 auto}
+  .back-link{margin-bottom:20px}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-strip"><span class="tag">Demo</span>Subscribe &mdash; Stripe Checkout replica for Shark Tank Blog (monthly). <a href="index.html">← Architecture overview</a></div>
+
+<div class="checkout">
+
+  <!-- LEFT: Order Summary -->
+  <section class="left">
+    <div class="left-inner">
+      <div class="back-link">
+        <a href="home.html" class="back-arrow" aria-label="Back"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a>
+        <div class="merchant-row">
+          <div class="merchant-logo"><img src="https://nagarmohnish.github.io/LH2_Assets_UI/shark-tank-blog/assets/images/shark_logo.jpeg" alt=""></div>
+          <span class="merchant-name">Shark Tank Blog</span>
+        </div>
+      </div>
+
+      <div class="product-head">
+        <div class="product-desc">Subscribe to Go Ad-Free on Shark Tank Blog</div>
+        <div class="product-price">
+          <span class="price-big">$1.00</span>
+          <span class="price-unit"><span>per</span><span>month</span></span>
+        </div>
+      </div>
+
+      <div class="currency-toggle">
+        <button class="currency-btn" onclick="setCurrency('inr',this)"><span class="flag">🇮🇳</span> INR</button>
+        <button class="currency-btn active" onclick="setCurrency('usd',this)"><span class="flag">🇺🇸</span> USD</button>
+      </div>
+      <p class="exchange-note">Exchange rate and fees of your bank may apply</p>
+
+      <div class="items-list">
+        <div class="item-row">
+          <div class="item-info">
+            <div class="item-name">Go Ad-Free on Shark Tank Blog</div>
+            <div class="item-sub">Billed monthly &middot; Cancel anytime</div>
+          </div>
+          <div class="item-price">$1.00 / mo</div>
+        </div>
+
+        <div class="divider-h"></div>
+
+        <div class="totals">
+          <div class="total-line"><span>Subtotal</span><span>$1.00</span></div>
+          <div class="total-line"><span>Tax</span><span>$0.00</span></div>
+          <div class="total-line final"><span>Total due today</span><span>$1.00</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIGHT: Payment -->
+  <section class="right">
+    <div class="right-inner">
+
+      <!-- Wallets -->
+      <div class="wallets">
+        <button class="wallet-btn link">
+          Pay with <span class="link-icon">▶</span><strong style="margin-left:3px">link</strong>
+        </button>
+        <button class="wallet-btn amazon">
+          amazon <span class="smile">pay</span>
+        </button>
+      </div>
+
+      <div class="or-divider">OR</div>
+
+      <!-- Contact -->
+      <div class="section-label">Contact information</div>
+      <div class="contact-field">
+        <span class="contact-field-label">Email</span>
+        <span class="contact-field-value" id="emailShow">mohnish.clive@gmail.com</span>
+      </div>
+
+      <!-- Payment methods -->
+      <div class="section-label">Payment method</div>
+      <div class="pm-group">
+
+        <!-- CARD (active) -->
+        <div class="pm-card active" data-pm="card">
+          <div class="pm-head" onclick="selectPM(this)">
+            <span class="pm-radio"></span>
+            <span class="pm-icon"><span class="pm-icon-card"><i class="fas fa-credit-card" style="font-size:11px"></i></span></span>
+            <span class="pm-label">Card</span>
+          </div>
+          <div class="pm-body">
+            <div class="pm-form-label">Card information</div>
+            <div class="card-num-wrap">
+              <input class="pm-input" type="text" placeholder="1234 1234 1234 1234" maxlength="19">
+              <div class="card-brands">
+                <span class="brand card-brand-visa">VISA</span>
+                <span class="brand card-brand-mc" title="Mastercard">MC</span>
+                <span class="brand card-brand-amex">AMEX</span>
+                <span class="brand card-brand-jcb">JCB</span>
+              </div>
+            </div>
+            <div class="card-row">
+              <input class="pm-input" type="text" placeholder="MM / YY" maxlength="7">
+              <div class="cvc-wrap"><input class="pm-input" type="text" placeholder="CVC" maxlength="4"></div>
+            </div>
+            <div class="pm-form-label">Cardholder name</div>
+            <input class="pm-input" type="text" placeholder="Full name on card">
+            <div class="pm-form-label">Country or region</div>
+            <div class="pm-select">
+              <select>
+                <option>India</option>
+                <option>United States</option>
+                <option>United Kingdom</option>
+                <option>Canada</option>
+                <option>Australia</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- CASH APP PAY -->
+        <div class="pm-card" data-pm="cashapp">
+          <div class="pm-head" onclick="selectPM(this)">
+            <span class="pm-radio"></span>
+            <span class="pm-icon"><span class="pm-icon-cashapp">$</span></span>
+            <span class="pm-label">Cash App Pay</span>
+          </div>
+        </div>
+
+        <!-- BANK -->
+        <div class="pm-card" data-pm="bank">
+          <div class="pm-head" onclick="selectPM(this)">
+            <span class="pm-radio"></span>
+            <span class="pm-icon pm-icon-bank"><i class="fas fa-landmark"></i></span>
+            <span class="pm-label">Bank</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Save info -->
+      <div class="save-info">
+        <div class="save-info-check" id="saveCheck" onclick="this.classList.toggle('checked')"></div>
+        <div class="save-info-text">
+          <strong>Save my information for faster checkout</strong>
+          <span>Pay securely at Shark Tank Blog and everywhere <u>Link</u> is accepted.</span>
+        </div>
+      </div>
+
+      <!-- Subscribe button -->
+      <button class="subscribe-btn" id="subscribeBtn" onclick="completePayment()">Subscribe</button>
+      <p class="subscribe-legal">By subscribing, you authorize <strong>Shark Tank Blog</strong> to charge you <strong>$1.00 per month</strong> for ad-free access until you cancel.</p>
+
+      <!-- Footer -->
+      <div class="checkout-foot">
+        <span class="powered">Powered by <strong>stripe</strong></span>
+        <span class="divider-v"></span>
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+function setCurrency(c, btn){
+  document.querySelectorAll('.currency-btn').forEach(function(b){b.classList.remove('active')});
+  btn.classList.add('active');
+}
+function selectPM(head){
+  var card = head.closest('.pm-card');
+  document.querySelectorAll('.pm-card').forEach(function(c){c.classList.remove('active')});
+  card.classList.add('active');
+}
+function completePayment(){
+  var btn = document.getElementById('subscribeBtn');
+  btn.classList.add('loading');
+  btn.textContent = 'Processing';
+  setTimeout(function(){
+    location.href = 'success.html?email=' + encodeURIComponent(document.getElementById('emailShow').textContent);
+  }, 900);
+}
+// Populate email from URL if provided
+(function(){
+  var p = new URLSearchParams(location.search);
+  var e = p.get('email');
+  if(e) document.getElementById('emailShow').textContent = e;
+})();
+</script>
+
+</body>
+</html>

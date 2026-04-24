@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Received — Shark Tank Blog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Open+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{--cyan:#117fb0;--cyan-light:#1592cc;--nav-bg:#191c20;--bg:#0b0e13;--bg-card:#141922;--border:rgba(255,255,255,0.08);--text:#fff;--text-muted:rgba(255,255,255,0.62);--text-dim:rgba(255,255,255,0.38);--green:#10b981;--font-body:'Open Sans',sans-serif;--font-serif:'Newsreader',Georgia,serif;--font-mono:'JetBrains Mono',monospace}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none}
+
+.demo-strip{background:#050709;color:#fff;padding:8px 20px;text-align:center;font-size:12px;border-bottom:1px solid var(--border)}
+.demo-strip a{color:#7bc7e8;font-weight:600;margin-left:6px}
+.demo-strip .tag{display:inline-block;padding:2px 8px;background:rgba(17,127,176,0.2);border:1px solid rgba(17,127,176,0.4);border-radius:10px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#7bc7e8;margin-right:8px}
+
+.main-nav{background:var(--nav-bg);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px;max-width:1100px;margin:0 auto;padding:0 20px}
+.logo img{height:40px;border-radius:4px}
+
+.page{flex:1;padding:60px 20px;display:flex;align-items:center;justify-content:center}
+.wrap{max-width:560px;width:100%}
+
+.success-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:48px 40px;text-align:center;position:relative;overflow:hidden}
+.success-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),var(--cyan),transparent)}
+
+.check{width:72px;height:72px;border-radius:50%;background:rgba(16,185,129,0.12);border:2px solid rgba(16,185,129,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;color:var(--green);font-size:30px;animation:popIn 0.5s cubic-bezier(0.34,1.56,0.64,1)}
+@keyframes popIn{from{opacity:0;transform:scale(0.5)}to{opacity:1;transform:scale(1)}}
+
+.success-card h1{font-family:var(--font-serif);font-size:30px;font-weight:600;letter-spacing:-0.01em;margin-bottom:12px;line-height:1.2}
+.success-card h1 .accent{color:var(--cyan);font-style:italic;font-weight:500}
+.success-card .sub{font-size:15px;color:var(--text-muted);margin-bottom:32px;line-height:1.65;max-width:440px;margin-left:auto;margin-right:auto}
+
+.receipt{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin-bottom:28px;text-align:left}
+.receipt-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:13.5px}
+.receipt-row:not(:last-child){border-bottom:1px solid rgba(255,255,255,0.04)}
+.receipt-label{color:var(--text-dim)}
+.receipt-value{color:var(--text);font-weight:600;font-family:var(--font-mono);font-size:12.5px}
+.receipt-row .badge-paid{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;background:rgba(16,185,129,0.12);border-radius:20px;color:var(--green);font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;font-family:var(--font-body)}
+.receipt-row .badge-paid i{font-size:8px}
+
+.link-sent{background:linear-gradient(135deg,rgba(17,127,176,0.08),rgba(17,127,176,0.03));border:1px solid rgba(17,127,176,0.2);border-radius:10px;padding:20px 22px;margin-bottom:24px;display:flex;gap:14px;text-align:left}
+.link-sent-icon{width:40px;height:40px;border-radius:10px;background:rgba(17,127,176,0.18);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(17,127,176,0.4)}50%{box-shadow:0 0 0 8px rgba(17,127,176,0)}}
+.link-sent-text{flex:1;min-width:0}
+.link-sent-text strong{display:block;font-family:var(--font-serif);font-size:15px;font-weight:600;margin-bottom:4px;color:#fff}
+.link-sent-text p{font-size:13px;color:var(--text-muted);line-height:1.55;margin:0}
+.link-sent-email{display:inline-block;padding:2px 8px;background:rgba(17,127,176,0.12);border-radius:4px;font-family:var(--font-mono);font-size:12px;color:var(--cyan);margin-top:6px}
+
+.preview-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;background:transparent;border:1px solid var(--border);color:var(--text-muted);font-size:13px;font-weight:600;border-radius:8px;transition:all 0.15s}
+.preview-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+
+.meta-row{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:24px;padding-top:24px;border-top:1px solid var(--border);font-size:12px;color:var(--text-dim)}
+.meta-row span{display:flex;align-items:center;gap:5px}
+.meta-row i{font-size:11px}
+
+/* Email preview modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:99999;padding:20px}
+.modal-overlay.active{display:flex}
+.modal{background:#fff;color:#333;border-radius:12px;max-width:540px;width:100%;max-height:85vh;overflow:hidden;box-shadow:0 28px 70px rgba(0,0,0,0.4);animation:modalIn 0.25s ease-out}
+@keyframes modalIn{from{opacity:0;transform:scale(0.95) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-head{background:#f1f5f9;padding:14px 20px;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between}
+.modal-head-title{font-size:13px;font-weight:600;color:#475569;display:flex;align-items:center;gap:8px}
+.modal-close{background:#e2e8f0;border:none;width:26px;height:26px;border-radius:50%;color:#475569;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:#cbd5e1}
+.email-frame{padding:0;max-height:calc(85vh - 50px);overflow-y:auto}
+.email-head{padding:24px 30px 20px;border-bottom:1px solid #e5e7eb;font-size:13px;color:#64748b}
+.email-head .row{margin-bottom:6px}
+.email-head strong{color:#1e293b;font-weight:600;margin-right:6px;display:inline-block;min-width:50px}
+.email-body{padding:30px;font-family:'Open Sans',sans-serif;color:#1e293b}
+.email-logo{display:flex;align-items:center;gap:10px;margin-bottom:24px}
+.email-logo img{height:36px;border-radius:4px}
+.email-logo span{font-family:var(--font-serif);font-weight:600;font-size:17px}
+.email-body h2{font-family:var(--font-serif);font-size:26px;font-weight:600;margin-bottom:12px;line-height:1.2;color:#1e293b}
+.email-body p{font-size:15px;line-height:1.65;color:#475569;margin-bottom:20px}
+.email-cta{display:inline-block;padding:14px 32px;background:var(--cyan);color:#fff;border-radius:8px;font-size:14px;font-weight:700;letter-spacing:0.3px;margin:10px 0 16px;text-decoration:none}
+.email-cta:hover{background:var(--cyan-light)}
+.email-link-fallback{font-family:var(--font-mono);font-size:11.5px;color:#64748b;background:#f1f5f9;padding:10px 12px;border-radius:6px;word-break:break-all;margin-top:20px}
+.email-foot{font-size:12px;color:#94a3b8;line-height:1.6;margin-top:24px;padding-top:20px;border-top:1px solid #e5e7eb}
+
+@media (max-width:520px){
+  .success-card{padding:32px 24px}
+  .success-card h1{font-size:24px}
+  .link-sent{flex-direction:column;text-align:center;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-strip"><span class="tag">Demo</span>Step 5 of 6 &mdash; <code style="background:rgba(17,127,176,0.15);color:#7bc7e8;padding:1px 6px;border-radius:3px;font-family:monospace">/ad-free-success</code> &mdash; magic link auto-sent. <a href="index.html">← Overview</a></div>
+
+<nav class="main-nav">
+  <div class="nav-inner">
+    <a href="home.html" class="logo"><img src="https://nagarmohnish.github.io/LH2_Assets_UI/shark-tank-blog/assets/images/shark_logo.jpeg" alt="STB"></a>
+  </div>
+</nav>
+
+<main class="page">
+  <div class="wrap">
+    <div class="success-card">
+      <div class="check"><i class="fas fa-check"></i></div>
+      <h1 id="titleEl">Subscription active.<br><span class="accent">Check your inbox.</span></h1>
+      <p class="sub" id="subEl">Your monthly ad-free subscription is active. We've just sent a magic link to your email &mdash; click it to sign in and activate on this device.</p>
+
+      <!-- Receipt -->
+      <div class="receipt" id="receiptEl">
+        <div class="receipt-row"><span class="receipt-label">Amount</span><span class="receipt-value">$1.00 USD / mo</span></div>
+        <div class="receipt-row"><span class="receipt-label">Plan</span><span class="receipt-value">Monthly Ad-Free</span></div>
+        <div class="receipt-row"><span class="receipt-label">Next bill</span><span class="receipt-value" id="nextBillEl">—</span></div>
+        <div class="receipt-row"><span class="receipt-label">Subscription ID</span><span class="receipt-value">sub_3N8kL2_a7bC9</span></div>
+        <div class="receipt-row"><span class="receipt-label">Status</span><span><span class="badge-paid"><i class="fas fa-check"></i> Active</span></span></div>
+      </div>
+
+      <!-- Magic link status -->
+      <div class="link-sent">
+        <div class="link-sent-icon"><i class="fas fa-paper-plane"></i></div>
+        <div class="link-sent-text">
+          <strong>Magic link sent</strong>
+          <p>Check your inbox in the next minute. Tap the link to activate ad-free access on this device. The link works for 30 minutes.</p>
+          <span class="link-sent-email" id="emailEl">reader@example.com</span>
+        </div>
+      </div>
+
+      <button class="preview-btn" onclick="document.getElementById('modal').classList.add('active')">
+        <i class="fas fa-eye"></i> Preview the email we sent
+      </button>
+
+      <div class="meta-row">
+        <span><i class="fas fa-clock"></i> Link expires in 30 min</span>
+        <span><i class="fas fa-shield-alt"></i> Single-use token</span>
+        <span><i class="fas fa-sync"></i> <a href="success.html" style="color:var(--text-muted);border-bottom:1px dashed var(--text-dim)">Resend</a></span>
+      </div>
+    </div>
+
+    <!-- What happens next -->
+    <div style="margin-top:32px;padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px">
+      <h4 style="font-family:var(--font-serif);font-size:16px;font-weight:600;margin-bottom:14px;color:#fff">What's happening behind the scenes</h4>
+      <ol style="list-style:none;padding:0;counter-reset:step">
+        <li style="display:flex;gap:12px;padding:8px 0;font-size:13.5px;color:var(--text-muted);counter-increment:step;line-height:1.55">
+          <span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:rgba(17,127,176,0.15);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:var(--font-mono)" data-num></span>
+          Frontend auto-fires <code style="background:rgba(17,127,176,0.12);color:var(--cyan);padding:1px 6px;border-radius:3px;font-family:var(--font-mono);font-size:12px">POST /sub/send-login</code> on page load
+        </li>
+        <li style="display:flex;gap:12px;padding:8px 0;font-size:13.5px;color:var(--text-muted);counter-increment:step;line-height:1.55">
+          <span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:rgba(17,127,176,0.15);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:var(--font-mono)" data-num></span>
+          Stripe webhook fires asynchronously &mdash; inserts subscription row into <code style="background:rgba(17,127,176,0.12);color:var(--cyan);padding:1px 6px;border-radius:3px;font-family:var(--font-mono);font-size:12px">wp_stb_subscribers</code>
+        </li>
+        <li style="display:flex;gap:12px;padding:8px 0;font-size:13.5px;color:var(--text-muted);counter-increment:step;line-height:1.55">
+          <span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:rgba(17,127,176,0.15);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:var(--font-mono)" data-num></span>
+          Magic-link token stored in WP Transients (SHA-256 hashed, 30-min TTL)
+        </li>
+        <li style="display:flex;gap:12px;padding:8px 0;font-size:13.5px;color:var(--text-muted);counter-increment:step;line-height:1.55">
+          <span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:rgba(17,127,176,0.15);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:var(--font-mono)" data-num></span>
+          Email sent via <code style="background:rgba(17,127,176,0.12);color:var(--cyan);padding:1px 6px;border-radius:3px;font-family:var(--font-mono);font-size:12px">wp_mail</code> &mdash; user clicks, lands on <code style="background:rgba(17,127,176,0.12);color:var(--cyan);padding:1px 6px;border-radius:3px;font-family:var(--font-mono);font-size:12px">/sub-login</code>
+        </li>
+      </ol>
+      <div style="text-align:center;margin-top:18px">
+        <a href="activate.html" style="display:inline-flex;align-items:center;gap:8px;padding:10px 22px;background:var(--cyan);color:#fff;border-radius:6px;font-size:13px;font-weight:600">
+          Simulate clicking the email link <i class="fas fa-arrow-right" style="font-size:11px"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Email preview modal -->
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)this.classList.remove('active')">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-head-title"><i class="fas fa-envelope"></i> Inbox &mdash; Shark Tank Blog</div>
+      <button class="modal-close" onclick="document.getElementById('modal').classList.remove('active')">&times;</button>
+    </div>
+    <div class="email-frame">
+      <div class="email-head">
+        <div class="row"><strong>From:</strong> The Shark Tank Blog &lt;hello@sharktankblog.com&gt;</div>
+        <div class="row"><strong>To:</strong> <span id="toEl">reader@example.com</span></div>
+        <div class="row"><strong>Subject:</strong> Your monthly ad-free subscription is ready</div>
+      </div>
+      <div class="email-body">
+        <div class="email-logo">
+          <img src="https://nagarmohnish.github.io/LH2_Assets_UI/shark-tank-blog/assets/images/shark_logo.jpeg" alt="STB">
+          <span>The Shark Tank Blog</span>
+        </div>
+        <h2>You're in. Tap below to activate.</h2>
+        <p>Thanks for supporting independent Shark Tank coverage. Your $1/month subscription is active &mdash; your ad-free access is ready to activate.</p>
+        <p>Click the button below to sign in on this device. The link works for <strong>30 minutes</strong> and is <strong>single-use</strong>.</p>
+        <p style="text-align:center"><a href="activate.html" class="email-cta">Activate ad-free access</a></p>
+        <p style="font-size:13px;color:#64748b">Or paste this link into your browser:</p>
+        <div class="email-link-fallback">https://sharktankblog.com/sub-login?stb_magic=a7b3c8e2f4d9g1h5i6j7k8l9m0n1o2p3q4r5s6t7u8v9w0x1y2z3</div>
+        <div class="email-foot">
+          If you didn't request this, you can ignore this email. The link will expire in 30 minutes.<br>
+          This email was sent to <span id="toEl2">reader@example.com</span>.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// numbered list helper (CSS counter)
+document.querySelectorAll('[data-num]').forEach(function(el,i){el.textContent=i+1});
+
+// populate email from URL + next bill date
+(function(){
+  var p = new URLSearchParams(location.search);
+  var e = p.get('email') || 'reader@example.com';
+  document.getElementById('emailEl').textContent = e;
+  document.getElementById('toEl').textContent = e;
+  document.getElementById('toEl2').textContent = e;
+
+  // Next bill = today + 1 month
+  var d = new Date();
+  d.setMonth(d.getMonth() + 1);
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var nb = document.getElementById('nextBillEl');
+  if (nb) nb.textContent = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+
+  // Flow B state (came from blocked / already subscribed)
+  if (p.get('from') === 'blocked') {
+    document.getElementById('titleEl').innerHTML = 'Link sent.<br><span class="accent">Check your inbox.</span>';
+    document.getElementById('subEl').innerHTML = "You're already subscribed &mdash; we just sent your sign-in link. Click it to activate ad-free on this device.";
+    document.getElementById('receiptEl').style.display = 'none';
+  }
+})();
+
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.getElementById('modal').classList.remove('active')});
+</script>
+
+</body>
+</html>
