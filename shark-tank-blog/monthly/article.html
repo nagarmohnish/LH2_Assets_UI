@@ -369,8 +369,8 @@
         .promo-cta:hover { background:var(--cyan-hover,#1592cc); color:#fff !important; }
         .promo-close { position:absolute; top:14px; right:16px; background:none; border:none; color:rgba(255,255,255,0.35); cursor:pointer; padding:6px; border-radius:4px; transition:all 0.15s; display:flex; align-items:center; justify-content:center; }
         .promo-close:hover { color:#fff; background:rgba(255,255,255,0.06); }
-        /* Mobile-only value line — shown in place of the 3-card grid on narrow screens */
-        .promo-mobile-line { display:none; }
+        /* Mobile-only unified row — hidden on desktop */
+        .promo-mobile-single { display:none; }
 
         @media (max-width:992px) {
           /* Tablet: stack cards under price+cta */
@@ -384,34 +384,27 @@
           .promo-close { top:12px; right:14px; }
         }
         @media (max-width:720px) {
-          /* Mobile: compact two-line banner — tagline pillars + price/CTA */
-          .promo-strip-inner { padding:9px 34px 10px 14px; }
+          /* Mobile: single unified row — value text (with inline price) + CTA */
+          .promo-strip-inner { padding:10px 34px 10px 14px; }
           .promo-tagline { display:none; }
-          .promo-cards { display:none; }
-          .promo-mobile-line { display:flex; align-items:center; justify-content:center; gap:6px; margin-bottom:8px; flex-wrap:wrap; font-size:11px; color:rgba(255,255,255,0.6); letter-spacing:0.1px; line-height:1.2; }
-          .promo-mobile-line strong { color:#fff; font-weight:600; font-family:'Roboto Slab',Georgia,serif; font-style:italic; }
-          .promo-mobile-line .pill { display:inline-flex; align-items:center; gap:4px; padding:2px 7px; background:rgba(17,127,176,0.12); border:1px solid rgba(17,127,176,0.22); color:rgba(255,255,255,0.78); border-radius:10px; font-size:10px; font-weight:500; }
-          .promo-mobile-line .pill i { color:var(--cyan,#117fb0); font-size:9px; }
-          .promo-mobile-line .sep { color:rgba(255,255,255,0.2); font-size:9px; }
-
-          /* Price row: inline kick + price, balanced with CTA */
-          .promo-row { flex-wrap:nowrap; gap:12px; align-items:center; justify-content:space-between; row-gap:0; }
-          .promo-lead { padding-right:0; border-right:none; flex:0 0 auto; display:flex; align-items:baseline; gap:8px; }
-          .promo-lead-kick { font-size:9px; letter-spacing:1.2px; margin-bottom:0; color:var(--cyan,#117fb0); }
-          .promo-lead-big { font-size:22px; letter-spacing:-0.3px; line-height:1; }
-          .promo-lead-big small { font-size:12px; margin-left:2px; color:rgba(255,255,255,0.55); }
-          .promo-cta { padding:8px 18px; font-size:13px; border-radius:6px; order:0; margin-left:0; flex:0 0 auto; }
-          .promo-close { top:8px; right:10px; padding:3px; }
+          .promo-row { display:none; }
+          .promo-mobile-single { display:flex; align-items:center; gap:12px; }
+          .promo-mobile-copy { flex:1; min-width:0; display:flex; flex-direction:column; gap:2px; }
+          .promo-mobile-copy strong { color:#fff; font-family:'Roboto Slab',Georgia,serif; font-weight:700; font-size:14px; line-height:1.2; letter-spacing:-0.1px; }
+          .promo-mobile-copy strong .price { color:var(--cyan,#117fb0); font-style:italic; font-weight:700; }
+          .promo-mobile-copy span { font-size:11px; color:rgba(255,255,255,0.55); line-height:1.35; }
+          .promo-mobile-cta { padding:9px 16px; background:var(--cyan,#117fb0); color:#fff !important; border-radius:6px; font-size:13px; font-weight:700; white-space:nowrap; text-decoration:none !important; display:inline-flex; align-items:center; gap:6px; flex-shrink:0; transition:background 0.15s; }
+          .promo-mobile-cta:hover { background:var(--cyan-hover,#1592cc); color:#fff !important; }
+          .promo-mobile-cta i { font-size:10px; }
+          .promo-close { top:50%; right:10px; transform:translateY(-50%); padding:3px; }
         }
         @media (max-width:380px) {
-          .promo-strip-inner { padding:8px 30px 9px 12px; }
-          .promo-mobile-line { font-size:10.5px; gap:4px; margin-bottom:6px; }
-          .promo-mobile-line .pill { font-size:9.5px; padding:2px 6px; }
-          .promo-lead { gap:6px; }
-          .promo-lead-kick { font-size:8.5px; }
-          .promo-lead-big { font-size:19px; }
-          .promo-lead-big small { font-size:11px; }
-          .promo-cta { padding:7px 14px; font-size:12.5px; }
+          .promo-strip-inner { padding:9px 30px 9px 12px; }
+          .promo-mobile-single { gap:10px; }
+          .promo-mobile-copy strong { font-size:13px; }
+          .promo-mobile-copy span { font-size:10.5px; }
+          .promo-mobile-cta { padding:8px 14px; font-size:12.5px; }
+          .promo-mobile-cta i { display:none; }
         }
 
         /* ---- EXIT-INTENT MODAL ---- */
@@ -488,12 +481,13 @@
             <div class="promo-tagline">
                 Become a <span class="accent">monthly supporter</span> of The Shark Tank Blog <span class="dot">&middot;</span> Keep our coverage independent, writer-run, and ad-free.
             </div>
-            <!-- Mobile-only value line -->
-            <div class="promo-mobile-line">
-                <strong>Support STB</strong>
-                <span class="sep">·</span>
-                <span class="pill"><i class="fas fa-eye-slash"></i> Ad-free</span>
-                <span class="pill"><i class="fas fa-envelope-open-text"></i> Newsletter</span>
+            <!-- Mobile-only unified row: value copy + CTA -->
+            <div class="promo-mobile-single">
+                <div class="promo-mobile-copy">
+                    <strong>Read ad-free for <span class="price">$1/month</span></strong>
+                    <span>Support independent Shark Tank coverage</span>
+                </div>
+                <a href="payment.html" class="promo-mobile-cta">Subscribe <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="promo-row">
                 <div class="promo-lead">
