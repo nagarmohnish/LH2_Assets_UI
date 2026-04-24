@@ -385,28 +385,33 @@
         }
         @media (max-width:720px) {
           /* Mobile: compact two-line banner — tagline pillars + price/CTA */
-          .promo-strip-inner { padding:8px 38px 9px 14px; }
+          .promo-strip-inner { padding:9px 34px 10px 14px; }
           .promo-tagline { display:none; }
           .promo-cards { display:none; }
-          .promo-mobile-line { display:flex; align-items:center; justify-content:center; gap:6px; margin-bottom:6px; flex-wrap:wrap; font-size:11px; color:rgba(255,255,255,0.6); letter-spacing:0.1px; line-height:1.2; }
+          .promo-mobile-line { display:flex; align-items:center; justify-content:center; gap:6px; margin-bottom:8px; flex-wrap:wrap; font-size:11px; color:rgba(255,255,255,0.6); letter-spacing:0.1px; line-height:1.2; }
           .promo-mobile-line strong { color:#fff; font-weight:600; font-family:'Roboto Slab',Georgia,serif; font-style:italic; }
-          .promo-mobile-line .pill { display:inline-flex; align-items:center; gap:4px; padding:2px 7px; background:rgba(17,127,176,0.12); border:1px solid rgba(17,127,176,0.22); color:rgba(255,255,255,0.72); border-radius:10px; font-size:10px; font-weight:500; }
+          .promo-mobile-line .pill { display:inline-flex; align-items:center; gap:4px; padding:2px 7px; background:rgba(17,127,176,0.12); border:1px solid rgba(17,127,176,0.22); color:rgba(255,255,255,0.78); border-radius:10px; font-size:10px; font-weight:500; }
           .promo-mobile-line .pill i { color:var(--cyan,#117fb0); font-size:9px; }
           .promo-mobile-line .sep { color:rgba(255,255,255,0.2); font-size:9px; }
-          .promo-row { flex-wrap:nowrap; gap:10px; align-items:center; row-gap:0; }
-          .promo-lead { padding-right:10px; flex:0 0 auto; }
-          .promo-lead-kick { font-size:8.5px; letter-spacing:1.2px; margin-bottom:1px; }
-          .promo-lead-big { font-size:17px; letter-spacing:-0.3px; }
-          .promo-lead-big small { font-size:10px; margin-left:2px; }
-          .promo-cta { padding:8px 14px; font-size:12.5px; margin-left:auto; border-radius:5px; order:0; }
-          .promo-close { top:10px; right:10px; padding:3px; }
+
+          /* Price row: inline kick + price, balanced with CTA */
+          .promo-row { flex-wrap:nowrap; gap:12px; align-items:center; justify-content:space-between; row-gap:0; }
+          .promo-lead { padding-right:0; border-right:none; flex:0 0 auto; display:flex; align-items:baseline; gap:8px; }
+          .promo-lead-kick { font-size:9px; letter-spacing:1.2px; margin-bottom:0; color:var(--cyan,#117fb0); }
+          .promo-lead-big { font-size:22px; letter-spacing:-0.3px; line-height:1; }
+          .promo-lead-big small { font-size:12px; margin-left:2px; color:rgba(255,255,255,0.55); }
+          .promo-cta { padding:8px 18px; font-size:13px; border-radius:6px; order:0; margin-left:0; flex:0 0 auto; }
+          .promo-close { top:8px; right:10px; padding:3px; }
         }
         @media (max-width:380px) {
-          .promo-strip-inner { padding:7px 32px 8px 12px; }
-          .promo-mobile-line { font-size:10.5px; gap:4px; }
+          .promo-strip-inner { padding:8px 30px 9px 12px; }
+          .promo-mobile-line { font-size:10.5px; gap:4px; margin-bottom:6px; }
           .promo-mobile-line .pill { font-size:9.5px; padding:2px 6px; }
-          .promo-lead-big { font-size:16px; }
-          .promo-cta { padding:7px 12px; font-size:12px; }
+          .promo-lead { gap:6px; }
+          .promo-lead-kick { font-size:8.5px; }
+          .promo-lead-big { font-size:19px; }
+          .promo-lead-big small { font-size:11px; }
+          .promo-cta { padding:7px 14px; font-size:12.5px; }
         }
 
         /* ---- EXIT-INTENT MODAL ---- */
