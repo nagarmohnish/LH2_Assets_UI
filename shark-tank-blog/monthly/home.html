@@ -130,26 +130,34 @@ button{font-family:inherit;cursor:pointer;border:none}
 }
 /* Mobile-only unified row — hidden on desktop */
 .promo-mobile-single{display:none}
-/* MOBILE BANNER: single unified row — value copy + CTA */
+/* MOBILE BANNER: 3 elements — pills row, price, Subscribe button */
 @media (max-width:720px){
-  .promo-strip-inner{padding:10px 34px 10px 14px}
+  .promo-strip-inner{padding:9px 34px 10px 14px}
   .promo-tagline{display:none}
   .promo-row{display:none}
-  .promo-mobile-single{display:flex;align-items:center;gap:12px}
-  .promo-mobile-copy{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
-  .promo-mobile-copy strong{color:#fff;font-family:var(--font-serif);font-weight:700;font-size:14px;line-height:1.2;letter-spacing:-0.1px}
-  .promo-mobile-copy strong .price{color:var(--cyan);font-style:italic;font-weight:700}
-  .promo-mobile-copy span{font-size:11px;color:rgba(255,255,255,0.55);line-height:1.35}
-  .promo-mobile-cta{padding:9px 16px;background:var(--cyan);color:#fff !important;border-radius:6px;font-size:13px;font-weight:700;white-space:nowrap;text-decoration:none !important;display:inline-flex;align-items:center;gap:6px;flex-shrink:0;transition:background 0.15s}
+  .promo-mobile-single{display:flex;flex-direction:column;gap:8px}
+  .promo-mobile-msg{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap}
+  .mm-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;background:rgba(17,127,176,0.12);border:1px solid rgba(17,127,176,0.22);color:rgba(255,255,255,0.82);border-radius:12px;font-size:10.5px;font-weight:500;line-height:1.2}
+  .mm-pill i{color:var(--cyan);font-size:9px}
+  .promo-mobile-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .promo-mobile-price{display:flex;align-items:baseline;gap:8px}
+  .promo-mobile-price .kick{font-size:9.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--cyan)}
+  .promo-mobile-price .big{font-family:var(--font-serif);font-size:22px;font-weight:700;color:#fff;line-height:1;letter-spacing:-0.3px}
+  .promo-mobile-price .big small{font-size:12px;color:rgba(255,255,255,0.55);margin-left:2px;font-weight:500}
+  .promo-mobile-cta{padding:9px 18px;background:var(--cyan);color:#fff !important;border-radius:6px;font-size:13px;font-weight:700;white-space:nowrap;text-decoration:none !important;display:inline-flex;align-items:center;gap:6px;flex-shrink:0;transition:background 0.15s}
   .promo-mobile-cta:hover{background:var(--cyan-light);color:#fff !important}
   .promo-mobile-cta i{font-size:10px}
-  .promo-close{top:50%;right:10px;transform:translateY(-50%);padding:3px}
+  .promo-close{top:8px;right:10px;padding:3px}
 }
 @media (max-width:380px){
-  .promo-strip-inner{padding:9px 30px 9px 12px}
-  .promo-mobile-single{gap:10px}
-  .promo-mobile-copy strong{font-size:13px}
-  .promo-mobile-copy span{font-size:10.5px}
+  .promo-strip-inner{padding:8px 30px 9px 12px}
+  .promo-mobile-single{gap:7px}
+  .mm-pill{font-size:10px;padding:2px 7px;gap:3px}
+  .mm-pill i{font-size:8.5px}
+  .promo-mobile-price{gap:6px}
+  .promo-mobile-price .kick{font-size:9px}
+  .promo-mobile-price .big{font-size:20px}
+  .promo-mobile-price .big small{font-size:11px}
   .promo-mobile-cta{padding:8px 14px;font-size:12.5px}
   .promo-mobile-cta i{display:none}
 }
@@ -202,13 +210,20 @@ button{font-family:inherit;cursor:pointer;border:none}
     <div class="promo-tagline">
       Become a <span class="accent">monthly supporter</span> of The Shark Tank Blog <span class="dot">&middot;</span> Keep our coverage independent, writer-run, and ad-free.
     </div>
-    <!-- Mobile-only unified row: value copy + CTA -->
+    <!-- Mobile-only: 3 elements — pills, price, Subscribe -->
     <div class="promo-mobile-single">
-      <div class="promo-mobile-copy">
-        <strong>Read ad-free for <span class="price">$1/month</span></strong>
-        <span>Support independent Shark Tank coverage</span>
+      <div class="promo-mobile-msg">
+        <span class="mm-pill"><i class="fas fa-heart"></i> Support</span>
+        <span class="mm-pill"><i class="fas fa-envelope-open-text"></i> Newsletter</span>
+        <span class="mm-pill"><i class="fas fa-eye-slash"></i> Ad-free</span>
       </div>
-      <a href="payment.html" class="promo-mobile-cta">Subscribe <i class="fas fa-arrow-right"></i></a>
+      <div class="promo-mobile-row">
+        <div class="promo-mobile-price">
+          <span class="kick">Monthly</span>
+          <span class="big">$1<small>/mo</small></span>
+        </div>
+        <a href="payment.html" class="promo-mobile-cta">Subscribe <i class="fas fa-arrow-right"></i></a>
+      </div>
     </div>
     <div class="promo-row">
       <div class="promo-lead">
