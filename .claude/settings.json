@@ -10,7 +10,18 @@
       "Bash(xargs -0 sed -i 's|href=\"support.html\"|href=\"go-ads-free.html\"|g')",
       "Bash(xargs -0 sed -i -e 's|>Support Us<|>Go Ad-Free<|g' -e 's|>Support us<|>Go Ad-Free<|g' -e 's|>Back This Blog<|>Go Ad-Free<|g' -e 's|>Back Us<|>Go Ad-Free<|g' -e 's|>Support Shark Tank Blog<|>Go Ad-Free<|g' -e 's|support the coverage|go ad-free|g' -e 's|support the blog|go ad-free|g' -e 's|support from \\\\$3/mo|go ad-free for \\\\$2/mo|g' -e 's|Support from \\\\$3/mo|Go Ad-Free for \\\\$2/mo|g' -e 's|>Support the Blog<|>Go Ad-Free<|g' -e 's|Certificate of Support|Subscription Confirmation|g' -e 's|is a proud supporter of|is an ad-free subscriber of|g' -e 's|Official Supporter of|Ad-Free Subscriber of|g' -e 's|Invest in SharkTankBlog|Go Ad-Free|g')",
       "Bash(grep -rn 'support\\\\.html' shark-tank-blog/*.html sharktank2/*.html)",
-      "Bash(xargs -0 sed -i -e 's|>support\\\\.html<|>go-ads-free.html<|g' -e 's|support\\\\.html + go-ads-free\\\\.html|go-ads-free.html|g' -e 's|go-ads-free\\\\.html + support\\\\.html|go-ads-free.html|g')"
+      "Bash(xargs -0 sed -i -e 's|>support\\\\.html<|>go-ads-free.html<|g' -e 's|support\\\\.html + go-ads-free\\\\.html|go-ads-free.html|g' -e 's|go-ads-free\\\\.html + support\\\\.html|go-ads-free.html|g')",
+      "Bash(ls \"c:/Library/Projects/LH2_Assests_UI/vintage-aviation-news/assets/\"*.png)",
+      "Bash(ls \"c:/Library/Projects/LH2_Assests_UI/vintage-aviation-news/assets/\"*.jpg)",
+      "Bash(ls \"c:/Library/Projects/LH2_Assests_UI/vintage-aviation-news/assets/\"*.jpeg)",
+      "Bash(grep -rn 'logo-text.*width:70px' pages/*.html index.html assets-directory.html)",
+      "Bash(xargs -0 sed -i 's|<div class=\"footer-logo\"><div class=\"logo-text\" style=\"width:70px;height:70px;\"><span class=\"vintage\" style=\"font-size:7px;\">Vintage</span><span class=\"aviation\" style=\"font-size:16px;\">Aviation</span><span class=\"news\" style=\"font-size:8px;\">News</span></div></div>|<div class=\"footer-logo\"><img src=\"../assets/van-logo.png\" alt=\"Vintage Aviation News\" style=\"height:60px;\"></div>|g')",
+      "Bash(grep -rn 'logo-text' pages/*.html index.html assets-directory.html)",
+      "Bash(xargs -0 sed -i -e 's|<div class=\"site-logo\"><a href=\"\\\\.\\\\./index\\\\.html\"><div class=\"logo-text\"><span class=\"vintage\">Vintage</span><span class=\"aviation\">Aviation</span><span class=\"news\">News</span></div></a></div>|<div class=\"site-logo\"><a href=\"../index.html\"><img src=\"../assets/van-logo.png\" alt=\"Vintage Aviation News\" style=\"height:90px;\"></a></div>|g')",
+      "Bash(grep -rn 'Login.*fa-user\\\\|fa-user.*Login' index.html pages/*.html assets-directory.html)",
+      "Bash(sed -i 's|<li><a href=\"#\">Ethics-Policy</a></li>|<li><a href=\"pages/login.html\">Login</a></li>\\\\n            <li><a href=\"#\">Ethics-Policy</a></li>|' index.html)",
+      "Bash(sed -i 's|<li><a href=\"#\">Ethics-Policy</a></li>|<li><a href=\"pages/login.html\">Login</a></li>\\\\n            <li><a href=\"#\">Ethics-Policy</a></li>|' assets-directory.html)",
+      "WebFetch(domain:staging.vintageaviationnews.com)"
     ]
   }
 }
